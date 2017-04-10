@@ -80,44 +80,6 @@ namespace GraphSearch
 	};
 
 	/*
-		Graph application will have 4 classes.
-			EdgeClass
-						EdgeClass represents an edge between two vertexs/Nodes.
-						Class members are 'destination Node for Edge' and 'cost of that Edge'
-						EdgeClass instance will be hosted by vertex/Node, and that is the source Node.
-
-			VertexClass
-						VertexClass represents the vertex.
-						Has methods for
-							-Adding Vertex
-							-Adding Edge
-							-Checking whether Vertex Exits
-							-BFS search returns VertexNode
-							-DFS search returns VertexNode
-						
-						VertexClass instances get reused; example  for the vertex 'Newyork', same instance of VertexClass-object will be used in every adjacency list.
-						So we when set visited-flag to TRUE for 'NewYork' vertex, the visited-flag will be TRUE in every adjacency list. 
-						
-						GraphMainClass creates and mantains the VertexClass instances. So theer will be one instance for one vertex.
-						Ex: there will not be two instances for Newyork-vertex.
-						When VertexClass builds the adjacency list, it needs vertex-object for constructing the destination of EDGE;
-						for this VertexClass will call GraphMainClass, for fetching vertex-object object.
-						Ex: Say Adjacency list of Chicago-vertex and Paris-vertex need Newyork-vertex; 
-						    Then both Chicago-vertex and Paris-vertex will fetch Newyork-vertex from GraphMainClass.
-							So adjacency list of both Chicago-vertex and Paris-vertex will refer to same instance of  Newyork-vertex.
-
-			GraphMainClass
-						Main graph class that holds the "list of vertcies"
-
-			callGraphClass
-						Driver for creating and using Graph class
-
-
-			Search and Path difference?
-				Search-Algorithms like 'BFS' and 'DFS' will tell whether there exists a path between two vertecies. Ex: Is there a flight between NY and Amsterdam.
-				This gives every path that starts from SOURCE, irrespective of whether the path goes all the way up to DESTINATION.
-				Compared to this Path-Algorithms like 'Shortest Path' will give only those paths that runs all the way from Source to DESTINATION.
-				So Search-Algorithms like 'BFS' and 'DFS' will not give PATH.
 		
 
 
@@ -150,19 +112,7 @@ namespace GraphSearch
 				nSrc->adjList.push_back(nEdg);
 			}
 
-			/*Vertex<T>* findNode(string s)
-			{
-				Vertex<T>* ret = 0;
-				for(auto x = vertexList.begin(); x != vertexList.end(); x++)
-				{
-					if ((*x)->data == s)
-					{
-						ret = (*x);
-						break;
-					}
-				}
-				return ret;
-			}*/
+			
 
 			bool DfsSearch(string startVertex, string valVertex)
 			{

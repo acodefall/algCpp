@@ -13,10 +13,13 @@
 #include "SetComparison.h"
 #include "MapComparison.h"
 #include "MatrixRotatePrint.h"
-
+#include "MovieRatingGraph.h"
 
 int main()
 {
+	GraphMovie::testGraphMv objtestGraphMv;
+	objtestGraphMv.testGraph();
+
 	MatrixRotateNm::MatrixInCircle objMatrixInCircle;
 	objMatrixInCircle.callMatrixInCircle();
 

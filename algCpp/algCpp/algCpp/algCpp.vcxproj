@@ -146,6 +146,7 @@
     <ClInclude Include="GraphSearch.h" />
     <ClInclude Include="MapComparison.h" />
     <ClInclude Include="MatrixRotatePrint.h" />
+    <ClInclude Include="MovieRatingGraph.h" />
     <ClInclude Include="print123withPlus.h" />
     <ClInclude Include="PriorityQUsage.h" />
     <ClInclude Include="RemoveComma.h" />
