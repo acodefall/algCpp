@@ -176,6 +176,7 @@
     <ClInclude Include="SyncQx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="PrintTopAndBottomFacingNodes.h" />
+    <ClInclude Include="ValueOfMidNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algCpp.cpp" />

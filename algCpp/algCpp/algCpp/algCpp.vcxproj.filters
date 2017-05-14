@@ -162,6 +162,9 @@
     <ClInclude Include="RotateArrayUsingReverse.h">
       <Filter>Header Files\Array</Filter>
     </ClInclude>
+    <ClInclude Include="ValueOfMidNode.h">
+      <Filter>Header Files\LinkedList</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

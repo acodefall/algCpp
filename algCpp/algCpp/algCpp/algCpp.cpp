@@ -41,7 +41,12 @@ int main()
 {
 	LibraryNM::Library objLibrary;
 
+
 	cout << "main begins";
+	
+	RevLLNM::RevLL objRevLL;
+	objRevLL.callRevLL();
+
 	FindTopTenPercentNM::callFindTopTenPercentX objcallFindTopTenPercentX;
 	objcallFindTopTenPercentX.callFindTopTenPercent();
 
@@ -71,7 +76,7 @@ int main()
 	PrintTopAndBottomFacingNodes objPrintTopAndBottomFacingNodes;
 	objPrintTopAndBottomFacingNodes.callPrintTopAndBottomFacingNodes();
 
-	SwapKthNode<int> objSwapKthNode;
+	SwapAlternativeKthNodeNM::SwapKthNode<int> objSwapKthNode;
 	objSwapKthNode.callSwapKthNode();
 
 	ArrayHasConsecutiveNumber objArrayHasConsecutiveNumber;
