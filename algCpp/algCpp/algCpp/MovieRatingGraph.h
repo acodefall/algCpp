@@ -6,6 +6,8 @@
 #include <deque>
 #include <queue>
 #include <algorithm>
+#include <cmath>
+#include <bitset>
 using namespace std;
 
 
@@ -149,6 +151,16 @@ namespace GraphMovie
 
 			void testGraph()
 			{
+				float x = pow(2, 10);
+			    cout << std::bitset<32>(pow(2, 10)) << "\r\n";
+
+				cout << std::bitset<32>(pow(2, 2)) << "\r\n";
+				cout << std::bitset<32>(pow(2, 15)) << "\r\n";
+
+				cout << std::bitset<32>(pow(2, 26)) << "\r\n";
+
+				int  y = 0x80000;
+
 				//add vertecies
 				grph.AddVertex("A", new VertexMv(new Mv("A",1.2)));
 				grph.AddVertex("B", new VertexMv(new Mv("B", 2.4)));

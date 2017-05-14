@@ -1,12 +1,14 @@
 #pragma once
 #include <iostream>
 using namespace std;
-class BinSearchForLoop
+namespace BinSearchForLoopNM
 {
+	class BinSearchForLoop
+	{
 	public:
 		void callBinSearchForLoop()
 		{
-			int src[11] = { 1, 4, 6, 7, 8, 9, 10, 12, 45, 90, 888};
+			int src[11] = { 1, 4, 6, 7, 8, 9, 10, 12, 45, 90, 888 };
 			BinSearchForLoopX(src, sizeof(src) / sizeof(int), 12);
 		}
 
@@ -20,14 +22,16 @@ class BinSearchForLoop
 				M = (H + L) / 2;
 
 				if (V < src[M])
-					H = M-1;
+					H = M - 1;
 				else if (V > src[M])
-					L = M+1;
+					L = M + 1;
 				else
 					break;
 			}
-	
+
 			cout << V << " is at index" << M;
 		}
+
+	};
 
 };
