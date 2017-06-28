@@ -60,7 +60,7 @@ class testSingleTonOneX
 			sngl.Method1();
 			this_thread::sleep_for(std::chrono::milliseconds(3));
 			sngl.Method2();
-			this_thread::sleep_for(std::chrono::seconds(59));
+			this_thread::sleep_for(std::chrono::seconds(9));
 			reps--;
 		}
 		cout << "work() threads Ends \r\n";
@@ -76,7 +76,7 @@ class testSingleTonOneX
 			sngl.Method1();
 			this_thread::sleep_for(std::chrono::milliseconds(3));
 			sngl.Method2();
-			this_thread::sleep_for(std::chrono::seconds(30));
+			this_thread::sleep_for(std::chrono::seconds(10));
 			reps--;
 		}
 

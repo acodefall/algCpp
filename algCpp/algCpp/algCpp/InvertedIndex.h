@@ -10,6 +10,21 @@ using namespace std;
 namespace TrieNM
 {
 
+	/*
+		ForwardIndex and InvertedIndex
+		Forward Index is a map of words to line-number or database rows. Inverted index is a map of words to books and websites. Example for Forward is index at the end of the book.
+		Example for inverted index is googlesearch, where we give a word, and search engine comes back with websites containing those terms.
+
+		Buidling Inverted Index for books.
+		Say we have few books and would like to build inverted index out of it. Extract the words from books and load them in to TRIE. 
+		At the node where word ends, store the name of the books. Now the inverted index is ready; when user searches for the word, we go to that word in TRIE. TRIE will tell us which all books are holding reference to them.
+
+		Steps: (building WORD -> BookNames Inverted Index)
+				1) Extract words from Book
+				2) Load them in to TRIE
+				3) EOW nodes of TRIE should store name of the book
+				4) Expose the method to retrieve the book-name, when searched using WORD
+	*/
 	class TrieNode
 	{
 		public:

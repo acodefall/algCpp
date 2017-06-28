@@ -52,6 +52,21 @@
     <Filter Include="Header Files\Median">
       <UniqueIdentifier>{2d75d386-e935-4296-8797-3db28d6bf14b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Heap">
+      <UniqueIdentifier>{6e916e09-5d3e-419a-a2f5-bf7ed060fea3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Pointer">
+      <UniqueIdentifier>{53a55960-b2a7-4b11-9084-5a537ed498c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BinSearch">
+      <UniqueIdentifier>{399d441e-e21e-4f66-91c6-bcf29aeb3fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rotate">
+      <UniqueIdentifier>{e7024781-2509-48d2-9e10-4c43fbb343fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\KthOrderStats">
+      <UniqueIdentifier>{dae5edd0-9e46-4b28-9020-0635dca829d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -101,9 +116,6 @@
     </ClInclude>
     <ClInclude Include="MovieRatingGraph.h">
       <Filter>Header Files\Graph</Filter>
-    </ClInclude>
-    <ClInclude Include="RotateArray.h">
-      <Filter>Header Files\Array</Filter>
     </ClInclude>
     <ClInclude Include="ReverseDoublyLinkedList.h">
       <Filter>Header Files\LinkedList</Filter>
@@ -159,11 +171,149 @@
     <ClInclude Include="SyncQx.h">
       <Filter>Header Files\Design</Filter>
     </ClInclude>
-    <ClInclude Include="RotateArrayUsingReverse.h">
-      <Filter>Header Files\Array</Filter>
-    </ClInclude>
     <ClInclude Include="ValueOfMidNode.h">
       <Filter>Header Files\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="AddAlternateNumbersDP.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="PalidroneUsingRecursion.h">
+      <Filter>Header Files\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="RecursiveAdditionExceptCurrentItem.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="LongestCommonPalidrone.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="ColoringHomeUsingCombination.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorHomeWithMinimumCostUsingDP.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckNumberIsHigherThanKth.h">
+      <Filter>Header Files\Heap</Filter>
+    </ClInclude>
+    <ClInclude Include="MaxSumOfNonConseqNumbers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryAllocX.h">
+      <Filter>Header Files\Pointer</Filter>
+    </ClInclude>
+    <ClInclude Include="AddressChange.h">
+      <Filter>Header Files\Pointer</Filter>
+    </ClInclude>
+    <ClInclude Include="BSTToDoublyLinkedLL.h">
+      <Filter>Header Files\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="3SUMProblem.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="SubsetProblemKnapSack.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildLL.h">
+      <Filter>Header Files\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildDbLL.h">
+      <Filter>Header Files\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildTree.h">
+      <Filter>Header Files\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="CuttingRodUsingDP.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="CuttingRodUsingRecursion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KnapsackUsingDP.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="REcursions.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="WaysOfMakingN.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaceLettersApart.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="FindSmallestWindowOfSubstring.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternMatchUsingOccurCount.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="SquareRootUsingTable.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="BinSearchBase.h">
+      <Filter>Header Files\BinSearch</Filter>
+    </ClInclude>
+    <ClInclude Include="BinarySearchSizeUnknown.h">
+      <Filter>Header Files\BinSearch</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexOfItemLargerThanK.h">
+      <Filter>Header Files\BinSearch</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoColorSorting.h">
+      <Filter>Header Files\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreeColorSorting.h">
+      <Filter>Header Files\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoColorSortEvenOdd.h">
+      <Filter>Header Files\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateArray.h">
+      <Filter>Header Files\Rotate</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateArrayUsingReverse.h">
+      <Filter>Header Files\Rotate</Filter>
+    </ClInclude>
+    <ClInclude Include="KthOrderStatsBase.h">
+      <Filter>Header Files\KthOrderStats</Filter>
+    </ClInclude>
+    <ClInclude Include="KthItemUnsortedArray.h">
+      <Filter>Header Files\KthOrderStats</Filter>
+    </ClInclude>
+    <ClInclude Include="KthLargestItemUsingMergeSort.h">
+      <Filter>Header Files\KthOrderStats</Filter>
+    </ClInclude>
+    <ClInclude Include="HeapBase.h">
+      <Filter>Header Files\Heap</Filter>
+    </ClInclude>
+    <ClInclude Include="MedianUnsortedUsingKthOrder.h">
+      <Filter>Header Files\KthOrderStats</Filter>
+    </ClInclude>
+    <ClInclude Include="MedianOfBST.h">
+      <Filter>Header Files\KthOrderStats</Filter>
+    </ClInclude>
+    <ClInclude Include="MedianOfTwoSortedArrays.h">
+      <Filter>Header Files\KthOrderStats</Filter>
+    </ClInclude>
+    <ClInclude Include="RealTimeMedian.h">
+      <Filter>Header Files\KthOrderStats</Filter>
+    </ClInclude>
+    <ClInclude Include="MergeSorting.h">
+      <Filter>Header Files\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="InsertionSort.h">
+      <Filter>Header Files\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="CountingSort.h">
+      <Filter>Header Files\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickSort.h">
+      <Filter>Header Files\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="PartitionArray.h">
+      <Filter>Header Files\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="MergeSortAndStoreInSameArray.h">
+      <Filter>Header Files\Sort</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

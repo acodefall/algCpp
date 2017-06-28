@@ -135,6 +135,7 @@ namespace PermutationsNM
 				
 			void PermutationWithDupesKofN(char src[], int srcLen, char out[], int outIndex, int K)
 			{
+				//This controls the length of combinations string
 				if (outIndex == K)
 				{
 					for (int a = 0; a < outIndex; a++)
@@ -144,6 +145,9 @@ namespace PermutationsNM
 					cout << "\r\n";
 					return;
 				}
+				//This inner loop does not control the length of the combination, instead it ONLY controls how many different values can go in to  a specific position in out-array.
+				//Length of the combination is controlled by width of out-array. Ex; We can have output array of width 10, and number of characters to fill is only 2. In that case, 
+				//there will be many duplicates.
 				for (int i = 0; i < srcLen; i++)
 				{
 					out[outIndex] = src[i];

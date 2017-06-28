@@ -8,49 +8,50 @@
 #include<string>
 #include<memory>
 #include<unordered_map>
+#include "BuildTree.h"
 using namespace std;
+using namespace BuildTreeNM;
+
+/*
+	Printing Top view of Tree_20170528019
+		Top-view means print ing only the nodes found along the inverted-V, ignore the inner nodes that are inside the V.
 
 
+ 
+		Top facing nodes are 70,80,100,120,300 (ignore 90, and 110)
+		Top-view means the nodes that sit along the inverted-V of Tree. This ignorse the inner nodes that are inside the V.
+		To solve this do the following.
+		Draw imaginary vertical lines. There will be Line a passing through the root, and there will be lines on either sides of root.
+		Assign these lines a number. Line passing through root will have a value of 0 and other lines' value will be 1, -1, 2, -2, 3 and -3.
+		Makes these numbers the KEY in a hashTable, and value will be the list of nodes living along these lines.
+		Once you have this hashTable, Top-view comes from 0th element of list stored as value in HashTable.
+		Bottom-view comes from last element of the list stored as value in HashTable.
+
+	Steps for Printing Top view of Tree_20170528020
+		Write pre-order recursion code. Recursion parameters are 'hDistance', and node. For the root node, hDistance will 0.
+		When making L-Recursion call, do "hDistance - 1"
+		When making R-Recursion call, do "hDistance + 1"
+		Inside the function, use hDistance (passed-in as paramete) as KEY in to HashTable, and store the Node as VALUE.
+		Once the iteration is over, print Top and Bottom view, by using HashTable.
+
+
+*/
 class PrintTopAndBottomFacingNodes
 {
-
-	class Node
-	{
-		public:
-			int d;
-			Node* left;
-			Node* right;
-			Node(int x)
-			{
-				d = x;
-				left = 0;
-				right = 0;
-			}
-	};
-
 
 	public:
 			unordered_map<int, list<int> > vert;
 			void callPrintTopAndBottomFacingNodes()
 			{
-				Node x1(500);
-				Node x2(250);
-				Node x3(750);
-				Node x4(125);
-				Node x5(350);
-				Node x6(650);
-				Node x7(900);
+				BuildTree trr;
+				trr.AddValues();
+			
+				cout << "\r\n";
+				cout << "Print Tree In-Order\r\n";
+				trr.printTreeInOrder(trr.root);
+				cout << "\r\n";
 
-
-				x1.left = &x2;
-				x1.right = &x3;
-				x2.left = &x4;
-				x2.right = &x5;
-				x3.left = &x6;
-				x3.right = &x7;
-
-				trav(&x1);
-				treeNav(&x1, 0);
+				treeNav(trr.root, 0);
 				
 				string top;
 				string bottom;
@@ -75,11 +76,16 @@ class PrintTopAndBottomFacingNodes
 					}
 					
 				}
+				cout << "Print Tree along vertical lines(Top -> Bottom) \r\n";
 				cout << top << endl;
+
+				cout << "\r\n";
+				cout << "Print Tree along vertical lines(Bottom -> Top) \r\n";
 				cout << bottom << endl;
+				cout << "\r\n";
 			}
 
-			void treeNav(Node* rt, int hdist)
+			void treeNav(NodeTree* rt, int hdist)
 			{
 				if (rt)
 				{
@@ -95,19 +101,10 @@ class PrintTopAndBottomFacingNodes
 					{
 						vert[hdist].push_back(rt->d);
 					}
-					treeNav(rt->left, hdist - 1);
-					treeNav(rt->right, hdist + 1);
+					treeNav(rt->L, hdist - 1);
+					treeNav(rt->R, hdist + 1);
 				}
 			}
 
 
-			void trav(Node* rt)
-			{
-				if (rt)
-				{
-					trav(rt->left);
-					cout << rt->d << " ";
-					trav(rt->right);
-				}
-			}
 };

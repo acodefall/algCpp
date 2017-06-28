@@ -1,6 +1,17 @@
 // algCpp.cpp : Defines the entry point for the console application.
 //
 
+/*
+	#pragma region DebugX  
+	#pragma endregion DebugX 
+	CTRL + M + O will collapse all.
+
+	CTRL + M + L will expand all. (in VS 2013 - Toggle All outlining)
+
+	CTRL + M + P will expand all and disable outlining.
+
+	CTRL + M + M will collapse / expand the current section.
+*/
 #include "stdafx.h"
 #include "print123withPlus.h"
 #include "BinarySearchForLoop.h"
@@ -35,15 +46,158 @@
 #include "RotateArrayUsingReverse.h"
 #include "BoyerMooreVoting.h"
 #include "FindTopTenPercent.h"
-
-
+#include "TwoColorSorting.h"
+#include "AddAlternateNumbersDP.h"
+#include "PalidroneUsingRecursion.h"
+#include "TwoColorSortEvenOdd.h"
+#include "ThreeColorSorting.h"
+#include "LongestCommonPalidrone.h"
+#include "ColorHomeWithMinimumCostUsingDP.h"
+#include "ColoringHomeUsingCombination.h"
+#include "BSTToDoublyLinkedLL.h"
+#include "RecursiveAdditionExceptCurrentItem.h"
+#include "KnapsackUsingDP.h"
+#include "CuttingRodUsingDP.h"
+#include "3SUMProblem.h"
+#include "WaysOfMakingN.h"
+#include "PlaceLettersApart.h"
+#include "FindSmallestWindowOfSubstring.h"
+#include "PatternMatchUsingOccurCount.h"
+#include "IndexOfItemLargerThanK.h"
+#include "BinarySearchSizeUnknown.h"
+#include "KthItemUnsortedArray.h"
+#include "KthLargestItemUsingMergeSort.h"
+#include "HeapBase.h"
+#include "MedianUnsortedUsingKthOrder.h"
+#include "MedianOfBST.h"
+#include "MedianOfTwoSortedArrays.h"
+#include "RealTimeMedian.h"
+#include "InsertionSort.h"
+#include "CountingSort.h"
+#include "MergeSorting.h"
+#include "PartitionArray.h"
+#include "QuickSort.h"
+#include "MergeSortAndStoreInSameArray.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
-	cout << "main begins";
+	cout << "main begins \r\n";
+
+	MergeSortAndStoreInSameArrayNM::MergeSortAndStoreInSameArray objMergeSortAndStoreInSameArray;
+	objMergeSortAndStoreInSameArray.CallMergeSortAndStoreInSameArray();
+
+	MedianUnsortedUsingKthOrderNM::MedianUnsortedUsingKthOrder objMedianUnsortedUsingKthOrder;
+	objMedianUnsortedUsingKthOrder.callKthItemUnsortedArray();
+
+	KthItemUnsortedArrayNM::KthItemUnsortedArray objKthItemUnsortedArray;
+	objKthItemUnsortedArray.callKthItemUnsortedArray();
+
+
+	PartitionArrayNM::PartitionArray objPartitionArray;
+	objPartitionArray.CallPartitionArray();
+
+
+	ThreewaysortingNM::ThreewaySorting objThreewaysorting;
+	objThreewaysorting.CallThreewaySorting();
+
+	TwoColorSortEvenOddNM::TwoColorSortEvenOdd objTwoColorSortEvenOddNM;
+	objTwoColorSortEvenOddNM.callTwoColorSortEvenOdd();
+
+	QuickSortNM::QuickSort objQuickSort;
+	objQuickSort.CallQuickSort();
+
+
+	CountingSortNM::CountingSort objCountingSort;
+	objCountingSort.CallCountingSort();
 	
+	MergeSortingNM::MergeSort objMergeSort;
+	objMergeSort.CallMergeSort();
+
+	InsertionSortNM::InsertionSort objInsertionSort;
+	objInsertionSort.CallInsertionSort();
+
+	RealTimeMedianNM::CallRealTimeMedian objCallRealTimeMedian;
+	objCallRealTimeMedian.CallCallRealTimeMedianX();
+
+	MedianOfTwoSortedArraysNM::MedianOfTwoSortedArrays objMedianOfTwoSortedArrays;
+	objMedianOfTwoSortedArrays.CallMedianOfTwoSortedArrays();
+
+	MedianOfBSTNM::MedianOfBST objMedianOfBST;
+	objMedianOfBST.CallMedianOfBST();
+
+
+
+	HeapBaseNM::UseHeap objUseHeap;
+	objUseHeap.CallUseHeap();
+
+	KthLargestItemUsingMergeSortNM::KthLargestItemUsingMergeSort objKthLargestItemUsingMergeSort;
+	objKthLargestItemUsingMergeSort.CallKthLargestItemUsingMergeSort();
+
+	
+	BinarySearchSizeUnknownNM::BinarySearchSizeUnknown objBinarySearchSizeUnknown;
+	objBinarySearchSizeUnknown.callBinarySearchSizeUnknown();
+
+	IndexOfItemLargerThanKNM::IndexOfItemLargerThanK objIndexOfItemLargerThanK;
+	objIndexOfItemLargerThanK.CallIndexOfItemLargerThanK();
+
+	PatternMatchUsingOccurCountNM::PatternMatchUsingOccurCount objPatternMatchUsingOccurCount;
+	objPatternMatchUsingOccurCount.callPatternMatchUsingOccurCount();
+
+	FindSmallestWindowOfSubstringNM::FindSmallestWindowOfSubstring objFindSmallestWindowOfSubstring;
+	objFindSmallestWindowOfSubstring.CallFindSmallestWindowOfSubstring();
+
+	PlaceLettersApartNM::PlaceLettersApart objPlaceLettersApart;
+	objPlaceLettersApart.CallPlaceLettersApart();
+
+	WaysOfMakingNNM::WaysOfMakingN objWaysOfMakingN;
+	objWaysOfMakingN.callWaysOfMakingN();
+
+	ThreeSumProblemNM::ThreeSumProblem objThreeSumProblem;
+	objThreeSumProblem.Call3SumProblem();
+	
+	KnapsackUsingDPNM::KnapsackUsingDP objKnapsackUsingDP;
+	objKnapsackUsingDP.CallKnapsackUsingDP();
+	
+	CuttingRodNM::CuttingRod objCuttingRod;
+	objCuttingRod.CallCuttingRod();
+
+
+	AddAlternateNumbersDPNM::AddAlternateNumbersDP objAddAlternateNumbersDP;
+	objAddAlternateNumbersDP.callAddAlternateNumbersDP();
+
+
+	RecursiveAdditionExceptCurrentItemNM::RecursiveAdditionExceptCurrentItem objRecursiveAdditionExceptCurrentItem;
+	objRecursiveAdditionExceptCurrentItem.callRecursiveAdditionExceptCurrentItem();
+
+	RotateArrayNM::RotateArrayX objRotateArray;
+	objRotateArray.callRotateArray();
+
+	RotateArrayUsingReverseNM::RotateArrayUsingReverseX objRotateArrayUsingReverseX;
+	objRotateArrayUsingReverseX.callRotateArrayUsingReverse();
+
+	BSTToDoublyLinkedLLNM::BSTToDoublyLinkedLL objBSTToDoublyLinkedLL;
+	objBSTToDoublyLinkedLL.callBSTToDoublyLinkedLL();
+
+	ColoringHomeUsingCombinationNM::ColoringHomeUsingCombination objColoringHomeUsingCombination;
+	objColoringHomeUsingCombination.callColoringHomeUsingCombination();
+
+	ColorHomeWithMinimumCostUsingDPNM::ColorHomeWithMinimumCostUsingDP objColorHomeWithMinimumCostUsingDP;
+	objColorHomeWithMinimumCostUsingDP.callColorHomeWithMinimumCostUsingDP();
+
+	LongestCommonPalidroneNM::CallLongestCommonPalidrone objLongestCommonPalidrone;
+	objLongestCommonPalidrone.callLongestCommonPalidrone();
+
+	
+
+	PalidroneUsingRecursionNM::PalidroneUsingRecursion objPalidroneUsingRecursion;
+	objPalidroneUsingRecursion.CallPalidroneUsingRecursion();
+
+	
+	TwoColorSortingNM::TwoColorSorting objTwoColorSorting;
+	objTwoColorSorting.callTwoColorSorting();
+
 	RevLLNM::RevLL objRevLL;
 	objRevLL.callRevLL();
 
@@ -53,11 +207,9 @@ int main()
 	BoyerMooreVotingNM::BoyerMooreVotingX objBoyerMooreVotingX;
 	objBoyerMooreVotingX.callBoyerVoting();
 	
-	RotateArrayUsingReverseNM::RotateArrayUsingReverseX objRotateArrayUsingReverseX;
-	objRotateArrayUsingReverseX.callRotateArrayUsingReverse();
 
-	RotateArrayNM::RotateArrayX objRotateArray;
-	objRotateArray.callRotateArray();
+
+
 
 	ReverseDoublyLinkedListNM::ReverseDoublyLinkedListX objReverseDoublyLinkedListX;
 	objReverseDoublyLinkedListX.callRevDLL();
@@ -76,7 +228,7 @@ int main()
 	PrintTopAndBottomFacingNodes objPrintTopAndBottomFacingNodes;
 	objPrintTopAndBottomFacingNodes.callPrintTopAndBottomFacingNodes();
 
-	SwapAlternativeKthNodeNM::SwapKthNode<int> objSwapKthNode;
+	SwapAlternativeKthNodeNM::SwapKthNode objSwapKthNode;
 	objSwapKthNode.callSwapKthNode();
 
 	ArrayHasConsecutiveNumber objArrayHasConsecutiveNumber;

@@ -7,9 +7,9 @@ namespace RotateArrayNM
 	{
 		public:
 			/*
-				Clockwise: 
+				RotateAntiClockwiseUsingShifting: 
 				Here we vacate 0th element in to a temp variable, and then go through the array, and shift all the element, to left by one position.
-				At the end of the shifting, vacated-element will be put to last-position. Now we have shifted the elements by one position. 
+				At the end of the shifting, the vacated-element will be put to last-position. Now we have shifted the elements by one position. 
 				If we want to do shift by one more position repeathe whole process again.
 
 				Steps:
@@ -34,7 +34,7 @@ namespace RotateArrayNM
 		   
 			*/
 			//In this case we want
-			void callRotateArrayClockWise()
+			void callRotateAntiClockwiseUsingShifting()
 			{
 				int data[5] = {100, 200, 300, 400, 500};
 				int len = 5;
@@ -54,63 +54,150 @@ namespace RotateArrayNM
 					std::cout << data[k] << " ";
 
 				std::cout << " \r\n";
+
+				/*
+					100, 200, 300, 400, 500   //remove  100
+
+					200, 300, 400, 500, 100   //remove 200
+
+					300  400  500  100, 200,   (anti-clockwise)
+				*/
 			}
 
 			/*
-				Method2:
-					In this method, take the 1st element from 0th position and place it at the exact position, at the end of the array.
-					Then shift the middle items to left by one position. Then take the 1st element and place it at the exact position, at the end of the array.
-					Then shift the middle items to left by one position. Do this until the plucked element count is same as that of 
+				RotateAntiClockwiseUsingJuggling:
+				      AntiClockwise rotation by String-Reversal takes O(2N) and juggling method takes O(N) ++
+					  In case of AntiClockwise rotation we know that 1st segment should go the far end of the array.
+					  So we take the elements from 1st-segment(one at a time) and place it in its eventual index (at the far end of the array). 
+					  This eventual-index will be inside the 2nd segment, and so we have to vacate one element from 2nd segment, to make space for the element from 1st segment.
+					  We do this as follows:
+  
+					  -Pluck the 0th element of 1st segement and place it in a temp variable.  Then bring the 1st element of the 2nd-segment, to take up the vacant position in 1st segment.
+					  -This creats a vacant slot in 2nd segment, so that the elements of 2nd segment can be moved to LEFT, by one position.
+					   We shift only until the EVENTUAL index where the plucked-element is going sit. (This is very important).
+					   Ex: 2nd segment may have 4 elements, and plucked element is going to sit at 3rd position, then we shift only 1st and 2nd element.
+					   Then drop the plucked element element to vacant 3rd place. 
+   
+					   In the next round, we take [1] element from 1st segment will be taken out, and again the 1st element of 2nd segment will come to 2nd position of 1st segment.
+					   Then we shift the elements of 2nd segments and then drop the plucked element in its eventual index.
+					   Repeat this until we transport every element of 1st segment
 
-					Detailed 
-					Divide the array as 1st part(part to be rotated) and rest of the array
-					Vacate the 0th element from its position and store it in a tempVariable.
-					Then replace it with the 1st-element(immediately after 1st part).
-					Now shift the elements of 2nd-block within 2nd-block. Do not shift all the elements of 
-					2nd block. Stop shifting once you come across the positon where the 0th element is supposed to sit;
-					Then place the 0th element at that position.
 
-					Repeat the whole process again by plucking the second element from 1st block.
-					This time extra care should be taken when shifting the elements within 2nd block.
-					Do not shift the "dropped elements" because they are at their eventual position.
-					but we may have to take the element from "dropped elements region" and place it before "dropped elements". 
+						Note: After the 1st round, we will be shifting every element of 2nd segment to left. While doing that, we have to IGNORE the DROPPED elements, and also 
+						elements that are right side of DROPPED elements, should JUMP over the DROOPED items. 
+						So shifting logic is complex, and should seperate condition for 
+						- index < (N-R) //Before dropped elements
+						- index = (N-R) //Equal to beginning of dropped elements
+						- index =  N - R + itemsShifted //Equal to dropped elements
+						- index >  N - R + itemsShifted //After to dropped elements
+						Note: Shifting operation always begins at the 1st element in 2nd block.
+					
+					
+					(Initial)
+						R = 2 N = 6
+						100, 200, 300, 400, 500, 600
+					                         X    
+														
+														Say X is the index where the 1st segment will eventually stay. This is N-R index. 
+					(round 1)
+						tmp = 100
+							200, 300, 400, 500, 600  (pluck [0] in to temp variable)
+						
+						
+						300,200,      400, 500, 600  (1st element of 2nd segment(300) takes the place of plucked-element. This creats a vacancy in 2nd segment.) 
+										    X  	      Shift elements in 2nd block that are in between beginning of 2ndblock and [N-R]. That is [R+1] to [N-R]
+										   [N-R]
+											
+						
+						300,200, 400, 500,    , 600  (Shifting  made the [N-R]th position vacant so that we can drop plucked item)
+						                    x
+                                           [N-R]
 
-					Note: Shifting operation always begins at the 1st element in 2nd block.
+						300,200, 400, 500, 100, 600  (Drop the plucked item)
+													  
+													 DO not move all of the 2nd block, just move only those elements that lie before the EVENTUAL position for plucked element.
+													 In the 2nd block move only the elements that are  
+											     	This creates an empty spot where we can drop the plucked [0] element that is sitting in temp variable)
+						
+
+														Say X is the index where the 1st segment will eventually stay. This is N-R index. 
+					(round 1)
+						tmp = 200
+						300,   , 400, 500, 100, 600  (pluck [1] in to temp variable)
+						
+						
+						300,400,    , 500, 100, 600  (Let the 1st element of 2nd segment(300) take the place of plucked-element. This creats a vacancy in 2nd segment.) 
+										    X  	     
+										  [N-R]
+
+						300,400,500, 600,  100,     Shift elements in 2nd block that are in between beginning of 2ndblock and X.
+						                    x       (Shifting  made the position X vacant so that we can drop plucked item)  
+
+						300,200, 400, 500, 100, 200  (Drop the plucked item)
+					
 			*/
-			void callRotateArrayClockWiseEfficient()
+			
+
+			void callRotateArrayClockWiseUsingJuggling()
 			{
-				int data[5] = { 100, 200, 300, 400, 500 };
-				int N = 5;
+				int data[6] = { 100, 200, 300, 400, 500, 600 };
+				int N = 6;
 				int R = 2;
 
-				int pluck = 0;
+				int pluckededItem = 0;
+				int itemsShifted = 0;
+				int firstItem = true; //Means no element from 1st segment has been shifted to its eventual place.
 				for (int i = 0; i < R; i++)
 				{
-					int j = 0;
-					pluck = data[i];
+					//1) pluck the item from 1st segment
+					pluckededItem = data[i];
+					
+					//2)  Put the "1st element of 2nd segment" (that is [R]th item) take the place of plucked-element. This creats a vacancy in 2nd segment 
 					data[i] = data[R];
-					j = R;
-					int offset = 0;
-					while ((j < N) && (j <= N - R + i))
+
+			    	//3)Shift the items of 2nd segment within itself. 
+					//2nd segment begins after the [R]. Shift the items staring from [R+1]
+					int j = 0;
+					j = R+1; //[R] start of 2nd segment, [R] has been shifted to front, so shift the content of 2nd segment to left by 1
+				
+					while (j < N)
 					{
-						//Shift if possible
-						if (offset > 0)
+						//Items before [N-R] can be moved easily. 
+						if (j < N - R)
 						{
-							if (j < (N - R))
-								data[j - 1] = data[j];
+							data[j - 1] = data[j];
 						}
-						if (j == N - R + i)
+						else if (j ==  N - R)
 						{
-							int temp = data[j];
-							data[j] = pluck;
-							if (offset > 0)
+							if (firstItem) //Move the 
 							{
-								data[N - R - 1] = temp;
+								data[j - 1] = data[j];
+								firstItem = false;
+								break;
 							}
-							break;
+						} 
+						else if ((j > N - R) && (j < N - R + itemsShifted))
+						{   //[N-R].... will have  
+							//skip
 						}
-						offset++;
+						else if ((j == N - R + itemsShifted))
+						{
+							data[N - R - 1] = data[j]; //JUMP
+						}
+						else if ((j > N - R + itemsShifted))
+						{
+							data[j - 1] = data[j];
+						}
 						j++;
+
+
+					}
+
+					//4)  (Drop the plucked item)
+					if (N - R + itemsShifted < N)
+					{
+						data[N - R + itemsShifted] = pluckededItem;
+						itemsShifted++;
 					}
 				}
 
@@ -119,9 +206,9 @@ namespace RotateArrayNM
 
 				std::cout << " \r\n";
 			}
-			
 
-			void callRotateArrayAntiClockwise()
+
+			/*void callRotateArrayAntiClockwise()
 			{
 				int data[5] = { 100, 200, 300, 400, 500 };
 				int len = 5;
@@ -141,19 +228,19 @@ namespace RotateArrayNM
 					std::cout << data[k] << " ";
 
 				std::cout << " \r\n";
-			}
+			}*/
 
 
 			void callRotateArray()
 			{
 				std::cout << "  \r\n Clockwise \r\n";
-				callRotateArrayClockWise();
+				callRotateAntiClockwiseUsingShifting();
 
 				std::cout << "  \r\n AntiClockwise \r\n";
-				callRotateArrayAntiClockwise();
+				//callRotateArrayAntiClockwise();
 
 				std::cout << " \r\n callRotateArrayClockWiseEfficient \r\n";
-				callRotateArrayClockWiseEfficient();
+				callRotateArrayClockWiseUsingJuggling();
 			}
 
 	};
