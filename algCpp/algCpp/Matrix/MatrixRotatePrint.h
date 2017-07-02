@@ -47,6 +47,8 @@ b) Inside print(), there will be a For-Loop that goes for 4 rounds. ForLoop cont
 */
 namespace MatrixRotateNm
 {
+	const int MAXRow = 4;
+	const int MAXCol = 4;
 	class MatrixInCircle
 	{
 		public:
@@ -54,25 +56,19 @@ namespace MatrixRotateNm
 				{
 					int c = 0;
 					int r = 0;
-					int maxRow = 1;
-					int maxCol = 11;
-					int** src = new int*[maxRow];
-
-					//Load data in to Matrix
-					for (int m = 0; m < maxRow; m++)
-					{
-						src[m] = new int[maxCol];
-						for (int n = 0; n < maxCol; n++)
-						{
-							int base = ((m + 1) * 10);
-							src[m][n] = base + n;
-						}
-					}
+					
+						int src[MAXRow][MAXCol] = {
+							{ 1, 7, 9, 2 },
+							{ 8, 6, 3, 2 },
+							{ 1, 6, 7, 8 },
+							{ 2, 9, 8, 2 }
+						};
+					
 
 					//Print the Matrix content
-					for (int m = 0; m < maxRow; m++)
+					for (int m = 0; m < MAXRow; m++)
 					{
-						for (int n = 0; n < maxCol; n++)
+						for (int n = 0; n < MAXCol; n++)
 						{
 							cout << src[m][n] << " ";
 						}
@@ -82,10 +78,10 @@ namespace MatrixRotateNm
 					cout << "\r\n";
 					cout << "\r\n";
 
-					int rc = maxRow;
-					int cc = maxCol;
+					int rc = MAXRow;
+					int cc = MAXCol;
 					int sides = 0;
-					int TotalOutput = maxRow*maxCol;
+					int TotalOutput = MAXRow*MAXCol;
 					int* out = new int[TotalOutput];
 					int  outIndex = 0;
 
@@ -123,7 +119,7 @@ namespace MatrixRotateNm
 
 					if (src)
 					{
-						for (int m = 0; m < maxRow; m++)
+						for (int m = 0; m < MAXRow; m++)
 						{
 							if (src[m])
 							{
@@ -134,7 +130,7 @@ namespace MatrixRotateNm
 					}
 				}
 
-				void PrintOneRound(int** src, int r, int c, int rcount, int ccount, int* out, int& outidx)
+				void PrintOneRound(int src[MAXRow][MAXCol], int r, int c, int rcount, int ccount, int* out, int& outidx)
 				{
 					cout << "\r\n";
 					for (int sides = 0; sides < 4; sides++)

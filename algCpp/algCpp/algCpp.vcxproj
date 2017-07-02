@@ -83,10 +83,11 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\Array;.\BinSearch;.\Bits;.\Design;.\Graph;.\Heap;.\Knapsack;.\KthOrderSelection;.\LinkedList;.\Matrix;.\MatrixPath;.\Median;.\Pointer;.\RotateArray;.\Set;.\Sort;.\Stack;.\SubsetSum;.\Tree;.\Trie;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -95,10 +96,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\Array;.\BinSearch;.\Bits;.\Design;.\Graph;.\Heap;.\Knapsack;.\KthOrderSelection;.\LinkedList;.\Matrix;.\MatrixPath;.\Median;.\Pointer;.\RotateArray;.\Set;.\Sort;.\Stack;.\SubsetSum;.\Tree;.\Trie;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,11 +110,12 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\Array;.\BinSearch;.\Bits;.\Design;.\Graph;.\Heap;.\Knapsack;.\KthOrderSelection;.\LinkedList;.\Matrix;.\MatrixPath;.\Median;.\Pointer;.\RotateArray;.\Set;.\Sort;.\Stack;.\SubsetSum;.\Tree;.\Trie;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,11 +127,12 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\Array;.\BinSearch;.\Bits;.\Design;.\Graph;.\Heap;.\Knapsack;.\KthOrderSelection;.\LinkedList;.\Matrix;.\MatrixPath;.\Median;.\Pointer;.\RotateArray;.\Set;.\Sort;.\Stack;.\SubsetSum;.\Tree;.\Trie;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,96 +145,99 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="3SUMProblem.h" />
-    <ClInclude Include="AddAlternateNumbersDP.h" />
-    <ClInclude Include="AddressChange.h" />
-    <ClInclude Include="AreStringRotated.h" />
-    <ClInclude Include="ArrayHasConsqNumbers.h" />
-    <ClInclude Include="BinarySearchForLoop.h" />
-    <ClInclude Include="BinarySearchSizeUnknown.h" />
-    <ClInclude Include="BinSearchBase.h" />
-    <ClInclude Include="BoyerMooreVoting.h" />
-    <ClInclude Include="BSTToDoublyLinkedLL.h" />
-    <ClInclude Include="BuildDbLL.h" />
-    <ClInclude Include="BuildLL.h" />
-    <ClInclude Include="BuildTree.h" />
-    <ClInclude Include="CheckNumberIsHigherThanKth.h" />
-    <ClInclude Include="ColorHomeWithMinimumCostUsingDP.h" />
-    <ClInclude Include="ColoringHomeUsingCombination.h" />
-    <ClInclude Include="Combinations.h" />
-    <ClInclude Include="CombinationWithoutDupesBitGen.h" />
-    <ClInclude Include="CountingSort.h" />
-    <ClInclude Include="CuttingRodUsingDP.h" />
-    <ClInclude Include="CuttingRodUsingRecursion.h" />
-    <ClInclude Include="EditablePriorityQueue.h" />
-    <ClInclude Include="FindSmallestWindowOfSubstring.h" />
-    <ClInclude Include="FindTopTenPercent.h" />
-    <ClInclude Include="Graphbuild.h" />
-    <ClInclude Include="GraphSearch.h" />
-    <ClInclude Include="HeapBase.h" />
-    <ClInclude Include="KthLargestItemUsingMergeSort.h" />
-    <ClInclude Include="IndexOfItemLargerThanK.h" />
-    <ClInclude Include="InvertedIndex.h" />
-    <ClInclude Include="KnapsackUsingDP.h" />
-    <ClInclude Include="KthItemUnsortedArray.h" />
-    <ClInclude Include="KthOrderStatsBase.h" />
-    <ClInclude Include="MedianOfBST.h" />
-    <ClInclude Include="MedianOfTwoSortedArrays.h" />
-    <ClInclude Include="MedianUnsortedUsingKthOrder.h" />
-    <ClInclude Include="MergeSortAndStoreInSameArray.h" />
-    <ClInclude Include="MergeSorting.h" />
-    <ClInclude Include="PartitionArray.h" />
-    <ClInclude Include="PatternMatchUsingOccurCount.h" />
-    <ClInclude Include="QuickSort.h" />
-    <ClInclude Include="RealTimeMedian.h" />
-    <ClInclude Include="InsertionSort.h" />
-    <ClInclude Include="SquareRootUsingTable.h" />
-    <ClInclude Include="WaysOfMakingN.h" />
-    <ClInclude Include="LCSstring.h" />
-    <ClInclude Include="Library.h" />
-    <ClInclude Include="LongestCommonPalidrone.h" />
-    <ClInclude Include="MatrixRotatePrint.h" />
-    <ClInclude Include="MaxSumOfNonConseqNumbers.h" />
-    <ClInclude Include="Median.h" />
-    <ClInclude Include="MemoryAllocX.h" />
-    <ClInclude Include="MemoryMngrBuddy.h" />
-    <ClInclude Include="MovieRatingGraph.h" />
-    <ClInclude Include="PalidroneUsingRecursion.h" />
-    <ClInclude Include="Permutation.h" />
-    <ClInclude Include="PermutationKOfN.h" />
-    <ClInclude Include="PermutationWithDuplicatesALDO.h" />
-    <ClInclude Include="PlaceLettersApart.h" />
-    <ClInclude Include="PowerSet.h" />
-    <ClInclude Include="print123withPlus.h" />
-    <ClInclude Include="ProdConsumer.h" />
-    <ClInclude Include="REcursions.h" />
-    <ClInclude Include="RecursiveAdditionExceptCurrentItem.h" />
-    <ClInclude Include="RemoveComma.h" />
-    <ClInclude Include="ReverseDoublyLinkedList.h" />
-    <ClInclude Include="ReverseLL.h" />
-    <ClInclude Include="RotateArray.h" />
-    <ClInclude Include="RotateArrayUsingReverse.h" />
-    <ClInclude Include="SingleTonOne.h" />
-    <ClInclude Include="Stack1.h" />
+    <ClInclude Include="Array\3SUMProblem.h" />
+    <ClInclude Include="Array\AreStringRotated.h" />
+    <ClInclude Include="Array\ArrayHasConsqNumbers.h" />
+    <ClInclude Include="Array\FindSmallestWindowOfSubstring.h" />
+    <ClInclude Include="Array\LCSstring.h" />
+    <ClInclude Include="Array\LongestCommonPalidrone.h" />
+    <ClInclude Include="Array\MaxSumOfNonConseqNumbers.h" />
+    <ClInclude Include="Array\PartitionArray.h" />
+    <ClInclude Include="Array\PatternMatchUsingOccurCount.h" />
+    <ClInclude Include="Array\PlaceLettersApart.h" />
+    <ClInclude Include="Array\print123withPlus.h" />
+    <ClInclude Include="Array\REcursions.h" />
+    <ClInclude Include="Array\RecursiveAdditionExceptCurrentItem.h" />
+    <ClInclude Include="Array\RemoveComma.h" />
+    <ClInclude Include="Array\SquareRootUsingTable.h" />
+    <ClInclude Include="Array\SubsetProblemKnapSack.h" />
+    <ClInclude Include="Array\WaysOfMakingN.h" />
+    <ClInclude Include="BinSearch\BinarySearchSizeUnknown.h" />
+    <ClInclude Include="BinSearch\BinSearchBase.h" />
+    <ClInclude Include="BinSearch\IndexOfItemLargerThanK.h" />
+    <ClInclude Include="Design\BoyerMooreVoting.h" />
+    <ClInclude Include="Design\EditablePriorityQueue.h" />
+    <ClInclude Include="Design\FindTopTenPercent.h" />
+    <ClInclude Include="Design\Library.h" />
+    <ClInclude Include="Design\MemoryMngrBuddy.h" />
+    <ClInclude Include="Design\ProdConsumer.h" />
+    <ClInclude Include="Design\SingleTonOne.h" />
+    <ClInclude Include="Design\SyncQx.h" />
+    <ClInclude Include="Graph\Graphbuild.h" />
+    <ClInclude Include="Graph\GraphSearch.h" />
+    <ClInclude Include="Graph\MovieRatingGraph.h" />
+    <ClInclude Include="Heap\CheckNumberIsHigherThanKth.h" />
+    <ClInclude Include="Heap\HeapBase.h" />
+    <ClInclude Include="Knapsack\ColorHomeWithMinimumCostUsingDP.h" />
+    <ClInclude Include="Knapsack\ColoringHomeUsingCombination.h" />
+    <ClInclude Include="Knapsack\ColoringHomeWithMinimumCost.h" />
+    <ClInclude Include="Knapsack\CuttingRodUsingDP.h" />
+    <ClInclude Include="Knapsack\CuttingRodUsingRecursion.h" />
+    <ClInclude Include="Knapsack\KnapsackUsingDP.h" />
+    <ClInclude Include="KthOrderSelection\KthItemUnsortedArray.h" />
+    <ClInclude Include="KthOrderSelection\KthLargestItemUsingMergeSort.h" />
+    <ClInclude Include="KthOrderSelection\KthOrderStatsBase.h" />
+    <ClInclude Include="LinkedList\BuildDbLL.h" />
+    <ClInclude Include="LinkedList\BuildLL.h" />
+    <ClInclude Include="LinkedList\PalidroneUsingRecursion.h" />
+    <ClInclude Include="LinkedList\ReverseDoublyLinkedList.h" />
+    <ClInclude Include="LinkedList\ReverseLL.h" />
+    <ClInclude Include="LinkedList\SwapAlternativeKthNode.h" />
+    <ClInclude Include="LinkedList\ValueOfMidNode.h" />
+    <ClInclude Include="MatrixPath\CountPathInMatrixWithObstruction.h" />
+    <ClInclude Include="MatrixPath\CountPathsInMatrix.h" />
+    <ClInclude Include="MatrixPath\CountPathsWithObstruction.h" />
+    <ClInclude Include="MatrixPath\PathOfLowestCost.h" />
+    <ClInclude Include="MatrixPath\PrintPathsOfMatrix.h" />
+    <ClInclude Include="Matrix\MatrixRotatePrint.h" />
+    <ClInclude Include="Matrix\PrintDiagonalValues.h" />
+    <ClInclude Include="Matrix\SearchForNumberInSortedMatrix.h" />
+    <ClInclude Include="Median\Median.h" />
+    <ClInclude Include="Median\MedianOfBST.h" />
+    <ClInclude Include="Median\MedianOfTwoSortedArrays.h" />
+    <ClInclude Include="Median\MedianUnsortedUsingKthOrder.h" />
+    <ClInclude Include="Median\RealTimeMedian.h" />
+    <ClInclude Include="Pointer\AddressChange.h" />
+    <ClInclude Include="Pointer\MemoryAllocX.h" />
+    <ClInclude Include="RotateArray\RotateArray.h" />
+    <ClInclude Include="RotateArray\RotateArrayUsingReverse.h" />
+    <ClInclude Include="Set\BinarySearchForLoop.h" />
+    <ClInclude Include="Set\Combinations.h" />
+    <ClInclude Include="Set\CombinationWithoutDupesBitGen.h" />
+    <ClInclude Include="Set\Permutation.h" />
+    <ClInclude Include="Set\PermutationKOfN.h" />
+    <ClInclude Include="Set\PermutationWithDuplicatesALDO.h" />
+    <ClInclude Include="Set\PowerSet.h" />
+    <ClInclude Include="Sort\CountingSort.h" />
+    <ClInclude Include="Sort\InsertionSort.h" />
+    <ClInclude Include="Sort\MergeSortAndStoreInSameArray.h" />
+    <ClInclude Include="Sort\MergeSorting.h" />
+    <ClInclude Include="Sort\QuickSort.h" />
+    <ClInclude Include="Sort\ThreeColorSorting.h" />
+    <ClInclude Include="Sort\TwoColorSortEvenOdd.h" />
+    <ClInclude Include="Sort\TwoColorSorting.h" />
+    <ClInclude Include="Stack\Stack1.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="SubsetProblemKnapSack.h" />
-    <ClInclude Include="SwapAlternativeKthNode.h" />
-    <ClInclude Include="SyncQx.h" />
+    <ClInclude Include="SubsetSum\AddAlternateNumbersDP.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="PrintTopAndBottomFacingNodes.h" />
-    <ClInclude Include="ThreeColorSorting.h" />
-    <ClInclude Include="TwoColorSortEvenOdd.h" />
-    <ClInclude Include="TwoColorSorting.h" />
-    <ClInclude Include="ValueOfMidNode.h" />
+    <ClInclude Include="Tree\BSTToDoublyLinkedLL.h" />
+    <ClInclude Include="Tree\BuildTree.h" />
+    <ClInclude Include="Tree\PrintTopAndBottomFacingNodes.h" />
+    <ClInclude Include="Trie\InvertedIndex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algCpp.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

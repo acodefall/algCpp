@@ -78,12 +78,36 @@
 #include "PartitionArray.h"
 #include "QuickSort.h"
 #include "MergeSortAndStoreInSameArray.h"
+#include "CountPathsInMatrix.h"
+#include "SearchForNumberInSortedMatrix.h"
+#include "CountPathInMatrixWithObstruction.h"
+#include "PrintPathsOfMatrix.h"
+#include "PathOfLowestCost.h""
+#include "PrintDiagonalValues.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+
+	PrintDiagonalValuesNM::PrintDiagonalValues objPrintDiagonalValues;
+	objPrintDiagonalValues.callPrintDiagonals();
+
+	PathOfLowestCostNM::PathOfLowestCost objPathOfLowestCost;
+	objPathOfLowestCost.callPathOfMinimumCost();
+
+	PrintPathsOfMatrixNM::PrintPathsOfMatrix objPrintPathsOfMatrix;
+	objPrintPathsOfMatrix.callCountPathsinMatrx();
+
+	CountPathInMatrixWithObstructionNM::CountPathInMatrixWithObstruction objCountPathInMatrixWithObstruction;
+	objCountPathInMatrixWithObstruction.CallCountPathsFromTopCornerToBottomMatrix();
+
+	SearchForNumberInSortedMatrixNM::SearchForNumberInSortedMatrix objSearchForNumberInSortedMatrix;
+	objSearchForNumberInSortedMatrix.callSearchForNumberInSortedMatrix();
+
+	CountPathsFromTopCornerToBottomMatrixNM::CountPathsFromTopCornerToBottomMatrix  objCountPathsFromTopCornerToBottomMatrix;
+	objCountPathsFromTopCornerToBottomMatrix.CallCountPathsFromTopCornerToBottomMatrix();
 
 	MergeSortAndStoreInSameArrayNM::MergeSortAndStoreInSameArray objMergeSortAndStoreInSameArray;
 	objMergeSortAndStoreInSameArray.CallMergeSortAndStoreInSameArray();
