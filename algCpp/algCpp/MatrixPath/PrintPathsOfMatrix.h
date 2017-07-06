@@ -11,49 +11,12 @@ using namespace std;
 namespace PrintPathsOfMatrixNM
 {
     /*
-		Printing paths of a Matrix using recursion
-			Starting from root, navigate to bottom-right cell, and record the cells as you visit every cell.
-			Path recording is done as part pre-recursion code. We will have the whole path when recursion breaks.
-			Recursion breaks when we reach the bottom-right cell.
-			From every cell we can go down by taking any of the 3 paths, through left-cell, right-cell and diagonal cell.
-			And we have to explore all the three of them so from every cell we launche 3 recursions. 
-			Recursion function record the cell as part of Pre recursion. 
-			There is Post-recursion code.
-			When recursion breaks we will have the result, we can print it and be done with it. 
-		
-		
-	*/
-	
-	/* //@GN60 Matrix_018_Print All paths from Top-left corner to bottom-right corner of a Matrix Recursion_GN60
-     * //@GN60 Matrix_020_Step Print All paths from Top-left corner to bottom-right corner of a Matrix Recursion_GN60
-     * //@GN60 Matrix_022_Print All paths from Top-left corner to bottom-right corner of a Matrix Recursion  Diagonal_GN60
-     Print All paths from Top-left corner to bottom-right corner of a Matrix Recursion_GN60
-             Allows for only RIGHT and BOTTOM turns
-             (Recursion)
-             EX; For path is L-shaped path.
-             From each cell, cursor could go either to Right or Bottom.
-             Say cursor goes to Right-cell, from there, it can turn to Right or Bottom.So we need two recursion calls. 
-                     Recursion will have RowIndex, ColIndex and a Path variable to record CELL-value.
-             Cursor stops turning to Right(means recursion breaks), once ColIndex reaches MAXCOL. 
-             Similarly, Cursor stops trurning to Bottom, once RowIndex reaches MAXROW. 
-             For Bottom-turn recursion=call pass RowIndex+1, and unchanged ColIndex.
-             For Right-turn recursion-call, pass unchanged RowIndex, and incremented ColIndex.
-             Break the recursion when either (RowIndex = MAXROW - 1) or  (ColIndex = MAXCOL - 1).
-             When recursion breaks print, if it is MAXROW(Bottom Row), we need to go to MAXCOL(Right-Most Column), 
-                      and record the cell-values along the way, so start a For-Loop to record Nodes from ColIndex to MAXCOL, in Path
-                     Variable.Then print the Path variable. 
-                     Similarly, handle the MAXCOL case.
+		Steps for Printing all the paths of Matrix_20170701018
+			Refer to the problem of computing number of paths. Then modify the following
+			-	Recursion function carries a Path Variable, and function should record the current cell’s value in Path Variable.
+			When recursion breaks, Path variable will have the complete path starting from Root. 
+			When cursor is at the FORK, we make recursion call to every possible option(right/bottom/diagonal); because of this every path will end up reaching Bottom-Right corner cell, and there we will print the value held in Path .
 
-     Step Print All paths from Top-left corner to bottom-right corner of a Matrix Recursion_GN60
-             Allows for only RIGHT and BOTTOM turns
-             -Have recursion function with SrcMatrix, RowIndex, ColIndex and a Path variable as parameter.
-             -Inside (RowIndex == MAXROW - 1), start another for-loop to go from ColIndex to MAXCOL. And record the cell-value in Path variable.
-              Then print the PATH variable and RETURN. Now recursion ends for that path.
-             - (ColIndex == MAXCOL - 1), start another for-loop to go from RowIndex to MAXROW. And record the cell-value path in Path variable.
-              Then print the PATH variable and RETURN. Now recursion ends for that path.
-             -If we did not reach MAX indexes, set "Path = SrcMatrix[ RowIndex, ColIndex]"
-             -Then call Bottom-recursion with RowIndex+1, and unchanged ColIndex.
-             -Then call Right-recursion also.
  */
 	const int MAXRow = 3;
 	const int MAXCol = 3;

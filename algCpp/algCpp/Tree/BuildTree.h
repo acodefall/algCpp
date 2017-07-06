@@ -46,6 +46,38 @@ namespace BuildTreeNM
 			}
 
 			/*
+			               100
+                          /    \
+                         /      \
+                        80       120
+                       /  \      / \
+                     50    90   110  300
+                     /\    /\
+                    /  \  /  \
+                   10 60  85 95
+			*/
+
+			void AddValues()
+			{
+				root = new NodeTree(100);
+				root->L = new NodeTree(80);
+				root->R = new NodeTree(120);
+
+				root->L->L = new NodeTree(50);
+				root->L->R = new NodeTree(90);
+
+				root->L->L->L = new NodeTree(10);
+				root->L->L->R = new NodeTree(60);
+
+				root->L->R->L = new NodeTree(85);
+				root->L->R->R = new NodeTree(95);
+
+
+				root->R->L = new NodeTree(110);
+				root->R->R = new NodeTree(300);
+			}
+
+			/*
 			                100
                           /     \
                          /       \
@@ -56,8 +88,7 @@ namespace BuildTreeNM
                     /  \  /  \
                    10 30  85 95
 			*/
-
-			void AddValues()
+			void AddValuesUnbalanced()
 			{
 				root = new NodeTree(100);
 				root->L = new NodeTree(80);
@@ -76,7 +107,6 @@ namespace BuildTreeNM
 				root->R->L = new NodeTree(110);
 				root->R->R = new NodeTree(300);
 			}
-
 			~BuildTree()
 			{
 				cout << "\r\n";

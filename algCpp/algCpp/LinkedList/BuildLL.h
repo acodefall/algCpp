@@ -11,6 +11,7 @@ namespace BuildLLNM
 			NodeSLL* next;
 			NodeSLL()
 			{
+				d = 0;
 				next = 0;
 			}
 
@@ -26,12 +27,13 @@ namespace BuildLLNM
 		public:
 
 			NodeSLL* root;
-
+			NodeSLL* tail;
 			BuildLL()
 			{
-				root = 0;
+				root = NULL;
+				tail = NULL;
 			}
-			void printLLPalidrone(NodeSLL* rt)
+			static void printLLPalidrone(NodeSLL* rt)
 			{
 				NodeSLL* cur = rt;
 				while (cur)
@@ -42,7 +44,7 @@ namespace BuildLLNM
 				}
 			}
 
-			void printLL(NodeSLL* rt)
+			static void printLL(NodeSLL* rt)
 			{
 				NodeSLL* cur = rt;
 				while (cur)
@@ -54,27 +56,104 @@ namespace BuildLLNM
 
 			void AddValues()
 			{
+				AddValues(0);
+			}
 
-				NodeSLL* x10 = root = new NodeSLL(10);
-				NodeSLL* x15 = new NodeSLL(15);
-				NodeSLL* x20 = new NodeSLL(20);
-				NodeSLL* x25 = new NodeSLL(25);
-				NodeSLL* x30 = new NodeSLL(30);
-				NodeSLL* x35 = new NodeSLL(35);
-				NodeSLL* x40 = new NodeSLL(40);
-				NodeSLL* x45 = new NodeSLL(45);
+			void AddValuesDuplicates(int startValue = 0)
+			{
+				
+				NodeSLL* x10 = root = new NodeSLL(10 + startValue);
+				NodeSLL* x15 = new NodeSLL(10 + startValue);
+				NodeSLL* x20 = new NodeSLL(15 + startValue);
+				NodeSLL* x25 = new NodeSLL(25 + startValue);
+				NodeSLL* x30 = new NodeSLL(15 + startValue);
+				NodeSLL* x35 = new NodeSLL(35 + startValue);
+				NodeSLL* x40 = new NodeSLL(40 + startValue);
+				NodeSLL* x45 = new NodeSLL(45 + startValue);
 
-				NodeSLL* x50 = new NodeSLL(50);
-				NodeSLL* x55 = new NodeSLL(55);
-				NodeSLL* x60 = new NodeSLL(60);
-				NodeSLL* x65 = new NodeSLL(65);
-				NodeSLL* x70 = new NodeSLL(70);
-				NodeSLL* x75 = new NodeSLL(75);
+				NodeSLL* x50 = new NodeSLL(50 + startValue);
+				NodeSLL* x55 = new NodeSLL(55 + startValue);
+				NodeSLL* x60 = new NodeSLL(40 + startValue);
+				NodeSLL* x65 = new NodeSLL(35 + startValue);
+				NodeSLL* x70 = new NodeSLL(70 + startValue);
+				NodeSLL* x75 = new NodeSLL(75 + startValue);
 
-				NodeSLL* x80 = new NodeSLL(80);
-				NodeSLL* x85 = new NodeSLL(85);
-				NodeSLL* x90 = new NodeSLL(90);
-				NodeSLL* x95 = new NodeSLL(95);
+				NodeSLL* x80 = new NodeSLL(80 + startValue);
+				NodeSLL* x85 = new NodeSLL(65 + startValue);
+				NodeSLL* x90 = new NodeSLL(90 + startValue);
+				NodeSLL* x95 = new NodeSLL(95 + startValue);
+
+
+
+				x10->next = x15;
+
+				x15->next = x20;
+
+
+				x20->next = x25;
+
+				x25->next = x30;
+
+
+				x30->next = x35;
+
+				x35->next = x40;
+
+
+				x40->next = x45;
+
+				x45->next = x50;
+
+
+				x50->next = x55;
+
+				x55->next = x60;
+
+
+				x60->next = x65;
+
+				x65->next = x70;
+
+
+				x70->next = x75;
+
+				x75->next = x80;
+
+
+				x80->next = x85;
+
+				x85->next = x90;
+
+				x90->next = x95;
+
+
+				x95->next = NULL;
+				tail = x95;
+				
+			}
+
+			void AddValues(int startValue)
+			{
+				NodeSLL* x10 = root = new NodeSLL(10 + startValue);
+				NodeSLL* x15 = new NodeSLL(15 + startValue );
+				NodeSLL* x20 = new NodeSLL(20 + startValue );
+				NodeSLL* x25 = new NodeSLL(25 + startValue );
+				NodeSLL* x30 = new NodeSLL(30 + startValue );
+				NodeSLL* x35 = new NodeSLL(35 + startValue );
+				NodeSLL* x40 = new NodeSLL(40 + startValue );
+				NodeSLL* x45 = new NodeSLL(45 + startValue );
+
+				NodeSLL* x50 = new NodeSLL(50 + startValue );
+				NodeSLL* x55 = new NodeSLL(55 + startValue );
+				NodeSLL* x60 = new NodeSLL(60 + startValue );
+				NodeSLL* x65 = new NodeSLL(65 + startValue );
+				NodeSLL* x70 = new NodeSLL(70 + startValue );
+				NodeSLL* x75 = new NodeSLL(75 + startValue );
+
+				NodeSLL* x80 = new NodeSLL(80 + startValue );
+				NodeSLL* x85 = new NodeSLL(85 + startValue );
+				NodeSLL* x90 = new NodeSLL(90 + startValue );
+				NodeSLL* x95 = new NodeSLL(95 + startValue );
 
 
 
@@ -120,7 +199,8 @@ namespace BuildLLNM
 				x90->next = x95;
 			
 
-				x95->next = 0;
+				x95->next = NULL;
+				tail = x95;
 			}
 
 			void AddValuesPalidrone()

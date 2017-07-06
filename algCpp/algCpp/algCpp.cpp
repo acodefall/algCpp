@@ -38,7 +38,7 @@
 #include "BinarySearchForLoop.h"
 #include "LCSString.h"
 #include "ArrayHasConsqNumbers.h"
-#include "SwapAlternativeKthNode.h"
+#include "ReverseEveryKNodes.h"
 #include "PrintTopAndBottomFacingNodes.h"
 #include "SingleTonOne.h"
 #include "ReverseDoublyLinkedList.h"
@@ -84,12 +84,58 @@
 #include "PrintPathsOfMatrix.h"
 #include "PathOfLowestCost.h""
 #include "PrintDiagonalValues.h"
+#include "CircularLLCheck.h"
+#include "FindKthNodeFromTail.h"
+#include "LinkedListToBSTConvertion.h"
+#include "MergeSortedLL.h"
+#include "PartitionLL.h"
+#include "RemoveDuplicateNodesLL.h"
+#include "ReverseAlternativeKNodes.h"
+#include "BalancedBSTCheckUsingMinMax.h"
+#include "BstToGreaterSum.h"
+#include "BSTUsingPreOrderData.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+	BSTUsingPreOrderDataNM::BSTUsingPreOrderData  objBSTUsingPreOrderData;
+	objBSTUsingPreOrderData.callBSTUsingPreOrderData();
+
+	BstToGreaterSumNM::BstToGreaterSum objBstToGreaterSum;
+	objBstToGreaterSum.callBstToGreaterSum();
+
+	BalancedBSTCheckUsingMinMaxNM::BalancedBSTCheckUsingMinMax objBalancedBSTCheckUsingMinMax;
+	objBalancedBSTCheckUsingMinMax.callBalancedBSTCheckUsingMinMaxNM();
+
+	ReverseDoublyLinkedListNM::ReverseDoublyLinkedListX objReverseDoublyLinkedListX;
+	objReverseDoublyLinkedListX.callRevDLL();
+
+
+	ReverseAlternativeKNodesNM::ReverseAlternativeKNodes objReverseAlternativeKNodes;
+	objReverseAlternativeKNodes.callReverseAlternativeKNodes();
+
+	ReverseEveryKNodesNM::ReverseEveryKNodes objReverseEveryKNodes;
+	objReverseEveryKNodes.callReverseEveryKNodes();
+
+	RemoveDuplicateNodesLLNM::RemoveDuplicateNodesLL objRemoveDuplicateNodesLL;
+	objRemoveDuplicateNodesLL.callRemoveDuplicateNodesLL();
+
+	PartitionLLNM::PartitionLL objPartitionLL;
+	objPartitionLL.callPartitionLL();
+
+	MergeSortedLLNM::MergeSortedLL objMergeSorted;
+	objMergeSorted.callMergeSortedLL();
+
+	LinkedListToBSTConvertionNM::LinkedListToBSTConvertion objLinkedListToBSTConvertion;
+	objLinkedListToBSTConvertion.callLinkedListToBSTConvertion();
+
+	FindKthNodeFromTailNM::FindKthNodeFromTail objFindKthNodeFromTail;
+	objFindKthNodeFromTail.callFindKthNodeFromTail();
+
+	CircularLLCheckNM::CircularLLCheck objCircularLLCheck;
+	objCircularLLCheck.callCircularLLCheck();
 
 	PrintDiagonalValuesNM::PrintDiagonalValues objPrintDiagonalValues;
 	objPrintDiagonalValues.callPrintDiagonals();
@@ -235,9 +281,7 @@ int main()
 
 
 
-	ReverseDoublyLinkedListNM::ReverseDoublyLinkedListX objReverseDoublyLinkedListX;
-	objReverseDoublyLinkedListX.callRevDLL();
-
+	
 	
 
 	testSingleTonOneX objtestSingleTonOneX;
@@ -252,8 +296,7 @@ int main()
 	PrintTopAndBottomFacingNodes objPrintTopAndBottomFacingNodes;
 	objPrintTopAndBottomFacingNodes.callPrintTopAndBottomFacingNodes();
 
-	SwapAlternativeKthNodeNM::SwapKthNode objSwapKthNode;
-	objSwapKthNode.callSwapKthNode();
+
 
 	ArrayHasConsecutiveNumber objArrayHasConsecutiveNumber;
 	objArrayHasConsecutiveNumber.callArrayHasConsecutiveNumber();

@@ -1,0 +1,35 @@
+﻿We can use DP and also Recursion for solving Matrix problems like 
+	-Print all the paths, Count all the path(with and without obstruction), and compute the path of lowest cost
+	Recursion approach takes O(2^n) and Dynamic version takes O(N ^ 2)
+	DP code for all these problems is almost same. 
+	DP introduces 1st cell of the src-matrix in to problem, computes the solution and stores the result in solution matrix. 
+	Then introduces 2nd cell in to Problems, and computes the solution by using the previous-solution and 2nd cell of src-matrix, and stores the result in solution matrix.
+	DP always looks BACK at past cells of SolMatrix for finding result for current-cell. It applies a CONDITION to Top-cell or left-cell or Diagonal cell, and selects the 
+	one that satisfies the condition. In some cases it selects all the 3 cells.
+	
+	Ex:	-To compute 'Total number of paths', DP does not apply any condition to past-cells, instead uses all the 3 cells. 
+	    It adds Left, Top and also Diagonal cell, and adds thier sum to current-src-matrix-cell's value. This becomes solu-matrix value. 
+		Logic behind this is that "number of paths to current-cell is sum of paths to Left, Right and Diag cell"
+	    
+		-In 'lowest price' problem, DP applies LESSER condition to past cells. DP selects lowest among Top & Left cell, and adds it to current-cell of SrcMatrixs.
+	    -In case of 'path-counting with obstruction probem', if the current-cell has "-1",  then DP will not use any PAST cells at all, and solution get set to 0.
+		
+		Here are some of the special observations that our code should handle.:
+		Dimension of SoluMatr is same as SrcMatrix, there is no extra row.
+		Cells of Top-row and left-most-column of solutionMatrix will have only one history cell, and they have to use it. 
+		Cells of top-row has to select Left cell from SolMatrix.
+		
+		But the internal cell will have 3 choices. 
+		
+		Once the Solution matrix is developed, final result will be at Bottom-Right cell.
+		
+		
+	Coming to recursion approch. 
+		Recursion logic does not build solution matrix, so the logic does not refer to past results at all. Instead it applies a CONDITION to NEXT cells, 
+		that is Right-cell, bottom-cell and Diagonal cell. Logic makes Recursion call to the NEXT cell that satisfies condition. Making Recursion  
+		is equivalent to selecting one of the path in FORK. Some have Pre-recursion code and some have Post-recursion code. 	
+		Recursion breaks when cursor reaches bottom-right cell, probably we will have answer then. In casees answer gets generated when reursion is makin U-turn.
+		Visualize recursion as follows: 2x2 matrix will have 3 paths. If add one extra row at the bottom that will add 4 more paths, because each cell of 
+    middle row will create two more branches.
+    
+    

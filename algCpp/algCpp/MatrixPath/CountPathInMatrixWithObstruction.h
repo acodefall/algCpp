@@ -5,27 +5,16 @@ using namespace std;
 namespace CountPathInMatrixWithObstructionNM
 {
 	/*
-		Count the paths in Matrix using DP_20170629031
-			Core logic is as follows. Say A, B and C are connected, in such a way that C can be reached ONLY through either A or B,
-			In that case we can say “Number of Paths To C" = " Number of  Paths To A" + " Number of Paths To B"
-			To compute Number of path to a cell in matrix apply same theory.
+		Count the paths in Matrix using DP(Matrix has obstructions_20170701009
+			Logic same as counting paths for a matrix without obstructions, only one change is that we building the solution Matrix, refer to SolutionMat to check whether cell has an Obstruction; if there is obstruction, corresponding Solution[] cell should have 0 value. 
+			Implementation will have two changes
+			-	Function should accept SrcMat[] as parameter so that it can check for obstruction.
+			ForLoop responsible for filling solMatrix should check for onstruction, if it is ‘-1’ then set the solMatr[] to 0.
+			Once Matrix construction is done total path count will be at
+							Sol[rows - 1][cols - 1];
+			Complexity is time taken to build solution matrix O(M * N)
 
-			Number of Path to a cell = Number of Path to reach topCell + Number of Path to reach left-Cell + Number of Path to reach DiagonalCell
-			For this equation to be true, top/left/diagonal cells should hold total number of paths to reach them.
-			Basically we have to build a solution matrix where every cell holds total number of paths to reach it.
-			When building the solution matrix, start with the assumption that there is only one cell, and its path count will be 1. Then add 3-more cells,
-			to form a square; and compute the paths-count for each of the newly added cell, based on the path-count held by lone-cell that existed previously.
-			Go on expanding the Matrix in this fashion till it reaches the dimension of Source Matrix. For every cell compute the path-count by adding the count of
-			top/left/diagonal cells, except the Cells of top-row.
-			Cells of top-row can not be approached from TOP or DIAGONAL; they can be approached via the left-cell. So the Path count for cells of top row is 1. Same applies to the cell left-most-column.
-
-			Here are some of the special observations that our code should handle.:
-			- Path count for root cell is 1, 	so set [0,0] =1.
-			-Internal cells can be reached from 3 other cells: top/left/diagonal
-			-Program does not need whole matrix as input; all it needs is row and column count
-
-			Runtime is O(M*N) that is equal to the time spent constructing Solution Matrix.
-	*/
+	*/		
 
 	const int MAXRow = 5;
 	const int MAXCol = 5;
@@ -108,13 +97,13 @@ namespace CountPathInMatrixWithObstructionNM
 							//(DP assumes that in the beginning there is only one cell, and path to thar is 1.)
 							Sol[0][0] = 1;
 						}
-						else if ((p == 0) && (q > 0)) //Cursor is going along TopRow. Cells of top row can be approached via the left cell only. So the cells in top row have a path-count of 1
+						else if ((p == 0)) //Cursor is going along TopRow. Cells of top row can be approached via the left cell only. So the cells in top row have a path-count of 1
 						{
-							Sol[p][q] = Sol[0][q - 1];
+							Sol[p][q] = Sol[p][q - 1];
 						}
-						else if ((q == 0) && (p > 0)) //Cursor is going along LeftCol. 
+						else if ((q == 0)) //Cursor is going along LeftCol. 
 						{
-							Sol[p][q] = Sol[p - 1][0];
+							Sol[p][q] = Sol[p - 1][q];
 						}
 						else
 						{	//These are internal cells and can be approached from 3-ways
