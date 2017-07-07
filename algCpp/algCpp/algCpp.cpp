@@ -94,12 +94,21 @@
 #include "BalancedBSTCheckUsingMinMax.h"
 #include "BstToGreaterSum.h"
 #include "BSTUsingPreOrderData.h"
+#include "CheckTreeIsMIRROR.h"
+#include "CheckTreeIsIdentical.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+
+	CheckTreeIsIdenticalNM::CheckTreeIsIdentical objCheckTreeIsIdentical;
+	objCheckTreeIsIdentical.callCheckTreeIsIdentical();
+
+	CheckTreeIsMIRRORNM::CheckTreeIsMIRROR objCheckTreeIsMIRROR;
+	objCheckTreeIsMIRROR.callCheckTreeIsMIRROR();
+
 	BSTUsingPreOrderDataNM::BSTUsingPreOrderData  objBSTUsingPreOrderData;
 	objBSTUsingPreOrderData.callBSTUsingPreOrderData();
 

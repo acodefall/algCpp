@@ -34,7 +34,7 @@ namespace BuildTreeNM
 			{
 				root = 0;
 			}
-			void printTreeInOrder(NodeTree* rt)
+			static void printTreeInOrder(NodeTree* rt)
 			{
 				NodeTree* cur = rt;
 				if (cur)

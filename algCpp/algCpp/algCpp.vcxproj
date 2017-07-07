@@ -243,6 +243,9 @@
     <ClInclude Include="Tree\BstToGreaterSum.h" />
     <ClInclude Include="Tree\BSTUsingPreOrderData.h" />
     <ClInclude Include="Tree\BuildTree.h" />
+    <ClInclude Include="Tree\CheckTreeIsIdentical.h" />
+    <ClInclude Include="Tree\CheckTreeIsMIRROR.h" />
+    <ClInclude Include="Tree\ConstructSingleThreadedTree.h" />
     <ClInclude Include="Tree\PrintTopAndBottomFacingNodes.h" />
     <ClInclude Include="Trie\InvertedIndex.h" />
   </ItemGroup>
