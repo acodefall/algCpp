@@ -96,12 +96,90 @@
 #include "BSTUsingPreOrderData.h"
 #include "CheckTreeIsMIRROR.h"
 #include "CheckTreeIsIdentical.h"
+#include "ConstructSingleThreadedTree.h"
+#include "DFSSearch.h"
+#include "FindNodeDistanceFromRoot.h"
+#include "FindDeepestLeftNode.h"
+#include "FindDeepestNodeInPlainTree.h"
+#include "FindSuccessorNode.h"
+#include "FindNodeDistanceKFromLeaf.h"
+#include "FindMaxValueNode.h"
+#include "TreeTraversalsUsingStack.h"
+#include "TraversalUsingRecursion.h"
+#include "PostOrderUsingStack.h"
+#include "LowestCommonDescendent.h"
+#include "CreateBSTFromArray.h"
+#include "PrintAllPathsOfTree.h"
+#include "PrintFullNodes.h"
+#include "PrintLeftFacingNodes.h"
+#include "PrintPathTilllSumReachesK.h"
+#include "FindPathToNodeValueKInPlainBinaryTree.h"
+#include "SumOfLeftLEAF.h"
+
+
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+
+	SumOfLeftLEAFNM::SumOfLeftLEAF objSumOfLeftLEAF;
+	objSumOfLeftLEAF.callSumOfLeftLEAF();
+
+	FindPathToNodeValueKInPlainBinaryTreeNM::FindPathToNodeValueKInPlainBinaryTree objFindPathToNodeValueKInPlainBinaryTree;
+	objFindPathToNodeValueKInPlainBinaryTree.callFindPathToNodeValueKInPlainBinaryTree();
+
+	PrintPathTilllSumReachesKNM::PrintPathTilllSumReachesK objPrintPathTilllSumReachesK;
+	objPrintPathTilllSumReachesK.callPrintPathTilllSumReachesK();
+
+	PrintLeftFacingNodesNM::PrintLeftFacingNodes objPrintLeftFacingNodes;
+	objPrintLeftFacingNodes.callPrintLeftFacingNodes();
+	
+	PrintFullNodesNM::PrintFullNodes objPrintFullNodes;
+	objPrintFullNodes.callPrintAllPathsOfTree();
+
+	PrintAllPathsOfTreeNM::PrintAllPathsOfTree objPrintAllPathsOfTree;
+	objPrintAllPathsOfTree.callPrintAllPathsOfTree();
+
+	CreateBSTFromArrayNM::CreateBSTFromArray objCreateBSTFromArray;
+	objCreateBSTFromArray.callCreateBSTFromArray();
+
+	LowestCommonDescendentNM::LowestCommonDescendent objLowestCommonDescendent;
+	objLowestCommonDescendent.callLowestCommonDescendent();
+
+	TraversalUsingRecursionNM::TraversalUsingRecursion objTraversalUsingRecursion;
+	objTraversalUsingRecursion.callTraversalUsingRecursion();
+
+	TreeTraversalsUsingStackNM::TreeTraversalsUsingStack objTreeTraversalsUsingStack;
+	objTreeTraversalsUsingStack.callTreeTraversalsUsingStack();
+
+	PostOrderUsingStackNM::PostOrderUsingStack objPostOrderUsingStack;
+	objPostOrderUsingStack.callTreeTraversalsUsingStack();
+
+	FindMaxValueNodeNM::FindMaxValueNode objFindMaxValueNode;
+	objFindMaxValueNode.callFindMaxValueNode();
+
+	FindNodeDistanceKFromLeafNM::FindNodeDistanceKFromLeaf objFindNodeDistanceKFromLeaf;
+	objFindNodeDistanceKFromLeaf.callFindNodeDistanceKFromLeaf();
+
+	FindSuccessorNodeNM::FindSuccessorNode objFindSuccessorNode;
+	objFindSuccessorNode.callFindSuccessorNode();
+
+	FindDeepestNodeInPlainTreeNM::FindDeepestNodeInPlainTree objFindDeepestNodeInPlainTree;
+	objFindDeepestNodeInPlainTree.callFindDeepestNodeInPlainTree();
+
+	FindDeepestLeftNodeNM::FindDeepestLeftNode objFindDeepestLeftNode;
+	objFindDeepestLeftNode.callFindDeepestLeftNode();
+
+	FindNodeDistanceFromRootNM::FindNodeDistanceFromRoot objFindNodeDistanceFromRoot;
+	objFindNodeDistanceFromRoot.callFindNodeDistanceFromRoot();
+
+	DFSSearchNM::DFSSearch objDFSSearch;
+	objDFSSearch.callDFSSearch();
+
+	ConstructSingleThreadedTreeNM::ConstructSingleThreadedTree objConstructSingleThreadedTree;
+	objConstructSingleThreadedTree.callConstructSingleThreadedTree();
 
 	CheckTreeIsIdenticalNM::CheckTreeIsIdentical objCheckTreeIsIdentical;
 	objCheckTreeIsIdentical.callCheckTreeIsIdentical();

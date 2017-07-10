@@ -45,7 +45,7 @@ namespace BuildTreeNM
 				}
 			}
 
-			/*
+			/*		     (BST)
 			               100
                           /    \
                          /      \
@@ -77,7 +77,7 @@ namespace BuildTreeNM
 				root->R->R = new NodeTree(300);
 			}
 
-			/*
+			/*        (Non BST)  Plain Tree
 			                100
                           /     \
                          /       \
@@ -88,7 +88,7 @@ namespace BuildTreeNM
                     /  \  /  \
                    10 30  85 95
 			*/
-			void AddValuesUnbalanced()
+			void AddValuesNonBST()
 			{
 				root = new NodeTree(100);
 				root->L = new NodeTree(80);
@@ -107,6 +107,32 @@ namespace BuildTreeNM
 				root->R->L = new NodeTree(110);
 				root->R->R = new NodeTree(300);
 			}
+
+
+				/*        (LCA)
+			                20
+                          /     \
+                         /       \
+                        8       22
+                       /  \      
+                      4   12     
+                          /\
+                         /  \
+                        10  14
+			*/
+			void AddValuesLCA()
+			{
+				root = new NodeTree(20);
+				root->L = new NodeTree(8);
+				root->R = new NodeTree(22);
+
+				root->L->L = new NodeTree(4);
+				root->L->R = new NodeTree(12);
+
+				root->L->R->L = new NodeTree(10);
+				root->L->R->R = new NodeTree(14);
+			}
+
 			~BuildTree()
 			{
 				cout << "\r\n";
@@ -115,6 +141,8 @@ namespace BuildTreeNM
 				cout << "Deleted Tree\r\n";
 			}
 
+
+			
 			void DeleteTree(NodeTree* rt)
 			{
 				NodeTree* cur = rt;

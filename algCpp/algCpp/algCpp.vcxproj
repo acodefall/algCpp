@@ -246,7 +246,26 @@
     <ClInclude Include="Tree\CheckTreeIsIdentical.h" />
     <ClInclude Include="Tree\CheckTreeIsMIRROR.h" />
     <ClInclude Include="Tree\ConstructSingleThreadedTree.h" />
+    <ClInclude Include="Tree\CreateBSTFromArray.h" />
+    <ClInclude Include="Tree\DelTree.h" />
+    <ClInclude Include="Tree\DFSSearch.h" />
+    <ClInclude Include="Tree\FindDeepestLeftNode.h" />
+    <ClInclude Include="Tree\FindDeepestNodeInPlainTree.h" />
+    <ClInclude Include="Tree\FindMaxValueNode.h" />
+    <ClInclude Include="Tree\FindNodeDistanceFromRoot.h" />
+    <ClInclude Include="Tree\FindNodeDistanceKFromLeaf.h" />
+    <ClInclude Include="Tree\FindPathToNodeValueKInPlainBinaryTree.h" />
+    <ClInclude Include="Tree\FindSuccessorNode.h" />
+    <ClInclude Include="Tree\LowestCommonDescendent.h" />
+    <ClInclude Include="Tree\PostOrderUsingStack.h" />
+    <ClInclude Include="Tree\PrintAllPathsOfTree.h" />
+    <ClInclude Include="Tree\PrintFullNodes.h" />
+    <ClInclude Include="Tree\PrintLeftFacingNodes.h" />
+    <ClInclude Include="Tree\PrintPathTilllSumReachesK.h" />
     <ClInclude Include="Tree\PrintTopAndBottomFacingNodes.h" />
+    <ClInclude Include="Tree\SumOfLeftLEAF.h" />
+    <ClInclude Include="Tree\TraversalUsingRecursion.h" />
+    <ClInclude Include="Tree\TreeTraversalsUsingStack.h" />
     <ClInclude Include="Trie\InvertedIndex.h" />
   </ItemGroup>
   <ItemGroup>

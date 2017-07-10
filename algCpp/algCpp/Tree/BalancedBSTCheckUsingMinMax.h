@@ -29,7 +29,7 @@ namespace BalancedBSTCheckUsingMinMaxNM
 				void callBalancedBSTCheckUsingMinMaxNM()
 				{
 					BuildTree objTrrr;
-					objTrrr.AddValuesUnbalanced();
+					objTrrr.AddValuesNonBST();
 					//objTrrr.AddValues();
 
 					cout << "\r\n";

@@ -4,17 +4,17 @@
 #include <memory>
 #include <vector>
 #include<algorithm>
-#include<queue>
+#include<stack>
 #include <string>
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace BFSSearchNM
+namespace DFSSearchNM
 {
-	class BFSSearch
+	class DFSSearch
 	{
 		public:
-			void callBFSSearch()
+			void callDFSSearch()
 			{
 				BuildTree objTrrr;
 				objTrrr.AddValues();
@@ -24,20 +24,20 @@ namespace BFSSearchNM
 				objTrrr.printTreeInOrder(objTrrr.root);
 				cout << "\r\n";
 
-				BFSSearchX(objTrrr.root, 50);
+				DFSSearchX(objTrrr.root, 50);
 			}
 
 		private:
-			void BFSSearchX(NodeTree* root, int Value)
+			void DFSSearchX(NodeTree* root, int Value)
 			{
-				queue<NodeTree*> q;
-				q.push(root); //push the root
+				stack<NodeTree*> st;
+				st.push(root); //push the root
 
-				while (q.size() > 0)
+				while (st.size() > 0)
 				{
 					//pop one item
-					NodeTree* n = q.front();
-					q.pop(); 
+					NodeTree* n = st.top();
+					st.pop(); 
 
 					//check if the value exists
 					if (n->d == Value)
@@ -46,16 +46,13 @@ namespace BFSSearchNM
 						break;
 					}
 
-					//if the value is not present, then push the children
-					//Container is Q, and when we are popping out the elements we want 
-					//L-child pop-oout first so we insert the L-child FIRST
-					if (n->L)
-						q.push(n->L);
-
+					//if the value is not present, then push the children in to stack.
+					//Container is stack, and when we are popping out the elements we want 
+					//L-child pop-oout first so we insert the L-child last
 					if (n->R)
-						q.push(n->R);
-					
-
+						st.push(n->R);
+					if (n->L)
+						st.push(n->L);
 				}
 			}
 	};
