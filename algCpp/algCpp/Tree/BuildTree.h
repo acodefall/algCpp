@@ -133,6 +133,43 @@ namespace BuildTreeNM
 				root->L->R->R = new NodeTree(14);
 			}
 
+			
+			/*        (Unbalanced) 
+			                100
+                          /     \
+                         /       \
+                        80       120
+                       /   \      / \
+                     70    90   110  300
+                     /\    /\
+                    /  \  /  \
+                   10 30  85 95
+				   /
+                  /
+				  5
+				 
+			*/
+			void AddValuesUnbalanced()
+			{
+				root = new NodeTree(100);
+				root->L = new NodeTree(80);
+				root->R = new NodeTree(120);
+
+				root->L->L = new NodeTree(70);
+				root->L->R = new NodeTree(90);
+
+				root->L->L->L = new NodeTree(10);
+				root->L->L->R = new NodeTree(30);
+
+				root->L->R->L = new NodeTree(85);
+				root->L->R->R = new NodeTree(95);
+
+
+				root->R->L = new NodeTree(110);
+				root->R->R = new NodeTree(300);
+
+				root->L->L->L->L = new NodeTree(5);
+			}
 			~BuildTree()
 			{
 				cout << "\r\n";

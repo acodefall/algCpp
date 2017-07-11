@@ -115,7 +115,10 @@
 #include "PrintPathTilllSumReachesK.h"
 #include "FindPathToNodeValueKInPlainBinaryTree.h"
 #include "SumOfLeftLEAF.h"
-
+#include "NodeCount.h"
+#include "NodeHeight.h"
+#include "TreeHeightUsingNonRecursion.h"
+#include "TreeBalanced.h"
 
 int main()
 {
@@ -123,6 +126,17 @@ int main()
 
 
 	cout << "main begins \r\n";
+	TreeBalancedNM::TreeBalanced objTreeBalanced;
+	objTreeBalanced.callTreeBalanced();
+	TreeHeightUsingNonRecursionNM::TreeHeightUsingNonRecursion objTreeHeightUsingNonRecursion;
+	objTreeHeightUsingNonRecursion.callTreeHeightUsingNonRecursion();
+
+	NodeHeightNM::NodeHeight	objNodeHeight;
+	objNodeHeight.callNodeHeight();
+
+	NodeCountNM::NodeCount	objNodeCount;
+	objNodeCount.callNodeCount();
+
 
 	SumOfLeftLEAFNM::SumOfLeftLEAF objSumOfLeftLEAF;
 	objSumOfLeftLEAF.callSumOfLeftLEAF();

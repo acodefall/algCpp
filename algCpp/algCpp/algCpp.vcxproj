@@ -257,6 +257,8 @@
     <ClInclude Include="Tree\FindPathToNodeValueKInPlainBinaryTree.h" />
     <ClInclude Include="Tree\FindSuccessorNode.h" />
     <ClInclude Include="Tree\LowestCommonDescendent.h" />
+    <ClInclude Include="Tree\NodeCount.h" />
+    <ClInclude Include="Tree\NodeHeight.h" />
     <ClInclude Include="Tree\PostOrderUsingStack.h" />
     <ClInclude Include="Tree\PrintAllPathsOfTree.h" />
     <ClInclude Include="Tree\PrintFullNodes.h" />
@@ -265,6 +267,8 @@
     <ClInclude Include="Tree\PrintTopAndBottomFacingNodes.h" />
     <ClInclude Include="Tree\SumOfLeftLEAF.h" />
     <ClInclude Include="Tree\TraversalUsingRecursion.h" />
+    <ClInclude Include="Tree\TreeBalanced.h" />
+    <ClInclude Include="Tree\TreeHeightUsingNonRecursion.h" />
     <ClInclude Include="Tree\TreeTraversalsUsingStack.h" />
     <ClInclude Include="Trie\InvertedIndex.h" />
   </ItemGroup>
