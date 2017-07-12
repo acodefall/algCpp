@@ -11,14 +11,16 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace PrintFullNodesNM
+namespace PrintFullNodesNM //20170711003
 {
 	/*
-				Print All The Full Nodes in a Binary Tree
-                Full node is a node that has non-null R-child and L-Child. 
-				To print them, iterate the Tree using Inorder traversal, Print the current node ONLY is R & L children are non-null.
-				List of full nodes will not have LEAF
+	Print All The Full Nodes in a Binary Tree_20170711003
+		Full node is a node that has non-null R-child and L-Child.
+		To print them, iterate the Tree using Inorder traversal, Print the current node ONLY if R & L children are non-null.
+		List of full nodes will not have LEAF
 
+
+	
 				       100					
 				      /    \
 				     /      \

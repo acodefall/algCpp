@@ -148,9 +148,11 @@
     <ClInclude Include="Array\3SUMProblem.h" />
     <ClInclude Include="Array\AreStringRotated.h" />
     <ClInclude Include="Array\ArrayHasConsqNumbers.h" />
+    <ClInclude Include="Array\FindNumberHigherThanKSorted.h" />
     <ClInclude Include="Array\FindSmallestWindowOfSubstring.h" />
     <ClInclude Include="Array\LCSstring.h" />
     <ClInclude Include="Array\LongestCommonPalidrone.h" />
+    <ClInclude Include="Array\MaxSubArray.h" />
     <ClInclude Include="Array\MaxSumOfNonConseqNumbers.h" />
     <ClInclude Include="Array\PartitionArray.h" />
     <ClInclude Include="Array\PatternMatchUsingOccurCount.h" />
@@ -160,8 +162,11 @@
     <ClInclude Include="Array\RecursiveAdditionExceptCurrentItem.h" />
     <ClInclude Include="Array\RemoveComma.h" />
     <ClInclude Include="Array\SquareRootUsingTable.h" />
+    <ClInclude Include="Array\ReverseWithoutTemp.h" />
     <ClInclude Include="Array\SubsetProblemKnapSack.h" />
+    <ClInclude Include="Array\UniqueChars.h" />
     <ClInclude Include="Array\WaysOfMakingN.h" />
+    <ClInclude Include="Array\XToPowerN.h" />
     <ClInclude Include="BinSearch\BinarySearchSizeUnknown.h" />
     <ClInclude Include="BinSearch\BinSearchBase.h" />
     <ClInclude Include="BinSearch\IndexOfItemLargerThanK.h" />
@@ -266,6 +271,7 @@
     <ClInclude Include="Tree\PrintPathTilllSumReachesK.h" />
     <ClInclude Include="Tree\PrintTopAndBottomFacingNodes.h" />
     <ClInclude Include="Tree\SumOfLeftLEAF.h" />
+    <ClInclude Include="Tree\SumOfTree.h" />
     <ClInclude Include="Tree\TraversalUsingRecursion.h" />
     <ClInclude Include="Tree\TreeBalanced.h" />
     <ClInclude Include="Tree\TreeHeightUsingNonRecursion.h" />

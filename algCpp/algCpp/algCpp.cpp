@@ -119,6 +119,10 @@
 #include "NodeHeight.h"
 #include "TreeHeightUsingNonRecursion.h"
 #include "TreeBalanced.h"
+#include "MaxSubArray.h"
+#include "ReverseWithoutTemp.h"
+#include "UniqueChars.h"
+#include "FindNumberHigherThanKSorted.h"
 
 int main()
 {
@@ -126,6 +130,18 @@ int main()
 
 
 	cout << "main begins \r\n";
+	FindNumberHigherThanKSortedNM::FindNumberHigherThanKSorted objFindNumberHigherThanKSorted;
+	objFindNumberHigherThanKSorted.callFindNumberHigherThanK();
+		
+	UniqueCharsNM::UniqueChars objUniqueChars;
+	objUniqueChars.callUniqueChars();
+
+	ReverseWithoutTempNM::ReverseWithoutTemp objReverseWithoutTemp;
+	objReverseWithoutTemp.callReverseWithoutTemp();
+
+	MaxSubArrayNM::MaxSubArray objMaxSubArray;
+	objMaxSubArray.callMaxSubArray();
+
 	TreeBalancedNM::TreeBalanced objTreeBalanced;
 	objTreeBalanced.callTreeBalanced();
 	TreeHeightUsingNonRecursionNM::TreeHeightUsingNonRecursion objTreeHeightUsingNonRecursion;
