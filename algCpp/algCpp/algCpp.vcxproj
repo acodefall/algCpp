@@ -152,6 +152,7 @@
     <ClInclude Include="Array\FindSmallestWindowOfSubstring.h" />
     <ClInclude Include="Array\LCSstring.h" />
     <ClInclude Include="Array\LongestCommonPalidrone.h" />
+    <ClInclude Include="Array\MaxDifference.h" />
     <ClInclude Include="Array\MaxSubArray.h" />
     <ClInclude Include="Array\MaxSumOfNonConseqNumbers.h" />
     <ClInclude Include="Array\PartitionArray.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Array\REcursions.h" />
     <ClInclude Include="Array\RecursiveAdditionExceptCurrentItem.h" />
     <ClInclude Include="Array\RemoveComma.h" />
+    <ClInclude Include="Array\RemoveDuplicates.h" />
     <ClInclude Include="Array\SquareRootUsingTable.h" />
     <ClInclude Include="Array\ReverseWithoutTemp.h" />
     <ClInclude Include="Array\SubsetProblemKnapSack.h" />

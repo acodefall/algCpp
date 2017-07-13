@@ -123,13 +123,17 @@
 #include "ReverseWithoutTemp.h"
 #include "UniqueChars.h"
 #include "FindNumberHigherThanKSorted.h"
-
+#include "MaxDifference.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+
+	MaxDifferenceNM::MaxDifference objMaxDifference;
+	objMaxDifference.callMaxDifference();
+
 	FindNumberHigherThanKSortedNM::FindNumberHigherThanKSorted objFindNumberHigherThanKSorted;
 	objFindNumberHigherThanKSorted.callFindNumberHigherThanK();
 		
@@ -475,7 +479,7 @@ int main()
 	testGraphAirLine objtestGraphAirLine;
 	objtestGraphAirLine.calltestGraphAirLine();
 
-	RemoveCommaX objRemoveCommaX;
+	RemoveCommaNM::RemoveCommaX objRemoveCommaX;
 	objRemoveCommaX.callRemoveComma();
 
 
