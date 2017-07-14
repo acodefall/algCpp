@@ -149,9 +149,12 @@
     <ClInclude Include="Array\AreStringRotated.h" />
     <ClInclude Include="Array\ArrayHasConsqNumbers.h" />
     <ClInclude Include="Array\FindNumberHigherThanKSorted.h" />
+    <ClInclude Include="Array\FindPeakElement.h" />
     <ClInclude Include="Array\FindSmallestWindowOfSubstring.h" />
+    <ClInclude Include="Array\IntersectionOfSortedArray.h" />
     <ClInclude Include="Array\LCSstring.h" />
     <ClInclude Include="Array\LongestCommonPalidrone.h" />
+    <ClInclude Include="Array\LongestIncreasingSubSequence.h" />
     <ClInclude Include="Array\MaxDifference.h" />
     <ClInclude Include="Array\MaxSubArray.h" />
     <ClInclude Include="Array\MaxSumOfNonConseqNumbers.h" />

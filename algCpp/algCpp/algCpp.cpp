@@ -124,12 +124,20 @@
 #include "UniqueChars.h"
 #include "FindNumberHigherThanKSorted.h"
 #include "MaxDifference.h"
+#include "IntersectionOfSortedArray.h"
+#include "FindPeakElementUnsorted.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+
+	FindPeakElementUnsortedNM::FindPeakElementUnsorted objFindPeakElement;
+	objFindPeakElement.callFindPeakElementUnsorted();
+
+	IntersectionOfSortedArrayNM::IntersectionOfSortedArray objIntersectionOfSortedArray;
+	objIntersectionOfSortedArray.callIntersectionOfSortedArray();
 
 	MaxDifferenceNM::MaxDifference objMaxDifference;
 	objMaxDifference.callMaxDifference();
