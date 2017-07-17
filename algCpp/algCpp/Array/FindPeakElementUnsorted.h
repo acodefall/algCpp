@@ -13,12 +13,14 @@ using namespace std;
 namespace FindPeakElementUnsortedNM
 {
 	/*
-		Find the Peak elemnt in Unsorted Array using DAC. 
-			Peak Element is made up Left-crest and Right-crest, that is [i-1], [i], [i+1].
-			DAC code returns success if both Left-crest and Right-crest are present;
-			DAC makes left-turn if the condition for Left-crest fails. This is because left-crest should be in left half.
-			DAC nakes right-turn if the condition for Right-crest fails. This is because right-crest should be in right half. 
-			If none of above conditions are met, then DAC return -1.
+		Find the Peak elemnt in Unsorted Array using DAC_20170714006 
+			Peak Element is an element who’s left and right neighbours are lower than middle element. Eg “4 10 6”
+			Peak Element is made up Left-crest and Right-crest, that is [i-1], [i], [i+1]. We can use DAC for finding peak element. When itrrating the array.
+				DAC code returns success if the element has both Left-crest and Right-crest;
+				DAC makes left-turn if the element is missing Left-crest. This is because left-crest should be in left half.
+				DAC nakes right-turn if the element is missing Right-crest. This is because right-crest should be in right half. 
+				If none of above conditions are met, then DAC return -1. Peak element array will not be in sorted order.
+
 
 		Steps to find Peak element using DAC
 			a) F

@@ -126,12 +126,42 @@
 #include "MaxDifference.h"
 #include "IntersectionOfSortedArray.h"
 #include "FindPeakElementUnsorted.h"
+#include "Find2DPeak.h"
+#include "FindKthUniqueItem.h"
+#include "FindLowerRepeatIndexUnSorted.h"
+#include "FindMissingNumber.h"
+#include "FindOddNumberElements.h"
+#include "FindKthUniqueItem.h"
+#include "FindContiguousSubArrayWithSumX.h"
+#include "BinSearchWhileLoop.h"
+#include "CheckForConsecutiveNumb.h"
+#include "FindCommonElementsSorted.h"
+#include "Anagram1.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+	Anagram1NM::Anagram1 objAnagram1;
+	objAnagram1.callAnagram1();
+
+	FindCommonElementsSortedNM::FindCommonElementsSorted objFindCommonElementsSorted;
+	objFindCommonElementsSorted.callFindCommonElementsSorted();
+
+	CheckForConsecutiveNumbNM::CheckForConsecutiveNumb objCheckForConsecutiveNumb;
+	objCheckForConsecutiveNumb.callCheckForConsecutiveNumber();
+
+	BinSearchWhileLoopNM::BinSearchWhileLoop objBinSearchWhileLoop;
+	objBinSearchWhileLoop.callBinSearchWhileLoop();
+
+	FindContiguousSubArrayWithSumXNM::FindContiguousSubArrayWithSumX objFindContiguousSubArrayWithSumX;
+	objFindContiguousSubArrayWithSumX.callFindContiguousSubArrayWithSumX();
+
+	FindKthUniqueItemNM::FindKthUniqueItem objFindKthUniqueItem;
+	objFindKthUniqueItem.callFindKthUniqueItem();
+	Find2DPeakNM::Find2DPeak objFind2DPeak;
+	objFind2DPeak.callFindPeakElementUnsorted();
 
 	FindPeakElementUnsortedNM::FindPeakElementUnsorted objFindPeakElement;
 	objFindPeakElement.callFindPeakElementUnsorted();

@@ -146,10 +146,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array\3SUMProblem.h" />
+    <ClInclude Include="Array\Anagram1.h" />
     <ClInclude Include="Array\AreStringRotated.h" />
     <ClInclude Include="Array\ArrayHasConsqNumbers.h" />
+    <ClInclude Include="Array\BinSearchWhileLoop.h" />
+    <ClInclude Include="Array\CheckForConsecutiveNumb.h" />
+    <ClInclude Include="Array\Find2DPeak.h" />
+    <ClInclude Include="Array\FindCommonElementsSorted.h" />
+    <ClInclude Include="Array\FindContiguousSubArrayWithSumX.h" />
+    <ClInclude Include="Array\FindKthUniqueItem.h" />
+    <ClInclude Include="Array\FindLowerRepeatIndexUnSorted.h" />
+    <ClInclude Include="Array\FindMissingNumber.h" />
     <ClInclude Include="Array\FindNumberHigherThanKSorted.h" />
-    <ClInclude Include="Array\FindPeakElement.h" />
+    <ClInclude Include="Array\FindOddNumberElements.h" />
+    <ClInclude Include="Array\FindPeakElementUnsorted.h" />
     <ClInclude Include="Array\FindSmallestWindowOfSubstring.h" />
     <ClInclude Include="Array\IntersectionOfSortedArray.h" />
     <ClInclude Include="Array\LCSstring.h" />
