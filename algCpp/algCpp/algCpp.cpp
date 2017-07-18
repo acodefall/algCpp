@@ -137,12 +137,24 @@
 #include "CheckForConsecutiveNumb.h"
 #include "FindCommonElementsSorted.h"
 #include "Anagram1.h"
+#include "AsciiToInt.h"
+#include "BinarySearchInRotatedArray.h"
+#include "BoyerMoore.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+	BoyerMooreNM::BoyerMoore objBoyerMoore;
+	objBoyerMoore.callBoyerMoore();
+
+	AsciiToIntNM::AsciiToInt objAsciiToInt;
+	objAsciiToInt.callAsciiToInt();
+
+	BinarySearchInRotatedArrayNM::BinarySearchInRotatedArray objBinarySearchInRotatedArray;
+	objBinarySearchInRotatedArray.callBinarySearchInRotatedArray();
+
 	Anagram1NM::Anagram1 objAnagram1;
 	objAnagram1.callAnagram1();
 

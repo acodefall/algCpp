@@ -12,40 +12,29 @@ using namespace std;
 
 namespace AsciiToIntNM
 {
-	class Anagram1
+	class AsciiToInt
 	{
-		public:
-			void callAnagram1()
+	public:
+		void callAsciiToInt()
+		{
+			string src("459");
+
+			cout << "Convert string(" << src.c_str() << ") in to INT" << endl;
+
+			const char* src1 = src.c_str();
+			int i = src.length() - 1;
+			int position = 0;
+			int result = 0;
+			while (i >= 0)
 			{
-				list<string> AngList;
-
-				//Add Anagrams to ArrayList
-				AngList.push_back("pans");
-				AngList.push_back("reset");
-				AngList.push_back("trees");
-				AngList.push_back("naps");
-				AngList.push_back("steer");
-				AngList.push_back("span");
-
-
-				cout << "Word list BEFORE sort " << endl;
-				for (auto itr = AngList.begin(); itr != AngList.end(); itr++)
-				{
-					cout << (*itr).c_str() << endl;
-				}
-
-				sortByWord d;
-				AngList.sort(d); //Sort will convert STRING in CHAR[] and then sort CHAR[]. Then convert CHAR[] to STRING. If the STRINGS are a same then it returns 1.
-
-				cout << "Word list AFTER sort "<< endl;
-				for (auto itr = AngList.begin(); itr != AngList.end(); itr++)
-				{
-					cout << (*itr).c_str() << endl;
-				}
-
+				int tmp =  src1[i] - '0';
+				cout << "src1[" << i << "] = " << src1[i] << " in INT is " << tmp << endl; 
+				result += (tmp * pow(10, position));
+				cout << "result is " << result << endl;
+				i--;
+				position++;
 			}
-
-		
+		}
 
 	};
 };

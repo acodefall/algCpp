@@ -149,7 +149,10 @@
     <ClInclude Include="Array\Anagram1.h" />
     <ClInclude Include="Array\AreStringRotated.h" />
     <ClInclude Include="Array\ArrayHasConsqNumbers.h" />
+    <ClInclude Include="Array\AsciiToInt.h" />
+    <ClInclude Include="Array\BinarySearchInRotatedArray.h" />
     <ClInclude Include="Array\BinSearchWhileLoop.h" />
+    <ClInclude Include="Array\BoyerMoore.h" />
     <ClInclude Include="Array\CheckForConsecutiveNumb.h" />
     <ClInclude Include="Array\Find2DPeak.h" />
     <ClInclude Include="Array\FindCommonElementsSorted.h" />
