@@ -140,12 +140,32 @@
 #include "AsciiToInt.h"
 #include "BinarySearchInRotatedArray.h"
 #include "BoyerMoore.h"
+#include "CompactStringRemovingSpaces.h"
+#include "BracketMatch.h"
+#include "Division.h"
+#include "FibForLoop.h"
+#include "FibRecurse.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+	FibRecurseNM::FibRecurse objFibRecurse;
+	objFibRecurse.callFibRecursee();
+
+	FibForLoopNM::FibForLoop objFibForLoop;
+	objFibForLoop.calllFibForLoop();
+
+	DivisionNM::Division objDivision;
+	objDivision.callDivision();
+
+	BracketMatchNM::BracketMatch objBracketMatch;
+	objBracketMatch.callBracketMatch();
+
+	CompactStringRemovingSpacesNM::CompactStringRemovingSpaces objCompactStringRemovingSpaces;
+	objCompactStringRemovingSpaces.callCompactStringRemovingSpaces();
+
 	BoyerMooreNM::BoyerMoore objBoyerMoore;
 	objBoyerMoore.callBoyerMoore();
 

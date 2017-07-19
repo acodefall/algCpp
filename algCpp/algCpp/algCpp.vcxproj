@@ -153,7 +153,12 @@
     <ClInclude Include="Array\BinarySearchInRotatedArray.h" />
     <ClInclude Include="Array\BinSearchWhileLoop.h" />
     <ClInclude Include="Array\BoyerMoore.h" />
+    <ClInclude Include="Array\BracketMatch.h" />
     <ClInclude Include="Array\CheckForConsecutiveNumb.h" />
+    <ClInclude Include="Array\CompactStringRemovingSpaces.h" />
+    <ClInclude Include="Array\Division.h" />
+    <ClInclude Include="Array\FibForLoop.h" />
+    <ClInclude Include="Array\FibRecurse.h" />
     <ClInclude Include="Array\Find2DPeak.h" />
     <ClInclude Include="Array\FindCommonElementsSorted.h" />
     <ClInclude Include="Array\FindContiguousSubArrayWithSumX.h" />
