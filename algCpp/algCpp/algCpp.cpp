@@ -145,12 +145,34 @@
 #include "Division.h"
 #include "FibForLoop.h"
 #include "FibRecurse.h"
+#include "FindSquareRoot.h"
+#include "FibRecurseDP.h"
+#include "FindNonDuplicateNumber.h"
+#include "GeneratePrimeNumbers.h"
+#include "ChildHopping.h"
+
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+
+	ChildHoppingNM::ChildHopping objChildHopping;
+	objChildHopping.callChildHopping();
+
+	GeneratePrimeNumbersNM::BinSearchWhileLoop objGeneratePrimeNumbers;
+	objGeneratePrimeNumbers.callGeneratePrimeNumbers();
+
+	FindSquareRootNM::FindSquareRoot	objFindSquareRoot;
+	objFindSquareRoot.callFindSquareRoot();
+
+	FindNonDuplicateNumberNM::FindNonDuplicateNumber objFindNonDuplicateNumber;
+	objFindNonDuplicateNumber.callFindNonDuplicateNumber();
+
+	FibRecurseDPNM::FibRecurseDP	objFibRecurseDP;
+	objFibRecurseDP.callFibRecursee();
+
 	FibRecurseNM::FibRecurse objFibRecurse;
 	objFibRecurse.callFibRecursee();
 
