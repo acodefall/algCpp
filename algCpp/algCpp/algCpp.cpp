@@ -150,6 +150,9 @@
 #include "FindNonDuplicateNumber.h"
 #include "GeneratePrimeNumbers.h"
 #include "ChildHopping.h"
+#include "ChildHoppingDP.h"
+#include "InplaceMergingOfSortedArray.h"
+
 
 int main()
 {
@@ -157,6 +160,11 @@ int main()
 
 
 	cout << "main begins \r\n";
+	InplaceMergingOfSortedArrayNM::InplaceMergingOfSortedArray objInplaceMergingOfSortedArray;
+	objInplaceMergingOfSortedArray.callInplaceMergingOfSortedArray();
+
+	ChildHoppingDPNM::ChildHoppingDP objChildHoppingDP;
+	objChildHoppingDP.callChildHoppingDP();
 
 	ChildHoppingNM::ChildHopping objChildHopping;
 	objChildHopping.callChildHopping();

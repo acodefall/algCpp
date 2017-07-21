@@ -156,6 +156,7 @@
     <ClInclude Include="Array\BracketMatch.h" />
     <ClInclude Include="Array\CheckForConsecutiveNumb.h" />
     <ClInclude Include="Array\ChildHopping.h" />
+    <ClInclude Include="Array\ChildHoppingDP.h" />
     <ClInclude Include="Array\CompactStringRemovingSpaces.h" />
     <ClInclude Include="Array\Division.h" />
     <ClInclude Include="Array\FibForLoop.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Array\FindSmallestWindowOfSubstring.h" />
     <ClInclude Include="Array\FindSquareRoot.h" />
     <ClInclude Include="Array\GeneratePrimeNumbers.h" />
+    <ClInclude Include="Array\InplaceMergingOfSortedArray.h" />
     <ClInclude Include="Array\IntersectionOfSortedArray.h" />
     <ClInclude Include="Array\LCSstring.h" />
     <ClInclude Include="Array\LongestCommonPalidrone.h" />
