@@ -14,71 +14,71 @@ using namespace std;
 namespace InplaceMergingOfSortedArrayNM
 {
     /*
-Inplace Merging of sorted array_GN808
-	In-place merging will take two sorted arrays, and rearranges the contensts, so that all higher values 
-	goes to one array and lower values goes to another array. After merging we still have two arrays, just like before.
-	Even the size will remain same. 
-	Only difference is that higher and lower values are different arrays. Ex: 1-5 goes to 1st array and 6-10 geoes to second array.
+		Inplace Merging of sorted array_20170722010
+			In-place merging will take two sorted arrays, and rearranges their contensts, so that all higher values goes to one array and lower values goes to another array. After merging we still have two arrays, and their length will remain same.
 
-	Merging logic will first designate one of the array as max-array
-	Logic wants to make sure that content of max[] is higher.
-	Since both the arrays are sorted we can assume that max values at higher-incex of the array.
-	Logic compares the highest-element from max-array against the against the max element of low-array.
-	If the low array's value is higher, then we swap the two. Now max-arry has largest item at its highest index.
-		 if(high[max] > low[max])
-			if(high[max-1] > low[max])
-				if(high[max-2] > low[max])
-					.........
-					.........
-		 if(high[max] < low[max])
-			swap(high[max], low[max])
-			sort(low[]);
-			Swapping did not spoil the sorting of high-array because we replaced the larger 
-			element with more-larger element.
-			But swapping could have spoiled the sorting order of low-array. 
-			The element that we put in to low-array could be too small to sit at max-index, so this element needs to be moved to LEFT. We use Insertion sort to place that element at right index. Note that we do not want to sort the whole array, instead we just want to place that one element.
-			
-			if(high[max-1] < low[max])
-				In the subsequent rounds, compare high-array[max - 1] with low-array[max], and take appropriate action. Then compare high-array[max - 2] with lower[max]. Note: In every round, we compare against the low-array[max], and reduce the index of ONLY the high-array.
-				We always compare against the max-index of low-array because that is where the max-value in low[] sits,
-				and we want to check whether that is eligible to moved to high array.
-	
-	
-		 
-				 
-			
-			
-			When we swap values between high-array and low-arry, we will disrupt the 
-			sorted order in lower array so we have to resort using insertion sort. 
-			
-			
+			Ex: 1-5 goes to 1st array and 6-10 geoes to second array.
+				
+
+			Merging logic will first designate one of the array as high[], moves all the larger values in to it.
+			Since both the arrays are already sorted, larger values will be at higher-indexes in both the arrays.
+			Rearraging of elements will use following logic:
+			high[maxindex] should be higher than low[maxIndex], if not swap the elements, and then sort the low[].
+			if(high[max] < low[max])
+					SWAP(high[max], low[max])
+						SORT(low[]);
+			If high[maxindex] is indeed higher than low[maxIndex], leave that alone and try comparing high[maxindex-1] with low[maxIndex]
+				if(high[max] > low[max])
+					if(high[max-1] > low[max])
+						if(high[max-2] > low[max])
+							LEAVE LEAVE
+								.........
+			Note: We want to make sure every element of high[] is larger than the low[Max] so we move the cursor on High[] but keep the low[] cursor pointing at low[Max], all the time. low[max] is used because that is where the max-value in low[] sit, and we want to check whether they can be moved to high array.
+		  
+			Swapping elements between high[] and low[] will not spoil the sorting of high-array because we replace the larger element with more-larger element. But swapping could have spoiled the sorting order of low[]. The element that we put in to low-array could be too small to sit at max-index, so this element needs to be moved to LEFT. We use Insertion sort to place that element at right index. Note that we do not want to sort the whole array, instead we just want to place that one element.
+
  
+
+		Merge two SORTED arrays so that Larger and Smaller values end up in different arrays 
+
+		low[]:     3  16 150       //Lost slot in low[] is always supposed to have the highest element within low[], and  
+				   0   1   2	  //this is a potential candidate for swapping with high[maxIndex], high[maxIndex - 1], high[maxIndex - 2]
+									   //So check whether this element can be SWAPPED with high[]
+           
+
+		high[]:    1  31  39        //We designate that THIS array will hold Larger elements (we could selected low[] but we did not)
+				   0   1   2         //First step in program is to designate one of the array as a resident for larger elements.
+           
+		FLOW
+
+		   {3 16 150}  {1  31 39}                       //Compare [maxIndex] from both array
+				  (low[2] > high[2])    (150 > 39) 
+				  swap low[2](39) and high[2](150)  
+			 post-swapping:	{3 16 39}  {1  31 150} 
+				  Sort the low[] but it won't do anything because '39' is at appropriate slot    
+
+		   {3 16 39}  {1  31 150}                     //one cursor moves to high[maxIndex -1] but other stays at low[maxIndex] 
+															   //this is because low[maxIndex] is supposed to have highest  element within low[]
+								   //This is a potential candidate for swapping with high[maxIndex - 1]
+				  (low[1] > high[2])    (16 > 150) 
+				  swap low[1](16) and high[2](150)
+				  post-swapping:	{3 16 31}  {1  39 150} 
+				  Sort the low[]...
+
+		   {3 16 31}  {1  39 150}                   //now   high[maxIndex -2] v/s low[maxIndex]
+				 (low[0] > high[2])    (3 > 150)
+				 swap low[0](3) and high[2](150)
+				 post-swapping:	{3 16 1}  {31 39 150} 
+				 This time SORTING required
+				 Post sorting             {1  3 16}  {31 39 150} 
+ 
+
+		Output
+		   low[]:    {1,  3, 16}   
+		   high[]:   {31, 39, 150} 
 	
 	       
 	
-	        Steps for Inplace Merging of sorted array_GN808
-		        a) Start a ForLoop to scan higher-array S2.
-			         for (int i = high.Len ; i >= 0; i--)
-		        b) Compare  low[Len] and  high[i]
-				        if (low[low.Length - 1] > high[i])
-					        Swap low[Len] and  high[i].
-					
-				        Do insertion sort on S1, to place swappedValue at right position
-						        int swappedValue = low[low.Len];
-						        int k = low.Length - 1;
-						        while ( (k > 0) && (swappedValue < low[k-1]))
-						        {
-							        low[k] = low[k-1]; //Copy to RIGHT
-							        k--;
-						        }
-						        if (k < low.Length - 1)
-							        low[k] = swappedValue;
-				
-				        If low[Len] is NOT larger than  high[i], then no need to swap.
-				        Go to the next round of ForLoop
-
-				
-       oooo
       
      */
 	const int SIZEX = 3;
@@ -89,24 +89,40 @@ Inplace Merging of sorted array_GN808
 		public:
 				void callInplaceMergingOfSortedArray()
 				{
-					int low[SIZEX] = { 3, 6, 150 };
-					int high[SIZEX] = { 6, 31, 39 };
+					int low[SIZEX] = { 3, 16, 150 };
+					int high[SIZEX] = { 1, 31, 39 };
 
+					cout << "low[]" << endl;
+					stringstream ss;
+					for (int i = 0; i < SIZEX; i++)
+					{
+						cout << setw(4) << low[i];
+						ss << setw(4) << i;
+					}
+					cout << endl;
+					cout << ss.str() << endl << endl;
+
+					cout << "high[]" << endl;
+					stringstream ss1;
+					for (int i = 0; i < SIZEX; i++)
+					{
+						cout << setw(4) << high[i];
+						ss1 << setw(4) << i;
+					}
+					cout << endl;
+					cout << ss1.str() << endl;
 				   
 					for (int i = SIZEX - 1; i >= 0; i--)
 					{
 						
 						if (low[SIZEX - 1] > high[i])
 						{
-							cout << "(low[" << i << "] > high[" << SIZEX - 1 << "])  (" << low[i] << " > " << high[SIZEX - 1]<< ")" << endl;
-							
-							int tmp = low[SIZEX - 1];
-							low[SIZEX - 1] = high[i];
-							high[i] = tmp;
-
-							cout << "swap " << low[i] << " and " << high[SIZEX - 1] << endl;
+							cout << "(low[" << i << "] > high[" << SIZEX - 1 << "])    (" << low[i] << " > " << high[SIZEX - 1]<< ")" << endl;
+							swap(high[i], low[SIZEX - 1]);
+							cout << "swap low[" << i << "](" << low[i] << ") and high[" << SIZEX - 1 << "](" << high[SIZEX - 1] << ")" << endl;
 							
 							//print the content of low[] after swapping(could be unsorted state)
+							cout << "low[post swapping] :";
 							for(int k = 0 ; k < SIZEX; k++)
 							{
 								cout << low[k] << " ";
@@ -126,6 +142,7 @@ Inplace Merging of sorted array_GN808
 								low[k] = swappedValue;
 						
 							//print the content of low[] after swapping, sorting
+							cout << "low[post sorting] :";
 							for(int k = 0 ; k < SIZEX; k++)
 							{
 								cout << low[k] << " ";

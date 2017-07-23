@@ -31,7 +31,6 @@
 #include "InvertedIndex.h"
 #include "Library.h"
 #include "Stack1.h"
-#include "Median.h"
 #include "SyncQx.h"
 #include "ProdConsumer.h"
 #include "AreStringRotated.h"
@@ -152,14 +151,53 @@
 #include "ChildHopping.h"
 #include "ChildHoppingDP.h"
 #include "InplaceMergingOfSortedArray.h"
-
-
+#include "InplaceReversalWithoutTemp.h"
+#include "IntToAscii.h"
+#include "KnuthShuffle.h"
+#include "MinMaxUsingLeastComparisons.h"
+#include "OccurenceCountInSortedArray.h"
+#include "Palidrone.h"
+#include "RabinKarpRollingHash.h"
+#include "CountEnabledBits.h"
+#include "BitVector.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+
+	BitVectorNM::BitVector objBitVector;
+	objBitVector.callBitVector();
+
+	CountEnabledBitsNM::CountEnabledBits objCountEnabledBits;
+	objCountEnabledBits.callCountEnabledBits();
+
+
+	GeneratePrimeNumbersNM::GeneratePrimeNumbers objGeneratePrimeNumbers;
+	objGeneratePrimeNumbers.callGeneratePrimeNumbers();
+
+
+	RabinKarpRollingHashNM::RabinKarpRollingHash objRabinKarpRollingHash;
+	objRabinKarpRollingHash.callRabinKarpRollingHash();
+
+	PalidroneNM::Palidrone objPalidrone;
+	objPalidrone.callPalidrone();
+
+	OccurenceCountInSortedArrayNM::OccurenceCountInSortedArray objOccurenceCountInSortedArray;
+	objOccurenceCountInSortedArray.callOccurenceCountInSortedArray();
+	MinMaxUsingLeastComparisonsNM::MinMaxUsingLeastComparisons objMinMaxUsingLeastComparisons;
+	objMinMaxUsingLeastComparisons.callMinMaxUsingLeastComparisons();
+
+	KnuthShuffleNM::KnuthShuffle objKnuthShuffle;
+	objKnuthShuffle.callKnuthShuffle();
+
+	IntToAsciiNM::IntToAscii	objIntToAscii;
+	objIntToAscii.callIntToAscii();
+
+	InplaceReversalWithoutTempNM::InplaceReversalWithoutTemp objInplaceReversalWithoutTemp;
+	objInplaceReversalWithoutTemp.callInplaceReversalWithoutTemp();
+
 	InplaceMergingOfSortedArrayNM::InplaceMergingOfSortedArray objInplaceMergingOfSortedArray;
 	objInplaceMergingOfSortedArray.callInplaceMergingOfSortedArray();
 
@@ -169,9 +207,7 @@ int main()
 	ChildHoppingNM::ChildHopping objChildHopping;
 	objChildHopping.callChildHopping();
 
-	GeneratePrimeNumbersNM::BinSearchWhileLoop objGeneratePrimeNumbers;
-	objGeneratePrimeNumbers.callGeneratePrimeNumbers();
-
+	
 	FindSquareRootNM::FindSquareRoot	objFindSquareRoot;
 	objFindSquareRoot.callFindSquareRoot();
 
@@ -508,9 +544,6 @@ int main()
 	testSingleTonOneX objtestSingleTonOneX;
 	objtestSingleTonOneX.callSingleTonOneX();
 
-
-	MedianOfMedian objMedianOfMedian;
-	objMedianOfMedian.call();
 
 
 

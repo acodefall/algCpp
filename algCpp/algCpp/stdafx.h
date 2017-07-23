@@ -56,3 +56,19 @@
 */
 
 // TODO: reference additional headers your program requires here
+
+
+/*
+			stringstream ss;
+			cout << "src " << endl;
+			for (int i = 0; i < SIZEX; i++)
+			{
+				cout << setw(4) << src[i];
+				ss << setw(4) << i;
+			}
+			cout << endl;
+			cout << ss.str() << endl;
+
+
+*/
+
