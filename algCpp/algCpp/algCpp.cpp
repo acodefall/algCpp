@@ -30,7 +30,7 @@
 #include "PowerSet.h"
 #include "InvertedIndex.h"
 #include "Library.h"
-#include "Stack1.h"
+#include "StackUsingArray.h"
 #include "SyncQx.h"
 #include "ProdConsumer.h"
 #include "AreStringRotated.h"
@@ -103,7 +103,7 @@
 #include "FindSuccessorNode.h"
 #include "FindNodeDistanceKFromLeaf.h"
 #include "FindMaxValueNode.h"
-#include "TreeTraversalsUsingStack.h"
+#include "TraversalsUsingStack.h"
 #include "TraversalUsingRecursion.h"
 #include "PostOrderUsingStack.h"
 #include "LowestCommonDescendent.h"
@@ -160,12 +160,50 @@
 #include "RabinKarpRollingHash.h"
 #include "CountEnabledBits.h"
 #include "BitVector.h"
+#include "BitDifference.h"
+#include "BitSwapping.h"
+#include "BitOperations.h"
+#include "QueueUsingStack.h"
+#include "StackWithGetMinimum.h"
+#include "TowerOfHanoi.h"
+#include "StackUsingLinkedList.h"
+#include "BrickPoints.h"
+#include "SortUsingStack.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+	SortUsingStackNM::SortUsingStack objSortUsingStack;
+	objSortUsingStack.callSortUsingStack();
+
+	BrickPointsNM::BrickPoints objBrickPoints;
+	objBrickPoints.callBrickPoints();
+
+	StackUsingLinkedListNM::callStackUsingLinkedList objcallStackUsingLinkedList;
+	objcallStackUsingLinkedList.callStackUsingLL();
+
+	TowerOfHanoiNM::TowerOfHanoi objTowerOfHanoi;
+	objTowerOfHanoi.CallTowerOfHanoi();
+
+	StackWithGetMinimumNM::callStackWithGetMinimum objcallStackWithGetMinimum;
+	objcallStackWithGetMinimum.callStackWithGetMinimumX();
+
+	QueueUsingStackNM::QueueUsingStackX objQueueUsingStack;
+	objQueueUsingStack.callQueueUsingStack();
+
+	StackUsingArrayNM::StackTest objStackTest;
+	objStackTest.TestStack();
+
+	BitOperationsNM::BitOperations objBitOperations;
+	objBitOperations.callBitOperations();
+
+	BitSwappingNM::BitSwapping objBitSwapping;
+	objBitSwapping.callBitSwapping();
+
+	BitDifferenceNM::BitDifference objBitDifference;
+	objBitDifference.callBitDifference();
 
 	BitVectorNM::BitVector objBitVector;
 	objBitVector.callBitVector();
@@ -564,8 +602,7 @@ int main()
 	StringRotatedNM::StringRotated objStringRotated;
 	objStringRotated.callStringRotated();
 
-	StackTest xStackTest;
-	xStackTest.TestStack();
+	
 
 
 	CallSyncDq objCallSyncDq;

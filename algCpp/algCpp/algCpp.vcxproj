@@ -207,6 +207,9 @@
     <ClInclude Include="BinSearch\BinarySearchSizeUnknown.h" />
     <ClInclude Include="BinSearch\BinSearchBase.h" />
     <ClInclude Include="BinSearch\IndexOfItemLargerThanK.h" />
+    <ClInclude Include="Bits\BitDifference.h" />
+    <ClInclude Include="Bits\BitOperations.h" />
+    <ClInclude Include="Bits\BitSwapping.h" />
     <ClInclude Include="Bits\BitVector.h" />
     <ClInclude Include="Bits\CountEnabledBits.h" />
     <ClInclude Include="Design\BoyerMooreVoting.h" />
@@ -272,10 +275,16 @@
     <ClInclude Include="Sort\MergeSortAndStoreInSameArray.h" />
     <ClInclude Include="Sort\MergeSorting.h" />
     <ClInclude Include="Sort\QuickSort.h" />
+    <ClInclude Include="Sort\SortUsingStack.h" />
     <ClInclude Include="Sort\ThreeColorSorting.h" />
     <ClInclude Include="Sort\TwoColorSortEvenOdd.h" />
     <ClInclude Include="Sort\TwoColorSorting.h" />
-    <ClInclude Include="Stack\Stack1.h" />
+    <ClInclude Include="Stack\BrickPoints.h" />
+    <ClInclude Include="Stack\QueueUsingStack.h" />
+    <ClInclude Include="Stack\StackUsingArray.h" />
+    <ClInclude Include="Stack\StackUsingLinkedList.h" />
+    <ClInclude Include="Stack\StackWithGetMinimum.h" />
+    <ClInclude Include="Stack\TowerOfHanoi.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SubsetSum\AddAlternateNumbersDP.h" />
     <ClInclude Include="targetver.h" />
@@ -313,7 +322,7 @@
     <ClInclude Include="Tree\TraversalUsingRecursion.h" />
     <ClInclude Include="Tree\TreeBalanced.h" />
     <ClInclude Include="Tree\TreeHeightUsingNonRecursion.h" />
-    <ClInclude Include="Tree\TreeTraversalsUsingStack.h" />
+    <ClInclude Include="Tree\TraversalsUsingStack.h" />
     <ClInclude Include="Trie\InvertedIndex.h" />
   </ItemGroup>
   <ItemGroup>
