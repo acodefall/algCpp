@@ -11,20 +11,48 @@ namespace FindKthUniqueItemNM
 {
 	/*
 		  Find the Kth non-repeating Character in a String_GN820
-                String s={“sTress”} should return T
-                -Use two auxillary arrays of size 256, called INDEX and OCCURANCE.
-                 OCCURANCE[] role is, it helps to create Index[]. And Index[] will have index of the 
-                 non-repeating characters.
- 
-                -Scan the src array and store occurance of character in OCCURANCE[]. Use Character as index.
+		  Find the Kth non-repeating Character in a String_@RED20170724004
+                A word will have a series of characters that repeat, and also series of characters that do not repeat. 
+				If the Question asks for 2nd non-repeating character, then return 2nd element from non-repeating series.
+				non-repeating series is built using Array(say Index[]). Value of Index[] is the position of non-repeating character in src[].
+				Index[] stores the index in to src[] provided the character is non-repeating. If the character repeats then value will be -1.
+				By sorting the Index[], we can arrange non-repeating characters according to their position in src[].
+				Sorting will bring non-repeating character (who's position is least) to TOP of Index[].
+				and repeating characters will go to bottom of Index[] because their index is -1.
+				To know 2nd non-repeating character, use the 2nd item in post-sorted-index[].
 
-                -INDEX[] will have been initialized to 256. When we encounter the character for the first time, store the
-                 index-i in INDEX[]. Say when we encounter character 'T' at 5th position, we set
-                 Index[T] to 5. Say we encounter 'T' yet again, then we reset the Index[T] = 256.
+				To know whether a character repeats or not, we have to maintain occurence-count for each character, so we need occurence[].
+				So basically we need two arrays: Index[] and occur[]. Length of these arrays is 256, and index is character itself, stored in src[]. (say 'a')
+				We fill both arrays in same loop. 
+				Iterate the src[].
+				When we see 'a', 
+					set occur['a'] = 1, 
+					set Index['a'] = position of 'a' in src[]
 
-                -In the end, we sort the Index array. Array will have values that are not 256, and they will signify the index
-                 where character is not repeating. If you want 2nd non repeating character, use the index stored in Index[1], 
-                 to get the character from Src[].
+					if we encounter 'a' for the second time, 
+						set occur['a'] = 2,
+						set Index['a'] = -1
+
+				After iterating the whole src[], sort the Index[].
+				To know 2nd non-repeating character, use the 2nd item in post-sorted-index[].
+
+				Find the Kth non-repeating Character in a String
+				 s s t r e s s     occur[] -> occurance of each character
+				 0 1 2 3 4 5 6     Index[] -> position of non-repeating char as in src[]
+
+				Construct occur[] and Index[]
+								occur['e'] = 1	    Index['e'] = 4  //4 is position of 'e' in src[]						  				occur['r'] = 1      Index['r'] = 3  //3 is position of 'r' in src[]
+								occur['s'] = 4      Index['s'] = -1 //-1 because it repeats
+								occur['t'] = 1      Index['t'] = 2  //2 is position of 't' in src[]	
+				
+				Sort the Index[]  arranges non-repeating characters according to their position in src[].
+								Index['t'] = 2   //2nd non-repeating character
+								Index['r'] = 3
+								Index['e'] = 4
+								Index['s'] = -1
+
+
+				
 
 				
 					Src[0] = s is fresh

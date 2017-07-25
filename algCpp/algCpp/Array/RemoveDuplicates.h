@@ -11,7 +11,9 @@
 using namespace std;
 namespace RemoveDuplicatesNM
 {
+	//@RED20170724006
 	const int SIZEX = 12;
+	//TBD write for STRING also
 	class RemoveDuplicates
 	{
 		public:
@@ -20,10 +22,10 @@ namespace RemoveDuplicatesNM
 				
 
 				int src[SIZEX] = {  56, 8, 4, 22, 5, 66, 4, 8, 56, 8, 34, 4 };
-				UsingHashTable(src);
+				UsingHashTable(src);  //56 8 4 22 5 66 34
 
 				int src1[SIZEX] = { 56, 8, 4, 22, 5, 66, 4, 8, 56, 8, 34, 4 };
-				UsingForLoop(src1);
+				UsingForLoop(src1);  //22 5 66 56 8 34 4
 
 			}
 

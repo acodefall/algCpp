@@ -11,41 +11,10 @@
 
 using namespace std;
 
-namespace BoyerMooreNM
+namespace BoyerMooreNM //@RED20170724012
 {
-	/*
-		Q) Group the ANAGRAMs that are stored in a Array, so that they appear next to each other. 
-            Basically RAT and TAR should appear next to each other.
-
-		Strategy is to load the words to a LIST. Then provide a custom SORT-Predicate for LIST. 
-		This predicate will sort the idividual characters of the string, and constructs a NEW string, and then compares these new strings.
-		Ex: Predicate will turn p1=Rat p2=Art int to ART and ART, and then compares them using <
-				OriginalWord /SortedWord
-				trees  => eerst
-				reset => eerst
-				reset  => eerst
-				pans => anps
-				span  => anps
-				steer => eerst
-				steer  => eerst
-				span => anps
-				span  => anps
-				naps => anps
-				naps  => anps
-				pans => anps
-				naps  => anps
-				reset => eerst
-				reset  => eerst
-				naps => anps
-				span  => anps
-				reset => eerst
-				reset  => eerst
-				span => anps
-				steer  => eerst
-				reset => eerst
-				steer  => eerst
-				trees => eerst
-
+	/*	Used for StrStr() implementation.
+		
 
 				oneXwothree
 				    two
@@ -57,7 +26,7 @@ namespace BoyerMooreNM
 				   ten
 				
    */
-   //SORT-Predicate
+   
 	
 
 	class BoyerMoore

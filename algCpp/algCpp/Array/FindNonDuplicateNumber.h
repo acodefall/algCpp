@@ -14,7 +14,7 @@ using namespace std;
 namespace FindNonDuplicateNumberNM
 {
     /*
-		 Find the non repeating number_20170719004
+		 Find the non repeating number_@RED20170719004
 	            This is to find the number that does not repeat.
 				Strategy is that when we XOR same number number with itself, result will be 0.
 				If you do this on whole array, repeating numbers will cancel out and in the end we will be left with the element that does not repeat.

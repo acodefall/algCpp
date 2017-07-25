@@ -5,6 +5,8 @@ using namespace std;
 
 namespace FindMissingNumberNM
 {
+	//@RED20170724008
+
 	/*
 		Find the first repeated element in an array by its Lower-index(or First Index)_GN72
 	        Say array is {1, 12, 5, 12}, and 12 repeats.  

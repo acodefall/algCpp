@@ -169,12 +169,16 @@
 #include "StackUsingLinkedList.h"
 #include "BrickPoints.h"
 #include "SortUsingStack.h"
+#include "RemoveDuplicates.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
 
 	cout << "main begins \r\n";
+	RemoveDuplicatesNM::RemoveDuplicates objRemoveDuplicates;
+	objRemoveDuplicates.callRemoveDuplicates();
+
 	SortUsingStackNM::SortUsingStack objSortUsingStack;
 	objSortUsingStack.callSortUsingStack();
 

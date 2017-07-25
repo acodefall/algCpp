@@ -10,9 +10,9 @@
 #include <sstream>
 using namespace std;
 
-namespace CompactStringRemovingSpacesNM
+namespace CompactStringRemovingSpacesNM //@RED20170724010
 {
-	/*
+	/*   
 		Compact String by Removing Spaces 
 
 				Src:   g       h           j   

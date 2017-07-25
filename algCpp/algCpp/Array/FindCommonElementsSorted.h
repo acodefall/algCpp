@@ -8,7 +8,7 @@ using namespace std;
 
 namespace FindCommonElementsSortedNM
 {	
-	/*
+	/*@RED20170714004
 		Find the common elements in two SORTED arrays_20170714004
 			Common elements are also the elements where Arrays intersect so Solution is based on finding intersection of two sorted arrays.
 			Start iterating both arrays using different indexes. 
