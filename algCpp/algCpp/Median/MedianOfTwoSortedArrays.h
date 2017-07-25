@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-namespace MedianOfTwoSortedArraysNM
+namespace MedianOfTwoSortedArraysNM //@RED20170627011
 {
 	/*
 			  1    2   3   6 (2)             4   6   8   10 (7)
@@ -19,7 +19,7 @@ namespace MedianOfTwoSortedArraysNM
 
 									
 	
-	Median for two sorted arrays_ 20170627011
+	Median for two sorted arrays_20170627011
 		This logic applies only if the size of both the arrays is same.
 
 		We use DAC. Our goal is to compute the median as if two array are stitched togather. Before stitching, we have to shrink the 1st and 2nd array in to length either 1 or 2, and after that we can combine the element together. Shrinking of array uses DAC logic.

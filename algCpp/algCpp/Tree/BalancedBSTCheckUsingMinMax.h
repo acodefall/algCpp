@@ -12,8 +12,8 @@ using namespace std;
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-
-namespace BalancedBSTCheckUsingMinMaxNM
+                                        
+namespace BalancedBSTCheckUsingMinMaxNM //@RED20170725021
 {
 	/*
 	We can check if the Tree is Balanced using 3 methods

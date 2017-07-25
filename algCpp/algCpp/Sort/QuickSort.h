@@ -3,7 +3,7 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-namespace QuickSortNM
+namespace QuickSortNM_@RED20170725015
 {
 	/*
 

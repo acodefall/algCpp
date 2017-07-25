@@ -647,7 +647,7 @@ int main()
 	editablePQ::TestEditablePQ objTestEditablePQ;
 	objTestEditablePQ.callEditablePQ();
 
-	GraphSearch::callGraphSearch objcallGraphSearch;
+	GraphSearchNM::callGraphSearch objcallGraphSearch;
 	objcallGraphSearch.callGraphSearchX();
 
 	testGraphAirLine objtestGraphAirLine;

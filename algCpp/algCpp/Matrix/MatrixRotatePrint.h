@@ -45,7 +45,7 @@ b) Inside print(), there will be a For-Loop that goes for 4 rounds. ForLoop cont
    Print() exits after printing the 4th side.
 
 */
-namespace MatrixRotateNm
+namespace MatrixRotateNm //@RED20170725013
 {
 	const int MAXRow = 4;
 	const int MAXCol = 4;

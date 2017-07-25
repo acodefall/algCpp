@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace MinMaxUsingLeastComparisonsNM
+namespace MinMaxUsingLeastComparisonsNM //@RED20170722006
 {
 	/*	
 	Find Min,Max using least Comparisons

@@ -3,7 +3,7 @@
 #include "BuildDLL.h"
 using namespace BuildDbLLNM;
 
-namespace ReverseDoublyLinkedListNM
+namespace ReverseDoublyLinkedListNM //@RED2017072505
 {
 	class ReverseDoublyLinkedListX
 	{

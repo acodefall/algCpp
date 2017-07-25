@@ -11,7 +11,7 @@
 #include <random>
 using namespace std;
 
-namespace KnuthShuffleNM
+namespace KnuthShuffleNM //@RED20170725011
 {
 	const int SIZEX = 6;
 	class KnuthShuffle

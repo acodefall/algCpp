@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace InplaceMergingOfSortedArrayNM
+namespace InplaceMergingOfSortedArrayNM //@RED20170722010
 {
     /*
 		Inplace Merging of sorted array_20170722010

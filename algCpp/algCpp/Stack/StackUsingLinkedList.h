@@ -13,9 +13,10 @@
 
 using namespace std;
 
-namespace  StackUsingLinkedListNM
+namespace  StackUsingLinkedListNM //@RED20170725001
 {
     /* 
+		Implement the Stack using Singly-LinkedList_RED20170725001
         Implement the Stack using Singly-LinkedList_LL06
 			Both STACK and LL grow from L->R. So LL data structure is good for implementing PUSH().
 			TAIL points to latest node, and POP() should return the value stored in TAIL, and retrieve towards HEAD.

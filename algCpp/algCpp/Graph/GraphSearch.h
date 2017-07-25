@@ -8,7 +8,7 @@
 #include "Graphbuild.h"
 using namespace std;
 
-namespace GraphSearch
+namespace GraphSearchNM //@RED20170725023
 {
 
 	

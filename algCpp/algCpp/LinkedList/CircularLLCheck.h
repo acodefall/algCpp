@@ -6,7 +6,7 @@
 using namespace std;
 using namespace BuildLLNM;
 
-namespace CircularLLCheckNM
+namespace CircularLLCheckNM //@RED2017072509
 {
 	
 	/*
