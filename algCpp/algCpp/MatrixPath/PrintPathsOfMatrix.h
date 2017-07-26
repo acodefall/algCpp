@@ -8,7 +8,7 @@ using namespace std;
 #include<algorithm>
 #include<queue>
 #include <string>
-namespace PrintPathsOfMatrixNM //@RED20170701018
+namespace PrintPathsOfMatrixNM
 {
     /*
 		Steps for Printing all the paths of Matrix_20170701018

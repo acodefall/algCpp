@@ -13,11 +13,17 @@
 
 using namespace std;
 
-namespace  QueueUsingStackNM
+namespace  QueueUsingStackNM //@RED20170725048
 {
     /*
      //
-     Implement Queue using Stack_SH02
+     Implement Queue using Stack_20170725048
+		By making the data go through TWO stacks will serialize the data as if it is coming from Q.
+		Queue-class should have two stacks(pushOnly, popOnly). Store the incoming data in pustOnly stack.
+		When user wants to fetch the data from stack, pop the data from pushOnly, and temporarily push it in to popOnly stack.
+		Then extract the data from popOnly stack, and return to caller. 
+		So the data sought by user passed to through two stacks and this serialized the data, as if it is coming from Q.
+
 		Working principle is this. 
 		In both STACK and QUEUE, oldest item will be at the bottom and newest item will be at the top. This means when it comes to the order of the data in physical storage both STACK and QUEUE are same. But they differ in data extraction, QUEUE extracts the data from bottom(means oldest item) and STACK extracts the data that is at the top(means latest item). Now imagine we reverse the order of the data in physical storage, then the STACK returns the data just like QUEUE. We can either reverse the data after the fact or at the time of the pushing the data, we can put the latest data at the bottom and make sure that oldest data stays at the top. Now let us see how the latter approach can be implemented, that is pushing new data at the bottom.
 

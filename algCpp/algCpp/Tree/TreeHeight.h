@@ -11,7 +11,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace NodeHeightNM
+namespace TreeHeightNM //@RED20170725041
 {
 	/*
 				Print All The Full Nodes in a Binary Tree
@@ -36,10 +36,10 @@ namespace NodeHeightNM
 					120
 
    */
-	class NodeHeight
+	class TreeHeight
 	{
 		public:
-			void callNodeHeight()
+			void callTreeHeight()
 			{
 				BuildTree objTrrr;
 				objTrrr.AddValues();
@@ -50,19 +50,19 @@ namespace NodeHeightNM
 				cout << "\r\n";
 			
 				
-				int x = NodeHeightX(objTrrr.root);
+				int x = TreeHeightX(objTrrr.root);
 				cout << "Node Height is " << x;;
 			}
 
 		private:
-			int NodeHeightX(NodeTree* root)
+			int TreeHeightX(NodeTree* root)
 			{
 				int height = 0;
 				if (root)
 				{
-					int x1 = NodeHeightX(root->L);
+					int x1 = TreeHeightX(root->L);
 				
-					int x2 = NodeHeightX(root->R);
+					int x2 = TreeHeightX(root->R);
 
 
 					height = max(x1, x2);

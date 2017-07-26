@@ -1,6 +1,6 @@
 #pragma once
 #include "PartitionArray.h"
-namespace TwoColorSortingNM
+namespace TwoColorSortingNM //@RED20170528003
 {
 	/*
 		TwoColorSorting_20170528003

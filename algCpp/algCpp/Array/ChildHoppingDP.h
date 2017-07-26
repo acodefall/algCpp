@@ -11,10 +11,10 @@
 
 using namespace std;
 
-namespace ChildHoppingDPNM
+namespace ChildHoppingDPNM //@RED20170722008
 {
 	/*
-		Child hopping stairs.
+		Child hopping stairs_@RED20170722008
 			Child could climb the staircase by hopping 1-step OR 2-steps OR 3-steps at a time. 
 			Question can be "to compute total number of paths" OR "total number of hops"
 			Total number of hops means: "Hops required when a hop covers 1 step" +  "Hops required when a hop covers 2 steps" +  “Hops required when a hop covers 3 steps"

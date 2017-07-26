@@ -11,7 +11,7 @@
 using namespace std;
 
 /*
-	Binary search inside rotated sorted Array_@RED20170717001
+	Binary search inside rotated sorted Array_20170717001
 		Rotated array is created by breaking one big sorted array in to two pieces, and swapping their positions, so that max-value and Min-Value come to the center of the array. Notice that swappig would make the Binary Search difficult because Low-index(that is index-0) does not point to LowValue, and index-Max does not point to Max value any more. 
 
 		Ex: {4,5,6} is broken in to {5,6} and {4}
@@ -52,7 +52,7 @@ using namespace std;
 					        H = M - 1;
 
 */
-namespace BinarySearchInRotatedArrayNM //@RED20170717001
+namespace BinarySearchInRotatedArrayNM
 {
 	const int SIZEX = 7;
 	class BinarySearchInRotatedArray

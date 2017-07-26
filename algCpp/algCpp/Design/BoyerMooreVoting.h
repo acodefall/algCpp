@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-namespace BoyerMooreVotingNM
+namespace BoyerMooreVotingNM //@RED20170526001
 {
 	//NotRead
 	/*

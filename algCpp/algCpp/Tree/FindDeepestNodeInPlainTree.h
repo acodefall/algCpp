@@ -10,7 +10,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace FindDeepestNodeInPlainTreeNM
+namespace FindDeepestNodeInPlainTreeNM //@RED20170725052
 {
 	//Code for finding deepest Left-Node and deepest Node are almost same. Core logic is same. In case of former code specifically looks for LEft node only. 
 	//Caller has to set a flag to TRUE, when he is making left-recursion call. In latter case this is not needed.

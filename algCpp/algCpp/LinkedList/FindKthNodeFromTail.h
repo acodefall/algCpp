@@ -6,7 +6,7 @@
 using namespace std;
 using namespace BuildLLNM;
 
-namespace FindKthNodeFromTailNM
+namespace FindKthNodeFromTailNM //@RED20170725043
 {
 	
 	/*
@@ -16,7 +16,7 @@ namespace FindKthNodeFromTailNM
 				80
 
 	*/
-	class FindKthNodeFromTail
+	class FindKthNodeFromTail 
 	{
 		public:
 			void callFindKthNodeFromTail()

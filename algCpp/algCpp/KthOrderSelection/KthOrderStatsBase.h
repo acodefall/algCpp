@@ -70,7 +70,7 @@ using namespace std;
 
 	
 */
-namespace KthOrderStatsBaseNM
+namespace KthOrderStatsBaseNM //@RED20170627004
 {
 	class KthOrderStatsBase
 	{

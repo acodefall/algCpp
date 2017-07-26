@@ -10,7 +10,7 @@
 #include "BuildLL.h"
 using namespace std;
 using namespace BuildLLNM;
-namespace ReverseEveryKNodesNM //@RED2017072507
+namespace ReverseEveryKNodesNM
 {
 	
 	/*

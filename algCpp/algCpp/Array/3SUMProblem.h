@@ -27,7 +27,7 @@
 #include <iostream>
 using namespace std;
 
-namespace ThreeSumProblemNM
+namespace ThreeSumProblemNM  //@RED20170616002
 {
 	/*
 		http://blog.gainlo.co/index.php/2016/07/19/3sum/

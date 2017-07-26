@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace ChildHoppingNM
+namespace ChildHoppingNM //@RED20170722008
 {
 	/*
 		Child hopping stairs.

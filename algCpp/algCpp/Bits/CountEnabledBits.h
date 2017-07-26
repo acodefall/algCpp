@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace  CountEnabledBitsNM
+namespace  CountEnabledBitsNM //@RED20170725058
 {
 	class CountEnabledBits
 	{

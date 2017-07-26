@@ -2,7 +2,7 @@
 #include <iostream>
 #include "PartitionArray.h"
 using namespace std;
-namespace ThreewaysortingNM
+namespace ThreewaysortingNM //@RED20170528001
 {
 	/*
 		ThreeWaySortng_20170528001
@@ -31,7 +31,7 @@ Steps for ThreeWaySortng_20170528002
 
 	
 	*/
-	//@20170528001
+	//@RED20170528001
 	class ThreewaySorting
 	{
 		public:

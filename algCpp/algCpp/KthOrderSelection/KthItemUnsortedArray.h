@@ -5,7 +5,7 @@
 #include "KthOrderStatsBase.h"
 using namespace std;
 
-namespace KthItemUnsortedArrayNM
+namespace KthItemUnsortedArrayNM //@RED20170627004
 {
 	using namespace KthOrderStatsBaseNM;
 	class KthItemUnsortedArray

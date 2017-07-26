@@ -8,7 +8,7 @@
 #include "Graphbuild.h"
 using namespace std;
 
-namespace CombinationsBitGenNM
+namespace CombinationsBitGenNM //@RED20170725046
 {
 	class CombinationUsingBitGen
 	{

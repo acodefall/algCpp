@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace Anagram1NM
+namespace Anagram1NM //@RED20170725042
 {
 	/*
 		Q) Group the ANAGRAMs that are stored in a Array, so that they appear next to each other. 

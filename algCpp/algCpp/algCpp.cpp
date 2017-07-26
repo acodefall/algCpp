@@ -115,7 +115,7 @@
 #include "FindPathToNodeValueKInPlainBinaryTree.h"
 #include "SumOfLeftLEAF.h"
 #include "NodeCount.h"
-#include "NodeHeight.h"
+#include "TreeHeight.h"
 #include "TreeHeightUsingNonRecursion.h"
 #include "TreeBalanced.h"
 #include "MaxSubArray.h"
@@ -329,8 +329,8 @@ int main()
 	TreeHeightUsingNonRecursionNM::TreeHeightUsingNonRecursion objTreeHeightUsingNonRecursion;
 	objTreeHeightUsingNonRecursion.callTreeHeightUsingNonRecursion();
 
-	NodeHeightNM::NodeHeight	objNodeHeight;
-	objNodeHeight.callNodeHeight();
+	TreeHeightNM::TreeHeight	objTreeHeight;
+	objTreeHeight.callTreeHeight();
 
 	NodeCountNM::NodeCount	objNodeCount;
 	objNodeCount.callNodeCount();
@@ -647,7 +647,7 @@ int main()
 	editablePQ::TestEditablePQ objTestEditablePQ;
 	objTestEditablePQ.callEditablePQ();
 
-	GraphSearchNM::callGraphSearch objcallGraphSearch;
+	GraphSearch::callGraphSearch objcallGraphSearch;
 	objcallGraphSearch.callGraphSearchX();
 
 	testGraphAirLine objtestGraphAirLine;

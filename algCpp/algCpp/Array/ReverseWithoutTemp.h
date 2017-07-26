@@ -10,7 +10,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace ReverseWithoutTempNM
+namespace ReverseWithoutTempNM  //@RED20170725062
 {
 	/*
 	

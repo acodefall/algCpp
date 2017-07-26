@@ -9,7 +9,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace LowestCommonDescendentNM
+namespace LowestCommonDescendentNM //@RED20170725066
 {
 		/*
 			Find Lowest Common Ancestor (LCA)

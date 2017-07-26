@@ -6,7 +6,7 @@
 using namespace std;
 
 //Median of Balanced BST_20170621009
-namespace MedianOfBSTNM //@RED20170621009
+namespace MedianOfBSTNM
 {
 	using namespace BuildTreeNM;
 	class MedianOfBST

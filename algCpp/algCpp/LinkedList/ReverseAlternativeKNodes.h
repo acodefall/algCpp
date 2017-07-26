@@ -10,13 +10,13 @@
 #include "BuildLL.h"
 using namespace std;
 using namespace BuildLLNM;
-namespace ReverseAlternativeKNodesNM //@RED20170705002
+namespace ReverseAlternativeKNodesNM
 {
 	
 	/*
 		
 		/*
-				Reverse Alternative K elements_@RED20170705002
+				Reverse Alternative K elements
 					Reverse 1st K nodes, then leave the next K nodes untouched, and then Reverse the next K nodes.
 					Reversal and Skipping is handled by same function, and they call each other recursively, until the while LL is processed. 
 					Skipping and reversing is handled by Pre-recursion code. Once a segment is reversed, the node that is in contact with next segment will change; this is like swapping of HEAD and TAIL.

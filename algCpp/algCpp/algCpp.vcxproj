@@ -310,7 +310,7 @@
     <ClInclude Include="Tree\FindSuccessorNode.h" />
     <ClInclude Include="Tree\LowestCommonDescendent.h" />
     <ClInclude Include="Tree\NodeCount.h" />
-    <ClInclude Include="Tree\NodeHeight.h" />
+    <ClInclude Include="Tree\TreeHeight.h" />
     <ClInclude Include="Tree\PostOrderUsingStack.h" />
     <ClInclude Include="Tree\PrintAllPathsOfTree.h" />
     <ClInclude Include="Tree\PrintFullNodes.h" />

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-namespace CountingSortNM //@RED20170623012
+namespace CountingSortNM
 {
 	
 	//CountingeSort_20170623012

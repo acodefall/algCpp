@@ -10,7 +10,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace MaxSubArrayNM
+namespace MaxSubArrayNM //@RED20170714012
 {
 	/*
         Max SubArray Problem Kadan's method_20170714012

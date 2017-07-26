@@ -9,7 +9,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace CheckTreeIsIdenticalNM
+namespace CheckTreeIsIdenticalNM //@RED20170725060
 {
 	/*
 		Mirror Trees

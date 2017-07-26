@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
-namespace MaxDifferenceNM
+namespace MaxDifferenceNM //@RED20170725050
 {
 	/*
 	
