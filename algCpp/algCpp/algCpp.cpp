@@ -23,10 +23,9 @@
 
 #include "MatrixRotatePrint.h"
 #include "MovieRatingGraph.h"
-#include "Combinations.h"
 #include "Permutation.h"
 #include "MemoryMngrBuddy.h"
-#include "CombinationWithoutDupesBitGen.h"
+#include "CombinationUsingBitGen.h"
 #include "PowerSet.h"
 #include "InvertedIndex.h"
 #include "Library.h"
@@ -173,6 +172,13 @@
 int main()
 {
 	LibraryNM::Library objLibrary;
+
+
+	CombinationsBitGenNM::CombinationUsingBitGen objCombinationUsingBitGen;
+	objCombinationUsingBitGen.useCombination();
+
+	PowerSetNM::CallPowerSet objCallPowerSet;
+	objCallPowerSet.callPowerSetX();
 
 
 	cout << "main begins \r\n";
@@ -620,11 +626,8 @@ int main()
 	TrieNM::UseInvertedIndex objUseInvertedIndex;
 	objUseInvertedIndex.CallUseInvertedIndex();
 
-	PowerSetNM::CallPowerSet objCallPowerSet;
-	objCallPowerSet.callPowerSetX();
 
-	CombinationsBitGenNM::CombinationUsingBitGen objCombinationUsingBitGen;
-	objCombinationUsingBitGen.useCombination();
+
 
 	BuddyMemoryManager::callAllocator callAllocatorX;
 	callAllocatorX.UseMemoryManager();
@@ -632,8 +635,7 @@ int main()
 	PermutationsNM::Permutation objPerm;
 	objPerm.usePermutation();
 
-	CombinationsNM::Combination objComb1;
-	objComb1.useCombination();
+
 
 	GraphMovie::testGraphMv objtestGraphMv;
 	objtestGraphMv.testGraph();

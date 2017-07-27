@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>>
 using namespace std;
-namespace WaysOfMakingNNM
+namespace WaysOfMakingNNM //@RED20170616005
 {
 	/*
 	https://en.wikipedia.org/wiki/Composition_%28combinatorics%29

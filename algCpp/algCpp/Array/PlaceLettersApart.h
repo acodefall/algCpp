@@ -5,7 +5,7 @@
 #include <memory>
 #include <unordered_map>
 using namespace std;
-namespace PlaceLettersApartNM
+namespace PlaceLettersApartNM //@RED20170617001
 {
 	/*
 			Place same characters at X distance apart_20170617001

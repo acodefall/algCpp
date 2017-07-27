@@ -9,7 +9,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace BSTUsingPreOrderDataNM
+namespace BSTUsingPreOrderDataNM  //@RED20170726002
 {
 	class BSTUsingPreOrderData
 	{

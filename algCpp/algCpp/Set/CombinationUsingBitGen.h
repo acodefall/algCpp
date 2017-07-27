@@ -8,6 +8,7 @@
 #include "Graphbuild.h"
 using namespace std;
 
+//http://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/
 namespace CombinationsBitGenNM //@RED20170725046
 {
 	class CombinationUsingBitGen
@@ -16,19 +17,52 @@ namespace CombinationsBitGenNM //@RED20170725046
 			void useCombination()
 			{
 			
-				cout << "CombinationWithoutDuplicateUsingBitGen \r\n \r\n";
-				int bitLen = 4;
+				cout << "CombinationUsingBitGen \r\n \r\n";
+				int TotalbitLen = 4;
 				int OneBits = 0;
 				int Bits[4] = { 0 };
+				int EnabledBits = 4;
 				char src2[4] = { 'A', 'B', 'C', 'D' };
-				CombinationWithoutDuplicateUsingBitGen(src2, 4, Bits, 0, bitLen, 4, OneBits);
+				CombinationUsingBitGenX(src2, 4, Bits, 0, TotalbitLen, 4, OneBits);
+
+
+				TotalbitLen = 4;
+				OneBits = 0;
+				Bits[4] = { 0 };
+				EnabledBits = 2;
+				char src3[4] = { '1', '2', '3', '4' };
+				CombinationUsingBitGenX(src3, 4, Bits, 0, TotalbitLen, EnabledBits, OneBits);
+
+				/*
+					Combination for '1', '2', '3', '4' of width 2 are
+									"1,2" "1,3", "1,4", "2,3", "2,4", "3,4"
+					
+					Combinations match with Bits as follows
+						1 1 1 1
+						1 1 1 0
+						1 1 0 1
+						1 1 0 0        1 2
+						1 0 1 1
+						1 0 1 0        1 3
+						1 0 0 1        1 4
+						1 0 0 0
+						0 1 1 1
+						0 1 1 0        2 3
+						0 1 0 1        2 4
+						0 1 0 0
+						0 0 1 1        3 4
+						0 0 1 0
+						0 0 0 1
+						0 0 0 0
+				
+				*/
 
 			}
 
 
-			void CombinationWithoutDuplicateUsingBitGen(char src[], int srcLen, int Bits[], int bitIndex, int bitsLen, int K, int OneBits)
+			void CombinationUsingBitGenX(char src[], int srcLen, int Bits[], int bitIndex, int TotalbitLen, int K, int OneBits)
 			{
-				if (bitsLen == bitIndex)
+				if (TotalbitLen == bitIndex)
 				{
 					//Prints the Bits for the sake of info
 					for (int a = 0; a < bitIndex; a++)
@@ -52,10 +86,10 @@ namespace CombinationsBitGenNM //@RED20170725046
 				}
 
 				Bits[bitIndex] = 1;
-				CombinationWithoutDuplicateUsingBitGen(src, srcLen, Bits, bitIndex + 1, bitsLen, K, OneBits + 1);
+				CombinationUsingBitGenX(src, srcLen, Bits, bitIndex + 1, TotalbitLen, K, OneBits + 1);
 
 				Bits[bitIndex] = 0;
-				CombinationWithoutDuplicateUsingBitGen(src, srcLen, Bits, bitIndex + 1, bitsLen, K, OneBits);
+				CombinationUsingBitGenX(src, srcLen, Bits, bitIndex + 1, TotalbitLen, K, OneBits);
 			}
 
 		/*

@@ -1,7 +1,7 @@
 #pragma once
 #include <algorithm>
 using namespace std;
-namespace AddAlternateNumbersDPNM
+namespace AddAlternateNumbersDPNM //@RED20170726006
 {
 
 	/*

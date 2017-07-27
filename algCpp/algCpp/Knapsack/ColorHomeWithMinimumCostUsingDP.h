@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-namespace ColorHomeWithMinimumCostUsingDPNM
+namespace ColorHomeWithMinimumCostUsingDPNM //@RED20170527001
 {
 	/*
 		hxxp://stackoverflow.com/questions/15630743/is-house-coloring-with-three-colors-np

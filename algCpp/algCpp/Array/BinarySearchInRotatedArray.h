@@ -52,7 +52,7 @@ using namespace std;
 					        H = M - 1;
 
 */
-namespace BinarySearchInRotatedArrayNM
+namespace BinarySearchInRotatedArrayNM //@RED20170717001
 {
 	const int SIZEX = 7;
 	class BinarySearchInRotatedArray

@@ -3,7 +3,7 @@
 #include <memory>
 #include <algorithm>
 using namespace std;
-namespace LongestCommonPalidroneNM
+namespace LongestCommonPalidroneNM //@RED20170531002
 {
 	/*
 	Finding the Longest Palidrone in a string_20170531002

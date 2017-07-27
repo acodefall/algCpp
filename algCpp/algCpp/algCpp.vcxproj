@@ -264,8 +264,7 @@
     <ClInclude Include="RotateArray\RotateArray.h" />
     <ClInclude Include="RotateArray\RotateArrayUsingReverse.h" />
     <ClInclude Include="Set\BinarySearchForLoop.h" />
-    <ClInclude Include="Set\Combinations.h" />
-    <ClInclude Include="Set\CombinationWithoutDupesBitGen.h" />
+    <ClInclude Include="Set\CombinationUsingBitGen.h" />
     <ClInclude Include="Set\Permutation.h" />
     <ClInclude Include="Set\PermutationKOfN.h" />
     <ClInclude Include="Set\PermutationWithDuplicatesALDO.h" />

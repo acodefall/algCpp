@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace DivisionNM
+namespace DivisionNM  //@RED20170726003
 {
    
     /*
