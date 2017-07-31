@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace FindNonDuplicateNumberNM
+namespace FindNonDuplicateNumberNM //@RED20170719004
 {
     /*
 		 Find the non repeating number_@RED20170719004

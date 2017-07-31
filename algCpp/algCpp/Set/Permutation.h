@@ -8,42 +8,28 @@
 #include <limits>
 using namespace std;
 
-namespace PermutationsNM
+namespace PermutationsNM //@RED20170729011
 {
 	class Permutation
 	{
 		public:
 
 			/*
-				Output
-					Permutation (without Dupe)
-					//No duplicates means a set not having "AA". 
-					//Unordered means sets "AB" and "BA" are considered as valid. So Unordred is applied across the sets.  
-						A B C
-						A B D
-						A C B
-						A C D
-						A D B
-						A D C
-						B A C
-						B A D
-						B C A
-						B C D
-						B D A
-						B D C
-						C A B
-						C A D
-						C B A
-						C B D
-						C D A
-						C D B
-						D A B
-						D A C
-						D B A
-						D B C
-						D C A
-						D C B
+				Permutations of width X
+					Permutation by definition "honors ORDER, not just DATA" and also allows dupes.
+					So "coffee, Tea", "Tea, coffee", "coffee, coffee"; all these are valid.
+					Permutaion can be generated using Recursion code and it is same as combination code.
+					One difference is, in case of PERM, the ForLoop at every level of recursion starts from beginning.
+					Because of this we are able generate duplicates like AA. Since ForLoop starts from beginning, 
+					there is no need to pass srcIndex as rec-param.
 
+					char src[4] = { 'A', 'L', 'G', 'O'};
+					AA AL AG AO LA LL LG LO GA GL GG GO OA OL OG OO
+					//You can see AA, AL and LA
+
+					Read "Generate combinations using Recursion_20170729007"
+
+				Output
 					Permutation (WithDupe)
 						A A A
 						A A B
@@ -113,12 +99,17 @@ namespace PermutationsNM
 			*/
 			void usePermutation()
 			{
-				char src[4] = { 'A', 'B', 'C', 'D' };
-			
+				char src[4] = { 'A', 'L', 'G', 'O'};
+				int srcLen = 4;
+				int permLen = 2;
 
 				cout << "Permutation With Duplicates \r\n \r\n";
 				char out1[3] = { 0 };
-				PermutationWithDupesKofN(src, 4, out1, 0, 3);
+				PermutationWithDupesKofN(src, srcLen, out1, 0, permLen);
+				//AA LA GA OA AL LL GL OL AG LG GG OG AO LO GO OO
+				//AA AL AG AO LA LL LG LO GA GL GG GO OA OL OG OO
+				//This is a PERM because it "honors ORDER, not just DATA" EX: we have both LG and GL
+				//It also has duplicates AA
 
 				cout << "PermutationWithoutDupes() \r\n \r\n";
 				char out2[4] = { 0 };

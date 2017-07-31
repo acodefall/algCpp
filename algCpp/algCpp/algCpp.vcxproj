@@ -186,11 +186,13 @@
     <ClInclude Include="Array\MaxDifference.h" />
     <ClInclude Include="Array\MaxSubArray.h" />
     <ClInclude Include="Array\MaxSumOfNonConseqNumbers.h" />
+    <ClInclude Include="Array\MergeUnsortedWordList.h" />
     <ClInclude Include="Array\MinMaxUsingLeastComparisons.h" />
     <ClInclude Include="Array\OccurenceCountInSortedArray.h" />
     <ClInclude Include="Array\Palidrone.h" />
     <ClInclude Include="Array\PartitionArray.h" />
     <ClInclude Include="Array\PatternMatchUsingOccurCount.h" />
+    <ClInclude Include="Array\PatternReplace.h" />
     <ClInclude Include="Array\PlaceLettersApart.h" />
     <ClInclude Include="Array\print123withPlus.h" />
     <ClInclude Include="Array\RabinKarpRollingHash.h" />
@@ -216,6 +218,7 @@
     <ClInclude Include="Design\EditablePriorityQueue.h" />
     <ClInclude Include="Design\FindTopTenPercent.h" />
     <ClInclude Include="Design\Library.h" />
+    <ClInclude Include="Design\Memcpy.h" />
     <ClInclude Include="Design\MemoryMngrBuddy.h" />
     <ClInclude Include="Design\ProdConsumer.h" />
     <ClInclude Include="Design\SingleTonOne.h" />
@@ -263,11 +266,11 @@
     <ClInclude Include="Pointer\MemoryAllocX.h" />
     <ClInclude Include="RotateArray\RotateArray.h" />
     <ClInclude Include="RotateArray\RotateArrayUsingReverse.h" />
-    <ClInclude Include="Set\BinarySearchForLoop.h" />
-    <ClInclude Include="Set\CombinationUsingBitGen.h" />
+    <ClInclude Include="BinSearch\BinarySearchForLoop.h" />
+    <ClInclude Include="Set\CombinationsAll.h" />
+    <ClInclude Include="Set\CombinationToTargetSum.h" />
+    <ClInclude Include="Set\CombinationToWidth.h" />
     <ClInclude Include="Set\Permutation.h" />
-    <ClInclude Include="Set\PermutationKOfN.h" />
-    <ClInclude Include="Set\PermutationWithDuplicatesALDO.h" />
     <ClInclude Include="Set\PowerSet.h" />
     <ClInclude Include="Sort\CountingSort.h" />
     <ClInclude Include="Sort\InsertionSort.h" />

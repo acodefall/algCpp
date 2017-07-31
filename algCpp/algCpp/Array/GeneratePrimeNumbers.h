@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace  GeneratePrimeNumbersNM
+namespace  GeneratePrimeNumbersNM //@RED20170722012
 {
 	/*
 	Finding prime numbers_20170722012

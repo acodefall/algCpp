@@ -6,7 +6,7 @@
 #include <algorithm>
 using namespace std;
 
-namespace FindCommonElementsSortedNM
+namespace FindCommonElementsSortedNM //@RED20170714004
 {	
 	/*@RED20170714004
 		Find the common elements in two SORTED arrays_20170714004

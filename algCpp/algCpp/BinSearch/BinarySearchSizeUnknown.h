@@ -4,7 +4,7 @@
 #include "BinSearchBase.h"
 using namespace std;
 using namespace BinSearchBaseNM;
-namespace BinarySearchSizeUnknownNM
+namespace BinarySearchSizeUnknownNM //@RED20170618001
 {
 	/*
 		Binary search in a sorted array when size is unknown Binary Search Theory_20170618001

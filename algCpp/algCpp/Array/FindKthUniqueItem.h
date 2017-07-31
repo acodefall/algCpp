@@ -7,34 +7,44 @@
 #include <sstream>
 using namespace std;
 
-namespace FindKthUniqueItemNM
+namespace FindKthUniqueItemNM //@RED20170724004
 {
 	/*
 		  Find the Kth non-repeating Character in a String_GN820
-		  Find the Kth non-repeating Character in a String_@RED20170724004
-                A word will have a series of characters that repeat, and also series of characters that do not repeat. 
-				If the Question asks for 2nd non-repeating character, then return 2nd element from non-repeating series.
-				non-repeating series is built using Array(say Index[]). Value of Index[] is the position of non-repeating character in src[].
-				Index[] stores the index in to src[] provided the character is non-repeating. If the character repeats then value will be -1.
-				By sorting the Index[], we can arrange non-repeating characters according to their position in src[].
-				Sorting will bring non-repeating character (who's position is least) to TOP of Index[].
-				and repeating characters will go to bottom of Index[] because their index is -1.
-				To know 2nd non-repeating character, use the 2nd item in post-sorted-index[].
+		  Find the Kth non-repeating Character in a String_20170724004
+				String will have duplicate and non-duplicate characters. 
+				Src = {pqqr}. R is the 2nd non-repeating character, and P is the 1st non-repeating character.
+				We should return r, if the Question asks for 2nd non-repeating character.
 
-				To know whether a character repeats or not, we have to maintain occurence-count for each character, so we need occurence[].
-				So basically we need two arrays: Index[] and occur[]. Length of these arrays is 256, and index is character itself, stored in src[]. (say 'a')
-				We fill both arrays in same loop. 
-				Iterate the src[].
-				When we see 'a', 
-					set occur['a'] = 1, 
-					set Index['a'] = position of 'a' in src[]
+				We have to know non-repeating characters and also their order of appearance in src[]. Maintain this info in an INDEXARRAY for every character. KEY is INT-of-CHARCTER and VALUE is index of that char.
+				If ‘r’ appears at 4th place in src[], then store indexARRAY[‘r’] = 4;
+				If a character is dupliate then VALUE will be -1. If a character is non-dupliate then VALUE will be the index(inside src[])
+				indexARRAY[‘q’] = -1.
 
-					if we encounter 'a' for the second time, 
-						set occur['a'] = 2,
-						set Index['a'] = -1
+				VALUE for non-dupliate character will be the index where they appear in src[].
+							indexARRAY [‘q’] = -1.
+							indexARRAY [‘r’] = 4;
+ 
+				Since the VALUE is the INDEX, by sorting the indexARRAY[], we can arrange the non-duplicate characters according to their solt in src[].Sorting will pushe dupliactes characters to bottom of indexARRAY[] (because their index is -1).
+				//SORT 
+						   indexARRAY[‘r’] = 4.  //1st non-duplicate character’s index
+							indexARRAY[‘q’] = -1;
 
-				After iterating the whole src[], sort the Index[].
-				To know 2nd non-repeating character, use the 2nd item in post-sorted-index[].
+				To know whether a character is duplicate or not, we have to maintain it occurrence count. So basically we need two arrays: indexARRAY[] and Occurrence[]. For both arrays KEY is INT-of-CHARCTER. For Value for Occurrence[] is occurance count. Since characters are ASCII, use array of 256 length for both indexARRAY[] and Occurrence[].
+					We can fill both arrays in same loop. 
+						Iterate the src[].
+							When we see 'a'
+							Occurrence['a'] = 1 //Update Occurrence[] with count of 'a'.
+							
+							If(count > 1)	
+								indexARRAY['a'] = -1; //if we encounter 'a' for the 2nd time, store -1
+							else
+								indexARRAY['a'] = curIndex; //if we encounter 'a' for the 1st time, store index
+	
+						Sort(indexARRAY); // After iterating the whole src[], sort the indexARRAY[]
+					To know 2nd non-repeating character, use the 2nd item in indexARRAY[].
+
+
 
 				Find the Kth non-repeating Character in a String
 				 s s t r e s s     occur[] -> occurance of each character
@@ -114,8 +124,9 @@ namespace FindKthUniqueItemNM
 				void FindKthUniqueItemX(string srcIn, int K)
 				{
 					const char* Src = srcIn.c_str();
-					int PlaceIndex[CHAR_MAX]; //This tracks the index of 
-					int Occurence[CHAR_MAX]; //This tracks the index of  //maintains the occurence count for chars in srcIn
+					int PlaceIndex[CHAR_MAX]; //KEY is character, VALUE is index of character in src[]
+					int Occurence[CHAR_MAX]; //KEY is character, VALUE is occurence count of character
+											 //Since the character is US-ASCII, use CHAR_MAX array
 					
 					//Init the crap
 					for (int i = 0; i < CHAR_MAX; i++)
@@ -127,13 +138,14 @@ namespace FindKthUniqueItemNM
 						Occurence[i] = 0;
 					}
 
+					//Build both PlaceIndex[], Occurence[]
 					for (int i = 0; i < srcIn.length(); i++)
 					{
-						cout << endl << "Src[" << i << "] = " << Src[i];
+						//cout << endl << "Src[" << i << "] = " << Src[i];
 						if (Occurence[Src[i]] > 0)
 						{	//duplicate element
 							cout << " is duplicate ";
-							PlaceIndex[(Src[i])]= INT_MAX;
+							PlaceIndex[Src[i]]= INT_MAX; //KEY is Src[i]
 							
 						}
 						else
@@ -141,45 +153,18 @@ namespace FindKthUniqueItemNM
 							cout << " is fresh ";
 							PlaceIndex[Src[i]] = i;
 						}
-						Occurence[Src[i]]++;
-						cout << endl << "Occurence[" << (int)Src[i] << "] = " << Occurence[(Src[i])];
-						cout << "  PlaceIndex[" << (int)Src[i] << "] = " << PlaceIndex[(Src[i])] << endl;
+						Occurence[Src[i]]++; //KEY is Src[i]
+						//cout << endl << "Occurence[" << (int)Src[i] << "] = " << Occurence[(Src[i])];
+						//cout << "  PlaceIndex[" << (int)Src[i] << "] = " << PlaceIndex[(Src[i])] << endl;
 						
 					}
 
-					//print occurance array
-					/*stringstream ss;
-					int last = 10;
-					for (int h = 0; h < CHAR_MAX; h++)
-					{
-						ss << "[" << h << "] = " << Src[h] << " ";
-						if (last == 10)
-						{
-							ss << endl;
-							last = 0;
-						}
-						last++;
-					}
-					cout << endl << "occurance Array" << endl;
-					cout << ss.str();
+					
 
-					//print PlaceIndex array
-					ss.clear();
-					last = 10;
-					for (int h = 0; h < CHAR_MAX; h++)
-					{
-						ss << "[" << h << "] = " << PlaceIndex[h] << " ";
-						if (last == 10)
-						{
-							ss << endl;
-							last = 0;
-						}
-						last++;
-					}
-					cout << endl << "PlaceIndex Array" << endl;
-					cout << ss.str();*/
-
-					//sort the PlaceIndex
+					//sort the PlaceIndex.
+					//Since the VALUE is INDEX in src[], by sorting the PlaceIndex[], we can arrange the non-duplicate 
+					//characters according to their slot in src[].
+					//sorting will push dupliactes characters to bottom of PlaceIndex[] (because their index is -1). 
 					sort(std::begin(PlaceIndex), std::end(PlaceIndex));
 
 					//print fist 10 PlaceIndex array After sorting
@@ -191,6 +176,7 @@ namespace FindKthUniqueItemNM
 					
 					cout << endl;
 
+					//To know 2nd non-repeating character, fetch its index from  PlaceIndex[2]
 					cout << "K th (" << K << ")unique item is at " << PlaceIndex[K-1] << " Item is " << Src[PlaceIndex[K - 1] ]<<endl;
 				}
 	};

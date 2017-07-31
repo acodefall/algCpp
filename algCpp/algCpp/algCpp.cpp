@@ -25,7 +25,7 @@
 #include "MovieRatingGraph.h"
 #include "Permutation.h"
 #include "MemoryMngrBuddy.h"
-#include "CombinationUsingBitGen.h"
+#include "CombinationToWidth.h"
 #include "PowerSet.h"
 #include "InvertedIndex.h"
 #include "Library.h"
@@ -169,12 +169,39 @@
 #include "BrickPoints.h"
 #include "SortUsingStack.h"
 #include "RemoveDuplicates.h"
+#include "CombinationToTargetSum.h"
+#include "CombinationsAll.h"
+#include "ReverseWithoutTemp.h"
+#include "Memcpy.h"
+#include "MergeUnsortedWordList.h"
+#include "PatternReplace.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
 
+	PatternReplaceNM::PatternReplace	objPatternReplace;
+	objPatternReplace.callPatternReplace();
 
-	CombinationsBitGenNM::CombinationUsingBitGen objCombinationUsingBitGen;
+	MergeUnsortedWordListNM::MergeUnsortedWordList objMergeUnsortedWordList;
+	objMergeUnsortedWordList.callMergeUnsortedWordList();
+
+	MemcpyNM::Memcpy objMemcpy;
+	objMemcpy.CallMemcpy();
+
+	ReverseWithoutTempNM::ReverseWithoutTemp objReverseWithoutTemp;
+	objReverseWithoutTemp.callReverseWithoutTemp();
+
+	PermutationsNM::Permutation objPerm;
+	objPerm.usePermutation();
+
+
+	CombinationsAllNM::CombinationsAll objCombinationsAll;
+	objCombinationsAll.useCombination();
+
+	CombinationToTargetSumNM::CombinationToTargetSum objCombinationToTargetSum;
+	objCombinationToTargetSum.useCombination();
+
+	CombinationsOfWidthXNM::CombinationsOfWidthX objCombinationUsingBitGen;
 	objCombinationUsingBitGen.useCombination();
 
 	PowerSetNM::CallPowerSet objCallPowerSet;
@@ -324,8 +351,7 @@ int main()
 	UniqueCharsNM::UniqueChars objUniqueChars;
 	objUniqueChars.callUniqueChars();
 
-	ReverseWithoutTempNM::ReverseWithoutTemp objReverseWithoutTemp;
-	objReverseWithoutTemp.callReverseWithoutTemp();
+
 
 	MaxSubArrayNM::MaxSubArray objMaxSubArray;
 	objMaxSubArray.callMaxSubArray();
@@ -631,10 +657,7 @@ int main()
 
 	BuddyMemoryManager::callAllocator callAllocatorX;
 	callAllocatorX.UseMemoryManager();
-		
-	PermutationsNM::Permutation objPerm;
-	objPerm.usePermutation();
-
+	
 
 
 	GraphMovie::testGraphMv objtestGraphMv;
