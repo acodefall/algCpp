@@ -27,7 +27,8 @@
 #include "MemoryMngrBuddy.h"
 #include "CombinationToWidth.h"
 #include "PowerSet.h"
-#include "InvertedIndex.h"
+#include "TrieInvertedIndex.h"
+#include "TopWordCountUsingTrie.h"
 #include "Library.h"
 #include "StackUsingArray.h"
 #include "SyncQx.h"
@@ -114,7 +115,7 @@
 #include "FindPathToNodeValueKInPlainBinaryTree.h"
 #include "SumOfLeftLEAF.h"
 #include "NodeCount.h"
-#include "TreeHeight.h"
+#include "TreeHeightUsingRecursion.h"
 #include "TreeHeightUsingNonRecursion.h"
 #include "TreeBalanced.h"
 #include "MaxSubArray.h"
@@ -175,9 +176,20 @@
 #include "Memcpy.h"
 #include "MergeUnsortedWordList.h"
 #include "PatternReplace.h"
+#include "PrintLevelsOfTreeInALine.h"
+#include "MergeAlternateNodesLL.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
+
+	TopWordCountUsingTrieNM::UseTopWordCountUsingTrie objTopWordCountUsingTrie;
+	objTopWordCountUsingTrie.CallUseTopWordCountUsingTrie();
+
+	MergeAlternateNodesLLNM::MergeAlternateNodesLL objMergeAlternateNodesLL;
+	objMergeAlternateNodesLL.callMergeAlternateNodesLL();
+
+	PrintEveryLevelOfTreeInALineNM::PrintEveryLevelOfTreeInALine objPrintLevelsOfTreeInALine;
+	objPrintLevelsOfTreeInALine.callPrintEveryLevelOfTreeInALine();
 
 	PatternReplaceNM::PatternReplace	objPatternReplace;
 	objPatternReplace.callPatternReplace();
@@ -361,7 +373,7 @@ int main()
 	TreeHeightUsingNonRecursionNM::TreeHeightUsingNonRecursion objTreeHeightUsingNonRecursion;
 	objTreeHeightUsingNonRecursion.callTreeHeightUsingNonRecursion();
 
-	TreeHeightNM::TreeHeight	objTreeHeight;
+	TreeHeightUsingRecursionNM::TreeHeightUsingRecursion	objTreeHeight;
 	objTreeHeight.callTreeHeight();
 
 	NodeCountNM::NodeCount	objNodeCount;
@@ -649,7 +661,7 @@ int main()
 	objcallProdConsume.callProd();
 	////////////////////////////////////////////////
 	
-	TrieNM::UseInvertedIndex objUseInvertedIndex;
+	TrieInvertedIndexNM::UseTrieInvertedIndex objUseInvertedIndex;
 	objUseInvertedIndex.CallUseInvertedIndex();
 
 

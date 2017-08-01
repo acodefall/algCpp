@@ -13,7 +13,7 @@ using namespace std;
 using namespace std;
 using namespace BuildTreeNM;
 
-namespace BalancedBSTCheckUsingInOrderTrvNM
+namespace BalancedBSTCheckUsingInOrderTrvNM //@RED20170731007
 {
 	/*
 	We can check if the Tree is Balanced using 3 methods

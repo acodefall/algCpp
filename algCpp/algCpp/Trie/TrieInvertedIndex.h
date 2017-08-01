@@ -7,11 +7,11 @@
 #include <fstream>
 using namespace std;
 
-namespace TrieNM
+namespace TrieInvertedIndexNM //@RED20170527013
 {
 
 	/*
-		ForwardIndex and InvertedIndex
+		ForwardIndex and InvertedIndex_20170527013
 		Forward Index is a map of words to line-number or database rows. Inverted index is a map of words to books and websites. Example for Forward is index at the end of the book.
 		Example for inverted index is googlesearch, where we give a word, and search engine comes back with websites containing those terms.
 
@@ -25,12 +25,14 @@ namespace TrieNM
 				3) EOW nodes of TRIE should store name of the book
 				4) Expose the method to retrieve the book-name, when searched using WORD
 	*/
+
+	//LAST Node(eow node) will store the WORD and also list of Files where that word appears
 	class TrieNode
 	{
 		public:
 				map<char, TrieNode*> child;
 				int eow;
-				vector<string> fileNames;
+				vector<string> fileNames; //list of Files where that word appears
 
 				TrieNode()
 				{
@@ -42,14 +44,16 @@ namespace TrieNM
 				}
 	};
 
-	class TrieM
+	class TrieInvertedIndex
 	{
 		public:
 			TrieNode* root;
-			TrieM()
+			TrieInvertedIndex()
 			{
 				root = new TrieNode();
 			}
+
+			//We go through the FILE, readed line by line, insert the LINE and also the FILE name in to TRIE
 			void indexFile(string filename)
 			{
 				string line;
@@ -82,6 +86,7 @@ namespace TrieNM
 				}
 
 			}
+			//Add the LINE of TEXT and the FILE where that LINE appears
 			void addWord(char* line, string filename)
 			{
 				TrieNode* cur = root;
@@ -103,10 +108,11 @@ namespace TrieNM
 				if (cur != root)
 				{	//something has been assigned	
 					cur->eow = 1;
-					cur->fileNames.push_back(filename);
+					cur->fileNames.push_back(filename); //store the name of the FILE where the LINE appears.
 				}
 			}
 
+			//Given the LINE, get teh list of FILES where that LINE appears
 			void find(char* line)
 			{
 				TrieNode* cur = root;
@@ -125,7 +131,7 @@ namespace TrieNM
 				}
 
 				if ((notFound == 0) && (cur->eow != 0))
-				{	
+				{	//Print the FILE list 
 					for (vector<string>::iterator itr = cur->fileNames.begin(); itr != cur->fileNames.end(); )
 					{
 						cout << *itr << "\r\n";
@@ -139,12 +145,12 @@ namespace TrieNM
 
 	};
 
-	class UseInvertedIndex
+	class UseTrieInvertedIndex
 	{
 		public:
 				void CallUseInvertedIndex()
 				{
-					TrieM objTrieM;
+					TrieInvertedIndex objTrieM;
 
 					objTrieM.indexFile("c:\\sample1.txt");
 					objTrieM.indexFile("c:\\sample2.txt");

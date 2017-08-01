@@ -11,7 +11,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace TreeHeightNM //@RED20170725041
+namespace TreeHeightUsingRecursionNM //@RED20170725041
 {
 	/*
 				Print All The Full Nodes in a Binary Tree
@@ -36,7 +36,7 @@ namespace TreeHeightNM //@RED20170725041
 					120
 
    */
-	class TreeHeight
+	class TreeHeightUsingRecursion
 	{
 		public:
 			void callTreeHeight()

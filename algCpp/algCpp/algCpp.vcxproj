@@ -242,6 +242,7 @@
     <ClInclude Include="LinkedList\CircularLLCheck.h" />
     <ClInclude Include="LinkedList\FindKthNodeFromTail.h" />
     <ClInclude Include="LinkedList\LinkedListToBSTConvertion.h" />
+    <ClInclude Include="LinkedList\MergeAlternateNodesLL.h" />
     <ClInclude Include="LinkedList\MergeSortedLL.h" />
     <ClInclude Include="LinkedList\PalidroneUsingRecursion.h" />
     <ClInclude Include="LinkedList\PartitionLL.h" />
@@ -312,7 +313,8 @@
     <ClInclude Include="Tree\FindSuccessorNode.h" />
     <ClInclude Include="Tree\LowestCommonDescendent.h" />
     <ClInclude Include="Tree\NodeCount.h" />
-    <ClInclude Include="Tree\TreeHeight.h" />
+    <ClInclude Include="Tree\PrintLevelsOfTreeInALine.h" />
+    <ClInclude Include="Tree\TreeHeightUsingRecursion.h" />
     <ClInclude Include="Tree\PostOrderUsingStack.h" />
     <ClInclude Include="Tree\PrintAllPathsOfTree.h" />
     <ClInclude Include="Tree\PrintFullNodes.h" />
@@ -325,7 +327,8 @@
     <ClInclude Include="Tree\TreeBalanced.h" />
     <ClInclude Include="Tree\TreeHeightUsingNonRecursion.h" />
     <ClInclude Include="Tree\TraversalsUsingStack.h" />
-    <ClInclude Include="Trie\InvertedIndex.h" />
+    <ClInclude Include="Trie\TopWordCountUsingTrie.h" />
+    <ClInclude Include="Trie\TrieInvertedIndex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algCpp.cpp" />
