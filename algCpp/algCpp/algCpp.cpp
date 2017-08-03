@@ -178,9 +178,13 @@
 #include "PatternReplace.h"
 #include "PrintLevelsOfTreeInALine.h"
 #include "MergeAlternateNodesLL.h"
+#include "PhoneBookUsingTrie.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
+
+	PhoneBookUsingTrieNM::UsePhoneBookUsingTrie objUsePhoneBookUsingTrie;
+	objUsePhoneBookUsingTrie.CallPhoneBookUsingTrie();
 
 	TopWordCountUsingTrieNM::UseTopWordCountUsingTrie objTopWordCountUsingTrie;
 	objTopWordCountUsingTrie.CallUseTopWordCountUsingTrie();

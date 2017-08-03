@@ -327,6 +327,7 @@
     <ClInclude Include="Tree\TreeBalanced.h" />
     <ClInclude Include="Tree\TreeHeightUsingNonRecursion.h" />
     <ClInclude Include="Tree\TraversalsUsingStack.h" />
+    <ClInclude Include="Trie\PhoneBookUsingTrie.h" />
     <ClInclude Include="Trie\TopWordCountUsingTrie.h" />
     <ClInclude Include="Trie\TrieInvertedIndex.h" />
   </ItemGroup>
