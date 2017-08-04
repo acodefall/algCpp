@@ -179,9 +179,12 @@
 #include "PrintLevelsOfTreeInALine.h"
 #include "MergeAlternateNodesLL.h"
 #include "PhoneBookUsingTrie.h"
+#include "LongestCommonWordUsingTrie.h"
 int main()
 {
 	LibraryNM::Library objLibrary;
+	LongestCommonWordUsingTrieNM::UseLongestCommonWordUsingTrie objUseLongestCommonWordUsingTrie;
+	objUseLongestCommonWordUsingTrie.CallLongestCommonWordUsingTrie();
 
 	PhoneBookUsingTrieNM::UsePhoneBookUsingTrie objUsePhoneBookUsingTrie;
 	objUsePhoneBookUsingTrie.CallPhoneBookUsingTrie();
