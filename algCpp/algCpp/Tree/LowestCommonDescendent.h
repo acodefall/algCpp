@@ -13,6 +13,18 @@ namespace LowestCommonDescendentNM //@RED20170725066
 {
 		/*
 			Find Lowest Common Ancestor (LCA)
+				LCA is a node that is ancestor to two target nodes. Value of LCA will be between the values of two target nodes, and also closest to it.
+				It is possible that LCA could be one of the Target node itself.
+				Since the LCA is a ancestor start drilling down from root. At every step compare the current against the values of both Target nodes.
+					if('Target values' < current)
+						Make Left Turn
+					else if('Target values' > current)
+						Make right turn
+					else
+						(current == T1) || (current == T2) || (current is between T1,T2)
+							Meet the LC
+						Exit
+
 				LCA between for two nodes is a common ancestor that meets two condition
 					-Value of the ancestor should fall in between that of two nodes.
 					-Value should be lowest among common ancestors.
@@ -78,9 +90,6 @@ namespace LowestCommonDescendentNM //@RED20170725066
 		}
 
 	private:
-		//Post order traversal is can be acieved by modifiying DFS 
-		//Write the DFS code. When you pop the item from the stack, instead of printing it, push in to second stack.
-		//Once the DFS is done, print the content of second stack.
 		void LowestCommonDescendentX(NodeTree* rt, int v1, int v2)
 		{
 			NodeTree* cur = rt;

@@ -9,14 +9,101 @@
 #include <unordered_set>
 using namespace std;
 
-namespace LongestCommonWordUsingTrieNM //@RED20170803004
+namespace LongestCommonWordUsingTrieNM //@RED20170805004
 {
 
-	/*
+	/*								
+															
+							
+  (Word List)
+    Cat         //simple word
+    Dog              "  
+    Rat              "
+    Elephant    //SimpleWord and is also quite long, but we ignore this beacause it is not a compound word.
+    CatDogX     //CompoundWord but has foriegn word X, so compWord shoul be ignored        
+    CatDogRat   //CompoundWord is Perfect becs every subword is simple word
+    
+  (Word List loaded to TRIE)
+                ROOT
+        C           D    E    R          Verify given Word is Simple word
+        a           o    l    a            Simlle Word sits directly under root of TRIE. 
+        t           g    e    t            So apply the FIND logic starting from Root node
+        D                p                 Ex: 'Dog', 'Rat' are simple words because they sit under Root. Find will locate it 
+        o                h                     'DogRat' is not simple word because it is not direct under Root. Find fails 
+        g                a                      But if you split it in to simple words 'Dog' and 'Rat', we will find them.
+        R    X           n
+        a                t
+        t
+
+        
+  (Splicing Compound Word  'CatDogRat' to find LCW)
+
+                ROOT                                (Logic)                MAP (CompndWord     SubWOrdtoBeSpliced)
+        C           D    E    R                     CatDogRat                   CatDogRat            CatDogRat
+        a           o    l    a                      /\                             .                    .  
+        t           g    e    t                     /  \                            .                    .    
+        D                p                        Cat   DogRat                      .                 DogRat
+        o                h                                / \                       .                    .
+        g                a                               /   \                      .                    .
+        R    X           n                             Dog   Rat                    .                   Rat 
+        a                t                                   /\                     .                    .      
+        t                                                   /  \                    .                    .
+                                                          Rat   ""              CatDogRat                ""
+                                                                                  
+                                                                                CatDogRatX           CatDogRatX 
+                                                                                    .                 DogRatX 
+                                                                                    .                  RatX
+                                                                                    .                  X
+                                                                                                              
+	
+	
+	Trie over view_20170803001
+		Visualize the TRIE as a cloth hanger that has 26 ribbons hanging from it. 1st ribbon has the words starting from letter A, and 2nd ribbon has the word starting from letter B...This goes on until Z. There is one ribbon for every letter.
+
+		What is special about TRIE is that it can record a new word by adding few letters to an already existing word, if the new word is SUFFIX of a word that is already in TRIE.
+		For example: The ribbon for letter R, can have both ROCK and ROCKET. Rocket gets created by adding two letters to the already existing word ROCK. This is why Trie is space efficient.  Since several words sit on same thread on nodes, Trie will FLAG 'end of word' flag by setting a flag. 
+		Ex: In case of Rocket and Rock, both K and T will have 'end of word' flag.  So the program iterating the nodes 
+		Should look for EOW and if present, it should record that as word. 
+
+		Every node has 26 child nodes. So if you go back to Ribbon analogy, at every level, the number of ribbons increases by a mupliple of 26. First/root level will have 26 ribbons, and each child node will have 26 children, so the second 
+		level will have 26 * 26 ribbons. This layout helps TRIE to represent whole dictionary by using less space.
+			
+		Coming to the members of NODE.
+		Node will have a MAP with 26 entries, who's KEY is the alphabet and VALUE is child node.  Node does not store the character (that it is representing) in any data member at all. 	For that we have to see the KEY inside parent node's map. 
+		Node tells two things: It tells whether the letter marks EOW; and it also gives child nodes; but it does not tell about the character repreasnted by node iteelf. Iteratig logic SHOULD be aware of this.
+
+		Ex: Assume TRIE has word RAT. 
+		Iteration starts from ROOT node; and Root node does not represent any letter at all, but it's MAP has a non-NULL VALUE for letter 'R'; that is how we come to know that the child represents letter R. Then we step in to that child node, and it does not have  any class member that says that we are in R-node. Map of R-node will have non-NULL VALUE for letter A. We step in to A-Node. Map of A-node will have non-NULL VALUE for letter T. Then we enter T node, and that will have EOW flag. Then we record RAT as a word. 
+
+		Note: Do not stop the iteration just because a node has EOW flag set. A thread of Nodes/ribbon can have many EOWs so go until the nodes who’s child nodes are all NULL.
+
+
+
+
 		
-		Implement TelePhone directory using TRIE_20170803004
-			Load the UserName and thier Telephone number in to TRIE. Store the  Telephone number on the node that has EOW( the node that has last letter of user name)
-			Then iterate the TRIE to gather both UserName and Telephone number, and print them
+
+		Computing LCW_20170805004           
+			Broadly speaking filter out the simple words and keep only the compound words.  Further splice the compound word in to 1stWord and ‘Rest of the word’. We know 1stword, which is also the left-most word has only word, and check whether that itself is a Simple word(by trying to Search for it under ROOT). If the 1st word is a simple word, this compound word is still in the game, so splice ‘Rest of the word’. This will produce one more set of 1stWord and ‘Rest of the word’, and make sure 1stWord is a Simple word(by trying to Search for it under ROOT); if so compound word is still the game. In the next round splice the ‘Rest of the word’ again. Do this until there is nothing to be spliced. After every split resulting 1st word must pass the test for Simple word(means Search for it under ROOT). Then the original word is a good compound word and save it in a separate list. 
+
+			Apply the Splice logic on every compound word that user has entered. The compound words that pass the splice test should be added to a separate list. 
+
+			In the end we will have a list of qualified compound words. These words are totally made up of Simple worlds; they do not contain foreign letter. Select longest compound word for that. 
+
+			Splicing logic uses MAP of  “CompoundWordThatUserEntered” V/s ‘CompoundWordToBeSpliced’. In the first round KEY and VALUE will be same; and as we splice the Compound Word, we change the VALUE. In the end VALUE will recude to “” string. That is when we stop the splicing operation. 
+
+
+			Example for Splicing of compound word ‘CatDogRat’:
+				In the 1st loop, extract left-most subword(Cat), and that leaves second part(DogRat).
+				If the extracted 1st word is a simple word, go to 2nd loop. 
+
+				In the 2nd loop extract left-most subword(Dog) from 'DogRat'. If 'Dog' is the extracted 1st word and rest is 'Rat'. If 1t word is a simple word, go to 3rd loop.
+
+				In the 3rd loop extract left-most subword(Rat) from 'Rat'. If the 1t word RAT is a simple word, go to 4th round.
+			In 4th round we have nothing to splice. By now every subword ‘Cat’ ‘Rat’ Dog has proven to be Simple word, so we can say that the CompoundWord 'CarDogRat' is indeed Valid compound word
+ 
+
+
+
 			
 	*/
 	
@@ -84,90 +171,76 @@ namespace LongestCommonWordUsingTrieNM //@RED20170803004
 			const char* tmp = word.c_str();
 			TrieNode* cur = curIn;
 			for (int i = 0; i <= word.length(); i++) // "<=" is used because the Root node is not having the 1st letter of the word being searched.
-			{										 //First character is actually in 2nd node of the thread of nodes.
-				if (cur->eow)
-				{	//Exit as soon as we get 1st EOW. 
-					//This marks the end of first the WORD
-					//, check whether any child node is valid. Then WORD is compound, then do not record.
-					//If all the child nodes are NULL, then WORD is non-compound, record it.
-					firstWord = word.substr(0, i);
-					return;
+			{		
+				if (cur != NULL)
+				{
+					//First character is actually in 2nd node of the thread of nodes.
+					if (cur->eow)
+					{	//Exit as soon as we get 1st EOW. 
+						//This marks the end of first the WORD
+						//, check whether any child node is valid. Then WORD is compound, then do not record.
+						//If all the child nodes are NULL, then WORD is non-compound, record it.
+						firstWord = word.substr(0, i);
+						return;
+					}
+					cur = cur->child[tmp[i]];
 				}
-				cur = cur->child[tmp[i]];
 			}
 			return;
 		}
 		//Find LCW
 		//Find the inter mediatory words and check whether they are in 
 		//'betweenWord' is the word between two EOWs. "catRatDog" betweenWord could be 'Rat', Dog'
-		void TraverseAndFindLCW(TrieNode* cur, string betweenWord, string wholeWord, unordered_set<string>& nonCompndWordList, string& longestLCW)
+		void TraverseAndFindLCW(TrieNode* root, list<string>& fullyCompoundWord, unordered_map<string,string>& nonCompndWordList, string& longestLCW)
 		{
-			if (cur != NULL)
+			while (nonCompndWordList.size() > 0)
 			{
-				//This conditon won't apply for root node
-				if (cur->eow)
-				{	
-					//This marks the end of the word, check whether 'betweenWord' is non-cpmd word
-					if (nonCompndWordList.find(betweenWord) == nonCompndWordList.end())
-					{	//betweenWord is a compound word so exit
-						cout << "word '" << betweenWord.c_str() << "' is a compound word so ignore whole word '" << wholeWord.c_str() << "'" << endl;
-						//do not make any recursion calls exit.
-						return;
-					}
-					else
-					{	//betweenWord is non-compound word so exit
-						cout << "word '" << betweenWord.c_str() << "' is a non-compound word so continue to decompose whole word '" << wholeWord.c_str() << "'" << endl;
-					}
-					
-
-					//reset the betweenWord. This is because betweenWord records the word between two EOWs
-					betweenWord = "";
-				}
-
-				bool endOfThread = true;
-				//Go through the child list, if the all the child objects are NULL, then we are the end of the thread. 
-				//In that case we have check whether word is LCW
-				//CHARACTER is considered part of the WORD, so add the CHAR to 'word'
-				for (int i = 'a'; i < ('a' + 26); i++)
-				{
-					if (cur->child[i] != NULL)
+				//process one item at time
+				auto itr = nonCompndWordList.begin();
+					string prefix = "";
+					string cmpmdWord = (*itr).second;
+					string OriginalWord = (*itr).first;
+					extractFirstWord(root, cmpmdWord, prefix);
+					if (prefix.length() == 0)
 					{
-						endOfThread = false;
-						//Add the current character to whole word & betweenWord.
-						string wholeWordTmp;// += (char)i;
-						string betweenWordTmp;// += (char)i;
-
-						wholeWordTmp = wholeWord + (char)i;
-						betweenWordTmp = betweenWord + (char)i;
-						//We want to know whether 'cur->child[i]' is EOW or has children.
-						//To know that make recursion call
-						TraverseAndFindLCW(cur->child[i], betweenWordTmp, wholeWordTmp, nonCompndWordList, longestLCW);
+						//word does not have ROOT word. disqualifying the word 
+						//Do not add to fullyCompoundWord
+						nonCompndWordList.erase(OriginalWord);
 					}
-				}
-
-				//if we have reached this point, it means all the words in this theard were Non-compoundword.
-				//So this is a word that is totally madeup of Non-Compund words, so check whether this word is longest amond LCW 
-				if (endOfThread)
-				{
-					//whole word should be a Compound word to qualify for LCW verification.
-					//so make sure wholeWord is not part of nonCompndWordList
-					if (nonCompndWordList.find(wholeWord) == nonCompndWordList.end())
+					else if (prefix.length() == cmpmdWord.length())
 					{
-						if (longestLCW.length() < wholeWord.length())
+						//full length if cmpmdWord word is a root-Word, so we do not have to anything to this word, so remove from MAP.
+						//Word qualifying as totaly compound word so add to fullyCompoundWord.
+						nonCompndWordList.erase(OriginalWord);
+
+						fullyCompoundWord.push_back(OriginalWord);
+						/*//full length if cmpmdWord word is a root-Word, no more to inspect.
+						if (longestLCW.length() < OriginalWord.length())
 						{
 							cout << "End of thread. Word is LCW '" << wholeWord.c_str() << "'" << endl;
-							longestLCW = wholeWord;
-						}
+							longestLCW = OriginalWord;
+						}*/
 					}
-					else
+					else if (prefix.length() < cmpmdWord.length())
 					{
-						cout << "End of thread. Word is not compound word at all '" << wholeWord.c_str() << "' so ignore it" << endl;
+
+						//1st Part of cmpmdWord word is a root-Word, but we do not know about the rest of the word. 
+						//We have to disect the 2nd part in to piecse, so the the WORD be in MAP.
+						//But update the MAP with the 2nd part of the word that we want to inspect.
+
+						//We want to update the MAP VALUE, but iterator does not all UPDATE of VALUE, so REMOVE() and INSERT()
+						//Remove and insert the ENTRY
+						nonCompndWordList.erase(OriginalWord);
+
+						//update VALUE. This VAUE will be disected later in the loop
+						nonCompndWordList.insert({ OriginalWord, cmpmdWord.substr(prefix.length()) });
 					}
 				}
-			}
-			return;
+
+			
 		}
 
+		
 
 	};
 
@@ -176,18 +249,20 @@ namespace LongestCommonWordUsingTrieNM //@RED20170803004
 	public:
 		void CallLongestCommonWordUsingTrie()
 		{
+			unordered_map<string,string> CompndWordList;
+			list<string> totallyCompoundWord; //Every subword is some 'root-word'. so whole compound word becomes totally compoundWod. 
 			LongestCommonWordUsingTrie objTrieM;
 			list<string> rawWordList;
 			rawWordList.push_back("cat");
 			rawWordList.push_back("cats");
 			rawWordList.push_back("catsdogcats");
-			rawWordList.push_back("catxdogcatsrat");
+			rawWordList.push_back("catxdogcatsrat");  //CompoundWord but will get eleiminated becaues it has foriegn letter X
 			rawWordList.push_back("dog");
 			rawWordList.push_back("dogcatsdog");
-			rawWordList.push_back("hippopotamuses");
+			rawWordList.push_back("hippopotamuses");  //Simple word but longest. this will be ignored because this is not a CompoundWord
 			rawWordList.push_back("rat");
 			rawWordList.push_back("ratcatdogcat");
-			//{ "cat", "cats", "catsdogcats", "catxdogcatsrat", "dog", "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat" };
+		
 
 
 			cout << "Load the words in to TRIE" << endl;
@@ -195,36 +270,35 @@ namespace LongestCommonWordUsingTrieNM //@RED20170803004
 			{
 				objTrieM.addWord((char*)(*itr).c_str());
 			}
+			
 
-			//among the input words, there will be compound words and non-compound words.
-			//make a list of noncompound words.
+			//Original words provided by user will have both compound words and non-compound words, we have to seperate them.
+			//We are intersted in compoundWords only. We do not care about non-compound words
+			//We want to check whether the every subword of compound word is Root word.
+			
+			//DogCat This compound word because 'g' has EOW (frstWord Len < wholeWordLen)
+			//Rat    This is not compound word because 't' has EOW and that happens be the end of whole word. (frstWord Len == wholeWordLen)
 			string firstWord;
-			unordered_set<string> nonCompndWordList;
 			for (auto itr = rawWordList.begin(); itr != rawWordList.end(); itr++)
 			{
 				objTrieM.extractFirstWord(objTrieM.root, (*itr) ,firstWord);
-				nonCompndWordList.insert(firstWord);
+				if ((*itr).length() > firstWord.length())
+				{
+					//it is a compund word
+					CompndWordList.insert({ (*itr),(*itr) });
+				}
 			}
 
-			//Go through the list of noncompound words and record the longest word
-
+			
+			//Go through the list of compound words and record the longest word
 			//find the LCW
 			string wholeWord;
 			string wordBtwnEOW;
 			string longestLCW;
 			
-			objTrieM.TraverseAndFindLCW(objTrieM.root, wordBtwnEOW, wholeWord, nonCompndWordList, longestLCW);
+			objTrieM.TraverseAndFindLCW(objTrieM.root, totallyCompoundWord, CompndWordList, longestLCW);
 			cout << "LCW is '"<< longestLCW.c_str() <<"'" << endl;
-			/*
-				Phone number of 'one' 111111
-				Phone number of 'hundred' 1001000
-					cot  141616716781
-					cotton  99999999999
-					hundred  1001000
-					one  111111
-					two  222222
-
-			*/
+		
 		}
 	};
 

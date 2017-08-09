@@ -182,6 +182,9 @@
 #include "LongestCommonWordUsingTrie.h"
 int main()
 {
+	LowestCommonDescendentNM::LowestCommonDescendent objLowestCommonDescendent;
+	objLowestCommonDescendent.callLowestCommonDescendent();
+
 	LibraryNM::Library objLibrary;
 	LongestCommonWordUsingTrieNM::UseLongestCommonWordUsingTrie objUseLongestCommonWordUsingTrie;
 	objUseLongestCommonWordUsingTrie.CallLongestCommonWordUsingTrie();
@@ -408,8 +411,6 @@ int main()
 	CreateBSTFromArrayNM::CreateBSTFromArray objCreateBSTFromArray;
 	objCreateBSTFromArray.callCreateBSTFromArray();
 
-	LowestCommonDescendentNM::LowestCommonDescendent objLowestCommonDescendent;
-	objLowestCommonDescendent.callLowestCommonDescendent();
 
 	TraversalUsingRecursionNM::TraversalUsingRecursion objTraversalUsingRecursion;
 	objTraversalUsingRecursion.callTraversalUsingRecursion();
