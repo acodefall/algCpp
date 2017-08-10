@@ -246,6 +246,7 @@
     <ClInclude Include="LinkedList\MergeSortedLL.h" />
     <ClInclude Include="LinkedList\PalidroneUsingRecursion.h" />
     <ClInclude Include="LinkedList\PartitionLL.h" />
+    <ClInclude Include="LinkedList\ProveTwoLLAreMerged.h" />
     <ClInclude Include="LinkedList\RemoveDuplicateNodesLL.h" />
     <ClInclude Include="LinkedList\ReverseAlternativeKNodes.h" />
     <ClInclude Include="LinkedList\ReverseDoublyLinkedList.h" />

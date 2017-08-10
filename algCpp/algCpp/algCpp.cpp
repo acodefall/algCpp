@@ -180,8 +180,13 @@
 #include "MergeAlternateNodesLL.h"
 #include "PhoneBookUsingTrie.h"
 #include "LongestCommonWordUsingTrie.h"
+#include "FindAnagramsUsingTrie.h"
+
 int main()
 {
+	FindAnagramsUsingTrieNM::UseFindAnagramsUsingTrie objUseFindAnagramsUsingTrie;
+	objUseFindAnagramsUsingTrie.CallUseFindAnagramsUsingTrie();
+
 	LowestCommonDescendentNM::LowestCommonDescendent objLowestCommonDescendent;
 	objLowestCommonDescendent.callLowestCommonDescendent();
 
