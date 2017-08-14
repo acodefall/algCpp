@@ -205,7 +205,7 @@
     <ClInclude Include="Array\SubsetProblemKnapSack.h" />
     <ClInclude Include="Array\UniqueChars.h" />
     <ClInclude Include="Array\WaysOfMakingN.h" />
-    <ClInclude Include="Array\WordBreak.h" />
+    <ClInclude Include="Array\BreakLongWordToSubwords.h" />
     <ClInclude Include="Array\XToPowerN.h" />
     <ClInclude Include="BinSearch\BinarySearchSizeUnknown.h" />
     <ClInclude Include="BinSearch\BinSearchBase.h" />

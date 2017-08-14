@@ -181,9 +181,12 @@
 #include "PhoneBookUsingTrie.h"
 #include "LongestCommonWordUsingTrie.h"
 #include "FindAnagramsUsingTrie.h"
-
+#include "BreakLongWordToSubwords.h"
 int main()
 {
+	BreakLongWordToSubwordsNM::BreakLongWordToSubwords objBreakLongWordToSubwords;
+	objBreakLongWordToSubwords.callBreakLongWordToSubwords();
+
 	FindAnagramsUsingTrieNM::UseFindAnagramsUsingTrie objUseFindAnagramsUsingTrie;
 	objUseFindAnagramsUsingTrie.CallUseFindAnagramsUsingTrie();
 
