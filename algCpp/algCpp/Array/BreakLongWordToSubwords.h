@@ -15,7 +15,7 @@ namespace BreakLongWordToSubwordsNM
 	//http://www.geeksforgeeks.org/dynamic-programming-set-32-word-break-problem/
 	//
 	/*
-		Long word break problem
+		Long word break problem_@RED20170816001
 			Break the longword in to subwords, and check whether the subwords are given in a dictionary provided by caller.
 			This is to prove that Long word can be used to create a set of subwords. 
 			Ex: Longword is "newspaper" and dictionary has "spa, ape, new". 

@@ -1,8 +1,7 @@
-﻿  stdafx.cpp
-  algCpp.cpp
+﻿  algCpp.cpp
 c:\temp\work_visualstudio\s1\algcpp\algcpp\array\print123withplus.h(32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\temp\work_visualstudio\s1\algcpp\algcpp\array\removecomma.h(16): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\temp\work_visualstudio\s1\algcpp\algcpp\array\removecomma.h(19): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\removecomma.h(17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\removecomma.h(20): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(552): note: see declaration of 'strdup'
 c:\temp\work_visualstudio\s1\algcpp\algcpp\matrix\matrixrotateprint.h(126): warning C4154: deletion of an array expression; conversion to pointer supplied
 c:\temp\work_visualstudio\s1\algcpp\algcpp\matrix\matrixrotateprint.h(129): warning C4154: deletion of an array expression; conversion to pointer supplied
@@ -17,9 +16,11 @@ c:\temp\work_visualstudio\s1\algcpp\algcpp\graph\movieratinggraph.h(167): warnin
 c:\temp\work_visualstudio\s1\algcpp\algcpp\graph\movieratinggraph.h(168): warning C4305: 'argument': truncation from 'double' to 'float'
 c:\temp\work_visualstudio\s1\algcpp\algcpp\graph\movieratinggraph.h(220): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 c:\temp\work_visualstudio\s1\algcpp\algcpp\design\memorymngrbuddy.h(136): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\invertedindex.h(61): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\invertedindex.h(88): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\invertedindex.h(114): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\trieinvertedindex.h(65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\trieinvertedindex.h(93): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\trieinvertedindex.h(120): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\topwordcountusingtrie.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\topwordcountusingtrie.h(139): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 c:\temp\work_visualstudio\s1\algcpp\algcpp\design\library.h(1): warning C4081: expected 'identifier'; found 'char'
 c:\temp\work_visualstudio\s1\algcpp\algcpp\design\syncqx.h(86): warning C4244: 'initializing': conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
 c:\temp\work_visualstudio\s1\algcpp\algcpp\design\syncqx.h(111): warning C4244: 'initializing': conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
@@ -44,12 +45,47 @@ c:\temp\work_visualstudio\s1\algcpp\algcpp\heap\heapbase.h(58): warning C4267: '
 c:\temp\work_visualstudio\s1\algcpp\algcpp\heap\heapbase.h(75): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 c:\temp\work_visualstudio\s1\algcpp\algcpp\median\medianofbst.h(51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 c:\temp\work_visualstudio\s1\algcpp\algcpp\sort\mergesorting.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\temp\work_visualstudio\s1\algcpp\algcpp\algcpp.cpp(85): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\temp\work_visualstudio\s1\algcpp\algcpp\algcpp.cpp(84): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\reversewithouttemp.h(40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\reversewithouttemp.h(95): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\uniquechars.h(30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\uniquechars.h(25): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\asciitoint.h(25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\asciitoint.h(32): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\boyermoore.h(48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\boyermoore.h(49): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\boyermoore.h(75): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\boyermoore.h(85): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\boyermoore.h(92): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\boyermoore.h(98): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\findsquareroot.h(107): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\findsquareroot.h(109): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\inplacereversalwithouttemp.h(29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\palidrone.h(31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\bits\bitvector.h(47): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\bits\bitvector.h(93): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\stack\stackwithgetminimum.h(127): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\patternreplace.h(90): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\patternreplace.h(93): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\tree\printlevelsoftreeinaline.h(87): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\phonebookusingtrie.h(56): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\phonebookusingtrie.h(113): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\longestcommonwordusingtrie.h(140): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\findanagramsusingtrie.h(64): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\findanagramsusingtrie.h(78): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+c:\temp\work_visualstudio\s1\algcpp\algcpp\trie\findanagramsusingtrie.h(94): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\breaklongwordtosubwords.h(99): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\breaklongwordtosubwords.h(142): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 c:\temp\work_visualstudio\s1\algcpp\algcpp\graph\graphsearch.h(170): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   c:\temp\work_visualstudio\s1\algcpp\algcpp\graph\graphsearch.h(161): note: while compiling class template member function 'bool GraphSearch::Graph<GraphSearch::City>::BfsSearch(std::string,std::string)'
   c:\temp\work_visualstudio\s1\algcpp\algcpp\graph\graphsearch.h(358): note: see reference to function template instantiation 'bool GraphSearch::Graph<GraphSearch::City>::BfsSearch(std::string,std::string)' being compiled
   c:\temp\work_visualstudio\s1\algcpp\algcpp\graph\graphsearch.h(352): note: see reference to class template instantiation 'GraphSearch::Graph<GraphSearch::City>' being compiled
+c:\temp\work_visualstudio\s1\algcpp\algcpp\set\combinationtowidth.h(114): warning C4789: buffer 'Bits' of size 16 bytes will be overrun; 4 bytes will be written starting at offset 16
+c:\temp\work_visualstudio\s1\algcpp\algcpp\stack\stackusingarray.h(39): warning C4715: 'StackUsingArrayNM::StackUsingArray<int>::Push': not all control paths return a value
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\binarysearchinrotatedarray.h(139): warning C4715: 'BinarySearchInRotatedArrayNM::BinarySearchInRotatedArray::BinarySearchInRotatedArrayX': not all control paths return a value
+c:\temp\work_visualstudio\s1\algcpp\algcpp\array\findnumberhigherthanksorted.h(50): warning C4715: 'FindNumberHigherThanKSortedNM::FindNumberHigherThanKSorted::FindNumberHigherThanKX': not all control paths return a value
+c:\temp\work_visualstudio\s1\algcpp\algcpp\tree\findsuccessornode.h(123): warning C4715: 'FindSuccessorNodeNM::FindSuccessorNode::FindSuccessorNodeX': not all control paths return a value
 c:\temp\work_visualstudio\s1\algcpp\algcpp\median\realtimemedian.h(82): warning C4715: 'RealTimeMedianNM::RealTimeMedian::getMedian': not all control paths return a value
-c:\temp\work_visualstudio\s1\algcpp\algcpp\stack\stack1.h(35): warning C4715: 'Stack1<int>::Push': not all control paths return a value
   algCpp.vcxproj -> C:\Temp\Work_VisualStudio\S1\algCpp\x64\Debug\algCpp.exe
   algCpp.vcxproj -> C:\Temp\Work_VisualStudio\S1\algCpp\x64\Debug\algCpp.pdb (Full PDB)
