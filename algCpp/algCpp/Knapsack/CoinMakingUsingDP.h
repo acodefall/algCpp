@@ -7,7 +7,9 @@ namespace CuttingRodNM
 	/*
 
 	CuttingRod Problem_20170609008
-		ProgrammingYou are given some denominations of coins in an array (int denom[])and infinite supply of all of them. Given an amount (int amount), find the minimum number of coins required to get the exact amount. 
+		You are given some denominations of coins in an array (int denom[])
+		and infinite supply of all of them. Given an amount (int amount), 
+		find the minimum number of coins required to get the exact amount. 
 
 		//hxxps://medium.com/@pratikone/dynamic-programming-for-the-confused-rod-cutting-problem-588892796840
 		Probem: A rod needs to be cut in to pieces so that total profit is maximum. Price varies from length to length. We should compute the subset of pieces that generates maximum profit and also the Max profit itself. Assume the length of pieces is a number series like 1,2,3…. So Input data for 10feet rod is Price[] and Length[] of length 10.
@@ -161,29 +163,90 @@ namespace CuttingRodNM
 
 
 				*/
-				int CuttingRodUsingRecursion(int* srcPrice, int RodLen)
+				int CuttingRodUsingRecursion(int* coinDenominationAry, int remainCoinArrayLen, 
+											const int TargetPriceToReach, int* priceAccumulated,
+											int* numberOfCoinsUsed, int& LowestNumberOfCoinsUsed)
 				{
-					if (RodLen <= 0)
+					if (remainCoinArrayLen <= 0)
 						return 0;
 					else
 					{
 						int gblMax = INT_MIN;
+						
 						//Cut the 3ft rod in to
 						//  0
-						for (int i = 0; i < RodLen; i++)
+						for (int i = 0; i < remainCoinArrayLen; i++)
 						{
+							int PriceTmp = 0;
+							int numberOfCoinsUsedByThisLevel = 1; //1 accounts for current coin
+							int numberOfCoinsUsedByUnderLevels = 0;
 							//Len = i + restLen
 							//    = Price for Length I + Price for RodLen -I
 							//    = Price[i] + CuttingRodUsingRecursion(RodLen -I)
+							int ValueAccumAtThisLevel = coinDenominationAry[i]; //This is pulled from the readily available Price[]
+							int ValueAccumAtUnderLevels = CuttingRodUsingRecursion(coinDenominationAry, remainCoinArrayLen - (i + 1),
+								TargetPriceToReach, &numberOfCoinsUsedByUnderLevels,
+								&numberOfCoinsUsedByUnderLevels, LowestNumberOfCoinsUsed); //This is computed by calling Recursion
+
+							int TotalValueAccumulated = 0; //by current-level & levels below
+							int TotalNumberOfCoinsUsed = 0; //by current-level & levels below
+							if (ValueAccumAtUnderLevels < TargetPriceToReach)
+							{	//[priceAccumulated by underneath layers] is BELOW the Target price;  so add [priceAccumulated by current round (that is coinDenominationAry[i])]
+								//and also pass this to caller
+								TotalValueAccumulated = ValueAccumAtUnderLevels + ValueAccumAtThisLevel;
+								*priceAccumulated = TotalValueAccumulated;
+
+								//Also add the [coins used by current round (that is 1)] + [coins used by underneath layers] 
+								TotalNumberOfCoinsUsed = numberOfCoinsUsedByThisLevel + numberOfCoinsUsedByUnderLevels;
+
+								//Pass [coins used by current round (that is 1)] + [coins used by underneath layers] to CALLER
+								*numberOfCoinsUsed = TotalNumberOfCoinsUsed;
+							}
+							else
+							{	//'AccumulatedValue' is same as Target price; now do NOT add current-level's VALUE and coin count to 'under level' stats.
+								//'AccumulatedValue' is same as Target price; now count the coins that we have used up to reach that 'AccumulatedValue'
+
+								if (numberOfCoinsUsedByUnderLevels < LowestNumberOfCoinsUsed)
+								{
+									LowestNumberOfCoinsUsed = numberOfCoinsUsedByUnderLevels;
+								}
+								*numberOfCoinsUsed = TotalNumberOfCoinsUsed;
+							}
+							/*else
+							{	
+
+								//Pass [coins used by current round (that is 1)] + [coins used by underneath layers] to CALLER
+								if (numberOfCoinsUsed != NULL)
+								{
+									(*numberOfCoinsUsed) += TotalNumberOfCoinsUsed;
+								}
+							}
+
+							//Pass [priceAccumulated by current round (that is coinDenominationAry[i])] + [priceAccumulated by underneath layers] to CALLER
+							int TotalValueAccumulated = ValueAccumAtThisLevel + ValueAccumAtUnderLevels;
+							int TotalNumberOfCoinsUsed = numberOfCoinsUsedByThisLevel + numberOfCoinsUsedByUnderLevels;
+							if (TotalValueAccumulated >= TargetPriceToReach)
+							{	//'AccumulatedValue' is same as Target price; now count the coins that we have used up to reach that 'AccumulatedValue'
+								if (TotalNumberOfCoinsUsed < LowestNumberOfCoinsUsed)
+								{
+									LowestNumberOfCoinsUsed = TotalNumberOfCoinsUsed;
+									return;
+								}
+								//We do n
+							}
+							else
+							{	//'AccumulatedValue' is BELOW the Target price; 
+
+								//Pass [coins used by current round (that is 1)] + [coins used by underneath layers] to CALLER
+								if (numberOfCoinsUsed != NULL)
+								{
+									(*numberOfCoinsUsed) += TotalNumberOfCoinsUsed;
+								}
+							}*/
+
 							
-							int PriceForFirstPart = srcPrice[i]; //This is pulled from the readily available Price[]
-							int PriceForSecondPart = CuttingRodUsingRecursion(srcPrice, RodLen - (i + 1)); //This is computed by calling Recursion
-						
-
-							int TotalPrice = PriceForFirstPart + PriceForSecondPart;
-
-							if (gblMax < TotalPrice)
-								gblMax = TotalPrice;
+																   
+							
 						}
 
 						return gblMax;

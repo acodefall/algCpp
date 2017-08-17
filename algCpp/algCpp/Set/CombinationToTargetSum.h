@@ -5,7 +5,7 @@
 #include <map>
 #include <stack>
 #include <limits>
-#include "Graphbuild.h"
+
 using namespace std;
 
 
@@ -56,7 +56,16 @@ namespace CombinationToTargetSumNM //@RED20170729009
 		public:
 			void useCombination()
 			{
-			
+				
+				int TargetSum4 = 4;
+				int srcLen4 = 3;
+				int src4[3] = { 1, 2, 3 };
+				int output4[4] = { 0 };
+				int outIndex4 = 0;
+				int Sum4 = 0;
+				CoinMaking(src4, srcLen4, output4, outIndex4, TargetSum4, Sum4);
+
+
 				cout << "Combinations that add up to Sum X \r\n \r\n";
 			
 				int TargetSum = 15;
@@ -79,6 +88,40 @@ namespace CombinationToTargetSumNM //@RED20170729009
 			}
 
 			
+			void CoinMaking(int* src, int srcLen,int* output, int outIndex, int TargetSum, int Sum )
+			{
+				//Print the existing combination, and break the recursion. Do not build this combination any more
+				if (Sum == TargetSum)
+				{
+					cout << "following adds to " << TargetSum << endl;
+					for (int i = 0; i < outIndex; i++)
+					{
+						cout << output[i] << " ";
+					}
+					cout << endl;
+					cout << endl;
+					return;
+				}
+
+				//break the recursion.Do not build this combination any more
+				if (Sum > TargetSum)
+					return;
+
+				//Sum is UNDER TargetSUM so try to add one more SLOT to combination, and see if the SUM becomes equal to TargetSum.
+				for (int i = 0; i < srcLen; i++) //'count - count' is same as index so use "<="
+				{
+					//Fill the current-slot or column
+					output[outIndex] = src[i];
+					cout << "output[" << outIndex << "] = '" << output[outIndex] << "'" << endl;
+
+					//RECURSE for filling the slot that is RIGHT of current-slot. 
+					//ADD the value of current-slot to SUM.
+					//SUM should reflect the summ of whatever is already in output[]
+					//NEXT slot will be filled by the element that is "RIGHT of i" so pass "i+1" to next elevel.
+					CoinMaking(src, srcLen,  output, outIndex + 1, TargetSum, Sum + src[i]);
+				}
+			}
+
 			void CombinationToTargetSumRecursion(int* src, int srcLen, int srcIndex, int* output, int outIndex, int TargetSum, int Sum)
 			{
 				//Print the existing combination, and break the recursion. Do not build this combination any more

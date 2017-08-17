@@ -182,8 +182,15 @@
 #include "LongestCommonWordUsingTrie.h"
 #include "FindAnagramsUsingTrie.h"
 #include "BreakLongWordToSubwords.h"
+#include "CoinChangeMaking.h"
 int main()
 {
+	CoinChangeMakingNM::CoinChangeMaking objCoinChangeMaking;
+	objCoinChangeMaking.useCoinChangeMaking();
+
+	CombinationToTargetSumNM::CombinationToTargetSum objCombinationToTargetSum;
+	objCombinationToTargetSum.useCombination();
+
 	BreakLongWordToSubwordsNM::BreakLongWordToSubwords objBreakLongWordToSubwords;
 	objBreakLongWordToSubwords.callBreakLongWordToSubwords();
 
@@ -228,8 +235,7 @@ int main()
 	CombinationsAllNM::CombinationsAll objCombinationsAll;
 	objCombinationsAll.useCombination();
 
-	CombinationToTargetSumNM::CombinationToTargetSum objCombinationToTargetSum;
-	objCombinationToTargetSum.useCombination();
+	
 
 	CombinationsOfWidthXNM::CombinationsOfWidthX objCombinationUsingBitGen;
 	objCombinationUsingBitGen.useCombination();
