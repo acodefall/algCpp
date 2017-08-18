@@ -229,7 +229,6 @@
     <ClInclude Include="Graph\MovieRatingGraph.h" />
     <ClInclude Include="Heap\CheckNumberIsHigherThanKth.h" />
     <ClInclude Include="Heap\HeapBase.h" />
-    <ClInclude Include="Knapsack\CoinMakingUsingDP.h" />
     <ClInclude Include="Knapsack\ColorHomeWithMinimumCostUsingDP.h" />
     <ClInclude Include="Knapsack\ColoringHomeUsingCombination.h" />
     <ClInclude Include="Knapsack\ColoringHomeWithMinimumCost.h" />
@@ -271,7 +270,7 @@
     <ClInclude Include="RotateArray\RotateArray.h" />
     <ClInclude Include="RotateArray\RotateArrayUsingReverse.h" />
     <ClInclude Include="BinSearch\BinarySearchForLoop.h" />
-    <ClInclude Include="Set\CoinChangeMaking.h" />
+    <ClInclude Include="Set\CoinChangeMakingUsingPerm.h" />
     <ClInclude Include="Set\CombinationsAll.h" />
     <ClInclude Include="Set\CombinationToTargetSum.h" />
     <ClInclude Include="Set\CombinationToWidth.h" />

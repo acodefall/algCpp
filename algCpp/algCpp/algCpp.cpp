@@ -182,10 +182,10 @@
 #include "LongestCommonWordUsingTrie.h"
 #include "FindAnagramsUsingTrie.h"
 #include "BreakLongWordToSubwords.h"
-#include "CoinChangeMaking.h"
+#include "CoinChangeMakingUsingPerm.h"
 int main()
 {
-	CoinChangeMakingNM::CoinChangeMaking objCoinChangeMaking;
+	CoinChangeMakingUsingPermNM::CoinChangeMakingUsingPerm objCoinChangeMaking;
 	objCoinChangeMaking.useCoinChangeMaking();
 
 	CombinationToTargetSumNM::CombinationToTargetSum objCombinationToTargetSum;
