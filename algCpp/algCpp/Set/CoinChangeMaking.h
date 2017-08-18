@@ -5,7 +5,7 @@
 #include <map>
 #include <stack>
 #include <limits>
-#include "Graphbuild.h"
+//#include <stringstream>
 using namespace std;
 
 
@@ -42,7 +42,7 @@ namespace CoinChangeMakingNM //@RED20170729009
 				int output4[4] = { 0 };
 				int outIndex4 = 0;
 				int Sum4 = 0;
-				AddCoinsToReachTargetSum(src4, srcLen4, output4, outIndex4, TargetSum4, Sum4);
+				AddCoinsToReachTargetSumX(src4, srcLen4, output4, outIndex4, TargetSum4, Sum4);
 			}
 
 			
@@ -83,6 +83,48 @@ namespace CoinChangeMakingNM //@RED20170729009
 				}
 			}
 
+
+			void AddCoinsToReachTargetSumX(int* src, int srcLen, int* output, int outIndex, int TargetSum, int Sum)
+			{
+				//Print the existing combination, and break the recursion. Do not build this combination any more
+				//if (Sum >= TargetSum)
+				if(outIndex == 4)
+				{
+					//cout << "following adds to " << TargetSum << endl;
+					for (int i = 0; i < outIndex; i++)
+					{
+						cout << output[i] << " ";
+					}
+					//cout << endl;
+					cout << endl;
+					return;
+				}
+
+				//break the recursion.Do not build this combination any more
+				//if (Sum > TargetSum)
+					//return;
+
+				//Sum is UNDER TargetSUM so try to add one more SLOT to combination, and see if the SUM becomes equal to TargetSum.
+				for (int i = 0; i < srcLen; i++) //'count - count' is same as index so use "<="
+				{
+					/*stringstream ss;
+					ss << src[i];
+					string combTemp = comb;
+					combTemp += " ";
+					combTemp += ss.str();*/
+					//Fill the current-slot or column
+					output[outIndex] = src[i];
+					//cout << "output[" << outIndex << "] = '" << output[outIndex] << "'" << endl;
+					//cout << "output[" << outIndex << "] = '" << output[outIndex] << "'" << endl;
+					//RECURSE for filling the slot that is RIGHT of current-slot. 
+					//ADD the value of current-slot to SUM.
+					//SUM should reflect the summ of whatever is already in output[]
+					//NEXT slot will be filled by the element that is "RIGHT of i" so pass "i+1" to next elevel.
+
+
+					AddCoinsToReachTargetSumX(src, srcLen, output, outIndex + 1, TargetSum, Sum + src[i]);
+				}
+			}
 	};
 };
 
