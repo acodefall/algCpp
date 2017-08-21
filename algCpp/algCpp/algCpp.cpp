@@ -19,6 +19,7 @@
 #include "ReverseLL.h"
 #include "Graphbuild.h"
 #include "GraphSearch.h"
+#include "ValueOfMidNode.h"
 #include "EditablePriorityQueue.h"
 
 #include "MatrixRotatePrint.h"
@@ -90,7 +91,7 @@
 #include "PartitionLL.h"
 #include "RemoveDuplicateNodesLL.h"
 #include "ReverseAlternativeKNodes.h"
-#include "BalancedBSTCheckUsingMinMax.h"
+#include "CheckTreeIsBSTUsingMinMax.h"
 #include "BstToGreaterSum.h"
 #include "BSTUsingPreOrderData.h"
 #include "CheckTreeIsMIRROR.h"
@@ -183,8 +184,36 @@
 #include "FindAnagramsUsingTrie.h"
 #include "BreakLongWordToSubwords.h"
 #include "CoinChangeMakingUsingPerm.h"
+#include "LongestCommonPrefixUsingTrie.h"
+#include "SuggestWordsUsingTrie.h"
+#include "KthItemInSortedAryUsingIntersection.h"
+#include "FindOutOfOrderChar.h"
+#include "FindKthItemInBST.h"
+#include "AddTwoLL.h"
+
 int main()
 {
+	AddTwoLLNM::AddTwoLL objAddTwoLL;
+	objAddTwoLL.CallAddTwoLL();
+
+	ValueOfMidNodeNM::ValueOfMidNode objValueOfMidNode;
+	objValueOfMidNode.CallValueOfMidNode();
+
+	FindKthItemInBSTNM::FindKthItemInBST objFindKthItemInBST;
+	objFindKthItemInBST.callFindKthItemInBST();
+
+	FindOutOfOrderCharNM::FindOutOfOrderChar objFindOutOfOrderChar;
+	objFindOutOfOrderChar.callFindOutOfOrderChar();
+
+	KthItemInSortedAryUsingIntersectionNM::KthItemInSortedAryUsingIntersection objKthItemInSortedAryUsingIntersection;
+	objKthItemInSortedAryUsingIntersection.callKthItemInSortedAryUsingIntersection();
+
+	SuggestWordsUsingTrieNM::UseSuggestWordsUsingTrie objUseSuggestWordsUsingTrie;
+	objUseSuggestWordsUsingTrie.CallSuggestWordsUsingTrie();
+
+	LongestCommonPrefixUsingTrieNM::UseLongestCommonPrefixUsingTrie objUseLongestCommonPrefixUsingTrie;
+	objUseLongestCommonPrefixUsingTrie.CallLongestCommonPrefixUsingTrie();
+
 	CoinChangeMakingUsingPermNM::CoinChangeMakingUsingPerm objCoinChangeMaking;
 	objCoinChangeMaking.useCoinChangeMaking();
 
@@ -471,8 +500,8 @@ int main()
 	BstToGreaterSumNM::BstToGreaterSum objBstToGreaterSum;
 	objBstToGreaterSum.callBstToGreaterSum();
 
-	BalancedBSTCheckUsingMinMaxNM::BalancedBSTCheckUsingMinMax objBalancedBSTCheckUsingMinMax;
-	objBalancedBSTCheckUsingMinMax.callBalancedBSTCheckUsingMinMaxNM();
+	CheckTreeIsBSTUsingMinMaxNM::CheckTreeIsBSTUsingMinMax objCheckTreeIsBSTUsingMinMax;
+	objCheckTreeIsBSTUsingMinMax.callCheckTreeIsBSTUsingMinMaxNM();
 
 	ReverseDoublyLinkedListNM::ReverseDoublyLinkedListX objReverseDoublyLinkedListX;
 	objReverseDoublyLinkedListX.callRevDLL();

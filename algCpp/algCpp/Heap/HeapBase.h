@@ -23,7 +23,7 @@ using namespace std;
 					
 					Recursion goes from Root to bottom
 */
-namespace HeapBaseNM
+namespace HeapBaseNM //@RED20170621001
 {
 	class HeapBase;
 	
@@ -56,7 +56,7 @@ namespace HeapBaseNM
 						//data.resize(data.size() - 1);
 						data.pop_back();
 						int sizex = data.size();
-						//reconstruct the heap
+						//reconstruct the heap from top
 						HeapDown(0);
 					}
 				

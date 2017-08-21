@@ -171,6 +171,7 @@
     <ClInclude Include="Array\FindNonDuplicateNumber.h" />
     <ClInclude Include="Array\FindNumberHigherThanKSorted.h" />
     <ClInclude Include="Array\FindOddNumberElements.h" />
+    <ClInclude Include="Array\FindOutOfOrderChar.h" />
     <ClInclude Include="Array\FindPeakElementUnsorted.h" />
     <ClInclude Include="Array\FindSmallestWindowOfSubstring.h" />
     <ClInclude Include="Array\FindSquareRoot.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Array\IntersectionOfSortedArray.h" />
     <ClInclude Include="Array\IntToAscii.h" />
     <ClInclude Include="Array\KnuthShuffle.h" />
+    <ClInclude Include="Array\KthItemInSortedAryUsingIntersection.h" />
     <ClInclude Include="Array\LCSstring.h" />
     <ClInclude Include="Array\LongestCommonPalidrone.h" />
     <ClInclude Include="Array\LongestIncreasingSubSequence.h" />
@@ -238,6 +240,7 @@
     <ClInclude Include="KthOrderSelection\KthItemUnsortedArray.h" />
     <ClInclude Include="KthOrderSelection\KthLargestItemUsingMergeSort.h" />
     <ClInclude Include="KthOrderSelection\KthOrderStatsBase.h" />
+    <ClInclude Include="LinkedList\AddTwoLL.h" />
     <ClInclude Include="LinkedList\BuildDLL.h" />
     <ClInclude Include="LinkedList\BuildLL.h" />
     <ClInclude Include="LinkedList\CircularLLCheck.h" />
@@ -294,8 +297,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SubsetSum\AddAlternateNumbersDP.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Tree\BalancedBSTCheckUsingInOrderTrv.h" />
-    <ClInclude Include="Tree\BalancedBSTCheckUsingMinMax.h" />
+    <ClInclude Include="Tree\CheckTreeIsBSTUsingInOrderTrv.h" />
+    <ClInclude Include="Tree\CheckTreeIsBSTUsingMinMax.h" />
     <ClInclude Include="Tree\BFSSearch.h" />
     <ClInclude Include="Tree\BSTToDoublyLinkedLL.h" />
     <ClInclude Include="Tree\BstToGreaterSum.h" />
@@ -309,6 +312,7 @@
     <ClInclude Include="Tree\DFSSearch.h" />
     <ClInclude Include="Tree\FindDeepestLeftNode.h" />
     <ClInclude Include="Tree\FindDeepestNodeInPlainTree.h" />
+    <ClInclude Include="Tree\FindKthItemInBST.h" />
     <ClInclude Include="Tree\FindMaxValueNode.h" />
     <ClInclude Include="Tree\FindNodeDistanceFromRoot.h" />
     <ClInclude Include="Tree\FindNodeDistanceKFromLeaf.h" />
@@ -331,8 +335,10 @@
     <ClInclude Include="Tree\TreeHeightUsingNonRecursion.h" />
     <ClInclude Include="Tree\TraversalsUsingStack.h" />
     <ClInclude Include="Trie\FindAnagramsUsingTrie.h" />
+    <ClInclude Include="Trie\LongestCommonPrefixUsingTrie.h" />
     <ClInclude Include="Trie\LongestCommonWordUsingTrie.h" />
     <ClInclude Include="Trie\PhoneBookUsingTrie.h" />
+    <ClInclude Include="Trie\SuggestWordsUsingTrie.h" />
     <ClInclude Include="Trie\TopWordCountUsingTrie.h" />
     <ClInclude Include="Trie\TrieInvertedIndex.h" />
   </ItemGroup>

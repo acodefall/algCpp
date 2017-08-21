@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace IntToAsciiNM
+namespace IntToAsciiNM //@RED20170820006
 {
 	class IntToAscii
 	{

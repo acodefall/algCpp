@@ -101,6 +101,9 @@ namespace TopWordCountUsingTrieNM //@RED20170803002
 			}
 		}
 
+		//iterate the TRIE from ROOT to every leaf, and gather each word and store it in MAP as KEY. 
+		//Number of occurence of that word is stored as metadata in the node of last letter.
+		//Store the count as VALUE in MAP
 		void Traverse(TrieNode* cur, string word, multimap<int, string>& wordOccurence)
 		{
 			if (cur != NULL)

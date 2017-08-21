@@ -13,7 +13,7 @@ using namespace std;
 using namespace std;
 using namespace BuildTreeNM;
 
-namespace BalancedBSTCheckUsingInOrderTrvNM //@RED20170731007
+namespace IsBSTNM //@RED20170731006
 {
 	/*
 	We can check if the Tree is Balanced using 3 methods
@@ -23,57 +23,53 @@ namespace BalancedBSTCheckUsingInOrderTrvNM //@RED20170731007
 			This can be implemented using Recursion and non-recursion methods.
 	
 	*/
-	class BalancedBSTCheckUsingInOrderTrv
+	class IsBST
 	{
 		public:
-				void callBalancedBSTCheckUsingInOrderTrv()
+				void callIsBST()
 				{
 					BuildTree objTrrr;
-					objTrrr.AddValues();
+					objTrrr.AddValuesNonBST();
+					//objTrrr.AddValues();
 
 					cout << "\r\n";
 					cout << "Tree content\r\n";
 					objTrrr.printTreeInOrder(objTrrr.root);
 					cout << "\r\n";
 
-					bool x = BalancedBSTUsingInorderTrv(objTrrr.root);
+
+					bool x = IsTreeBST(objTrrr.root);
 
 				}
 
-				//iterate the Tree using Inorder traversal, if the data is in increasing order then BST is Balanced
-				bool BalancedBSTUsingInorderTrv(NodeTree* rt)
+				
+				bool IsTreeBST(NodeTree* rt)
 				{
-					bool Balanced = true;
-					stack<NodeTree*> st;
-					int prevValue = INT32_MIN;
+					bool bst = false;
 					NodeTree* cur = rt;
-					while (cur)
-					{
-						//Navigate till the deepest left-node.
-						//Add the nodes found till then to STACK 
-						while (cur)
+					if (rt != NULL)
+					{	
+						bool lc = IsTreeBST(rt->L);
+						bool rc = IsTreeBST(rt->R);
+						if (lc && rc) //Child hives are BST
 						{
-							st.push(cur);
-							cur = cur->L;
-						}
-
-						if (st.size() > 0)
-						{
-							NodeTree* n = st.top();
-							st.pop();
-							if (n->d > prevValue)
-								prevValue = n->d;
-							else
+							//now check the current node
+							if ((rt->L <= rt->d) && (rt->R >= rt->d))
 							{
-								Balanced = false;
-								break;
+								return true;
 							}
-
-							cur = n->R;
 						}
 
 					}
+					else
+					{	//A NULL node is assumed to satisfy the rule of BST because P, lc & rc are all NULL
+						//If the Node is NULL, there are no child either.
+						//we can NOT compare value of P, Lc and Rc
+						//so simply return TRUE
 
+						return true;
+					}
+				
 					return Balanced;
 				}
 	};

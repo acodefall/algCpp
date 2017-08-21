@@ -11,12 +11,20 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace PrintAllPathsOfTreeNM
+namespace PrintAllPathsOfTreeNM //@RED20170820012
 {
 	/*
-		
+		Print all the paths of a BST and plain BT_RED20170820012
+			When it comes to iteration logic, same logic applies for both BST and Plain Binary Tree.
+			But the Logic changes in case of Searching a number in Tree. This is because in case of BST, L node is lower than Parent, and R node is higher than Parent node.
+			In case of BT, there is no such rule.
 
-			Example
+			Coming implementation, do pre-order traversal of tree. At each loop store the node value in a list.
+			When the cursor reaches the leaf node, print the contents of LIST.
+			Same logic applies for both BST and plain BT
+			
+
+			Example(BST)
 				           100
                           /    \
                          /      \

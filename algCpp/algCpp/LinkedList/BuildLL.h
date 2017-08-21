@@ -224,6 +224,30 @@ namespace BuildLLNM
 				x7->next = x8;
 			}
 
+			//LL will have the digits of the number as node value.
+			//ex: if N = "267", then LL will 2->6->7
+			void AddValuesSmallNumber267()
+			{
+				
+				root = new NodeSLL(2);
+				NodeSLL* x2 = new NodeSLL(6);
+				NodeSLL* x3 = new NodeSLL(7);
+				
+				root->next = x2;
+				x2->next = x3;
+			}
+
+			void AddValuesSmallNumber5058()
+			{
+				root = new NodeSLL(5);
+				NodeSLL* x2 = new NodeSLL(0);
+				NodeSLL* x3 = new NodeSLL(5);
+				NodeSLL* x4 = new NodeSLL(8);
+				root->next = x2;
+				x2->next = x3;
+				x3->next = x4;
+			}
+
 			~BuildLL()
 			{
 				cout << "\r\n";
