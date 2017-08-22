@@ -159,6 +159,7 @@
     <ClInclude Include="Array\ChildHoppingDP.h" />
     <ClInclude Include="Array\CompactStringRemovingSpaces.h" />
     <ClInclude Include="Array\Division.h" />
+    <ClInclude Include="Array\EncodeReplaceMultipleWithNumber.h" />
     <ClInclude Include="Array\FibForLoop.h" />
     <ClInclude Include="Array\FibRecurse.h" />
     <ClInclude Include="Array\FibRecurseDP.h" />

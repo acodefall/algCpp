@@ -190,9 +190,12 @@
 #include "FindOutOfOrderChar.h"
 #include "FindKthItemInBST.h"
 #include "AddTwoLL.h"
-
+#include "EncodeReplaceMultipleWithNumber.h"
 int main()
 {
+	EncodeReplaceMultipleWithNumberNM::EncodeReplaceMultipleWithNumber objEncodeReplaceMultipleWithNumber;
+	objEncodeReplaceMultipleWithNumber.callEncodeReplaceMultipleWithNumber();
+
 	AddTwoLLNM::AddTwoLL objAddTwoLL;
 	objAddTwoLL.CallAddTwoLL();
 
