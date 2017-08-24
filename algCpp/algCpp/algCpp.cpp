@@ -191,8 +191,12 @@
 #include "FindKthItemInBST.h"
 #include "AddTwoLL.h"
 #include "EncodeReplaceMultipleWithNumber.h"
+#include "DivisibilityRule.h"
 int main()
 {
+	DivisibilityRuleNM::DivisibilityRule objDivisibilityRule;
+	objDivisibilityRule.callDivisibilityRule();
+
 	EncodeReplaceMultipleWithNumberNM::EncodeReplaceMultipleWithNumber objEncodeReplaceMultipleWithNumber;
 	objEncodeReplaceMultipleWithNumber.callEncodeReplaceMultipleWithNumber();
 

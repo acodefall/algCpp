@@ -158,6 +158,7 @@
     <ClInclude Include="Array\ChildHopping.h" />
     <ClInclude Include="Array\ChildHoppingDP.h" />
     <ClInclude Include="Array\CompactStringRemovingSpaces.h" />
+    <ClInclude Include="Array\DivisibilityRule.h" />
     <ClInclude Include="Array\Division.h" />
     <ClInclude Include="Array\EncodeReplaceMultipleWithNumber.h" />
     <ClInclude Include="Array\FibForLoop.h" />
@@ -322,6 +323,7 @@
     <ClInclude Include="Tree\LowestCommonDescendent.h" />
     <ClInclude Include="Tree\NodeCount.h" />
     <ClInclude Include="Tree\PrintLevelsOfTreeInALine.h" />
+    <ClInclude Include="Tree\SerializeTree.h" />
     <ClInclude Include="Tree\TreeHeightUsingRecursion.h" />
     <ClInclude Include="Tree\PostOrderUsingStack.h" />
     <ClInclude Include="Tree\PrintAllPathsOfTree.h" />
