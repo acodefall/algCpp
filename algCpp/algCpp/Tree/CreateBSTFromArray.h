@@ -9,7 +9,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace CreateBSTFromArrayNM
+namespace CreateBSTFromArrayNM //@RED20170825001
 {
 	/*
 
