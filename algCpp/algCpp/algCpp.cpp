@@ -192,8 +192,12 @@
 #include "AddTwoLL.h"
 #include "EncodeReplaceMultipleWithNumber.h"
 #include "DivisibilityRule.h"
+#include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
+	OccurenceCountUsingAsciiAryNM::OccurenceCountUsingAsciiAry objOccurenceCountUsingAsciiAry;
+	objOccurenceCountUsingAsciiAry.callOccurenceCountAscii();
+
 	DivisibilityRuleNM::DivisibilityRule objDivisibilityRule;
 	objDivisibilityRule.callDivisibilityRule();
 
