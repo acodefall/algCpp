@@ -14,11 +14,18 @@
 
 using namespace std;
 
-namespace OccurenceCountUsingAsciiAryNM  //@RED20170726003
+namespace OccurenceCountUsingAsciiAryNM  //@RED20170030003
 {
    
     /*
-         
+         Test if  a string is ENTAIRELY made up of the characters taken from other two source strings_RED20170030003
+			There will be two src strings and one superset string; we have to check whether the superset string is entairely made up of chars taken from two source strings.
+			Strategy is, compute the occurence count for both source strings and store them inside same 'occurence count Array'.
+			Then go through the superset array, and decrement the occurence count in 'occurence count Array'.
+			If the superset-ary is entairely made up of source arrays, then 'occurence count Array' should be full of 0s; if not superset string is not entairely made up of src arrays.
+			So verify this condition by going through the 'occurence count Array'. 
+			.
+
     */
     class OccurenceCountUsingAsciiAry
     {
@@ -75,13 +82,12 @@ namespace OccurenceCountUsingAsciiAryNM  //@RED20170726003
 			}
 
 			//If the combString is constructed using src1 and src2, then occurence count of every character should become 0
-			//Basically there won't be any letter who's occurence count is > 0.
+			//Basically srcHash[] should be full of 0s.
 			i = 0;
 			int notMade = 0;
 			while (i < CHAR_MAX)
 			{
-				//We initialized the array to 0, so the remaining value in ary[] should be either '0'
-				//Any other value will indicate that combstring is NOT entairely made up of src1 ad src2
+				//If any slot has non-zero, then combString is NOT constructed using src1 and src2, 
 				if (srcHash[i] != 0)
 				{
 					notMade = 1;
