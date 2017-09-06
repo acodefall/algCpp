@@ -49,6 +49,7 @@ namespace Anagram1NM //@RED20170725042
 
    */
    //SORT-Predicate
+   //sorts the words based on letters and then compare the strings that have sorted letters
 	struct sortByWord
 	{
 		bool operator()(string p1, string p2)

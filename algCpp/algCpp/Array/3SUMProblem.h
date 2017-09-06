@@ -2,6 +2,7 @@
 /*
 	 Problem:
 	 Find all unique triplets in a set which gives the sum of zero.
+	 This assumes that array is sorted
 		For example, given set S = {-1 0 1 2 -1 -4},
 		One possible solution set is:
 		(-1, 0, 1)
@@ -13,13 +14,6 @@
 	3SUM method solves this in (N ^ 2) time.
 	https://en.wikipedia.org/wiki/3SUM#Quadratic_algorithm
 
-
-	Solution2
-	Knapsack problem can be tweaked to solove this also.
-
-	http://www.techiedelight.com/find-triplet-given-with-given-sum/
-	https://www.cpp.edu/~ftang/courses/CS240/lectures/recursion.htm
-	https://www.cs.rochester.edu/u/hliao6/projects/combinatorial_optimization/final_project.pdf
 */
 
 
@@ -36,21 +30,25 @@ namespace ThreeSumProblemNM  //@RED20170616002
 
 		
 		3SUM problem using 3indexes_20170616002
-			This uses three indexes(currItemIndex, startIndex, endIndex). 
-			currItemIndex points to the stable member of the trio, startIndex, endIndex refers to the elements that we try out (by adding in to currItemIndex). Ex: currItemIndex is stable at 3, we vary startIndex, endIndex from [3+1] to [Last Index], and compute the sum and check if the sum is 3. currItemIndex is like an iterator to scanning the src array goes from 0 to N-2.
-			Where is initialized to [currItemIndex+1], and endIndex is initialized to Max.			
-
-			Program will have Outer ForLoop that scans the src array, uses currItemIndex as index(0 to Max). Then it starts a inner while loop to vary startIndex and endIndex. Before starting the inner While loop startIndex is set to 1, and endIndex is set to Max. Then an inner whileloop starts, and it compares the 'sum of the trio' against K, and appropriately manipulates either startIndex or endIndex, but not the both at same time. To understand the manipulation logic, keep in mind that Data is sorted, and startIndex can only INCREASE and endIndex can only DECREASE because they are already at the extreams.
-			If (trio-sum > K)
-				reduce endIndex; //that is because we want to reduce the sum, and we can not move startIndex backwards.
-			If (trio-sum < K)
-				increase startIndex; //that is because we want to increase the sum. And we can do that by increasing startIndex. We can not move the endIndex backward because it could be at Max point.
-			 
-			 If the (trio-sum == K)
-				We found a sequence that is 0. Record the sequence.
-				decrease endIndex; 
-				Continue to find next match.
-
+			We need 3 numbers for adding so we use 3 indexes to provides us with 3 numbers for adding. 
+			1st index stays stable and vary other two index. 1st & 2nd index goes in forward direction, and 2nd index comes in reverse direction.
+			2nd index = 1st index + 1;
+			3rd index = SrcLen
+	
+			
+			Keep the 1st index stable, go on modifying 2nd and 3rd index. We either indrease or decrease the 2nd index and 3rd index, depending on comparison of K and total-sum.
+			To understand the index manipulation logic, keep in mind that Data is SORTED, and 2ndIndex can ONLY INCREASE and 3rdIndex can only DECREASE (because they are already at the END).
+		
+				If (trio-sum > K)
+					reduce endIndex; //that is because we want to reduce the sum, and we can not move startIndex backwards.
+				If (trio-sum < K)
+					increase startIndex; //that is because we want to increase the sum. And we can do that by increasing startIndex. We can not move the endIndex backward because it could be at Max point.
+				 
+				 If the (trio-sum == K)
+					We found a sequence that is 0. Record the sequence.
+					decrease endIndex; 
+					Continue to find next match.
+			
 				for(iterates src[I])
 						{
 							while( st < end)
@@ -65,13 +63,13 @@ namespace ThreeSumProblemNM  //@RED20170616002
 									end--;
 								else 
 									//Sum is Low and needs increasing, so increase startIndex
-									start--;
+									start++;
 							}
 						}
 			Inner while loop goes as long as (startIndex < endIndex). All along, currItemIndex stays constant.
 			Once the inner loop ends, currItemIndex moves to the 1st element, and whileLoop starts again, looking for the match that makes the sum K.
 			
-				Steps for 3SUM problem using 3indexes_20170616003
+		Steps for 3SUM problem using 3indexes_20170616003
 			a) Start a ForLoop to iterate src[], and use currItemIndex as index
 			b) Inside ForLoop, 
 				set startIndex = currItemIndex + 1
