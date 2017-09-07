@@ -3,7 +3,7 @@
 #include <string>
 #include <unordered_map>
 using namespace std;
-namespace PatternMatchUsingOccurCountNM
+namespace PatternMatchUsingOccurCountNM //20170617003
 {
 	/*
 		Pattern matching using ocurence count.

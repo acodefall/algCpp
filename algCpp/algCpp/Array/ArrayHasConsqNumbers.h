@@ -14,6 +14,13 @@ using namespace std;
 
 class ArrayHasConsecutiveNumber
 {
+
+	//Procedure is
+	//Logic is if the numbers are consecutive then the MAX-MIN should be equal to Array Len, provided there are no dupliacets. Our code should check that
+	//a) Compute the MIN and MAX
+	//b) Compare array length with MAX-MIN + 1
+	//c) Verifiy there are no duplicates.
+	//d) if all these conditions are met then we can say that array has consecutive numbers
 	public:
 		void callArrayHasConsecutiveNumber()
 		{
