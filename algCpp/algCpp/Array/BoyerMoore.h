@@ -24,7 +24,33 @@ namespace BoyerMooreNM //@RED20170724012
 					 
 				seven
 				   ten
-				
+
+	Important point
+		Say part of the pattern(say last 3 characters of pattern) are found in src, but not the 4th character(from the last).
+		Then we take that missing letter from src and see it exists in src[]. 
+		If the character is NO WHERE in pattern, then we MOVE the pattern to RIGHT, by the amount equal to the full length of the pattern.
+		Just past the missing character X
+	 
+			 //i = 3, j = 2  (X == e) 'X' is the missing character
+			 p t e X t w o t h r e e
+			   o N e t w o
+	               .
+
+			NEXT-ACTION 
+				//Move the pattern all the way, past the missing character X
+				 p t e X t w o t h r e e
+						 o N e t w o   
+	   
+		If character is somewhere inside in the pattern, but not at the current index, then MOVE the pattern to RIGHT only enought so that  
+		missing characters coincide.
+			 //i = 3, j = 2  (N == e) 'N' is the missing character
+			 p t e N t w o t h r e e
+			   o N e t w o
+			
+			NEXT-ACTION 
+				//Move the pattern so that 'N' coincides 
+				 p t e N t w o t h r e e
+					 o N e t w o   
    */
    
 	
@@ -35,8 +61,10 @@ namespace BoyerMooreNM //@RED20170724012
 			void callBoyerMoore()
 			{
 			
-				string src("Xwothrtwo");
-				string pat("two");
+				//string src("Xwothrtwo");
+				//string pat("two");
+				string src("pteNtwothree");
+				string pat("oNetwo");
 				cout << "S: " << src << endl;
 				cout << "P: " << pat << endl;
 				BoyerMooreX(src, pat);
@@ -87,10 +115,12 @@ namespace BoyerMooreNM //@RED20170724012
 						}
 						else
 						{
+
 							cout << "   " << "s[" << i << "] = '" << s[i] << "' is somewhere in pattern. i = '" << i << "'" << endl;
 
 							 i = i + pat.length() - min(j, (int)src.length() - k +1);   //To shift the full length of TRG to right side(beyond [i]).
 							                       //(j - x)
+							 cout << " i '" << i << "'" << endl;
 						}
 						
 						//when ever a character is missing

@@ -12,20 +12,21 @@ using namespace std;
 
 /*
 	Binary search inside rotated sorted Array_20170717001
-		Rotated array is created by breaking one big sorted array in to two pieces, and swapping their positions, so that max-value and Min-Value come to the center of the array. Notice that swappig would make the Binary Search difficult because Low-index(that is index-0) does not point to LowValue, and index-Max does not point to Max value any more. 
-
-		Ex: {4,5,6} is broken in to {5,6} and {4}
-		To compensate displacement of Min and Max Values, BinarySearch logic should first go to the side that is continuous. We can tell this by looking at the values pointed by Min, Mid, Max indexes.
-						If src[L] < src[M]. then left-side is continuous so go to left-half
-						If src[M]  < src[H]. then Right-side is continuous so go to right-half.
-		Once inside the contunous section of array, apply the DAC logic. Check whether the Value falls inside the range covered by that section(say is value is within src[min] & src[mid], go to left-side); otherwise go to Right-side. If src[M] is the value, then exit
+		Rotated array is created by breaking one big sorted array in to two pieces, so that max-value and Min-Value come to the center of the array. 
+		Traditional BST logic assume higher-index will give higher number and lower index will give lower number,
+         and this will not be true after rotation. To compensate for this BST logic needs to alted, as follows.
+		-Compute MID index as usual, and this gives two partitions
+		-Go in to the partition that has continuous numbers. Continuous numbers means 'numbers in that partition should be all be INCREASING or DECREASING'; 
+		 It should not "REDUCE and then INCREASE" means {5, 6, 7, 1, 2}
+			Left-partition  {"4 5 6"}    //Continuous so go here
+			Right-partition {"8, 10, 1, 2, 3"}  //Not Continuous,  so do not go here
 			
-					 {5	6 8} {1 2 3 4}
-					 L = 0, M = 1, H=6 //Go to left array. 
-
-					 {5	6 8} {1 2 3 4}
-					 L = 2, M = 4, H=6 //Go to right array.
-
+			If src[L] < src[M]. then left-side is continuous so go to left-half
+			If src[M]  < src[H]. then Right-side is continuous so go to right-half.
+						
+		-Once inside the correct section, apply the DAC logic. Check whether SoughtVALUE = MidVALUE is equal, if so exit.
+		 If the SoughtVALUE is LOW, then make Left Turn or make Right Turn.
+		
 		
 
  
