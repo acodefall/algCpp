@@ -12,23 +12,34 @@
 #include <unordered_set>
 #include <unordered_set>
 using namespace std;
-namespace KthItemInSortedAryUsingIntersectionNM //@RED20170919005
+namespace KthItemInSortedAryUsingIntersectionNM //@RED20170919005 @RED20170919007
 {
 	/*
-		Find Kth item among 2 arrays_RED20170919005
-					Since the arrays are already sorted we can find Kth item among those two arrays using INTERSECTION method. INTERSECTION method iterates the arrays ONLY until K items are crossed.
-					If K = 4, stop after merging 4 items.
-					This takes O(K) time.  Thiis can also be solved by using MERGING sorted arrays as we do in MERGE sort but that needs extra array.
+		Find Kth item among 2 Sorted arrays_RED20170919005
+			Since the arrays are already sorted we can find Kth item among those two arrays using INTERSECTION method. INTERSECTION method iterates the arrays ONLY until K items are crossed.
+			If K = 4, stop after merging 4 items.
+			This takes O(K) time.  Thiis can also be solved by using MERGING sorted arrays as we do in MERGE sort but that needs extra array.
 
-					To understand intersection method, imagine a SINGLE cursor that rides both Arrays selectively. Cursor hops on to the array who’s value is lower and advances the index on that array; where as the index of other array stays at the current index. Say Src1 has low value, then increment the index of Src1; index of Src2 remains unchanged. If both values are equal, then increment the index of both src1 and src2. 
+		Intersection Method Understanding_RED20170919007
+			Intersection method will have two SORTED arrays but only one cursor. This cursor has to jump back and forth between so that the values are ASCENDING(or the path being traced is ascending). At every stage cursor has two paths or two "next-values": one from 1st array and other 2ns array.  Cursor should pickup the value that is LOWER AMONG them, and then INCREMENT the index of the THAT array only. Other arrays index same where ever it was. In the next loop, we again compare two next values as we did before. So in a loop, we increment the index of the array who's curr-value is LOWER.
+			If the curr-values of both arrays is same then increment the index of both the arrays.
 
-					Cursor rides the array with lower value because arrays are expected to be ACENDING order. If the array were in DESCENDING order, cursor would have been hopping on to the array who's value is HIGHER.
+			//WHen src arrays are ASCENDING
+			if(s1 < s2)
+				s1++;
+			else if(s2 < s1)
+				s2++;
+			else
+				s1++ s2++;
 
-					Coming to implementation, intersection method iterates both arrays in same while loop, using distinct indexes.
-					Every loop will increment the index of the array who's value is LOWER.
-					If Index of Src1 is lower then increment the index of only Src1.
-					If the values both Src1 and Src2 are equal, then increment both the indexes.
-					Index pointing to low value is incremented because array is assumed to in ascending order.
+			If the src-arrays are in DESCENDING order, the pickup the HIGHER among the two values, 
+			because path being traced should be HIGH to LOW
+
+			Coming to implementation, intersection method iterates both arrays in same while loop, using distinct indexes.
+			Every loop will increment the index of the array who's value is LOWER.
+			If Index of Src1 is lower then increment the index of only Src1.
+			If the values both Src1 and Src2 are equal, then increment both the indexes.
+			Index pointing to low value is incremented because array is assumed to in ascending order.
 
 					void FindKthItemUsingIntersection(int src1, int src2, int K)
 					{

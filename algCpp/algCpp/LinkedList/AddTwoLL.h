@@ -10,17 +10,18 @@ namespace AddTwoLLNM //@RED20170820010
 {
 	/*
 		Add the digits stored in two LL_@RED20170820010
-			Say LL1 will have “2 & 2” and LL2 will have “5 & 8”. We have to add them as if we are adding 22 + 58; only difference is addition goes from L->R, so the carry over too. Ideally addition should travel R->L, that is start from TAIL. 
-			In this case, 22+58 will result in “701”; and result should be stored in brand new LL.
-			
-			Coming to inplementation, Iterate both LL in the same loop; and continue as long as at least one of the cursor is non-null
-			Both the LL may not be of same length. In that case, for the shorter LL, assume the value as 0, and execute the same addition logic, as if the value is non-null.
+			Say LL1 will have “2 & 2” and LL2 will have “5 & 8”. We have to add them as if we are adding 22 + 58; only difference is addition goes from L->R, and carry over also goes from L ->R. THis is because LL iteration goes from L->R. Result of SUM should be stored in seperate LL. In this case, 22+58 will result in “701”; and result should be stored in brand new LL.
 
-				If (sum >= 10) //Do special logic. //if sum = 25; "carryOver=2" "sum=5"
-					carryOver = sum/10;
-					sum = sum%10;
-			Once sum is ready, store it in a brand new Node 
-			Once whole addition is complete, function should return the Head of resultLL.
+			Sum = one value from LL1 	+ one value from LL2 + CarryOver.
+			If (sum >= 10) //Do special logic. //if sum = 25; "carryOver=2" "sum=5"
+				carryOver = sum/10;
+				sum = sum%10; //Store this in LL
+
+					
+
+			Coming to inplementation, Iterate both LL in the same loop; and continue as long as at least one of the cursor is non-null
+			Both the LL may not be of same length. In that case, for the shorter LL, assume the value as 0, and execute the same addition logic, as if the value is non-null. Once sum is ready, create a brand new node, store the SUM in it and attach the node to Result LL.  Once the whole addition is complete, function should return the Head of resultLL.
+
 
 			Note: sum = v1 + v2 + carryOver(from previous round)
 

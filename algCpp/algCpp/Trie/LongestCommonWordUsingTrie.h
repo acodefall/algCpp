@@ -57,54 +57,107 @@ namespace LongestCommonWordUsingTrieNM //@RED20170805004
                                                                                                               
 	
 	
-	Trie over view_20170803001
-		Visualize the TRIE as a cloth hanger that has 26 ribbons hanging from it. 1st ribbon has the words starting from letter A, and 2nd ribbon has the word starting from letter B...This goes on until Z. There is one ribbon for every letter.
+	Trie over view_20170903001
+		Visualize the TRIE as a cloth hanger with 26 ribbons hanging from it. Assume this this TRIE holds all the words that are in a physical dictionary. 1st ribbon has the ALL the words of dictionary that start from letter A, and 2nd ribbon has the ALL the words of dictionary that starts from letter B...This goes on until Z.
 
-		What is special about TRIE is that it can record a new word by adding few letters to an already existing word, if the new word is SUFFIX of a word that is already in TRIE.
-		For example: The ribbon for letter R, can have both ROCK and ROCKET. Rocket gets created by adding two letters to the already existing word ROCK. This is why Trie is space efficient.  Since several words sit on same thread on nodes, Trie will FLAG 'end of word' flag by setting a flag. 
-		Ex: In case of Rocket and Rock, both K and T will have 'end of word' flag.  So the program iterating the nodes 
-		Should look for EOW and if present, it should record that as word. 
-
-		Every node has 26 child nodes. So if you go back to Ribbon analogy, at every level, the number of ribbons increases by a mupliple of 26. First/root level will have 26 ribbons, and each child node will have 26 children, so the second 
-		level will have 26 * 26 ribbons. This layout helps TRIE to represent whole dictionary by using less space.
-			
-		Coming to the members of NODE.
-		Node will have a MAP with 26 entries, who's KEY is the alphabet and VALUE is child node.  Node does not store the character (that it is representing) in any data member at all. 	For that we have to see the KEY inside parent node's map. 
-		Node tells two things: It tells whether the letter marks EOW; and it also gives child nodes; but it does not tell about the character repreasnted by node iteelf. Iteratig logic SHOULD be aware of this.
-
-		Ex: Assume TRIE has word RAT. 
-		Iteration starts from ROOT node; and Root node does not represent any letter at all, but it's MAP has a non-NULL VALUE for letter 'R'; that is how we come to know that the child represents letter R. Then we step in to that child node, and it does not have  any class member that says that we are in R-node. Map of R-node will have non-NULL VALUE for letter A. We step in to A-Node. Map of A-node will have non-NULL VALUE for letter T. Then we enter T node, and that will have EOW flag. Then we record RAT as a word. 
-
-		Note: Do not stop the iteration just because a node has EOW flag set. A thread of Nodes/ribbon can have many EOWs so go until the nodes who’s child nodes are all NULL.
+		Every node at every level has 26 child nodes and this continues until there are no alphabets, in both x & y directions. This is why TRIE is able to represent whole dictionary. Take the example of words "AA", "AB", "AC"..."AZ".  All these words start with A and that is represeted by the node-A which is child of ROOT. That node-A will have 26 child nodes to take care of 2nd lete of "AA", "AB", "AC"..."AZ". As you see words all these words share common node for "A". This is why TRIE is efficient.  When we store a new word in TRIE, it does not get built from scarch instead existing word will be extended to accomadate the new word. Ex: ROCKET can be created by adding ET to ROCK.
 
 
+	Trie Node structure_20170903002
+		Typically Node object will have 3 data members. EOW flag, Metadata object and MAP object.
+		-A thread of nodes strecthing from Root to Leaf will have several words on same thread(like Rocket and Rock). EOW flag will be set only if the node happens to be the last letter of a word. Ex: In case of Rocket and Rock; K and T will have EOW flag. When iterating, do not stop just because EOW was found.
+		-Metadata object will have metadata. Not all nodes will have Metadata; only the node where EOW is set will have the Metedata. For example: TRIE for Telephone Dictionary will have  phone number as metadata. Meta data will hold the phone number only on the node where person name ends.
+
+		-MAP object holds the node object for next letter of the word. MAP will have 26 entries, where KEY is alphabet and value is NODE for that alphabet. KEY will always have a something but VAUE will be valid-object only if there is a NEXT letter. If the child is null, then do not go forward. When doing a DFS iteraton on TRIE, end the iteration if a node a NO Last node in the THREAD will have no child object at all.
+
+		Notice that Node does not tell about the alphabet that it is representing(node has EOW flag and child nodes, but no info about the letter that node is representing). To know the alphabet for that node, go to parent node and read the KEY in its MAP. This is why root node does not stand for ANY letter because it has no parent, so no MAP and thus no alphabet.
+
+	Inserting Word in to Trie 20170903003
+		Insert Ex: ART in to TRIE
+		Note that TRIE will not create the word from scratch; instead it extends the existing word.
+		When it comes to adding the word ART; first 'letter A' should be made child of Root-node; then 'letter R' should be made child of 'letter A'; similarly add 'letter T' also.
+
+		If the Root node already has a child object for letter-A, reuse it. If there is no existing child-object, create a brand new node object and store it in MAP of root node. When storing in map, use letter-A has KEY. Now the 'letter A' has been put inside TRIE, it does not matter whether we created a brand new node or it already existed in map.
+
+		Take the node for letter-A, and check if it has child for letter-R, if it is present, reuse it; otherwise create a brand new node object and store it in the MAP of 'letter-A'.
+
+		Similarly take care of letter T also; since T is the last letter in the word ART, set EOW flag. There is NO letter after T, so T will not have any child node, so the MAP will only have NULL values.
+
+		Details:
+			There will be two cursors: srcCursor and TrieCursor.
+			-TrieCursor will be pointing to ROOT node.
+
+			-Read the letter from src, and use it as KEY for MAP of  TrieCursor. If the MAP has non-NULL value, then read it and assign it to TrieCursor. Otherwise creaye a brand new Node object, and store it in MAP. Then assign the newly created value to TrieCursor
+			{
+				for (letter in src)
+				{
+					If(TrieCursor.MAP[letter] == NULL)
+						TrieCursor.MAP[letter] = New Node();
+					else
+						//do not create NODE, because it exists MAP.
+				}
+				TrieCursor = TrieCursor.MAP[letter]; //advance the TrieCursor
+
+				//Out of ForLoop TrieCursor will be pointing to 'last letter' of word, and set EOW to TRUE on this node
+				TrieCursor.EOW = true;
+			}
+			-In the next loop, next another letter from src will be added to TRIE.
+			-AFter exhasting the src-arry, come out of loop. TrieCursor will be pointing to the last letter of the word, and set EOW to TRUE on this node
+
+	Finding Word in Trie 20170903004
+		Logic for searching a word in TRIE is same as inserting a WORD. Insert first tries to find the alphhabet and if it is not present, then it creates a node object and inserts it in to TRIE. Where as Search will exits with FAILURE if the alphabet is missing. So Insert code is supeset of Search code. There is one more difference between the two; Search returns TRUE, ONLY if every alphabet is present and also EOW has been set on last alphabet of WORD.
+
+		Coming to implementation:
+		There will be two cursors: srcCursor and TrieCursor.
+		-TrieCursor will be pointing to ROOT node.
+
+		-Read an alphabet from src, and look for it inside MAP; if the MAP has non-null child node, then alphabet is present in TRIE, advance the cusror and continue to next round. Next round will look for new alphabet. Do this untill we process every letter of src-array.  Advancing the cusror involves assigning (newly found)child-node to TriCursor
+
+		If the MAP has null value, then alphabet is missing, that means word is not present in Trie, so break the forLoop and return FALSE.
+
+		If every alphabet is present, then Forloop will exit after processing every character. Once out of ForLoop, TrieCursor will be pointing to last alphabet of WORD. Go in to that node and check if EOW flag set. If the EOW flag is present then we can conclude that WORD exits in TRIE.
+
+			for (letter in src)
+			{
+				If(TrieCursor.MAP[letter] == NULL)
+					TrieCursor = TrieCursor.MAP[letter]; //advance the TrieCursor
+				else
+					notFound = true;
+					break;
+			}
+			if(notFound == false)
+				if(TieCursor.EOW == TRUE)
+					//word is present in TRIE
 
 
-		
 
-		Computing LCW_20170805004           
-			Broadly speaking filter out the simple words and keep only the compound words.  Further splice the compound word in to 1stWord and ‘Rest of the word’. We know 1stword, which is also the left-most word has only word, and check whether that itself is a Simple word(by trying to Search for it under ROOT). If the 1st word is a simple word, this compound word is still in the game, so splice ‘Rest of the word’. This will produce one more set of 1stWord and ‘Rest of the word’, and make sure 1stWord is a Simple word(by trying to Search for it under ROOT); if so compound word is still the game. In the next round splice the ‘Rest of the word’ again. Do this until there is nothing to be spliced. After every split resulting 1st word must pass the test for Simple word(means Search for it under ROOT). Then the original word is a good compound word and save it in a separate list. 
+	Iterating TRIE_20170903005
+		TRIE can be iterated using DFS based on recursion. TRIE node keeps its children in MAP. Start the iteration from Root. Once inside a node, iterate the MAP using ForLoop, if the MAP has Non-Null child node, then we need to go in to that child node as per the rules of DFS. So make a recursion call by passing the child node as parameter.
+		Once the recursion returns, make a similar recursion call to next entry in MAP. If the node is LEAF, then none of entry in MAP will have valid child node, that is when DFS makes a U-turn.
 
-			Apply the Splice logic on every compound word that user has entered. The compound words that pass the splice test should be added to a separate list. 
+		During iteration we may want to record the word. We know the node's parent knows about the alphabet represented by Node; and Node will know about EOW and chlldren. So record the alphabet when iterating the MAP, and then place the rfecursion call if VALUE is non-null. Once inside the recursion for child noe, check EOW is set, if so record that as WORD. After that start a forLoop to iterate MAP. If the MAP all null objects, then this is a LEAF node. As soon we enter the recursion check whether the node is valid, then only iterate the MAP.
 
-			In the end we will have a list of qualified compound words. These words are totally made up of Simple worlds; they do not contain foreign letter. Select longest compound word for that. 
+	
 
-			Splicing logic uses MAP of  “CompoundWordThatUserEntered” V/s ‘CompoundWordToBeSpliced’. In the first round KEY and VALUE will be same; and as we splice the Compound Word, we change the VALUE. In the end VALUE will recude to “” string. That is when we stop the splicing operation. 
+	Computing LCW_20170805004           
+		Broadly speaking filter out the simple words and keep only the compound words.  Further splice the compound word in to 1stWord and ‘Rest of the word’. We know 1stword, which is also the left-most word has only word, and check whether that itself is a Simple word(by trying to Search for it under ROOT). If the 1st word is a simple word, this compound word is still in the game, so splice ‘Rest of the word’. This will produce one more set of 1stWord and ‘Rest of the word’, and make sure 1stWord is a Simple word(by trying to Search for it under ROOT); if so compound word is still the game. In the next round splice the ‘Rest of the word’ again. Do this until there is nothing to be spliced. After every split resulting 1st word must pass the test for Simple word(means Search for it under ROOT). Then the original word is a good compound word and save it in a separate list. 
+
+		Apply the Splice logic on every compound word that user has entered. The compound words that pass the splice test should be added to a separate list. 
+
+		In the end we will have a list of qualified compound words. These words are totally made up of Simple worlds; they do not contain foreign letter. Select longest compound word for that. 
+
+		Splicing logic uses MAP of  “CompoundWordThatUserEntered” V/s ‘CompoundWordToBeSpliced’. In the first round KEY and VALUE will be same; and as we splice the Compound Word, we change the VALUE. In the end VALUE will recude to “” string. That is when we stop the splicing operation. 
 
 
-			Example for Splicing of compound word ‘CatDogRat’:
-				In the 1st loop, extract left-most subword(Cat), and that leaves second part(DogRat).
-				If the extracted 1st word is a simple word, go to 2nd loop. 
+		Example for Splicing of compound word ‘CatDogRat’:
+			In the 1st loop, extract left-most subword(Cat), and that leaves second part(DogRat).
+			If the extracted 1st word is a simple word, go to 2nd loop. 
 
-				In the 2nd loop extract left-most subword(Dog) from 'DogRat'. If 'Dog' is the extracted 1st word and rest is 'Rat'. If 1t word is a simple word, go to 3rd loop.
+			In the 2nd loop extract left-most subword(Dog) from 'DogRat'. If 'Dog' is the extracted 1st word and rest is 'Rat'. If 1t word is a simple word, go to 3rd loop.
 
-				In the 3rd loop extract left-most subword(Rat) from 'Rat'. If the 1t word RAT is a simple word, go to 4th round.
-			In 4th round we have nothing to splice. By now every subword ‘Cat’ ‘Rat’ Dog has proven to be Simple word, so we can say that the CompoundWord 'CarDogRat' is indeed Valid compound word
+			In the 3rd loop extract left-most subword(Rat) from 'Rat'. If the 1t word RAT is a simple word, go to 4th round.
+		In 4th round we have nothing to splice. By now every subword ‘Cat’ ‘Rat’ Dog has proven to be Simple word, so we can say that the CompoundWord 'CarDogRat' is indeed Valid compound word
  
-
-
-
-			
 	*/
 	
 	//Node with EOW flag will have the last lettter of the WORD

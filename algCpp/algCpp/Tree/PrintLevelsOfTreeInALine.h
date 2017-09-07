@@ -14,21 +14,16 @@ using namespace BuildTreeNM;
 /*
 		Print every level of Tree in a seperate line_20170731001
 		Compute the height of Tree_20170731009
-			In BFS navigation, 1st level will introduce 2nd-level in to Q.
-			Similarly 2nd level will introduce 3rd-level in to Q. 
-			Before 1st-level introduces the 2nd-level in to Q, Q will have nothing but the nodes of 1st-level.
-			So, before introducing the 2nd level in Q, if we can print whatever is already present in the Q, 
-			then we will be printing the content of 1st-level in a straight line.
-			That is exactly what we want to do.
-			
-			1st-level will eject the nodes from the Q; and prints them; and then injects thier children in to bottom of the Q. 
-			This is a self-feeding loop.
-			As older nodes get ejected, the newly added child nodes (of belonging to next-level) will rise in Q; and they will eventually occupy 100% of Q.
-			Ejecting code knows the number of old nodes that existed before the injection operation; so it ejects only those mumber of nodes.
-			Ejecting code will not eject any newly added child nodes.
+			Solve this using BFS navigation of Tree. 
+			BFS navigation uses Q and a while loop. In BFS navigation, 1st level will introduce 2nd-level in to Q.
+			Similarly 2nd level will introduce 3rd-level in to Q. This is achieved by applying following 3 rules:
+			a) When the while loop begins, all the nodes stored in Q must belong to same level in tree;
+			b) While loop will deque ONLY the nodes of current level; and will also Enque the children of current-lveel (which are at next level) in to Q. So by the time current round of While loop ends, nodes of current level will be out of Q, and only the only the nodes of next level will be in Q. So while loop enters next round, we can be sure that Q content belongs to just one level.
 
-			At the end of this ejection operation logic, Q will have just the content of 2nd-level. 
-			And 2nd-level will applay the same logic. It prints the q-content and also introduces 3rd-level in to Q. 
+			c) While loop is able to Deque ONLY the nodes of current level because it caches the Q count at the very beginning of While loop, before Enquing any children in to Q. Since this is a Q, all the Enqued the items (belong to next level) will go to bottom of Q. Note that this logic would not work if we use STACK. 
+
+			For printing the nodes in seperate line, use the above code; and print CRLF at the end of every while loop. 
+
 			
 			This code can be used for counting the levels also. 
 

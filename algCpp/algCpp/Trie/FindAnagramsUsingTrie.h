@@ -14,15 +14,12 @@ namespace FindAnagramsUsingTrieNM //@RED20170816002
 
 	/*								
 		Print the Anagram and also the origianl words used for making anagram TRIE_@RED20170816002
-			Think anagram as one signature used for representing several words that are made up of same letters but placed in different order.
-			Ex: ART and RAT contain same letters, placed in different order. Sorting these words will give signature and that is anagram. 
-			We can also say that Anagram/Signature could be representing several different words. 
-			Ex: 'Dgo' is signature/anagram for 'Dog' and 'God'
-			Our program should print the Dog and God when the input is 'Dgo'
-        	In order to support this, TRIE should connect Original source words and their Anagram. This means connecting God, Dog with thier anagram Dgo.
-			TRIE node will store the letters of Anagram (example: DGO).
-			Then the Node of the last letter will store the list of source words(Dog, God) in a Linked List.
-			
+			Think of anagram as one signature used for representing several words that are made up of same letters but letters are in different order. Sorting these words will give signature and that is the anagram. Ex: ART and RAT contain same letters, placed in different order. 
+			Our program accepts the word and prints the anagram.
+			Ex: If user types "Dgo', we should show 'Dog' and 'God'
+			This can be implemented using TRIE. Load the ANGRAM/SIGNATURE in to TRIE, and store the corresponding original words as metadata inside EOW node. Ex: Load Dgo  in to TRIE and store the original words God, Dog as metadata inside the EOW node of “Dgo”. 
+
+						
 			This is implemented as follow:
 				Insert(anagram, list of original words)
 					Store the anagram in TRIE nodes. When we reach the last letter, store the list of origal words also.

@@ -15,14 +15,12 @@ namespace PrintAllPathsOfTreeNM //@RED20170820012
 {
 	/*
 		Print all the paths of a BST and plain BT_RED20170820012
-			When it comes to iteration logic, same logic applies for both BST and Plain Binary Tree.
-			But the Logic changes in case of Searching a number in Tree. This is because in case of BST, L node is lower than Parent, and R node is higher than Parent node.
-			In case of BT, there is no such rule.
+			Logic for iterating BST and Plain Tree are same; this is because iteration code must visit verey node of the tree.  Logic for Logic for Searching is different, search code for BST wants to be efficient so it wants to visit minimum nodes; so at every node, the logic will compare the sought-value against curr-node-value and then appropriately makes either LEFT turn or RIGHT turn.
 
-			Coming implementation, do pre-order traversal of tree. At each loop store the node value in a list.
-			When the cursor reaches the leaf node, print the contents of LIST.
+			Coming to implementation of printing all the paths, do pre-order traversal of tree. At each loop store the node value in a list. When the cursor reaches the leaf node, print the contents of LIST.
 			Same logic applies for both BST and plain BT
-			
+
+						
 
 			Example(BST)
 				           100

@@ -10,10 +10,10 @@
 #include <sstream>
 
 using namespace std;
-namespace EncodeReplaceMultipleWithNumberNM //@RED20170823001
+namespace EncodeReplaceMultipleWithNumberNM //@RED20170823001 @RED20170823002
 {
 	/*
-		Encode the string by replacing the repeating character with occurence-count
+		Encode the string by replacing the repeating character with occurence-count_RED20170823001
 		Ex: Replace "CC" using "2C"
 			Scan the array and detect how many times a character repeats. Use the Look forward strategy for detecting occurrence count. Look forward strategy uses a while loop; before entering the while loop, cache the current-character, and once inside the while loop, go on comparing the curr-character against cached character. If they matach, then increment the occurent count, and also advance the index, and also stay in the loop. Come out of the loop once curr-character is not sam as cached character.
 			Once out of inner while loop, we know occurent count. It could be 1 or more. 1 means character is non-repeating, so ecoding is needed; otherwise we have to encode. Now copy the characters to appropriate position. 
@@ -59,7 +59,7 @@ namespace EncodeReplaceMultipleWithNumberNM //@RED20170823001
 				Adjust shiftCount
 
 
-		Decode the string like "2A"
+		Decode the string like "2A"@RED20170823002
 			Encoded string may have "2A" and this should be decoded as AA.
 			Numeral prefix could be multidigit, so use forward looking strategy for capturing digits length.
 			At every index, kick start a inner while loop for counting digit length.While loop tests whether the curr-char is Numeral and if so it increments the numeral-counter, and continues to test the next-character, and then to next-to-next-character. This goes on until the sequence of numerals breaks. Loop starts at the same index as outer while loop.

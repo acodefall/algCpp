@@ -16,7 +16,7 @@ using namespace BuildTreeNM;
 namespace CheckTreeIsBSTUsingMinMaxNM //@RED20170731006
 {
 	/*
-		Check if the Tree is a Binary Search Tree(BST) _RED20170731007
+		Check if the Tree is a Binary Search Tree(BST)_RED20170731007
 			Note this is not about checking whether the tree is Balanced BST.
 			BST and Plain Tree are different.
 			BST has rules that controls the values of P, Lc and Rc; where as the Plain Tree does not lie down any rules about the node value.
@@ -41,7 +41,13 @@ namespace CheckTreeIsBSTUsingMinMaxNM //@RED20170731006
 			For root node, there is no parent or ancestor so the Min and Max are Int_Min and Int_Max.
 			For internal node, that is also a Lc, value should be LESS than immidiate parent and higher than some ancestor node.
 			For internal node, that is also a Rc, value should be HIGHER than immidiate parent and lower than some ancestor node. Code has to confirm that every node meets this requirement. If every meets this rule then we can say that whole tree is Binary Search Tree)(not Balanced BST).
-	   
+			Every node has to do following
+			-MIX and MAX will be passed as recursion parameter.
+			-Every node should check whether current node's value falls between MIN and MAX
+			-If that is true, then it has to make sure both left and right child hives also meet this requirement; so it makes two recursion calls and they also return BOOL.
+			-Finally caller will AND all the three BOOLs and return to caller.
+			-If every node returns TRUE, then we can conclude that TREE is BST
+
 	   
 		Check for Tree is BST using MIN and MAX method  
 
