@@ -149,6 +149,7 @@
     <ClInclude Include="Array\Anagram1.h" />
     <ClInclude Include="Array\AreStringRotated.h" />
     <ClInclude Include="Array\ArrayHasConsqNumbers.h" />
+    <ClInclude Include="Array\FindSecondLargestItem.h" />
     <ClInclude Include="Array\OccurenceCountUsingAsciiAry.h" />
     <ClInclude Include="Array\AsciiToInt.h" />
     <ClInclude Include="Array\BinarySearchInRotatedArray.h" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Array\OccurenceCountInSortedArray.h" />
     <ClInclude Include="Array\Palidrone.h" />
     <ClInclude Include="Array\PartitionArray.h" />
+    <ClInclude Include="Array\PatternMatchingUsingBruteForce.h" />
     <ClInclude Include="Array\PatternMatchUsingOccurCount.h" />
     <ClInclude Include="Array\PatternReplace.h" />
     <ClInclude Include="Array\PlaceLettersApart.h" />
