@@ -18,7 +18,7 @@
 #include "RemoveComma.h"
 #include "ReverseLL.h"
 #include "Graphbuild.h"
-#include "GraphSearch.h"
+#include "AirLineShortestPathGraphSearch.h"
 #include "ValueOfMidNode.h"
 #include "EditablePriorityQueue.h"
 
@@ -195,6 +195,13 @@
 #include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
+	GraphSearch::callGraphSearch objcallGraphSearch;
+	objcallGraphSearch.callGraphSearchX();
+
+
+	testGraphAirLine objtestGraphAirLine;
+	objtestGraphAirLine.calltestGraphAirLine();
+
 	OccurenceCountUsingAsciiAryNM::OccurenceCountUsingAsciiAry objOccurenceCountUsingAsciiAry;
 	objOccurenceCountUsingAsciiAry.callOccurenceCountAscii();
 
@@ -746,11 +753,8 @@ int main()
 	editablePQ::TestEditablePQ objTestEditablePQ;
 	objTestEditablePQ.callEditablePQ();
 
-	GraphSearch::callGraphSearch objcallGraphSearch;
-	objcallGraphSearch.callGraphSearchX();
+	
 
-	testGraphAirLine objtestGraphAirLine;
-	objtestGraphAirLine.calltestGraphAirLine();
 
 	RemoveCommaNM::RemoveCommaX objRemoveCommaX;
 	objRemoveCommaX.callRemoveComma();

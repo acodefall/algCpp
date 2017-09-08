@@ -200,10 +200,17 @@ namespace GraphSearch
 				return bfound;
 			}
 			
-			int findShortestPath(string startVertex, string dest)
+			//startVertex - could be NY
+			//destVertex  - could be Dubai
+			int findShortestPath(string startVertex, string destVertex)
 			{
-				//list<string>					prevVertex;
-				map<string, int>				distanceFromSrc;
+				
+				/*
+					Say startVertex = NY
+						distanceFromStartVert[Paris] = 10; //Distance between NY to Paris is 10
+						distanceFromStartVert[Tokyo] = 20; //Distance between NY to Paris is 20
+				*/
+				map<string, int>				distanceFromStartVert; //This stores the distance between 'startVertex' and KEY. 
 				map<string, string>				nearestVertexMap;
 				deque<string>					allVertexQ;
 				string							empty;
@@ -211,28 +218,35 @@ namespace GraphSearch
 				//load every vertex to Q
 				for (map<string,Vertex<T>*>::iterator g = vertexList.begin(); g != vertexList.end(); g++)
 				{
-					distanceFromSrc.insert(std::pair<string, int>((*g).first, INT_MAX));
+					distanceFromStartVert.insert(std::pair<string, int>((*g).first, INT_MAX));
 					nearestVertexMap.insert(std::pair<string, string>((*g).first, empty));
 					allVertexQ.push_back((*g).first);
 				}
-				distanceFromSrc[startVertex] = 0;
+
+				//Distance between 'startVertex' to 'startVertex' is 0
+				distanceFromStartVert[startVertex] = 0;
 
 				while (allVertexQ.size() > 0)
 				{
-					string baseVertexName = findNearestVertex(distanceFromSrc, allVertexQ);
+					string baseVertexName = findNearestVertex(distanceFromStartVert, allVertexQ);
 					Vertex<T>* lwst = vertexList[baseVertexName];
 
 					if (lwst->adjList.size() > 0)
 					{
 						for (list<Edge<T>*>::iterator z = lwst->adjList.begin(); z != lwst->adjList.end(); z++)
 						{
+							/*
+
+
+
+							*/
 							Edge<T>* adjside = *z;
 							string adjVertexName = adjside->dest->data->name;
-							int newCost = adjside->cost + distanceFromSrc[baseVertexName];
-							if (newCost <  distanceFromSrc[adjVertexName])
+							int newCost = adjside->cost + distanceFromStartVert[baseVertexName];
+							if (newCost <  distanceFromStartVert[adjVertexName])
 							{
 								//Overwrite
-								distanceFromSrc[adjVertexName] = newCost;
+								distanceFromStartVert[adjVertexName] = newCost;
 								nearestVertexMap[adjVertexName] = baseVertexName;
 								//prevVertex.push_back(baseVertexName);
 							}
@@ -255,10 +269,10 @@ namespace GraphSearch
 
 				//Construct the path
 				stack<string> fullPath;
-				while (dest.length() > 0)
+				while (destVertex.length() > 0)
 				{
-					fullPath.push(dest);
-					dest = nearestVertexMap[dest];
+					fullPath.push(destVertex);
+					destVertex = nearestVertexMap[destVertex];
 				}
 
 				cout << "\r\n";
@@ -270,7 +284,7 @@ namespace GraphSearch
 				return 0;
 			}
 			
-	
+			//Go through the 
 			string findNearestVertex(map<string, int>& mapDistanceFromSrc, deque<string> vertList)
 			{
 				int trackMin = INT_MAX;

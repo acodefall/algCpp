@@ -45,10 +45,10 @@ cin.get();
 template<typename T> class Edge;
 
 template<typename T>
-class graphNode
+class VertexA
 {
 	public:
-		graphNode(T d)
+		VertexA(T d)
 		{
 			data = d;
 			visited = 0;
@@ -67,14 +67,14 @@ class graphNode
 			}
 		}
 
-		bool operator == (const graphNode& u)
+		bool operator == (const VertexA& u)
 		{
 			bool ret = false;
 			if (this->data == u.data)
 				ret = true;
 			return ret;
 		}
-		~graphNode()
+		~VertexA()
 		{
 			for (auto x = edgeList.begin(); x != edgeList.end(); x++)
 			{
@@ -88,23 +88,21 @@ template<typename T>
 class Edge
 {
 	public:
-		Edge(graphNode<T>* N, int cst)
+		Edge(VertexA<T>* N, int cst)
 		{
 			TargetNode = N;
 			cost = cst;
 		}
-		graphNode<T>* TargetNode; //Source of the Edge is the node that is hosting current object.
+		VertexA<T>* TargetNode; //Source of the Edge is the node that is hosting current object.
 		int cost;
 };
 
 template<typename T>
 class GraphAirLine
 {
-	deque<graphNode<T>> q;
-
 
 	public:
-		list<graphNode<T>*> vertList;
+		list<VertexA<T>*> vertList;
 
 		GraphAirLine()
 		{
@@ -112,32 +110,32 @@ class GraphAirLine
 		}
 		void AddVertex(T vrt)
 		{
-			graphNode<T>* frm = findByValue(vertList, vrt);
+			VertexA<T>* frm = findByValue(vertList, vrt);
 
 			if (frm == 0)
 			{
-				vertList.push_back(new graphNode<T>(vrt));
+				vertList.push_back(new VertexA<T>(vrt));
 			}
 		}
 
 		void AddDirectedEdge(T from, T to, int cost)
 		{
 		
-			graphNode<T>* frm = findByValue(vertList, from);
-			graphNode<T>* trg = findByValue(vertList, to);
+			VertexA<T>* frm = findByValue(vertList, from);
+			VertexA<T>* trg = findByValue(vertList, to);
 			Edge<T>* edj = new Edge<T>(trg, cost);
 			frm->edgeList.push_back(edj);
 		}
 
-		graphNode<T>*	findByValue(list<graphNode<T>*> lst, T value)
+		VertexA<T>*	findByValue(list<VertexA<T>*> lst, T value)
 		{
 			//if (lst.size() > 0)
 			{
-				list<graphNode<T>*>::iterator frmI = lst.begin();
+				list<VertexA<T>*>::iterator frmI = lst.begin();
 
 				for (; frmI != lst.end(); frmI++)
 				{
-					graphNode<T>* v = *frmI;
+					VertexA<T>* v = *frmI;
 					if (v->data == value)
 					{
 						return v;

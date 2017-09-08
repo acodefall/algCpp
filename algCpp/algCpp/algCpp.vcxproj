@@ -232,7 +232,7 @@
     <ClInclude Include="Design\SingleTonOne.h" />
     <ClInclude Include="Design\SyncQx.h" />
     <ClInclude Include="Graph\Graphbuild.h" />
-    <ClInclude Include="Graph\GraphSearch.h" />
+    <ClInclude Include="Graph\AirLineShortestPathGraphSearch.h" />
     <ClInclude Include="Graph\MovieRatingGraph.h" />
     <ClInclude Include="Heap\CheckNumberIsHigherThanKth.h" />
     <ClInclude Include="Heap\HeapBase.h" />
