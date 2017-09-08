@@ -10,10 +10,10 @@
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
-namespace LongestIncreasingSubSequenceNM
+namespace LongestIncreasingSubSequenceNM //@RED20170712001
 {
 	/*
-		Compute the length of 'Longest Increasing SubSequence': 
+		Compute the length of 'Longest Increasing SubSequence'_RED20170712001 
 		Given an un sorted array, 'Increasing SubSequence' stores only those numbers that are in increasing order, 
 		and those numbers does not have to be neighbours. Longest Increasing SubSequence is the length of such subset.
 		Longest Increasing SubSequence can be generalized as length of the sub-array who's elements are increasing

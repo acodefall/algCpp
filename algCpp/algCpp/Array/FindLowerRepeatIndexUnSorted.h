@@ -6,14 +6,13 @@ using namespace std;
 namespace FindLowerRepeatIndexUnSortedNM
 {
 	/*
-		Find the lower-index of first repeating element in an array
-			Array may have several numbers that repeats several times; and these repeating numbers will have lower-index and also higher-index.
-			We will be asked to find out either the lower-repeat-index and also higher-repeat-index; number could be anything, all they need is repeating index. 
+		Find the lower-index of first repeating element in an array_RED20170907001
+			Find the index of the DUPLICATE number that is towards FRONT of the array.
+			Duplicate number will have one index towards FRONT and other towads ENDS; and we are supposed to find the index that is near the FRONT, not the TAIL.
+			We can identify the DUPLICATE element using HASH_SET, but we want the index that is closest to FRONT. Strategy is iterate the array from TAIL to END. 
+			All along the way memorize the number that repeats and also its index. Once we complete iteration we will have the index of duplicate number found closest to FRONT.
+			Conversly to know the the index of the DUPLICATE number that is towards END, iterate the array from FRONT- To-TAIL
 			
-			To know the lower-repeat-index, interate the array from FAR-end, and use Hash Table to detect duplicate element; and record the index of duplicate elements.
-			Once the iteration is complete, we will have lower-repeat-index. 
-			To know the higher-repeat-index, interate the array from FRONT-end.
-
 			Say array is {1, 12, 5, 12}
 			[1] -> Lower-repeat-index
 	        [3] -> Higher-repeat-index

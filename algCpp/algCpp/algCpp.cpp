@@ -195,9 +195,6 @@
 #include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
-	BoyerMooreNM::BoyerMoore objBoyerMoore;
-	objBoyerMoore.callBoyerMoore();
-
 	OccurenceCountUsingAsciiAryNM::OccurenceCountUsingAsciiAry objOccurenceCountUsingAsciiAry;
 	objOccurenceCountUsingAsciiAry.callOccurenceCountAscii();
 
@@ -386,7 +383,8 @@ int main()
 	CompactStringRemovingSpacesNM::CompactStringRemovingSpaces objCompactStringRemovingSpaces;
 	objCompactStringRemovingSpaces.callCompactStringRemovingSpaces();
 
-
+	BoyerMooreNM::BoyerMoore objBoyerMoore;
+	objBoyerMoore.callBoyerMoore();
 
 	AsciiToIntNM::AsciiToInt objAsciiToInt;
 	objAsciiToInt.callAsciiToInt();

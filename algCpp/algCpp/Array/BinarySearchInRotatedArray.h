@@ -11,7 +11,7 @@
 using namespace std;
 
 /*
-	Binary search inside rotated sorted Array_20170717001
+	General_1212_Binary search inside rotated sorted Array_RED20170907005
 		Rotated array is created by breaking one big sorted array in to two pieces, so that max-value and Min-Value come to the center of the array. 
 		Traditional BST logic assume higher-index will give higher number and lower index will give lower number,
          and this will not be true after rotation. To compensate for this BST logic needs to alted, as follows.
@@ -22,7 +22,7 @@ using namespace std;
 			Right-partition {"8, 10, 1, 2, 3"}  //Not Continuous,  so do not go here
 			
 			If src[L] < src[M]. then left-side is continuous so go to left-half
-			If src[M]  < src[H]. then Right-side is continuous so go to right-half.
+			If src[H]  > src[H]. then Right-side is continuous so go to right-half.
 						
 		-Once inside the correct section, apply the DAC logic. Check whether SoughtVALUE = MidVALUE is equal, if so exit.
 		 If the SoughtVALUE is LOW, then make Left Turn or make Right Turn.
@@ -53,7 +53,7 @@ using namespace std;
 					        H = M - 1;
 
 */
-namespace BinarySearchInRotatedArrayNM //@RED20170717001
+namespace BinarySearchInRotatedArrayNM //@RED20170907005
 {
 	const int SIZEX = 7;
 	class BinarySearchInRotatedArray
