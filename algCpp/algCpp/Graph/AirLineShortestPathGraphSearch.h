@@ -8,11 +8,79 @@
 #include "Graphbuild.h"
 using namespace std;
 
-namespace GraphSearch
+namespace GraphSearch //RED20170908008
 {
 
 	
 
+/*
+	Matrix_459_Shortest Path between NY and Dubai_RED20170908008
+		Strategy is to maintain a MAP of distance between NY and every other city in Graph.
+		Call this MAP as Distance Map, where KEY is CITY and VALUE is 'distance from NY'
+		For Example: If KEY is LONDON, then VALUE willll be the distance bwteen NY to LD.
+		Initially MAP will have -1 for every city except for NY. NY's VALUE will be 0.
+		This is because "distance from NY to NY is 0"
+		
+		Filling the Distance MAP
+		Since the MAP has an entry for every vertex, we have to process every Vertex and update the corresponding 
+		entry in MAP. So we to maintain the list of vertexes to be processed(call this remainingVextexList). 
+		Initially remainingVextexList will have very vertex and it reduces gradually and becomes 0 in the end.
+		Basically we loop through the remainingVextexList and fill DistanceMAP.
+		
+		Once we exit the loop, DistanceMAP will have shortest distance for 'NY to any place'
+			DistanceMAP[Tokyo] gives shortest distance between 'NY -> Tokyo'
+			DistanceMAP[Dubai] gives shortest distance between 'NY -> Dubai'
+
+				//init DistanceMAP to -1 for every city except NY(NY = 0)
+				Loop( remainingVextexList)
+					Select an unprocessed Vertex that is NEAREST to NY(means should be in remainingVextexList, & VALUE should be LOWEST in DistanceMap)
+					visit a vertex V
+					(AdjList.....)
+						DistanceMAP[adjList-entry] = 'distnce of V from NY' + 'Weight of Edge from V & adjList'
+				//DistanceMAP is filled. 
+				//Distance MAP will be shortest distance between NY to any city.
+	
+			Finding shortrer distance
+				Let us see how we compute shortest distance
+				We know that the DistanceMAP holds the distance between X-city and NY, so if the VALUE is LOW then that city is nearest to NY. So if we want to a shortest-path to NY, then we have to PICK the vertex that has LOWEST value in DistanceMAP, and that is exactly what we do. When ever we select a Vertex for processing, we want it to be present in remainingVextexList and also it should have lowest VALUE in DistanceMAP.
+
+				Let us take few example:
+				When the program starts DistanceMAP has 0 for NY and -1 for every other city, so we pick NY Vertex for processing (because DistanceMAP [NY] = 0) 
+						DistanceMAP [NY] = 0            remainingVextexList  {NY, LD, PR, DB}
+						DistanceMAP [LD] = -1
+						DistanceMAP [PR] = -1
+						DistanceMAP [DB] = -1
+
+				We explore the adj-list of NY, and it computes distance between NY-LD and NY-PR, fills the VALUE for LD and PR. After processing NY, we remove NY from remainingVextexList. Next vertex to be processd will come from LD, PR and DB.  Value of LD and PR is +ve value and DB is still -1.  We vertex with LOWEST value and that could be either PR or LD.
+						DistanceMAP [NY] = 0   	remainingVextexList  {LD, PR, DB} //REMOVED NY, got processed
+						DistanceMAP [LD] = x          
+						DistanceMAP [PR] = y
+						DistanceMAP [DB] = -1
+				In this fashion, we process the vertext that has LOWEST value, why this is called as GREEDY algorithm. 
+
+			Finding shorter distance									 
+					When updating the distance map, update the entry only if the new value is lower than existing value in MAP.
+					Say [Dubai] = 800; and this is based on the route NY-LD-Db
+					Later we discover 'Ny-Paris-Db' to be 500; we over write the 800 with 500.
+					This is how MAP will end up having shortest distance for every city, starting from NY.
+				So we achieves shortest path
+				-by processing the Vertex that is NEAREST to NY
+				-by updating DistanceMAP[] only if the NEW value is LOWER
+
+			Computig Distance
+					Say the route is "Ny - LD - Dubai", and we are processing LD vertex, and want to compute the distance between "Ny and Db'
+
+					distance between 'Ny and Dubai' = 'distance between Ny & Ld' + 'distance between Ld & Ny'
+
+
+					distance between 'NY to Dubai' is 'distance of  NY-LD" + 'distance of  LD-Dubai"
+					distance between 'NY to Dubai' = 'distance of  NY-LD'  //This comes from MAP (KEY is LOD)
+											+
+   										 'distance of LD-Dubai'  //This is WEIGHT of edge connecting LD & Dubai.
+
+	
+
+	*/
 
 	/*
 		priority_queue  is not usable if you are planning to UPDATE the priority.
@@ -234,9 +302,11 @@ namespace GraphSearch
 
 				while (remainingVertexQ.size() > 0)
 				{
-					//Find the "Vertex that is nearest to NY"
-					//by going through the map. The entry with the lowest value is the vertext nearest to NY.
+					//If you want SHORTEST PATH, then pick the "Vertex that is nearest to NY"
+					//Vertex NEAREST to NY will have LOWEST value in DistanceMAP, that is how we can find the it
+					//Vertex should be a un-processed and also should be nearest to NY
 					string baseVertexName = findNearestVertex(distanceFromStartVert, remainingVertexQ);
+					//remainingVertexQ.pop_front();
 					Vertex<T>* lwst = vertexList[baseVertexName];
 
 					//Iterate the adjacency list of "nearest Vertex"
@@ -287,7 +357,7 @@ namespace GraphSearch
 			}
 			
 			//Go through the 
-			/*string findNearestVertex(map<string, int>& mapDistanceFromSrc, deque<string> vertList)
+			string findNearestVertex(map<string, int>& mapDistanceFromSrc, deque<string> vertList)
 			{
 				int trackMin = INT_MAX;
 				string trackMinVertexName;
@@ -303,9 +373,9 @@ namespace GraphSearch
 				}
 
 				return trackMinVertexName;
-			}*/
+			}
 			
-			//mapDistanceFromSrc has 'vertex-name' and thier 'distance-from-NY'
+			/*//mapDistanceFromSrc has 'vertex-name' and thier 'distance-from-NY'
 			//we have to go through the map and pickup the entry with lowest value
 			string findNearestVertex(map<string, int>& mapDistanceFromSrc)
 			{
@@ -323,7 +393,7 @@ namespace GraphSearch
 				}
 
 				return trackMinVertexName;
-			}
+			}*/
 			void printGraph()
 			{
 				for(map<string, Vertex<T>*>::iterator z = vertexList.begin(); z != vertexList.end(); z++)
@@ -392,6 +462,21 @@ namespace GraphSearch
 
 				grph->findShortestPath("Austin", "Atlanta");
 				delete (grph);
+
+				/*
+						[Atlanta] = Washington(600) -> Houston(800) ->
+						[Austin] = Dallas(200) -> Houston(160) ->
+						[Chicago] = Denver(1000) ->
+						[Dallas] = Denver(780) -> Austin(200) ->
+						[Denver] = Atlanta(1400) -> Chicago(1000) ->
+						[Houston] = Atlanta(800) ->
+						[Washington] = Atlanta(600) -> Dallas(1300) ->
+
+					Actual PATH
+						Austin Houston Atlanta
+				
+				
+				*/
 			}
 
 
