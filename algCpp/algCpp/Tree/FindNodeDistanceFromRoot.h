@@ -9,7 +9,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace FindNodeDistanceFromRootNM
+namespace FindNodeDistanceFromRootNM // 20170709001 and 20170709002 
 {
 	/*
 		Find the distance of a Node from Root_ 20170709001
@@ -25,7 +25,7 @@ namespace FindNodeDistanceFromRootNM
 
 
 		
-			/Efficient method
+			/Efficient method 20170709001
 			if (root)
 			{
 				if (root->d == Value) //we found the VALUE,  return +ve number.  Here return code originates. 
@@ -56,7 +56,7 @@ namespace FindNodeDistanceFromRootNM
 			Another less efficient implementation is that parent node can make both Recursion calls and return whatever is positive to caller. By returning MAX of among the return codes, parent makes sure that 0 return-code from one of the recursion is not overwriting the +ve number returned by other.
 
 
-			//Inefficient method
+			//Inefficient method 20170709002
 			if (root)
 			{
 				if (root->d == Value) //we found the VALUE,  return +ve number.  Here return code originates. 

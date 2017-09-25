@@ -9,6 +9,7 @@ using namespace BuildLLNM;
 namespace ValueOfMidNodeNM //@RED20170820008
 {
 	/*
+		TBD-READ
 		Find the Mid node in LL_@RED20170820008
 		   Using one-hop and two-hop technique iterate the LL.
 		   When 2hop cursor reaches TAIL, 1hop cursor should be at mid node of LL

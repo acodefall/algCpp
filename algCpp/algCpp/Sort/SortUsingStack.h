@@ -17,7 +17,7 @@ namespace  SortUsingStackNM
 {
     /*
      
-     Sorting using STACK
+     Sorting using STACK_20170724003
 		This algorithm takes 0(N2) time and 0(N) space.
 		There will be two stacks: srcStack and sortedStack. 
 		srcStack supplies the data to be sorted and also helps sorting by providing BUFFFER space during sorting.

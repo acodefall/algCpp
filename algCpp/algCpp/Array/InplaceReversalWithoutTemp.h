@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace InplaceReversalWithoutTempNM
+namespace InplaceReversalWithoutTempNM //_RED20170909009
 {
 
 	

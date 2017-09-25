@@ -13,6 +13,9 @@ using namespace std;
 namespace CompactStringRemovingSpacesNM //@RED20170724010
 {
 	/*   
+		
+		TBD-RECODE Use the code given in @RED20170823002
+
 		Compact String by Removing Spaces 
 
 				Src:   g       h           j   

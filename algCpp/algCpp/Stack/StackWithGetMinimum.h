@@ -12,7 +12,7 @@
 
 using namespace std;
 
-namespace  StackWithGetMinimumNM //@RED20170723019
+namespace  StackWithGetMinimumNM //@RED20170723019 20170724001
     {
         /* 
 		Stack with GetMinValue()_20170723019

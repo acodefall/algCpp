@@ -5,6 +5,7 @@ using namespace std;
 namespace InsertionSortNM
 {
 	//InsertioneSort_20170623011
+	//TBD-READ
 	class InsertionSort
 	{
 	public:

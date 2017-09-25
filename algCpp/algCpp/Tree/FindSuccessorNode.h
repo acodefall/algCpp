@@ -10,7 +10,7 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace FindSuccessorNodeNM
+namespace FindSuccessorNodeNM //20170709003
 {
 	/*
 		When searching for Successor of Target node, first look for the left-most child of right-child of TargetNode. If that is missing, then look at the rightChild of TargetNode.

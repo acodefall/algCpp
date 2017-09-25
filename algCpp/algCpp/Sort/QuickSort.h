@@ -8,11 +8,38 @@ namespace QuickSortNM
 	/*
 
 		QuickSort over view_20170624035
-			Quicksort is a DAC alogorithm and makes LongN partitions. Each partition has a Partition Value. Quicksort positions the partition-values to its correct position once for all, at the time of creating partition. There won't be any more effort to sort partition-values at any future time. Sorting partition will have the indirect effect of sorting non-partition values(LEAF).
-			Number of non-partition values/LEAFS is less than number of partition values. Also number of partition-values and leafs will add up to srcLen. Now we can see why sorting partition-values sorts the whole array. There is no step saying SORT as we see in MergeSort. All we have is a function to create partitions.
+			Find a random element in the src-array, and place it at its sorted-position, by doing 3-way partition technique.
+			This partitioning will help us sort just one element, and but creates two partitions that appear BEFORE and AFTER the sorted partition-value.
+			Now we want to apply the above techniwue on these two partitions, so we make 2 recursion calls(one for left and right partition).
+			The recursion call will pick a random-value, just sorts that one random-value, and as a by product create 
+			2 partitions. 
+			This process continues until each partition has just element. By this time whole array would have been sorted.
 
-			SrcLen(8) = "Partition Values=5" + "Number of leaf = 3"
+			Implementation
+				QuickSort(src-whole-array, staart, end)
+				{
+					if(start < end)
+					{
+						//Find a random element in the src-array, and place it at its sorted-position, by using 3-way partition technique.
+						//This partitioning will help us sort just one element, and but creates two partitions that appear BEFORE and AFTER the sorted partition-value.
+						partndex = Partition();
 
+						//Now try to apply the same technique on Left and Right partitions.
+						QuickSort(src, startIndex, partndex-1)
+						QuickSort(src, partndex+1, endIndex)
+				}
+			
+			Quicksort is a DAC alogorithm and makes LongN partitions, so there are LogN levels. 
+			But we process every branch at every level because we want to SORT each and every element, 
+			so work done by every level is CN. So taotal work is NLogN.
+
+			Quick was efficient because partition operation created two partitions and also successfully sorted the partition-value.
+			In fact partition-value will be placed at it its FINAL index. That partition-value will not be sorted again. 
+			Compared to this Merge Sort will go on partitioning the array until the size is 1, and then starts sorting the each partition.
+			So Mergesort make more than 1-pass.
+
+			QucikSort does 3-partition and Mergesort does 2-way partition. 3-way partition creates partition value which can be 
+			sorted but Mergesort does not even hace partition-value.
  
 
 		Why QuickSort is efficient_20170624036
@@ -61,6 +88,22 @@ namespace QuickSortNM
                               {3 4 5 6 7 8 9 11}
       
 	
+	3-way partitioning technique_20170919001
+	//Eventually all lower values should go to left side. We can achieve this maintaining running count of element
+	//lower values(than Anchor value). As we are iterating the array,
+	//if (COUNT < currIndex) then it means we have gone past few higher-values, and the
+	//places held by these higher values can be given to a lower value; this will help us bring all the lower values to left side.
+	//Ex: currIndex = 6 and COUNT = 4. This means 5th element is higher value. If "curValue" is a lower value,
+	//we will swap it with 5th element(basically swap 5th and 6th). Then increment both COUNT and currIndex.
+
+	//Final logic is
+	//Iterate the array usin a ForLoop
+	//	if(curValue < AnchorValue)
+	//		if(COUNT < currIndex)
+	//			Swap(src[Count], src[curIndex]) //we have a highVaue on wrongside
+	//		COUNT++;
+
+
 	*/
 	class QuickSort
 	{
@@ -91,9 +134,16 @@ namespace QuickSortNM
 						//Only partition when 'startIndex < endIndex' there will be more than one element in array. 
 						if (startIndex < endIndex)
 						{
+							//Find a random element in the src-array, and place it at its sorted-position, by using 3-way partition technique.
+							//This partitioning will help us sort just one element, and but creates two partitions that appear BEFORE and AFTER the sorted partition-value.
+							//Now we want to apply the above techniwue on these two partitions, so we make 2 recursion calls(one for left and right partition).
+							//The recursion call will pick a random-value, just sorts that one random-value, and as a by product create 
+							//2 partitions. 
+							//This process continues until each partition has just element. By this time whole array would have been sorted.
+
 							int partIndex = Partition(src, startIndex, endIndex);
 
-							stringstream ss;
+							/*stringstream ss;
 							ss << endl << "Start " << startIndex << " End " << endIndex << " Anchor " << src[partIndex] << endl;
 							ss << "{ ";
 							for (int i = startIndex; i <= (partIndex - 1); i++)
@@ -107,7 +157,7 @@ namespace QuickSortNM
 							ss << "} ";
 							ss << endl;
 
-							cout << ss.str();
+							cout << ss.str();*/
 
 							//When we make recursion call to partition the L-half abd R-Half, we exclude the 
 							//partition-value from both.
@@ -119,6 +169,22 @@ namespace QuickSortNM
 							cout << endl << "Start " << startIndex << " End " << endIndex << " Skip" << endl;
 						}
 					}
+					
+					//3-way partitioning technique.
+					//Eventually all lower values should go to left side. We can achieve this maintaining running count of element 
+					//lower values(than Anchor value). As we are iterating the array, 
+					//if (COUNT < currIndex) then it means we have gone past few higher-values, and the 
+					//places held by these higher values can be given to a lower value; this will help us bring all the lower values to left side.
+					//Ex: currIndex = 6 and COUNT = 4. This means 5th element is higher value. If "curValue" is a lower value,
+					//we will swap it with 5th element(basically swap 5th and 6th). Then increment both COUNT and currIndex. 
+					
+					//Final logic is
+					//Iterate the array usin a ForLoop
+					//	if(curValue < AnchorValue)
+					//		if(COUNT < currIndex)
+					//			Swap(src[Count], src[curIndex]) //we have a highVaue on wrongside  
+					//		COUNT++;
+
 					int Partition(int src[], int start, int end)
 					{
 						default_random_engine rndPartition; //do not provide seed.

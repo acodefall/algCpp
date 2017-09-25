@@ -13,7 +13,7 @@ using namespace BuildTreeNM;
 namespace FindNodeDistanceKFromLeafNM
 {
 	/*
-		Find the nodes that are at distance K from Leaf
+		Find the nodes that are at distance K from Leaf 20170709001
 		   This is about printing the Nodes that are at a distance K from LEAF, not from root. Since there are many Leaf, there will be many paths also, running between root to leaf.  In these paths, we have to print the node that is at a distace K from Leaf. 
 			For building the path, use Pre-order-traversal code. As we are traversing, store the nodes in a list object that is passed as recursion parameter. By the time we reach the LEAF node (leaf is the node who's children are NULL), list object would have recorded every node found along path from Root to leaf.
 			The node stored at the index (Size Of List - K) will give the Node node that is at the distance K from Leaf.

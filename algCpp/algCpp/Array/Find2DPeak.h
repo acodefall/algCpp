@@ -10,7 +10,7 @@
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
-namespace Find2DPeakNM
+namespace Find2DPeakNM //@RED20170909017
 {
 	/*
 		Find the Peak elemnt in Unsorted Array using DAC. 
@@ -28,7 +28,7 @@ namespace Find2DPeakNM
 	{
 
 	public:
-		void callFindPeakElementUnsorted()
+		void callFindPeakElement()
 		{
 			int src[SIZEX][SIZEX] =
 			{

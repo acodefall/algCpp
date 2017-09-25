@@ -8,7 +8,7 @@
 #include <string>
 #include "BuildTree.h"
 using namespace std;
-using namespace BuildTreeNM;
+using namespace BuildTreeNM; 
 
 
 /*
@@ -68,7 +68,7 @@ using namespace BuildTreeNM;
 
 
 */
-namespace TreeHeightUsingNonRecursionNM //@RED20170711001
+namespace TreeHeightUsingNonRecursionNM //@RED20170711001 20170711002
 {
 	class TreeHeightUsingNonRecursion
 	{

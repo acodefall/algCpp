@@ -125,7 +125,7 @@
 #include "FindNumberHigherThanKSorted.h"
 #include "MaxDifference.h"
 #include "IntersectionOfSortedArray.h"
-#include "FindPeakElementUnsorted.h"
+#include "FindPeakElement.h"
 #include "Find2DPeak.h"
 #include "FindKthUniqueItem.h"
 #include "FindLowerRepeatIndexUnSorted.h"
@@ -136,7 +136,7 @@
 #include "BinSearchWhileLoop.h"
 #include "CheckForConsecutiveNumb.h"
 #include "FindCommonElementsSorted.h"
-#include "Anagram1.h"
+#include "GroupAnagrams.h"
 #include "AsciiToInt.h"
 #include "BinarySearchInRotatedArray.h"
 #include "BoyerMoore.h"
@@ -195,6 +195,10 @@
 #include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
+	ColorHomeWithMinimumCostUsingDPNM::ColorHomeWithMinimumCostUsingDP objColorHomeWithMinimumCostUsingDP;
+	objColorHomeWithMinimumCostUsingDP.callColorHomeWithMinimumCostUsingDP();
+
+
 	GraphSearch::callGraphSearch objcallGraphSearch;
 	objcallGraphSearch.callGraphSearchX();
 
@@ -399,7 +403,7 @@ int main()
 	BinarySearchInRotatedArrayNM::BinarySearchInRotatedArray objBinarySearchInRotatedArray;
 	objBinarySearchInRotatedArray.callBinarySearchInRotatedArray();
 
-	Anagram1NM::Anagram1 objAnagram1;
+	GroupAnagramsNM::GroupAnagrams objAnagram1;
 	objAnagram1.callAnagram1();
 
 	FindCommonElementsSortedNM::FindCommonElementsSorted objFindCommonElementsSorted;
@@ -417,10 +421,10 @@ int main()
 	FindKthUniqueItemNM::FindKthUniqueItem objFindKthUniqueItem;
 	objFindKthUniqueItem.callFindKthUniqueItem();
 	Find2DPeakNM::Find2DPeak objFind2DPeak;
-	objFind2DPeak.callFindPeakElementUnsorted();
+	objFind2DPeak.callFindPeakElement();
 
-	FindPeakElementUnsortedNM::FindPeakElementUnsorted objFindPeakElement;
-	objFindPeakElement.callFindPeakElementUnsorted();
+	FindPeakElementNM::FindPeakElement objFindPeakElement;
+	objFindPeakElement.callFindPeakElement();
 
 	IntersectionOfSortedArrayNM::IntersectionOfSortedArray objIntersectionOfSortedArray;
 	objIntersectionOfSortedArray.callIntersectionOfSortedArray();
@@ -665,9 +669,7 @@ int main()
 	ColoringHomeUsingCombinationNM::ColoringHomeUsingCombination objColoringHomeUsingCombination;
 	objColoringHomeUsingCombination.callColoringHomeUsingCombination();
 
-	ColorHomeWithMinimumCostUsingDPNM::ColorHomeWithMinimumCostUsingDP objColorHomeWithMinimumCostUsingDP;
-	objColorHomeWithMinimumCostUsingDP.callColorHomeWithMinimumCostUsingDP();
-
+	
 	LongestCommonPalidroneNM::CallLongestCommonPalidrone objLongestCommonPalidrone;
 	objLongestCommonPalidrone.callLongestCommonPalidrone();
 

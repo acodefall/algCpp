@@ -4,7 +4,8 @@
 using namespace std;
 namespace CountPathsFromTopCornerToBottomMatrixNM
 {
-	/*
+	/* 20170629031
+		TBD-DOC
 		Count the Number of paths in Matrix using DP_20170701005
 			A cell in a matrix can be reached from Top-cell, Left-cell and Diagonal cell. So for any given cell, Number of Path to reach current cell is sum of path-count for Top-cell, Left-cell and Diagonal cell. This means for computing path count for current cell, we need path count for 3 other neighboring cells. Solution matrix constructed by DP stores path count for every cell.
 

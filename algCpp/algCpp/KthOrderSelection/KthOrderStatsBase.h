@@ -7,28 +7,29 @@ using namespace std;
 
 /*
 	Selection algorithms_20170627001
-		In general Selection algorithm is used for Knowing the position of an element in an UNSORTED array, without actually sorting it. Caller provide the index(K) and wants to know the VALUE stored at that position. When K = 8, we will be finding 8th item, when K =0 we will be finding MIN item. When K = N we will be fining MAX item. When K = N/2 we will be finding MEDIAN. To find the Kth item we can either fully sort the array using MergeSort or partially sort the array.
+	Given an unsorted array, Kth order statistics is used to know the value located at Kth index without actually sorting the array.
+	Ex: If K = 5, we have to tell what value will at 5th index, without sorting the src[].
+	Kth order problem can be generalized as follows.
+	If K=0, then return [0] element;
+	If K=N/2, then return mid element;
+	If K=N, then return [MAX-1] element;
 
-		Sorting the whole array and then returning Kth item from sorted array is inefficient because it sorts whole array to know the position of just one element. Alternatively we can use Partial Sorting. Partial Sorting sorts one random element and compares its index against K. If  SortedIndex == K, then we know what value sits are Kth index, problem solved. If SortedIndex != K, then try sorting another random element and check its SortedIndex against K. Partial sorting is called as KthOrderStatistics. PartialSorting takes O(N) time, and this is lesser than NlogN taken by Mergesort.
+	We can know the Value located at Kth index by sorting the wholw array using Merge sort. This is inefficient because it sorts whole array where as our 
+	requirement is to sort only one element. This takes O(NlogN) tine
 
-		KthOrderStatistics sorts a random element. This random element is based on a randomIndex. RandomIndex can be generated using some random algorithm or using a suffisticated algorithm called as MedianOfMedian.
+	Kth order statistics technique will discover the Kth value by just sorting few random element. This take Log(K) time.
+	Randomly pick an element from unsorted src-array, and sort that one element, and get its index(say sortedIndex). 
+	If the sortedIndex is equal K, then we have solved the problem. Otherwise, randomly select an anoher element and sort that one element,
+	abd check what index it gets. And check that index against K. Repeat these steps until sortedIndex becomes equal to K.
+	Kth order statistics 
 
-
-	Find Kth Item in unsorted data using KthOrderStats_20170621002
-		KthOrderStats is used to find Kth element in unsorted array, without sorting whole array.  Logic will not sort the whole array, instead Logic randomly picks an element from the unsorted array, and sorts only that random element by calling PartitionInTo3wayMethod().Partition method will modify the original array in such a way that, random element get sorted and sits at sortedIndex; and the values that are less than random element, will sit below sortedIndex, and similarly higher values sit above sortedIndex.
-		1st-part goes from src[0] to src[sorted-Index -1]
-		2nd-part will have just one src[sortedIndex]
-		3rd-part will have src[sortedIndex + 1] to src[srcLen-1]
-		Now we know one value and its position.
-		sortedIndex gives Position and src[sortedIndex] gives value
-		Say src[5] has value 25;  compare sortedIndex(5) with K and decide whether we should explore 1st-part or 3rd-part.
-		For example: SortedIndex = 5, and K = 8. This means 8th element comes after 5th element, so explore 3rd-partition.
-		SortedIndex = 10, and K = 8. This means 8th element comes before 10th element, so explore 1st-partition.
-		SortedIndex = 8, and K = 8. This means we have solved the problem, return the value stored in 2nd-partition/mid-part to caller, and exit the program. That is src[sortedIndex]
-
-		Exploring 1st-part or 3rd-part involves making Recursion call to KthOrderFunction().  In the subsequenct round, KthOrderFunction() will again pick a random element and calls PartitionInTo3wayMethod() to sort that ONE random element. Once PartitionInTo3wayMethod() returns, we compare sortedIndex with K. We may exit or continue making Recursion will. This Recursion will go on until SortedIndex returned by PartitionInTo3wayMethod() is equal to K.
-
-		This logic uses DAC. At everystep we explore only one part, not both the parts, this is because we are searching. When sorting we will explore both the parts.
+	Random number can be generated usng Median Of Median techinque also.
+	First round uses the whole array for picking the random index. Ex: If array len is 10, we pick an random index between 0-9.
+	In the second round uses only the part of the array for selecting random number. In the 3rd round array length reduces further down.
+	Sorted index returned by 1st round will tell the 2nd round whether to explore right-partition or left-partition. 
+	Ex: User has given K = 7 and array length is 10.
+	1st round will select 5 as random index, and sorts that one value; and it takes index-4. We are looking for K=7 and it comes in 
+	right-partition so we 2nd round picks the random number inside 2nd half.
 
 
 		KthOrder(src, K, srcLen)

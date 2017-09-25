@@ -12,6 +12,7 @@ namespace PrintDiagonalValuesNM
 {
 
 	/* 
+		TBD-READ 
 		Print matrix diagonally
 			To visualize the diagonal print out of Matrix, imagine arrows 
 			-starting from cells of Left-column and going up to top row.

@@ -31,52 +31,80 @@ namespace GraphSearch //RED20170908008
 			DistanceMAP[Tokyo] gives shortest distance between 'NY -> Tokyo'
 			DistanceMAP[Dubai] gives shortest distance between 'NY -> Dubai'
 
-				//init DistanceMAP to -1 for every city except NY(NY = 0)
-				Loop( remainingVextexList)
-					Select an unprocessed Vertex that is NEAREST to NY(means should be in remainingVextexList, & VALUE should be LOWEST in DistanceMap)
-					visit a vertex V
-					(AdjList.....)
-						DistanceMAP[adjList-entry] = 'distnce of V from NY' + 'Weight of Edge from V & adjList'
-				//DistanceMAP is filled. 
-				//Distance MAP will be shortest distance between NY to any city.
-	
-			Finding shortrer distance
-				Let us see how we compute shortest distance
-				We know that the DistanceMAP holds the distance between X-city and NY, so if the VALUE is LOW then that city is nearest to NY. So if we want to a shortest-path to NY, then we have to PICK the vertex that has LOWEST value in DistanceMAP, and that is exactly what we do. When ever we select a Vertex for processing, we want it to be present in remainingVextexList and also it should have lowest VALUE in DistanceMAP.
+				//init DistanceMAP to -1 for every city except NY(NY = 0). NY = 0 because it is nearest to NY.
+				 //init remainingVextexList with all vertex
+				//Init PathMap with KEY(that is cityname and VALUE is "")
 
-				Let us take few example:
-				When the program starts DistanceMAP has 0 for NY and -1 for every other city, so we pick NY Vertex for processing (because DistanceMAP [NY] = 0) 
+				CODE
+				-----
+						Loop( remainingVextexList)
+							Scan remainingVextexList for Vertex that is NEAREST to NY(means VALUE is LOWEST in DistanceMap)
+							Process such vertex(V) because we need SHORTEST path so Vertex should be NEAREST to NY.
+							This is my ALG is called GREEDY
+
+							Visit that vertex V
+							(AdjList.....of V)
+								Compute 'Distance between "adjList[] & NY" 
+									newdist = 'dist of V from NY' + 'Weight of Edge from V & adjList[]'
+									newdist = DistanceMap[V] + 'Weight of Edge from V & adjList'
+			
+								Write newdist to DistanceMap only if it is shorter						
+									if(newdist  < DistanceMap[adjList[]] )	
+										DistanceMap[adjList[]] = newdist;
+										PathMap['Name of adjList[]']	= 'Name of V'		
+						DistanceMAP is filled. 
+						Distance MAP will be shortest distance between NY to any city.
+						Actual Path will be in PathMap[]. Walk the PathMap[] in reverse direction from PathMap[Dubai] till VAUE is ""
+
+			Computig Distance
+				Say the route is "Ny - LD - Dubai", and we are processing LD vertex, and want to compute the distance between "Ny and Db'
+
+				distance between 'Ny and Dubai' = 'distance between Ny & Ld' + 'distance between Ld & Dubai
+
+
+				distance between 'NY to Dubai' is 'distance of  NY-LD" + 'distance of  LD-Dubai"
+				distance between 'NY to Dubai' = 'distance of  NY-LD'  //This comes from MAP (KEY is LOD)
+										+
+   									 'distance of LD-Dubai'  //This is WEIGHT of edge connecting LD & Dubai.
+
+	
+	
+			Finding shorter distance
+				We have to do two TWEAKS for finding shortest distance.
+				-First Tweak: We know that the next Vertex to be processed comes from remainingVextexList. To help us find shortest-path, apply an another condition when picking the vertex; condition is vertex should be closest to NY or source-city, this means vertex should have lowest VALUE in DistanceMAP.
+
+				-Second Tweak: When updating the distance map, update the entry only if the new value is lower than existing value in MAP. Say [Dubai] = 800; and this is based on the route NY-LD-Db.  Later we discover a shorter route, 'Ny-Paris-Db' 500. Now we over write [Dubai] with 500.
+
+				Let us take few example 'selecting next vertex to be processed':
+				When the program starts, DistanceMAP has 0 for NY and -1 for every other city. DistanceMAP [NY] = 0 has lowest value so NY is closest to NY, so we process NY Vertex. 
 						DistanceMAP [NY] = 0            remainingVextexList  {NY, LD, PR, DB}
 						DistanceMAP [LD] = -1
 						DistanceMAP [PR] = -1
 						DistanceMAP [DB] = -1
 
-				We explore the adj-list of NY, and it computes distance between NY-LD and NY-PR, fills the VALUE for LD and PR. After processing NY, we remove NY from remainingVextexList. Next vertex to be processd will come from LD, PR and DB.  Value of LD and PR is +ve value and DB is still -1.  We vertex with LOWEST value and that could be either PR or LD.
+				When processing NY, and we compute the distance for NY-LD and NY-PR, and these distances will be lower than the current value -1, so accordingly we update DistanceMAP. After processing NY, we remove NY from remainingVextexList. Next vertex to be processd will come from LD, PR and DB.  Among these Value of LD and PR is +ve value and DB is still -1.  We will pick the vertex with LOWEST value and that could be either PR or LD.
 						DistanceMAP [NY] = 0   	remainingVextexList  {LD, PR, DB} //REMOVED NY, got processed
 						DistanceMAP [LD] = x          
 						DistanceMAP [PR] = y
 						DistanceMAP [DB] = -1
-				In this fashion, we process the vertext that has LOWEST value, why this is called as GREEDY algorithm. 
+				In this fashion, we ALWAYS process the vertex that has LOWEST value(or CLOSEST to NY), this is why 'shortest path algorithm' is called as GREEDY algorithm. 
 
-			Finding shorter distance									 
-					When updating the distance map, update the entry only if the new value is lower than existing value in MAP.
-					Say [Dubai] = 800; and this is based on the route NY-LD-Db
-					Later we discover 'Ny-Paris-Db' to be 500; we over write the 800 with 500.
-					This is how MAP will end up having shortest distance for every city, starting from NY.
-				So we achieves shortest path
+			Summary 
+				We achieves shortest path
 				-by processing the Vertex that is NEAREST to NY
 				-by updating DistanceMAP[] only if the NEW value is LOWER
 
-			Computig Distance
-					Say the route is "Ny - LD - Dubai", and we are processing LD vertex, and want to compute the distance between "Ny and Db'
+			How do we know the actual shortest path
+				DistanceMap[] gives the shortestDistance but not actual flight-path. Getting path needs one more map, where KEY is current-city and VALUE is previous-city. Call this as PathMap. To know the path walk the MAP in reverse direction.
+				To know the path for NY-DB, 
+					start from  PathMap[DB] = Paris; 	
+							  PathMap[Paris] = NY; 	
+											  PathMap[NY] = ""; //When VALUE stop the WALK.
 
-					distance between 'Ny and Dubai' = 'distance between Ny & Ld' + 'distance between Ld & Ny'
+				Update the  PathMap[] whenever we write somthing to DistanceMap[]. Ex: We are processing the adjacency list of Paris Vertex. Adj list has Dubai; and we compute the distance btw "Ny and Dubai" and decide to write this to DistanceMAP, that same time update PathMap[] also. Route is coming from PARIS to DUBAI. So update entry for DUBAI 
+				PathMap[Dubai] = PARIS.
 
 
-					distance between 'NY to Dubai' is 'distance of  NY-LD" + 'distance of  LD-Dubai"
-					distance between 'NY to Dubai' = 'distance of  NY-LD'  //This comes from MAP (KEY is LOD)
-											+
-   										 'distance of LD-Dubai'  //This is WEIGHT of edge connecting LD & Dubai.
 
 	
 
@@ -284,7 +312,7 @@ namespace GraphSearch //RED20170908008
 																  //Number of entries will keep on reducing and reduces to zero.
 																  //So in the end we will have nothing in this Q.
 
-				map<string, string>				nearestVertexMap;
+				map<string, string>				PathMap;
 			
 															
 				string							empty;
@@ -293,7 +321,7 @@ namespace GraphSearch //RED20170908008
 				for (map<string,Vertex<T>*>::iterator g = vertexList.begin(); g != vertexList.end(); g++)
 				{
 					distanceFromStartVert.insert(std::pair<string, int>((*g).first, INT_MAX));
-					nearestVertexMap.insert(std::pair<string, string>((*g).first, empty));
+					PathMap.insert(std::pair<string, string>((*g).first, empty));
 					remainingVertexQ.push_back((*g).first);
 				}
 
@@ -321,7 +349,7 @@ namespace GraphSearch //RED20170908008
 							{
 								//Overwrite
 								distanceFromStartVert[adjVertexName] = newCost;
-								nearestVertexMap[adjVertexName] = baseVertexName;
+								PathMap[adjVertexName] = baseVertexName;
 								//prevVertex.push_back(baseVertexName);
 							}
 						}
@@ -344,7 +372,7 @@ namespace GraphSearch //RED20170908008
 				while (destVertex.length() > 0)
 				{
 					fullPath.push(destVertex);
-					destVertex = nearestVertexMap[destVertex];
+					destVertex = PathMap[destVertex];
 				}
 
 				cout << "\r\n";

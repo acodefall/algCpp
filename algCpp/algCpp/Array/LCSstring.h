@@ -9,8 +9,8 @@
 #include<memory>
 
 using namespace std;
-
-class LCSstring
+//TBD-DOC
+class LCSstring //RED20170909007
 {
 	public:
 			void getLCS()

@@ -5,7 +5,7 @@ using namespace std;
 namespace FindContiguousSubArrayWithSumXNM
 {
 	/*
-		Find continous Subarray of Sum X using NestedLoop__20170714001
+		Find continous Subarray of Sum X using NestedLoop_20170714001
 			In a array detect the continuous elements that will result in specific sum.
 			Say { 1,2,4} and target-sum is 6. Continuous elements 2 and 4 will result in sum of 6.
 			Solution is maintain two indexes: addIndex and subtractIndex. Both will start from 0. 

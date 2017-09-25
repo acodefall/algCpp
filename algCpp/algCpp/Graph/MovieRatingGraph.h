@@ -133,6 +133,7 @@ namespace GraphMovie
 			}
 	};
 
+
 	class compareRating
 	{
 		public:

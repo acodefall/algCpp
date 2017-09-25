@@ -137,10 +137,135 @@ namespace ColorHomeWithMinimumCostUsingDPNM //@RED20170527001
 		solution-Red[index], solution-Blue[index] and solution-Green[index]
 
 	*/
+
+
+	const int MaxColors = 3;
+	const int MaxHomes = 3;
+
+	const int PaintUsageCount = 3;
+	const int MaxRowsOfHomes = 3;
+	const int HomesPerRow = 3;
 	class ColorHomeWithMinimumCostUsingDP
 	{
+
 		public:
 				void callColorHomeWithMinimumCostUsingDP()
+				{
+					
+
+				    //We have 3 colors (R,g,b) paints; and 9 homes to paint(3 homes in 3 rows).
+					//We need to find a cheapest combination of colors for painting.
+					//Problem has two conditions:
+					//First condition is that we can not use same color for the homes that are in a same row.
+					//Second condition is that Price of the color changes depending on whether it is being used for 1st time or 2nd time or 3rd time. 
+					//Example: Cost of Red paint could be 5$ when used for the 1st time in 1st row;
+					//If we use it again in the 2nd row the cost could 14$. 
+					//This is why, problem input has price array for each color. There are three colors and  possibility for 3 attempts;
+					//and that gives rise to 3 prices. So taotally we have 9 prices. This can be represented as Matrix.
+					//Where row is number of attempt and column is type of color.
+					//Ex: Under Red column, 1st-row gives price for 1st time usage of Red; and 2nd-row gives the price for 2nd time usage 
+					//of Red color. 
+					
+					//Solve this using DP. 
+					//Start with just one row of homes; compute the price for painting them. Store that result in 1st row of solution matrix.
+					//Then add one more row of homes to the problem; and compute the price and update 2nd row of solution matrix.
+					//Similarly add the 3rd row of homes to the problem and compute the price and update the 3rd row of solution matrix. 
+					//Cheapest cost of painting is the lowest value in the last row of solution matrix.
+
+					//Solution matrix should show the consolidated price. 
+					//In the sense, cost stored in 2nd row is the price when we have to paint both two rows of homes; not jut 2nd row alone.
+					//Similarly the price in 3rd row reflects the price when we have to paint al the 3 rows of homes.
+					//This is how we compute the value stored in solution matrix.
+					//Price in 1st Row = Price for 1st row //This comes from srcPrice[1st attempt] 
+					//Price in 2nd Row = Price for 1st row  + Price for 2nd row 
+					//					 (comes from 1st row of solu[]) + (comes from srcPrice[2nd attempt])
+
+					//Price in 3rd Row = Price for 2nd row  + Price for 3rd row 
+					//					 (comes from 2nd row of solu[]) + (comes from srcPrice[3rd attempt])
+					//Note when filling the sol[] for 2nd row; if we selected RED for a 2nd row, then we must select the cheapest among GREEN or BLUE 1st row.
+					//This means when picking value from 1st row of solu[], pick the cheapest value among BLUE and GREEN.
+					//This is how we are able to deduce the cheapest cost; so this step is very important.
+					//Ex:
+					//Price in 2nd Row(RED) =   Price for 1st row  + Price for 2nd row 
+					//							Min(sol[1, BLUE], sol[1, GREEN]) + srcPrice[2nd attempt for RED]
+					
+
+					//Price in 3rd Row(Blue) =  Price for 2nd row  + Price for 3rdd row 
+					//							Min(sol[2, RED], sol[2, GREEN]) + srcPrice[3rd attempt for BLUE]
+					
+					//Row is 'Usage-count' Column is 'Colors' (RGB0
+					//Cell value is Price.
+					//6 is price for using RED for the 3rd time
+					int paintCostUsageCountByColor[PaintUsageCount][MaxColors] = 
+					{
+						{1, 3, 2 },										
+						{ 4, 100, 100 },
+						{ 6, 4, 2 }
+					};
+					
+					//Build a solution matrix of same dimention as source-cost-matrix
+					int Solu[MaxRowsOfHomes][HomesPerRow] =
+					{
+						{ 0, 0, 0 },
+						{ 0, 0, 0 },
+						{ 0, 0, 0 }
+					};
+
+
+					
+
+					cout << "Cost of Matrix Solution Matrix \r\n";
+					cout << "\r\n";
+
+					cout << "Solution Matrix \r\n";
+					cout << "\r\n";
+					
+					cout << "\r\n building solution Matrix \r\n";
+					
+					//This computes the values for solution matrix. Values stored in solution matrix is cosolidated values.
+					//This loop will introduce one row of homes at a time.
+					//r=0 there is only 1st row of homes
+					//r=1 there is only 1st row of homes
+					for (int r = 0; r < MaxRowsOfHomes; r++)
+					{
+						//There is only one row of homes. pick the cost for 1st time use of colors
+						if (r == 0)
+						{
+							Solu[0][0] = paintCostUsageCountByColor[0][0]; //fills with RED for 1st attempt
+							Solu[0][1] = paintCostUsageCountByColor[0][1]; //fills GREEN
+							Solu[0][2] = paintCostUsageCountByColor[0][2]; //fills BLUE
+						}
+						else
+						{
+							Solu[r][0] = paintCostUsageCountByColor[r][0] + min(Solu[r-1][1], Solu[r - 1][2]); //fills with RED for 1st attempt
+							Solu[r][1] = paintCostUsageCountByColor[r][1] + min(Solu[r - 1][0], Solu[r - 1][2]); //fills GREEN
+							Solu[r][2] = paintCostUsageCountByColor[r][2] + min(Solu[r - 1][0], Solu[r - 1][1]); //fills BLUE
+						}
+					}
+
+					//Print the Solution Matrix content
+					for (int m = 0; m < MaxRowsOfHomes; m++)
+					{
+						for (int n = 0; n < HomesPerRow; n++)
+						{
+							cout << Solu[m][n] << " ";
+						}
+
+						cout << "\r\n";
+					}
+
+					/*
+						building solution Matrix
+						1	3	2
+						6	101 101
+						107 10	8
+
+						Lowest cost is 8.
+						
+					*/
+				}
+
+				/*void callColorHomeWithMinimumCostUsingDP()
 				{
 					const int MaxColors = 3;
 					const int MaxHomes = 3;
@@ -229,7 +354,7 @@ namespace ColorHomeWithMinimumCostUsingDPNM //@RED20170527001
 					Lowest = min(Lowest, G[MaxHomes - 1]);
 					Lowest = min(Lowest, B[MaxHomes - 1]);
 					cout << Lowest << "\r\n";
-				}
+				}*/
 			
 				void print(int* data, int len)
 				{

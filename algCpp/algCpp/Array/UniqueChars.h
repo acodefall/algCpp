@@ -10,10 +10,11 @@
 #include "BuildTree.h"
 using namespace std;
 using namespace BuildTreeNM;
-namespace UniqueCharsNM
+namespace UniqueCharsNM //@RED20170909013
 {
 	/*
-
+		TBD-DOC
+		Array_104_Check if String has all unique characters_RED20170909013
 	*/
 	
 	class UniqueChars

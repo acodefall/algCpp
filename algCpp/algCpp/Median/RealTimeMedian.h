@@ -21,11 +21,26 @@ namespace RealTimeMedianNM
 			When computing the Median, combine both halves in to one big array and compute Median. If any one of the Heap has ODD number of elements, then root of that Heap will be the Median. If both the Heaps are same in size, then the Median is Average of the root values.
 
 			When a new data comes-in, we need a basis for deciding whether it should go to L-side or R-side,
-			Compare the incoming element against the ROOT of MinHeap or MaxHeap.
-			Rules for adding are as follows
-				-If the data is less than MaxHeap, add to to Left-side.
-				-If the data is higher than MinHeap, add to Right-side.
-				Before adding the items, balance the size by shifting the elements.
+			Compare the incoming element against the ROOT of either MinHeap or MaxHeap(but not the both).
+			Say if we are comparing with MaxHeap (that is on left side)
+				-If the data is less than root-of-MaxHeap, add to Left-side.
+				-If the data is higher than root-of-MaxHeap, add to Right-side.
+				We should make sure that Addition of new item will NOT make the count-difference MORE THAN 1. 
+				To mainatain this rule, we may have to shift the element from one side to another side, BEFORE adding the item.
+				Test the count before adding the item. 
+				If the side to which we are adding is having more elements, then POP one one item and push to the side with 
+				lower-count. This will make the element count equal, now add the new element to intended side.
+
+				//Say we decided to add the new-item to Left-side, but left-side has more items. Adding to it make difference MORE THAN 1
+				//So Pop() one item
+				if(L.count > R.Count) 
+					L.pop(); //This will balance the counts on both sides.
+					R.push(); 
+					L.push(); //Once the balance is achieved, add the new element
+				else //both the sides have same number, no need to balance.
+					L.push();
+
+				
 
 			Note: at any time values held by "top-of-maxHeap"  and "top-of-minHeap" should appear as continueos number.
 			// 1 4 6 ---- 8 7 9 //WRONG
@@ -86,7 +101,7 @@ namespace RealTimeMedianNM
 			if (maxheap.empty() && minheap.empty())
 			{
 				maxheap.push(item);
-			}
+			}  //Compare ONLY against the MAXHeap that is on LEFT-side.
 			else if (item <= maxheap.top())
 			{ //add the item to left-side
 

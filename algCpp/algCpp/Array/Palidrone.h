@@ -10,8 +10,8 @@
 #include <sstream>
 
 using namespace std;
-
-namespace PalidroneNM
+//TBD-READ
+namespace PalidroneNM //RED20170909009
 {
     ////@GN08 General_029_Check whether string is palindrome_GN08
     class Palidrone

@@ -12,7 +12,7 @@ using namespace BuildTreeNM;
 namespace PostOrderUsingStackNM
 {
 		/*
-			Post order traversal
+			Post order traversal 20170710005
 				Post order traversal is can be acieved by modifiying DFS 
 				Write the DFS code. When you pop the item from the stack, instead of printing it, push in to second stack.
 				Once the DFS is done, print the content of second stack.

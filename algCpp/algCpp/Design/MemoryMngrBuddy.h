@@ -7,7 +7,7 @@
 
 using namespace std;
 
-namespace BuddyMemoryManager
+namespace BuddyMemoryManager //RED20170909021
 {
 	class Allocator;
 

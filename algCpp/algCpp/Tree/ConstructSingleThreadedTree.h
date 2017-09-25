@@ -12,7 +12,7 @@ using namespace BuildTreeNM;
 namespace ConstructSingleThreadedTreeNM
 {
 	/*
-		Single Threaded Tree
+		Single Threaded Tree_20170707004
 			 In BST tree, node will be pointing to R-Child and L-Child. 
 			 Whereas in Threaded-Tree, R-child will always points to a HIGHER-VALUED node, as it appear in "in-order-traversal".
 			 Threaded-Tree is made for "in-order-traversal".
@@ -24,61 +24,61 @@ namespace ConstructSingleThreadedTreeNM
 
 			 So in ordr to convert the BST in to Threaded-Tree, we have to focus on Left-childs and right-childs. 
  
-			 Inserting a number in to Threaded-Tree.
-			 For inerting a VALUE in to Threaded Tree, iterrate the whole tree and find a suitable slot, and then insert the VALUE as it is 
-			 Linked list. If the VALUE is MIN, then VALUE will become left-child for deepest-left-node.
-			 We have to also modify the new-node so that its r-child points to parent node.
-			 and also the rightThreaded flag should be set to 1.
+			 Inserting a number in to Threaded-Tree_20170707006 20170707009
+				 For inerting a VALUE in to Threaded Tree, iterrate the whole tree and find a suitable slot, and then insert the VALUE as it is 
+				 Linked list. If the VALUE is MIN, then VALUE will become left-child for deepest-left-node.
+				 We have to also modify the new-node so that its r-child points to parent node.
+				 and also the rightThreaded flag should be set to 1.
  
-			 If the VALUE is MAX, then VALUE will become right-child of deepest-right-node. Since this is the highest valued node, 
-			 this will not pointing to any higher node, nor we will set rightThreaded flag.
+				 If the VALUE is MAX, then VALUE will become right-child of deepest-right-node. Since this is the highest valued node, 
+				 this will not pointing to any higher node, nor we will set rightThreaded flag.
 
-			 If the VALUE is in-between MIN and MAX, find the node that is just under the VALUE, and make VALUE the R-child.
-			 Say VALUE is 10. There happens to be a node with value 5, and its r-child's value is 15. Then VALUE should come in between 5 and 15.
-			 Value 10 will take the place of 15, and then 10 should be made to point to 15, and also the set rightThreaded flag.
+				 If the VALUE is in-between MIN and MAX, find the node that is just under the VALUE, and make VALUE the R-child.
+				 Say VALUE is 10. There happens to be a node with value 5, and its r-child's value is 15. Then VALUE should come in between 5 and 15.
+				 Value 10 will take the place of 15, and then 10 should be made to point to 15, and also the set rightThreaded flag.
 
-			 Insert 50
-				50 < 100 make left turn
-				50 insert at MIN
+				 Insert 50
+					50 < 100 make left turn
+					50 insert at MIN
 
-			Insert 25
-				25 < 100 make left turn
-				25 < 50 make left turn
-				25 insert at MIN
+				Insert 25
+					25 < 100 make left turn
+					25 < 50 make left turn
+					25 insert at MIN
 
-			Insert 7
-				7 < 100 make left turn
-				7 < 50 make left turn
-				7 < 25 make left turn
-				7 insert at MIN
+				Insert 7
+					7 < 100 make left turn
+					7 < 50 make left turn
+					7 < 25 make left turn
+					7 insert at MIN
 
-			Insert 20
-				20 < 100 make left turn
-				20 < 50 make left turn
-				20 < 25 make left turn
-				20 > 7 make right turn
-				20 insert 
+				Insert 20
+					20 < 100 make left turn
+					20 < 50 make left turn
+					20 < 25 make left turn
+					20 > 7 make right turn
+					20 insert 
 
-			Insert 75
-				75 < 100 make left turn
-				75 > 50 make right turn
-				75 insert in between 50 and 000000000035D330
+				Insert 75
+					75 < 100 make left turn
+					75 > 50 make right turn
+					75 insert in between 50 and 000000000035D330
 
-			Insert 99
-				99 < 100 make left turn
-				99 > 50 make right turn
-				99 insert in between 50 and 000000000035D390
+				Insert 99
+					99 < 100 make left turn
+					99 > 50 make right turn
+					99 insert in between 50 and 000000000035D390
 
-			print SingleThreadedTree
-				7
-				20
-				25
-				50
-				99
-				75
-				100
+				print SingleThreadedTree
+					7
+					20
+					25
+					50
+					99
+					75
+					100
 
-		Navigating Threaded Tree
+		Navigating Threaded Tree 20170707008
 				Navigation should start from lowest of the values so drill down to deepest-left-node. Then start printing using while loop.
 				Note that Threaded tree is setup for 'in order traversal' so take the help of RightTreaded flag for navigation.
 

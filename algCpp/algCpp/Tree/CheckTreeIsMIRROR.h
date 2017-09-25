@@ -12,7 +12,7 @@ using namespace BuildTreeNM;
 namespace CheckTreeIsMIRRORNM
 {
 	/*
-		Mirror Trees
+		Mirror Trees_20170706001
 			Mirror Trees can be visualized as follows.
 			If original tree has 3 nodes (parent, and 2 children); then the mirror image of that tree will also have
 			same Parent node but the children will be swapped.

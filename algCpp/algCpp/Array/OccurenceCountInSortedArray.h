@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace OccurenceCountInSortedArrayNM
+namespace OccurenceCountInSortedArrayNM //@RED20170909019
 {
     const int SIZEX = 9;
 	

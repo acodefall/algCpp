@@ -14,7 +14,7 @@ using namespace BuildTreeNM;
 namespace PrintLeftFacingNodesNM //20170711004
 {
 	/*
-				Print All The Left Facing Nodes in a Binary Tree _20170711004
+				Print All The Left Facing Nodes in a Binary Tree_20170711004
 					Left facing nodes sit on the Left-side of the triangle, and we have to print node value when cursor is at those nodes. 
 					When cursor is going along the left-traingle, the LEVEL goes from LOW to HIGH, and that is how we can detect that cursor is 
 					on left-side triangle.

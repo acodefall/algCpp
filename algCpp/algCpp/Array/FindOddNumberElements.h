@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-namespace FindOddNumberElementsNM
+namespace FindOddNumberElementsNM //@RED20170909015
 {
-	/*
+	/*  RED20170909015
 		Find a Number occurring odd number of times
 			Use XOR for finding out the odd element. XORing a number with itself results in zero. So if a number repeats 
 			even number of times, then XORing all of them will give zero output. If the number appears ODD number of times,
