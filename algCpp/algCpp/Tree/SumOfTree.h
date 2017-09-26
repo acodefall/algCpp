@@ -27,8 +27,10 @@ namespace SumTreeNM
 			   10 60  85 95						   0   0  0   0
 			
 			Sum Of tree replaces current node's value with the sum of the values held by left and right children.
-			Implementation will use post-order-traversal code; and goes on replacing current node's value with sum of left-child and right-child;
-			but returns the sum of current node, left-child and right-child to caller.  Note that values of Leaf-nodes will get replaced by 0.
+			Implementation will use post-order-traversal code; and goes on replacing current node's value with sum of 
+			left-child and right-child;
+			but returns the sum of current node, left-child and right-child to caller. 
+			Note that values of Leaf-nodes will get replaced by 0.
 	. 
 					-To create sumTree we neeed the sum from right hive and left hive, then only we can create Sum Tree.
 					 So we use Post-Order-Traversal code. Once the Recursion comes back with the sum of child node values, add them and make it the value of current Node.

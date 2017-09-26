@@ -13,33 +13,39 @@ namespace ConstructSingleThreadedTreeNM
 {
 	/*
 		Single Threaded Tree_20170707004
-			 In Threaded-Tree, R-child will always points to a HIGHER-VALUED node, as it appear in "in-order-traversal".
-			 Threaded-Tree is made for "in-order-traversal".
-			 Code constructing STT relays on following rule that "for any given node X; the higher valued node is either 'it right-child' or 'one of the ancestor'". 
-			 So the code resposible for inserting the node, shoulwill try change the r-child  current-node make node point to its r-child; if there is no r-child, then look for higher node amoong the ancestors, and point to it".
-
-
-
-			 So the node with higher-valued node is 
-			 To convert BST node X in to Thread Tree, we may have to change both L-child and R-child to point to higher valued node.
-
-			 Key logic is modify the for any node X
 			 
-			
-			 So in ordr to convert the BST in to Threaded-Tree, we have to focus on Left-childs and right-childs. 
- 
-			 Inserting a number in to Threaded-Tree_20170707006 20170707009
-				 For inerting a VALUE in to Threaded Tree, iterrate the whole tree and find a suitable slot, and then insert the VALUE as it is 
-				 Linked list. If the VALUE is MIN, then VALUE will become left-child for deepest-left-node.
-				 We have to also modify the new-node so that its r-child points to parent node.
-				 and also the rightThreaded flag should be set to 1.
- 
-				 If the VALUE is MAX, then VALUE will become right-child of deepest-right-node. Since this is the highest valued node, 
-				 this will not pointing to any higher node, nor we will set rightThreaded flag.
+			 In Threaded-Tree, R-child of every node will  point to next HIGHER-VALUED node.
+			 This helps in "in-order-traversal" without using STACK. In case of TREE, navigating downwards to
+			 left-most corner node can be done without STACK; but navigating UP requires STACK.
+			 Single threaded eliminates the need for STACK during UP ward navigation.
 
-				 If the VALUE is in-between MIN and MAX, find the node that is just under the VALUE, and make VALUE the R-child.
-				 Say VALUE is 10. There happens to be a node with value 5, and its r-child's value is 15. Then VALUE should come in between 5 and 15.
-				 Value 10 will take the place of 15, and then 10 should be made to point to 15, and also the set rightThreaded flag.
+			 Node in STT will have a special flag called 'right threaded' and if it is true, then r-child property points
+			 to higher node. Navigation code will If the flag is not set then Node behaves like traditional BST node.
+
+			 SIT traversal code will first drive down to left-most corner(note that STACK is not for making left).
+			 From there cursor start moving towards right-most node.
+			 Navigation code should handle both SIT and non-SIT nodes; so it checks whether the node has RThreaded flag set.
+			 If the flag is set, then stack-traversal will happen; if the flag is OFF, then traditional
+			 inorder traversal using STACK will start. 
+			 
+
+			 INSERTING a number in to Threaded-Tree_20170707006 20170707009
+				Insert code looks for the correct slot for inserting the newValue.
+				Navigation code start at root, goes on making left-turns until cursor goes PAST the correct position;
+				In the subsequent round, the ELSE block will CREATE and INSERTS the new node, and function will exit.
+				Only IF block is responsible for making Left-turn so it checks for (newValue < currValue).
+				The ELSE block will simply create & insert the node and then exits.
+
+				But there are two special cases where value could be MIN and MAX. 
+				MIN value must be detected by Left-Turn code. If the newValue is lower than currValue;
+				and currValue's left-child is NULL, it means that newValue is MIN value. At that time, 
+				Left-Turn code will create and insert the new node.
+
+				MAX value has to be detected by ELSE block. If the Rchild-flag of currNode is false, then newValue is MAX value;
+				Create and insert the new node.
+
+				In general, INSERT code should INSERT the new-node as if it is a NODE in to SINGLE-LL, and it should 
+				also set the Rchild flag on NEWLY created node.
 
 				 Insert 50
 					50 < 100 make left turn
@@ -170,45 +176,42 @@ namespace ConstructSingleThreadedTreeNM
 			void InsertToSingleThreadedTreeX(NodeTreeThreaded* root, int ValueToInsert)
 			{
 				NodeTreeThreaded* cur = root;
+				NodeTreeThreaded* parent = root;
 				cout << endl << "Insert " << ValueToInsert << endl;
 				while (cur != NULL)
 				{
+					parent = cur;
+					
 					//Value is lower so make left-turn
 					if (ValueToInsert < cur->d) 
-					{ //This block will insert the VALUE, only if it is MIN-value.
-					  //makes the VAlue left-child of deepest-left-node
-						cout << endl << ValueToInsert << " < " << cur->d << " make left turn" << endl;
-						if (cur->L == NULL) //This check is made to see whether we are at the deepest-left-node
-						{					//This also cjhecks if value is MIN
+					{ 
+						if (cur->L == NULL) 
+						{	//Left child is NULL so we can not go any further so insert the new node here
 							cout << ValueToInsert << " insert at MIN" << endl;
-							//This is deepest-left-node, create a new node to place ValueToInsert. 
-							//Make the new node 'right-threaded', by making it point to Parent, who's value is higher than newnode
+							
+							//create a new node to place ValueToInsert. 
 							NodeTreeThreaded* newTemp = new NodeTreeThreaded(ValueToInsert);
 							cur->L = newTemp;  //new node should be left child of parent
 							newTemp->RightTreaded = true; //New node is RIght threaded and it points to parent
 							newTemp->R = cur; //New node is RIght threaded and it points to parent
-
 							break;  //Break because we wanted to insert just one value
 						}
-						cur = cur->L; //if we 
+						cur = cur->L; 
 					}
 					else //if (ValueToInsert <= cur->d)
 					{	
-						cout << endl << ValueToInsert << " > " << cur->d << " make right turn" << endl;
-
 						//Value being added is high
 						if (cur->RightTreaded == false)
 						{	//This block will insert the VALUE, only if it is MAX-value.
 							if (cur->R == NULL) //This also checks if value is MAX
 							{
-								cout << endl << ValueToInsert << " is MAX insert after " << cur->R << endl;
 								NodeTreeThreaded* newTemp = new NodeTreeThreaded(ValueToInsert);
 								cur->R = newTemp; //This is MAX value so no need to make it to ppint to any higher value
 								break;    //Break because we wanted to insert just one value
 							}
 						}
 						else
-						{  //This block will insert the VALUE,  if it is between MIN and MAX.
+						{   //This block will insert the VALUE,  if it is between MIN and MAX.
 							//VALUE is is taking the place of existing R-child, so backup the current R-child in to a tempVar.
 							//Make the VALUE the new r-child, and then make new-r-child point to previous-r-child (because its value was higher)
 							//This is inserting 10 in between 5(parent) and 15(r-child)
@@ -222,8 +225,7 @@ namespace ConstructSingleThreadedTreeNM
 							cout << endl << ValueToInsert << " insert in between " << cur->d << " and " << cur->R<< endl;
 							break;
 						}
-						
-						cur = cur->R;
+					
 						
 					}
 				}
