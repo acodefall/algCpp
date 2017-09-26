@@ -13,15 +13,19 @@ namespace ConstructSingleThreadedTreeNM
 {
 	/*
 		Single Threaded Tree_20170707004
-			 In BST tree, node will be pointing to R-Child and L-Child. 
-			 Whereas in Threaded-Tree, R-child will always points to a HIGHER-VALUED node, as it appear in "in-order-traversal".
+			 In Threaded-Tree, R-child will always points to a HIGHER-VALUED node, as it appear in "in-order-traversal".
 			 Threaded-Tree is made for "in-order-traversal".
-			 Say L-child is 5, Parent is 10 and R-child is 15.
-			 In case of Threaded Treem, L-child's r-child should point to parent because it is greater in value, and 
-			 also the rightThreaded flag should be set to 1.
-			 Parent-node will already be pointing to R-child(who's value is higher than Parent-node), we do not modify Parent node.
-			 R-child should be modified to point to next higher-node; which could be Left-child of some other parent.
+			 Code constructing STT relays on following rule that "for any given node X; the higher valued node is either 'it right-child' or 'one of the ancestor'". 
+			 So the code resposible for inserting the node, shoulwill try change the r-child  current-node make node point to its r-child; if there is no r-child, then look for higher node amoong the ancestors, and point to it".
 
+
+
+			 So the node with higher-valued node is 
+			 To convert BST node X in to Thread Tree, we may have to change both L-child and R-child to point to higher valued node.
+
+			 Key logic is modify the for any node X
+			 
+			
 			 So in ordr to convert the BST in to Threaded-Tree, we have to focus on Left-childs and right-childs. 
  
 			 Inserting a number in to Threaded-Tree_20170707006 20170707009

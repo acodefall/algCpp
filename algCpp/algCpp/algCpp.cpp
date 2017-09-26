@@ -195,6 +195,9 @@
 #include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
+	KnapsackUsingDPNM::KnapsackUsingDP objKnapsackUsingDP;
+	objKnapsackUsingDP.CallKnapsackUsingDP();
+
 	ColorHomeWithMinimumCostUsingDPNM::ColorHomeWithMinimumCostUsingDP objColorHomeWithMinimumCostUsingDP;
 	objColorHomeWithMinimumCostUsingDP.callColorHomeWithMinimumCostUsingDP();
 
@@ -643,8 +646,6 @@ int main()
 	ThreeSumProblemNM::ThreeSumProblem objThreeSumProblem;
 	objThreeSumProblem.Call3SumProblem();
 	
-	KnapsackUsingDPNM::KnapsackUsingDP objKnapsackUsingDP;
-	objKnapsackUsingDP.CallKnapsackUsingDP();
 	
 	CuttingRodNM::CuttingRod objCuttingRod;
 	objCuttingRod.CallCuttingRod();

@@ -167,6 +167,12 @@ namespace KnapsackUsingDPNM
 						   0   0   0   0  40  40  40  40  40  50  70
 						   0   0   0  50  50  50  50  90  90  90  90
 						   Subset(wt): 4, 3
+
+
+						   0   0   0   0   0  10  10  10  10  10  10
+						   0   0   0   0  40  40  40  40  40  50  50
+						   0   0   0   0  40  40  30  30  30  30  70
+						   0   0   0  50  50  50  50  90  90  80  80
 					*/
 
 					int TargetWeight2 = 5;
@@ -188,11 +194,7 @@ namespace KnapsackUsingDPNM
 									1, 2,
 					*/
 				}
-
-				/*
-					Function's input is ItemWieght[], ItemPrice[], ItemTypeCount, Knapsackweight
-				*/
-				/*void KnapsackUsingDP2(int* ItemWeight, int* ItemPrice, int itemTypeCount, int KnapsackWeight)
+				void KnapsackUsingDP2(int* ItemWeight, int* ItemPrice, int itemTypeCount, int NumberOfWeights)
 				{
 					//Allocate a SolutionMatrix of dimension ItemTypeCount+1, and KnapSackWieght+1
 					int Solution[256][256];
@@ -208,63 +210,56 @@ namespace KnapsackUsingDPNM
 					}
 
 					//Then try to compute cell values for solution matrix
-					//Start an outer ForLoop to iterate rows and an inner ForLoop to iterate columns
-					//Start index for both will be 1.
-
-					//We initialize the index to 1 so it is suitable for Solution Matrix, but accessing ItemPrice[] and ItemValue[] array do -1.
-					for (int row = 1; row < (itemTypeCount + 1); row++)
+					for (int row = 0; row < itemTypeCount; row++)
 					{
-						for (int columnWeight = 1; columnWeight < (KnapsackWeight + 1); columnWeight++)
+						for (int col = 1; col < NumberOfWeights+1; col++)
 						{
-							//Every loop tries fill Solution[row][columnWeight]
-							//In every loop compare if currentItemWieght < ColumnWieght.
-							//Here 'currentItemWieght' is the weight of ItemType like Pencil and Gold, and this comes from ItemWeight[]
-							//     'ColumnWeight' is 0kg, 1kg,... scale
-
-							//If columnWeight is higher, find out the difference between currentItemWieght & ColumnWieght (Call this as TraceItemWeight)
-							//Use TraceItemWeight as Index in to upper-row, and extract the value for TraceItem (say TraceItemValue).
-							//Then add currentItemValue and TraceItemValue
-							//Here 'currentItemValue' is the VALUE of ItemType like Pencil and Gold, and this comes from ItemValue[]
-							//Compare the sum with the Uppercell value that is Solution[row-1][columnWeight - 1]
-							//Whichever value is higher should be written to Solution[row][columnWeight]
-							
-
-							//If the columnWeight is lower than currentItemWieght, then column can not accomadate the currentItem so we assign Upper cell's value to Solution[row][columnWeight].
+							//If the col is lower than currentItemWieght, then column can not accomadate the currentItem so we assign Upper cell's value to Solution[row][col].
 							//This ends one loop. In the next loop we will filling the value for next cell.
-							if (ItemWeight[row - 1] <= columnWeight)
-							{
-								//compare the weight of column and weight of the item represented by that item-type.
-								//column-weight could be too low compared to weight of the item.
-								//In that case use the item-type, that is latest in bag.
-								
-								
-								int traceWeightValue = 0;
-								int traceWeight = columnWeight - ItemWeight[row - 1];
-								traceWeightValue = Solution[row - 1][traceWeight];
-								
-								//compute the Value of NewItem by adding Item'sValue and TraceWeight'sValue
-								int NewItemValue = ItemPrice[row - 1] + traceWeightValue;
-								
-								//compare the existingValue with potentialValueOfNewItem
-								//SameColumn of 'UpperRow is CurrentVAlue that is already in the Bag'
-								if (NewItemValue > Solution[row - 1][columnWeight])
-									Solution[row][columnWeight] = NewItemValue;
+							if (row == 0)
+							{	
+
+								if (ItemWeight[row] <= col)
+								{
+									Solution[row][col] = ItemPrice[row];
+								}
 								else
-									Solution[row][columnWeight] = Solution[row - 1][columnWeight];
+								{
+									//This is top row, assign the price the current item 'as it is' to solution matrix.
+									Solution[row][col] = 0;
+								}
 							}
 							else
-							{	//Item's weight is higher, column-weight can not accomadate it 
-		
-								Solution[row][columnWeight] = Solution[row - 1][columnWeight];
+							{	//This is not a top row so follow rules while computing value for sol
+								if (ItemWeight[row] <= col)
+								{
+									int excessCapacity = col - ItemWeight[row];
+
+									//go to previous row and get the price for this 'excessCapacity', and add that to current item's weight
+									int sumTemp = ItemPrice[row] + Solution[row - 1][excessCapacity];
+									             //currentItem's price + price for the item used for filling excess-capacity
+									if (sumTemp > Solution[row - 1][col])
+									{	//If the sumTemp is LOWER then we IMPORT the value from upper
+										Solution[row][col] = sumTemp;
+									}
+									else
+										Solution[row][col] = Solution[row - 1][col];
+								
+								}
+								else
+								{
+									//column can not accomadate the wieght of currentItem, so import the price from upper row
+									Solution[row][col] =  Solution[row - 1][col];
+								}
 							}
 						}
 					}
 
 					cout << "printing solution matrix \r\n";
 					//PrintMatrix
-					for (int row = 0; row < (itemTypeCount + 1); row++)
+					for (int row = 0; row < itemTypeCount; row++)
 					{
-						for (int c = 0; c < (KnapsackWeight + 1); c++)
+						for (int c = 0; c < NumberOfWeights+1; c++)
 						{
 							cout << setw(4) << Solution[row][c];
 						}
@@ -275,112 +270,7 @@ namespace KnapsackUsingDPNM
 					//Print the items that are in Knapsack
 					string subset;
 				
-					int cIdx = KnapsackWeight; 
-					int rIdx = itemTypeCount;
-			
-					while (rIdx > 0)
-					{
-						if (Solution[rIdx][cIdx] == Solution[rIdx -1][cIdx]) //compare with the cell right above the current cell
-						{
-							//Do not record item because this item has not made it in to bag
-						}
-						else
-						{	//This item has made it in to bag, so add it to subset
-							stringstream ss;
-							ss << ItemWeight[rIdx - 1] << " "; //This does iToa conversion
-							subset = subset.append(ss.str()); //ItemPrice index is one lower than solution index.
-							
-							cIdx = cIdx - ItemWeight[rIdx - 1];	//Also make a LEFT turn. (Note: we use the wight of upper-cell)
-						}
-						rIdx--; //Always Go UP. 
-					}
-					cout << "subset that is Knapsack is " << subset.c_str();
-				}*/
-
-				void KnapsackUsingDP2(int* ItemWeight, int* ItemPrice, int itemTypeCount, int KnapsackWeight)
-				{
-					//Allocate a SolutionMatrix of dimension ItemTypeCount+1, and KnapSackWieght+1
-					int Solution[256][256];
-
-					
-					//Then Init the all of the solution matrix with 0
-					for (int row = 0; row < 256; row++)
-					{
-						for (int column = 0; column < 256; column++)
-						{
-							Solution[row][column] = 0;
-						}
-					}
-
-					//Then try to compute cell values for solution matrix
-					//Start an outer ForLoop to iterate rows and an inner ForLoop to iterate columns
-					//Start index for both will be 1.
-
-					//We initialize the index to 1 so it is suitable for Solution Matrix, but accessing ItemPrice[] and ItemValue[] array do -1.
-					for (int row = 1; row < (itemTypeCount + 1); row++)
-					{
-						for (int columnWeight = 1; columnWeight < (KnapsackWeight + 1); columnWeight++)
-						{
-							//Every loop tries fill Solution[row][columnWeight]
-							//In every loop compare if currentItemWieght < ColumnWieght.
-							//Here 'currentItemWieght' is the weight of ItemType like Pencil and Gold, and this comes from ItemWeight[]
-							//     'ColumnWeight' is 0kg, 1kg,... scale
-
-							//If columnWeight is higher, find out the difference between currentItemWieght & ColumnWieght (Call this as TraceItemWeight)
-							//Use TraceItemWeight as Index in to upper-row, and extract the value for TraceItem (say TraceItemValue).
-							//Then add currentItemValue and TraceItemValue
-							//Here 'currentItemValue' is the VALUE of ItemType like Pencil and Gold, and this comes from ItemValue[]
-							//Compare the sum with the Uppercell value that is Solution[row-1][columnWeight - 1]
-							//Whichever value is higher should be written to Solution[row][columnWeight]
-							
-
-							//If the columnWeight is lower than currentItemWieght, then column can not accomadate the currentItem so we assign Upper cell's value to Solution[row][columnWeight].
-							//This ends one loop. In the next loop we will filling the value for next cell.
-							if (ItemWeight[row - 1] <= columnWeight)
-							{
-								//compare the weight of column and weight of the item represented by that item-type.
-								//column-weight could be too low compared to weight of the item.
-								//In that case use the item-type, that is latest in bag.
-								
-								
-								int traceWeightValue = 0;
-								int traceWeight = columnWeight - ItemWeight[row - 1];
-								traceWeightValue = Solution[row - 1][traceWeight];
-								
-								//compute the Value of NewItem by adding Item'sValue and TraceWeight'sValue
-								int NewItemValue = ItemPrice[row - 1] + traceWeightValue;
-								
-								//compare the existingValue with potentialValueOfNewItem
-								//SameColumn of 'UpperRow is CurrentVAlue that is already in the Bag'
-								if (NewItemValue > Solution[row - 1][columnWeight])
-									Solution[row][columnWeight] = NewItemValue;
-								else
-									Solution[row][columnWeight] = Solution[row - 1][columnWeight];
-							}
-							else
-							{	//Item's weight is higher, column-weight can not accomadate it 
-		
-								Solution[row][columnWeight] = Solution[row - 1][columnWeight];
-							}
-						}
-					}
-
-					cout << "printing solution matrix \r\n";
-					//PrintMatrix
-					for (int row = 0; row < (itemTypeCount + 1); row++)
-					{
-						for (int c = 0; c < (KnapsackWeight + 1); c++)
-						{
-							cout << setw(4) << Solution[row][c];
-						}
-						cout << "\r\n";
-					}
-
-					
-					//Print the items that are in Knapsack
-					string subset;
-				
-					int cIdx = KnapsackWeight; 
+					int cIdx = NumberOfWeights;
 					int rIdx = itemTypeCount;
 			
 					while (rIdx > 0)
