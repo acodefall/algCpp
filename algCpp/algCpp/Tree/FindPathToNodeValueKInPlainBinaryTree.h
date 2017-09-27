@@ -13,9 +13,15 @@ namespace FindPathToNodeValueKInPlainBinaryTreeNM //20170710003
 {
 		/*
 			Find Path To Value K in Plain Binaray Tree 
-				In Plain Binary Tree, new VALUE takes which ever place is available at that time, without giving any consideration to the value. Where as BST places the new VALUE at appropriate slot based on the VALUE. Eg: If the new VALUE is 10, then it will be placed in between 5 and 15.
-
-				So when searching for a VALUE in BST, we can comapare currNode's value against the Value being searched, and appropriately make either LEFT OR RIGHT turn. But we can not do that in case of Plain Tree. We have to iterate from Root to LEAF, using IN-ORDER traversal, and check for the VALUE along the way.
+				Note that we are searching inside Binaray Tree, not Binary Search Tree.
+				In Binary Tree, nodes will not follow any order, nodes will be allocated on first-come-first serve basis.
+				Where as the insertion code in BST, searches for the appropriates place and then creates the node there.
+				In BST, Value on left should be lower and value on right should be higher. 
+				So when searching in BST, comapare currNode's value against VsoughtValue and appropriately make either LEFT OR RIGHT turn. 
+				
+				In case of Plain Tree, there is not order. So we have to iterate the whole tree from Root to LEAF, 
+				using IN-ORDER traversal, and check for the VALUE along the way. Potentially we may have to touch every
+				node in the tree. So searching in Plain Tree is not efficient.
 
 
 				           100

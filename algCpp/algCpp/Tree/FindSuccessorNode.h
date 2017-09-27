@@ -13,12 +13,24 @@ using namespace BuildTreeNM;
 namespace FindSuccessorNodeNM //20170709003
 {
 	/*
-		When searching for Successor of Target node, first look for the left-most child of right-child of TargetNode. If that is missing, then look at the rightChild of TargetNode.
-		If both are absent, look among the ancestors of Target node. 
-		Starting from root, drill down to Target node, and along the way record any node who's value is more than that of TargetNode.
-		This is because Successor of targetNode, has to be higher than targetNode.
-		Stop the iteration when you reach Target node. Last recorded node is the successor node.
+		Successor node a node who's value is just above the value of current node.
+		We know that Right-child hive and ancestor nodes may have high-valued node, so we should explore that region.
+		We are not interested in any higher value, but the the value that is just above the current node so we should 
+		explore in following order.
+
+		-Left-most child under right-child will have immidiately higher-value. So first search there.
+		-Then move on to Right-child itself. 
+		-Then move on to ancestor of current node
 		
+		Use a while loop for probing the left-most child of Right-hive. 
+		If the value is not there, then search under ancestor using Binary search, starting from Root.
+		Bbinary search will in fact search for the TargetNode itself who's value we already know. 
+		We expect to see the successor node somewhere between Root and current node.
+		Binary search will be making L and R turn by comparing currNode with TargetNode's value.
+		And Stops the binary at TargetNode.
+		All along the way record the value of currNode if it's value is more than that of TargetNode.
+		By the time the cursor reaches the Target node, we should have successor node.
+
 		-Start while-Loop.
 		-if(currData > TargData)
 			succNode = CurrNode //Record the node for tracking purpose.
@@ -31,28 +43,6 @@ namespace FindSuccessorNodeNM //20170709003
 			cur = cur->R
 			//If targetNode is higher than currNode, then Target node has to be in right hive so make right turn
 
-		For this drill down from 
-		InOrderSuccessor Node is a node with higher value. In general higher valued node will be 
-				-Leftmost child of Right-Child of X
-				-Right-Child of X
-				-Ancestor node of X
-			Explore in above given order only.
-
-			If the Right-Child has any left node, use the deepest left node as successor node.
-			If the Right-child does not have any left node, then use the deepest left node as successor node
-			If the Right-child it self missingg, start navigating from root. MAke left of right turn so that you approach Target node.
-			Along the way keep track the node that is above Target node.
-
-   
-            -If TargetNode has no R-Child, then start a while loop to iterate from root.
-                            Declare Curs, PrevNode, and start while loop.
-                            Inside the while loop:
-                                                    if (trg.Data < Curs.Data),
-                                                                                    PrevNode = Curs; Curs = Curs.Left;
-                                                    under Else If (trg.Data > Curs.Data),
-                                                                                    Curs = Curs.Right;
-                                                    under Else (where trg == Curs)
-                                                            return PrevNode.
 	*/
 	class FindSuccessorNode
 	{

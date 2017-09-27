@@ -23,17 +23,24 @@ namespace CheckTreeIsIdenticalNM //@RED20170725060
 			10     30       30      10
 
 		Implementation
-			To judge whether two Tress are mirror We have one node from each other.
-			Compare rightChild of T1 against leftChild of T2. If one is NULL then other has to be NULL too.
-			If every nodes satisfies this condition then we can say that Tress are Mirror.
-			To implement this do Inorder traversal of both the tree at the same time, so inoder traversal code will have two Node pointers.
-			If the nodes are mirror, value should be same irrespective of whether it is NULL or non-NULL.
-			In case the values are same, we have to make children are also Mirror, so make recursion call.
-			Nodes passed to recursion should come from different trees and they should be of different type. 
-			Say rightChild from T1 and leftChild from T2 gets paired.
-			Similaraly rightChild from T2 and leftChild from T1 gets paired.
-			AND the return values of the recursion call and pass it to caller.
-			If one recursion returns FALSE, then theer is no reason to make 2nd recursion.
+			Two nodes are said to be mirror if the left-child of 1st node has same value as right-child of 2nd node.
+			And viceversa. But the Parent's value should be same.
+ 
+			A tree is said to be mirror, if every node of the tree exhibits MIRROR behaviour.
+			Verifying whether the Tree is mirror will Iterate the tree using pre-order recursion and checks one node from T1 against a node from T2.
+			Function will be iterating two trees at the same time, so the function will recieve two cursors as input parameter.
+			Pre-recursion coder will check
+			-if both cursors are NULL, if so breaks the recursion and returns TRUE.
+			-if both cursors have same value, then proceed further to check whether their children are mirror, by making TWO rec call.
+			If both the recs return TRUE, then the both the child hives are mirror.
+			For 1st recursion call pass left-child of 1st node and right-child of 2nd node as parameter.
+			For 2nd recursion call pass right-child of 1st node and left-child of 2nd node as parameter.
+			Post recursion code will collect the ret code of recursion calls and both should return TRUE.
+			Function ANDa the return of recursion calls and returns to caler.
+ 
+			Pre-recursion code will generate genuine return value, where it checks whether cursors are NULL, and whether node-values have same value.
+			Post-recursion code will simply pass the AND of the return values returned by two recursion funcs.
+			Whole TREE is said to be Mirror if control reaches the point where both the nodes, passed as input are NULL
 
 
 			Tree T1:

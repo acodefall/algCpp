@@ -15,8 +15,12 @@ namespace NodeCountNM
 	/*
 				Print All The Full Nodes in a Binary Tree
 
-
-				       100					
+	Counting Nodes
+		In order to count the number of nodes, the logic has to touch every node by making post-traversal-rec calls.
+		Every node has to account for current node by adding the ONE to the count. Every node will also collect the node count returned by both child hives.
+		Node accounting happens in post-rcursion code, when the recursions makes U-turn.
+		Post-recursion code will add the count returned by two recursion calls; and ADDs one to that sum(to account for current node), and returns the total sum to caller.
+				100					
 				      /    \
 				     /      \
 				    80       120
