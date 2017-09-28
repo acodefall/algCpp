@@ -195,6 +195,9 @@
 #include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
+	WaysOfMakingNNM::WaysOfMakingN objWaysOfMakingN;
+	objWaysOfMakingN.callWaysOfMakingN();
+
 	KnapsackUsingDPNM::KnapsackUsingDP objKnapsackUsingDP;
 	objKnapsackUsingDP.CallKnapsackUsingDP();
 
@@ -640,8 +643,7 @@ int main()
 	PlaceLettersApartNM::PlaceLettersApart objPlaceLettersApart;
 	objPlaceLettersApart.CallPlaceLettersApart();
 
-	WaysOfMakingNNM::WaysOfMakingN objWaysOfMakingN;
-	objWaysOfMakingN.callWaysOfMakingN();
+	
 
 	ThreeSumProblemNM::ThreeSumProblem objThreeSumProblem;
 	objThreeSumProblem.Call3SumProblem();

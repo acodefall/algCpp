@@ -8,7 +8,10 @@ namespace CuttingRodNM
 
 	CuttingRod Problem_20170609008
 		//hxxps://medium.com/@pratikone/dynamic-programming-for-the-confused-rod-cutting-problem-588892796840
-		Probem: A rod needs to be cut in to pieces so that total profit is maximum. Price varies from length to length. We should compute the subset of pieces that generates maximum profit and also the Max profit itself. Assume the length of pieces is a number series like 1,2,3…. So Input data for 10feet rod is Price[] and Length[] of length 10.
+		Probem: A rod needs to be cut in to pieces so that total profit is maximum. 
+		Price varies from length to length. We should compute the subset of pieces that generates maximum profit and 
+		also the Max profit itself. 
+		Assume the length of pieces is a number series like 1,2,3…. So Input data for 10feet rod is Price[] and Length[] of length 10.
 	
 			This problem can be solved using 3 methods
 			a) PERMUTATIONS method
@@ -17,10 +20,14 @@ namespace CuttingRodNM
 
 
 	Cutting Rod Solution using DP_20170609010
-		A Rod of length 4ft can be cut in to 4 different sizes(1ft, 2ft, 3ft and 4ft), and DP tries to find the combination that generates max revenue. Problem input is Price[] of length 4, where index is the length of the piece.
+		A Rod of length 4ft can be cut in to 4 different sizes(1ft, 2ft, 3ft and 4ft), and DP tries to find the combination that generates max revenue. 
+		Problem input is Price[] of length 4, where index is the length of the piece.
 		DP constructs a solution array of length 5, and expects the max revenue to be at the 5th index.
-		DP introduces introduce 1ft rod in to pool. Price for 1ft will be in Price[0]. DP computes max-revenue for it and stores the solution in Sol[1].
-		Then DP introduces 1ft and 2ft pieces in to pool. Price for 1ft will be in Price[0], Price[1]. Then DP computes max-revenue for this using Price[0], Price[1] and their corresponding solution namely Solution[0]and Solution[1]. Max revenue for pool of “1ft and 2ft” pieces will be stored in Solution[2].
+		DP introduces introduce 1ft rod in to pool. Price for 1ft will be in Price[0]. 
+		DP computes max-revenue for it and stores the solution in Sol[1].
+		Then DP introduces 1ft and 2ft pieces in to pool. Price for 1ft will be in Price[0], Price[1]. 
+		Then DP computes max-revenue for this using Price[0], Price[1] and their corresponding solution namely Solution[0]and Solution[1]. 
+		Max revenue for pool of “1ft and 2ft” pieces will be stored in Solution[2].
 
 		Complexity is O(n ^ 2).  16 for 4 feet rod.
 
@@ -68,6 +75,16 @@ namespace CuttingRodNM
 		Finally, maximum value will be stored in last element of Solution[last-element].
 
 		Steps for Cutting Rod using DP
+			DP starts with just price for 1ft rod.
+			And DP computes the Max price for 1ft of rod and stores in Sol[0].
+			Then DP inceases the length to 2ft, and now we have price for 1feet rod and 2feet rod.
+			DP has to decide will selling which yeilds more profit: "selling 2ft as it is" or "selling two 1ft rods (1ft + 1ft)".
+			Price for selling "selling 2ft as it is" comes from src[1];
+			Price for selling "selling two 1ft rods (1ft + 1ft)"; we already know the best price for 1ft rod and that is in solu[];
+			Price for other 1ft comes from src[1].
+				"selling two 1ft rods (1ft + 1ft)" = src[0] + solu[0];
+			
+
 			1) Parameters are price-array and its length
 			2) Initialize the Solution[0] to 0.
 			3) Then start a Forloop that iterates src-array from 0 to srcLen,  and this loop introduces one-piece at time in to Pool.
@@ -117,47 +134,19 @@ namespace CuttingRodNM
 
 				/*
 					Cutting Rod using Recursion, how combinations are generated?_20170610001
-						For 3ft Rod we generate combinations using mirroring technique. Run a counter that goes from 0 to 2, and at every step substract the counter from 3. The Counter and Result of substaction gives the combination.
-							a) 3-1 = 2. We can make 3 by adding 1 and 2
-							b) 3-2 = 1. We can make 3 by adding 2 and 1
-							c) 3-3 = 0. We can make 3 by adding 3 and 0
-						CuttingRod recursion genertes above combinations using ForLoop. This types of combinations also expresses the 3ft in what we already readily know. That is, since we know the price for 1ft, 2ft and 3ft, make 3ft out of "1ft + 2ft", and “2ft+ 1ft”, but not out of "1ft + 1ft + 1ft".
-			
-						Coming to the recursion function itself, a ForLoop splits the 3ft rod in to 1ft, 2ft and 3ft rods.
-						When i = 1ft, we readily know the the price for 1ft(this is stored in Price[]) but we also want to know the price for other 2ft, so that sum becomes 3ft. To know the price for 2ft, we call the recursion function with 2ft as size. Once that recursion returns we know the price for 3ft in terms of "1ft and 2ft".
-
-						When i = 2, we fetch the readily available price for 2ft rod from Price[2]. Then make a recursion call to know the price for 
-						other 1ft. When the recursion returns, we know the price for making 3ft using "2ft and 1ft"
-
-						When i = 3, we fetch the readily available price for 3ft rod from Price[3]. We know the price of 0ft, make a recursion call for 0ft, and it comes back with 0.
-
-						Now the ForLoop was able to construct 3ft using price-of-1ft, price-of-2ft and price-of-3ft, and ForLoop also tracks the maximum price among these 3. So when ForLoop ends we know the price of best combination for making 3ft.
-
-						When we call Recursion function with 2ft rob. Recursion call will inturn divide the 2ft rod in to combination of “one 2ft rod” and “two 1ft Rods”. Then returns us the best price among the combination for 2ft. This alogorithm is inefficient because Recursion(2ft) gets called for, 3ft rod, 4ft rod and 5ft rod. So we process the same data again and again.
-
-						Steps for CuttingRod using Recursion_20170610002
-							a) Input parameters are RodLen and Price[]
-							RodLen is the length of the Rod to be cut in to pieces. If RdLen is 3ft, we cut it in to 1ft, 2ft, 3ft using For Loop.
-							ForLoop goes from (0 to < RdLen)
-
-							c)	ForLoop generates combinations like “2ft and 1ft” and “1ft and 2ft”. Given a combination,  view the elements of combinations as 1stPart and 2ndPart(say in “2ft and 1ft” combination, 2ft is 1stpart and 1ft is 2nd part. Price for 1st part comes from Price[], and price for 2nd part comes from Recusion call. Once the recursion ends, we sum the both and compare against gblMax to check whether the sum is Maximum of ALL the combinations of making 3ft.
-							d)	 
-							PriceForFirstPart = srcPrice[i]; //This is pulled from the readily available Price[]
-							PriceForSecondPart = CuttingRodUsingRecursion(RodLen - (i + 1), srcPrice); 
-
-							Recursion parameter is remaining length of Rod(that is after removing 1stPart from TotalLen). 
-							Recursion expects RodLen as COUNT but ForLoop uses index, so we add 1 to i
-
-							e)		PriceForFirstPart is recorded in PreRecursion phase. PriceForSecondPart comes from PostRecursion phase.			
-							int TotalPrice = PriceForFirstPart + PriceForSecondPart;
-
-									if (gblMax < TotalPrice)
-										gblMax = TotalPrice;
-							f)	Once out of forLoop, return gblMax to caller. This is the best price among all combos.
-							g)	If the RodLen is <= 0, then retun 0.
-							h)	Note: Here Recursion is adding Post part and Pre part data, and records highest one.
-
-
+						Recursion method compares the price of different combinations and picks up the maximum.
+						Combinations are generated using Combinator technique but with some change. 
+						Take the example of one specific combination where 1 and 3 are added to generate 4. 
+						Here caller provides 1 and makes a recursion call by passing 3 as parameter. 
+						4 =          1            +          3
+						    'provided by caller'  + 'provided by recursion'
+							  
+						In case of cutting rod, caller knows the price for 1 and recursion returns the MAX price for 3.
+						Then caller adds both of them to generate a price for on combination of 4. 
+						Similaraly price for 2 + 2 will be generated.
+						And Max among them will be the mix price.
+						This method is inefficient because it recomputes the MAX price for same combination again and again.
+						For example Price for 2 will be generated more than once.
 				*/
 				int CuttingRodUsingRecursion(int* srcPrice, int RodLen)
 				{
