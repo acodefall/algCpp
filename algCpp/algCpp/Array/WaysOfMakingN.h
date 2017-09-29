@@ -11,7 +11,8 @@ namespace WaysOfMakingNNM //@RED20170616005
 		hxxps://en.wikipedia.org/wiki/Composition_%28combinatorics%29
 		
 		Composition means expressing a number N as SUM of numbers that are less than N.
-		We need compute the number of ways we can express N.
+		Means 
+		
 
 		Ex: If N = 4, then express 4 using the numbers that are less than 4, that is {1, 2, 3}
 		The combinations will be 
@@ -21,16 +22,22 @@ namespace WaysOfMakingNNM //@RED20170616005
 		In the same fashion, express 3 using 1, 2; and express 2 using 1.
 
 		Number of ways of making 4 = "ways of making 3" + "ways of making 2" + "ways of making 1"
-
+		We need compute the number of ways we can express N.
 		This can be coded using recursion. Rec function will recieve 4 as parameter, and starts a ForLoop that makes 3 rounds; 
 		Each round of forLoop makes a recursion call by passing 1, 2, 3 as parameter.
 		Rec call should be made only if the currIndex is more than 1. This is because we can divide 1 in to any more subparts.
 
-		We are interested in counting number of Compositions, every level of recursion should maintain
-		its own composition counter and it should be incremented inside the forLoop; and it should be returned caller.
-		In post recursion code, we should add the composition counter of current level to the composition counter returned
-		by recursion function.
+		We have been asked to count the number of Compositions; this count is equal nothing but the sum of 
+		iterations of forLoop at every level of recursion. Recursion maintains the iteration at current level and 
+		also recieves the iteration count from Rec function. Post recursion code adds 
+		'compositionCounter at current level' + 'compositionCounter returned by rec call', and returns the total sum
+		to caller. So eventually the top most caller gets the total Composition count for integer N.
 
+		
+		Pre recursion code increments the 'compositionCounter at current level';
+		and Post recursion code adds 'compositionCounter at current level' + 'compositionCounter returned by rec call'
+		
+		
 		Rec(N)
 		{
 			int compositionCounter = 0;

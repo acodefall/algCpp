@@ -10,14 +10,33 @@ namespace CuttingRodNM
 		//hxxps://medium.com/@pratikone/dynamic-programming-for-the-confused-rod-cutting-problem-588892796840
 		Probem: A rod needs to be cut in to pieces so that total profit is maximum. 
 		Price varies from length to length. We should compute the subset of pieces that generates maximum profit and 
-		also the Max profit itself. 
-		Assume the length of pieces is a number series like 1,2,3…. So Input data for 10feet rod is Price[] and Length[] of length 10.
-	
+		also the Max profit itself. Price[] will give the price, where the index stands for length of the rod
+		
+		This is a 0-1 Knapsack problem that does not allow duplicates.
 			This problem can be solved using 3 methods
 			a) PERMUTATIONS method
 			b) Recursion method
 			c) DP method
 
+		Cutting Rod using Recursion_20170610001
+			Recursion method constructs various combinations using  Combinator technique, and computes the price for each one of them
+			and picks up the one with MAX profit.
+			Combinator technique generates combination for 4 using 1,2,3.
+			Even in case of cutting rod problem, we want to do the same if the rod length 4.
+			In addition to generating the combinations, we also want know their cost and pick the one
+			with max profit.
+
+			To understand this, let us creat 4ft by adding 1ft and 3ft.
+			In this case caller will himself know the Price for 1ft; and makes the rec call for
+			discovering the price for 3ft.
+			Post recursion code will add 'price for 3ft' and 'price for 1ft'.
+			Now we know the price for one combination.
+			Similaraly price for 2 + 2 combo will be generated.
+			And Max among them will be the max combo price.
+			This method is inefficient because it recomputes the MAX price for same combination again and again.
+
+			4 =          1            +          3
+			'provided by caller'  + 'provided by recursion'
 
 	Cutting Rod Solution using DP_20170609010
 		A Rod of length 4ft can be cut in to 4 different sizes(1ft, 2ft, 3ft and 4ft), and DP tries to find the combination that generates max revenue. 
@@ -133,20 +152,25 @@ namespace CuttingRodNM
 				}
 
 				/*
-					Cutting Rod using Recursion, how combinations are generated?_20170610001
-						Recursion method compares the price of different combinations and picks up the maximum.
-						Combinations are generated using Combinator technique but with some change. 
-						Take the example of one specific combination where 1 and 3 are added to generate 4. 
-						Here caller provides 1 and makes a recursion call by passing 3 as parameter. 
+					Cutting Rod using Recursion_20170610001
+						Recursion method constructs various combinations using  Combinator technique, and computes the price for each one of them
+						and picks up the one with MAX profit. 
+						Combinator technique generates combination for 4 using 1,2,3.
+						Even in case of cutting rod problem, we want to do the same if the rod length 4.
+						In addition to generating the combinations, we also want know their cost and pick the one 
+						with max profit.
+						
+						To understand this, let us creat 4ft by adding 1ft and 3ft. 
+						In this case caller will himself know the Price for 1ft; and makes the rec call for 
+						discovering the price for 3ft. 
+						Post recursion code will add 'price for 3ft' and 'price for 1ft'. 
+						Now we know the price for one combination.
+						Similaraly price for 2 + 2 combo will be generated.
+						And Max among them will be the max combo price.
+						This method is inefficient because it recomputes the MAX price for same combination again and again.
+
 						4 =          1            +          3
 						    'provided by caller'  + 'provided by recursion'
-							  
-						In case of cutting rod, caller knows the price for 1 and recursion returns the MAX price for 3.
-						Then caller adds both of them to generate a price for on combination of 4. 
-						Similaraly price for 2 + 2 will be generated.
-						And Max among them will be the mix price.
-						This method is inefficient because it recomputes the MAX price for same combination again and again.
-						For example Price for 2 will be generated more than once.
 				*/
 				int CuttingRodUsingRecursion(int* srcPrice, int RodLen)
 				{
