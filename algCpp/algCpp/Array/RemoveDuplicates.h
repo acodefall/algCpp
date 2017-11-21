@@ -9,6 +9,22 @@
 #include <unordered_map>
 #include <unordered_set>
 using namespace std;
+/*
+	Iterating Two Sorted Array simultaneously_20170714004
+	This logic is used at few places:
+		-To find common element in two sorted arrays
+		-To find Kth item in two sorted arrays.
+
+		There will be two sorted arrays. Same while loop will be iterating both of them; means one loop may read a value from ar1 and next loop may read value from ary2. The order of reading MUST be asecnding. If ar1=5 and ar2=7 then read 5 from ar1 because the PATH must be ascending. Always keep this in mind,
+			iteration should go from "from LOW-Number to Higher Number only".
+		Coming to the coding, Use only one while loop for iterating both the arrays; but use different indexes.
+		At the top of every while loop we have the option of reading from ar1 or ar2; but read the one that is lower. Reason is "path of iteration has to be Low to High".  check what is the next value in ar1 anf & ar2. 
+		Say Ar1 = 8 Ary2 = 10, Read from Ar1 and increment Ar1
+
+		It also possible both arrays have same value, in that case increment both the indexes 
+			Ar1 = 15 Ary2 = 15, Read from Ar1 and increment Ar1 & Ar2
+
+*/
 namespace RemoveDuplicatesNM
 {
 	//@RED20170724006
