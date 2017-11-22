@@ -8,13 +8,28 @@ namespace FindContiguousSubArrayWithSumXNM
 		Find continous Subarray of Sum X using NestedLoop_20170714001
 			In a array detect the continuous elements that will result in specific sum.
 			Say { 1,2,4} and target-sum is 6. Continuous elements 2 and 4 will result in sum of 6.
-			Solution is maintain two indexes: addIndex and subtractIndex. Both will start from 0. 
-			But addIndex will be ahead of subtractIndex. addIndex points to element that we want to add to CumulativeSum.
-			subtractIndex points to element that we want to subtract from the CumulativeSum, if the CumulativeSum is > TargetSum.
-			Say AddIndex is 5 and subtractIndex is 2. We add src[5] to CumulativeSum, if the CumulativeSum goes above TargetSum,
-			then we delete src[2] from CumulativeSum. Subtrcat until CumulativeSum is NOT above TargetSum.
 
-			Takes O(N) time.
+			Iterate the src array from 0th index, and go adding the elements for creating cumulative sum.
+			At some point, cumulative sum will go above Target sum or become exactly equal to Target sum.
+			If cumulative sum goes above TargetSumm then we have to substract from Cumulative sum, so that it comes closer to Target sum. 
+			We can only substact the numbers that has been added in to CumulativeSum; that means the number being subtracted
+			should come from 0th index. So read the values from 0th index, and subtract them from cumulative sum.
+
+			At some point cumulative Sum may drop below the TargetSum; at that time we have to stop subtracting, and start adding in to cumulative sum.
+			The Number being added should come from the index where we had stopped earlier. It possible that we may have to 
+			subtract the numbers from cumulative sum once more. The number being subtracted should come from the index where we had stopped earlier.
+			Basically we have to maintain two indexes called 'AddIndex' and 'SubtractIndex'; both start at 0 and goes on increasing.
+			We use a While loop for iterating src-array.
+
+			At the top of the while loop, have an nested while loop for subtracting from CumulativeSum.
+			After coming out of nested while loop check if the CumulativeSum is eqiual to TargetSum. 
+				If CumulativeSum == TargetSum)
+					break;
+				else
+					Add to CumulativeSum.
+
+			Important point is while-loop first subtracts and then adds.Takes O(N) time
+
 		src
 		  25  12  14  22  19  15  10  23
 		   0   1   2   3   4   5   6   7

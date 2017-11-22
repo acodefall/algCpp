@@ -13,33 +13,22 @@ namespace PlaceLettersApartNM //@RED20170617001
 							Input: { a, b, b }, distance = 2
 							Output: { b, a, b }
 		
-				Our first thought is going to be to create a collection of repeating and non-repeating characters. Then take a character from repeating collection and place it in out-array; and then take few characters from non-repeating collection and place them in out-array as seperator.
+				Rearrange the string so that repeating character are at constant distanxe from each other
+				Ex: A repeats twice and C repeats 4 times. Problem says that repeating character should be 5 units apart.
+				Then distance between one A to next A should be 5units; similarly distance between one C and next C should also be 5.
+				Some other characters should take the the space existing between repeating characters.
 
-				This strategy will fail if there characters that repeat twice, thrice and four times. Our solution should use both less-repeating characters(twice repeating) and non-repeating characters as space fillers. This means, non-reapting characters become space-fillers for twice-repeating characters; and twice-appearing characters will become space-fillers for thrice-repeating charcters. So the ideal solution should order the characters by their occurrence count, and read top-D letters(ingoring the letters with 0 count), and write them in to output array. Then go back to the list and read top-D letters again, and write them also in to output array. 2nd-read is the crucial step, and this is responsible for placing the repeating characters D-distance apart. Repeat this loop until the we have read all the characters. 
+				When re-arranging the characters follow this rule. Character repeats 3 times should come between the 
+				characters that apppears 2 times.
 
-				If D = 3, read 1st, 2nd and 3rd and print them, and decrement occurence count for these characters; and write these to out-array. Now make a U-turn Now the index will be at 3, and take it back to index-0, and again pick top-3 characters and print them. Skip the characters who's count is 0. 	As program approches the end, there will be many characters with occurence count 0. Drawback of this algorithm is that we go through the whole array several times. We can optimize this by deleting the characters who’s count is 0. This should be done after successfully picking 3/D items. This will make the list shrink.
-		
-				Steps for Placing same characters at a distance X _20170617002
-						a) Go through the src-array and build an unordred_map of character/occurrence count, and use the map to create instances of a structures that holds "character and its count".
-						b) Then Load structure instances in to a List, and then sort the list so that most-occuring characters come at the top.
-						c) Now start processing. 
-						There will be three nested while loop, outer most loop goes until all the characters are read from list, it is just making sure that we have read every letter from List.
-						Inner-while loop is responsible for reading D-letters from List, writing them to out-array, decrementing count in original list, and incrementing the counter ‘TotalCharsProcessed’. Inner-most-while loop is a helper used by 2nd while loop, for skipping the letters who’s count is 0, and this loop just goes on incrementing the List::iterator if the count is 0. 
-
-						We use Iterator for reading from List, outer-mostLoop set the iterator to List.Begin() after reading every D-letters. And 2nd whileLoop reads from iterator, provided by 3rdWhile loop. Both 2nd and 3rd while loop advance iterator, 
-
-						Function params are "list ", D/distance, and srcLen.
-  
-						  Set TotalCharsRead = 0. 
-						  Start the Outer while-loop and it goes until (TotalCharsProcessed < srcLen)
-						  Set the list-iterator to point to List.begin()
-						  Start a 2nd-while loop, this goes until 
-							((charCountSucessfullyPulled < D) && (itr != occurMap.end()))
-							2nd-while loop starts 3rd-whileLoop to skip the items who’s count is 0.
-							3rd-whileLoop goes until (itr != occurMap.end()), and advances itr if char-count is 0, otherwise breaks the loop.
-							Once the 3rd-whileloop returns to 2nd-WhileLoop, 2nd-WhileLoop uses the itr to read the character; decrements the counter for the character; increments itr and also TotalCharsProcessed
-							2nd-while loop exits after successfully picking D/3 characters from list. 
-							Controls comes back to outermost loop. And it starts the 2ndWhileLoop again to read next D characters.
+				Solution is 
+				create a map of character and their occurence count, and sort based so that most repeating character comes at the top.
+				Once the map is ready, read the characters from the map and use it constructing output array..
+				When reading from MAP, follow these rules
+				-If the distance between the characters is 4, then read top 4 characters from MAP, and write them to output array.
+				-When reading the next character start again from the top of the map.
+				-decrement the count after reading a character
+				-ignore the character if the count is zero
 
 
 				   //geeksforgeeks
