@@ -94,7 +94,7 @@ namespace  GeneratePrimeNumbersNM //@RED20170722012
 			for (int i = 2; i < len; i++)
 			{
 				if (prmArry[i])
-					cout << "prmArry[" << i << "]" << " " << prmArry[i]  << endl;
+					cout << i << endl;
 			}
 		}
 

@@ -15,15 +15,24 @@ namespace InplaceMergingOfSortedArrayNM
 {
     /*
 		Inplace Merging of sorted array_20170722010
-			In-place merging will take two sorted arrays, and rearranges their contensts, so that all higher values goes to one array and lower values goes to another array. After merging we still have two arrays, and their length will remain same.
+			We take two sorted arrays and rearrange their contents, so that one array will have just higher numbers, and other will have just lower numbers.
+			When the arrays are placed right next to each other, numbers will be in ascending order. Array size will stay the same.
+			Logic is... designate one of the array as high-arry and move all the high numbers to it. 
+			Say both the arrays are 5 elements long. 
+			Compare 5th element of high-array with 5th element of low-array.
+			Then compare 4th element of high-array with 5th element of low-array.
+			Then compare 3rd element of high-array with 5th element of low-array.
+			Do this in a loop until we reach the eand of high-array.
+			After each comparison 
+				-If the hight-array's value is smaller, then swap values, so larger value goes to high-array. 
+				 This swapping could have spooiled sorting order in low-array, so do an insewrting sort.
+	 
+				-If the high-array's value is large, then do not do anything because larger value is in high-array. 
+	
+			We compare the values at max end because Large numbers sit at the max-end of the array 
+			During comparison we always compare against the max-end of low-array because we want to MOVE 
+			the max value in low-arry to high-array. And max-value sits at max-index because array is sorted.
 
-			Ex: 1-5 goes to 1st array and 6-10 geoes to second array.
-				
-
-			Merging logic will first designate one of the array as high[], moves all the larger values in to it.
-			Since both the arrays are already sorted, larger values will be at higher-indexes in both the arrays.
-			Rearraging of elements will use following logic:
-			high[maxindex] should be higher than low[maxIndex], if not swap the elements, and then sort the low[].
 			if(high[max] < low[max])
 					SWAP(high[max], low[max])
 						SORT(low[]);

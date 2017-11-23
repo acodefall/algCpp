@@ -195,6 +195,9 @@
 #include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
+	GeneratePrimeNumbersNM::GeneratePrimeNumbers objGeneratePrimeNumbers;
+	objGeneratePrimeNumbers.callGeneratePrimeNumbers();
+
 	WaysOfMakingNNM::WaysOfMakingN objWaysOfMakingN;
 	objWaysOfMakingN.callWaysOfMakingN();
 
@@ -342,8 +345,7 @@ int main()
 	objCountEnabledBits.callCountEnabledBits();
 
 
-	GeneratePrimeNumbersNM::GeneratePrimeNumbers objGeneratePrimeNumbers;
-	objGeneratePrimeNumbers.callGeneratePrimeNumbers();
+	
 
 
 	RabinKarpRollingHashNM::RabinKarpRollingHash objRabinKarpRollingHash;
