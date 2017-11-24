@@ -18,22 +18,41 @@ namespace BinarySearchSizeUnknownNM //@RED20170618001
 			Key point is partition-count grows by "power of TWO". That is something like: 1, 2, 4, 8, 16			
 			
 		Binary Search When size is not known details_20170618002
-			In traditional binary search, when the array size is known, we divide the array in to two parts and go in to either left-half or right-half. Key point is partition-count grows by "power of TWO". That is something like: 1, 2, 4, 8, 16		
+			When the size of the array is known, BS will create new Partition boundaries at indexes corresponding to POWER-OF-2. 
+			Ex: If the array size is 16, 1st boundary comes at 8. Next boundary comes at 4;
+			next one comes at 2. 
+			
+			When the array size is unknown, partition index goes from low-high. That is 2, 4, 8....
+			Look for the VALUE(being searched) only by reading the values stored at partition indexes like 2,4,8,16. 
+			There could be 4 possibilities
+			-value is matches
+			-value is low-high
+			-value is hight
+			-we overshot the array.
+			
+			If the value stored at partition index MATCHES the value being searched, then end the search.
+			
+			If  the value is MORE THAN the value being searched, then do a traditional binary search in the previous partition. 
+			Ex: Current partition index is 16.
+			Then do a traditional binary search in 8-16 range.
 
-			When array size is unknown, we first try to detect the array boundary, by reading the values at partition indexes like 1, 2, 4, 8, 16. We do not read in between the partitions. We expect the runtime to throw an exception when partition-index is outside array boundary. The array boundary being tested grows by "power of 2".
-			We first access src[2^0], if there is no exception then access src[2^1], then try src[2^2].
-			Say we are at partition-index-16.
-			When we try to read src[16], we can expect three outcomes.
-			a) Index-16 may have the Value that we are looking, then retrun the current-patrtition-index; no adventure is needed.
-			b) Value at Index-16 could be higher, in that case launch a traditional Binary, to search as if we know the size.
-			   Search window is between Index-8 and Index-16, so srcLen is 8, and search starts at 'address of src[8]'.
-			   When the search function returns, return "Index-8 + retvalue" to caller.
-			   
-			c) Accessing Index-16 may throw an exception. It means array size boundary is some where in between 16 and 8.
-			   Then initiate a traditional binary search but the function should handle exception. Pass 'addrsss of src[16]' and 'length as 32-16'
-			Function may recieve exception when it accesses src[mid]. In response, it should next go in to left-half by setting 
-						   "end = mid-1".
-			Once the search function returns, return "Index-8 + retvalue" to caller.
+			If  the value is LESS THAN the value being searched, then poke the next partition-index. 
+			Ex: Current partition index is 16, then check 32. Array may not be not 32 elements long so be ready to handl exception.
+
+			
+			Last possibility is ....
+			If there is an exception, array shorter than what we think it is.  If exception comes at index=16, it means array ends somewhere in between 8-16.
+			So do a raditional binary search just within 8-16. Code should handle exception and incase exception, always make left-turn.
+			Ex: Say M = 14, and this gives exception, in the next round explore the Left-side of "14".
+			
+			Coming to implementation
+			-Have two function, one for checking ONLY the partition indexes, and other for doing 'traditional binary-search-function'.
+			Partition-check-function checks the value stored ONLY at partition indexes. It increases the partition-indexes  by 'power of 2' that is 2, 4, 8
+			This function MUST handle EXCEPTION, and launches the 'traditional binary-search-function'.
+			
+			'traditional binary-search-function' computes M-index and makes left and right turns. This should handle EXCEPTION, and in case of 
+			exception, it should make left turn.
+			
 		
 		Steps for Binary search in a sorted array when size is unknown_20170618003
 			a) Parameters are int* and Value
