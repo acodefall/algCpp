@@ -13,63 +13,49 @@ namespace PathOfLowestCostNM //@RED20170701010
 			You can move only right or down.
 			Recursion approach takes O(2 ^ n) and Dynamic version takes O(N ^ 2)
 
-	Compute lowest cost to traverse Matrix using DP method_20170701011
-			Core logic is as follows.
-			Cost for reaching a particular cell from Root, can be derived by adding cost of the one of the neighbouring cell and the cost of current cell itself.Cost of the neighbor comes from Solution matrix and cost for current cell comes from SrcMAtrix.
-			Since we are interested in the lowest cost, we have to select the neighbor who has lowest cost, and add the current cell’s value to it.This logic is used for computing SolMatrix and it will hold the lowest cost for every cell.
-			Cost for current cell = Cost for one of the neighbour stored in SolMat[] + cost of current cell stored in SrcMatr[]
-
-			DP will fill out this Solution matrix as follows.
-			DP starts by assuming that there is only one cell in matrix, and cost for the cell is srcMatrix[0, 0].
-			//Root cell
-			sol[0][0] = SRC[0][0]
-
-			Then DP introduces more cells in to matrix, and computes lowest - cost for them, based on the lowest - cost of the neighboring cells who’s value is already present in solution matrix.
-
-			If the new cell is in Top - Row, then that cell has only one neighbor, and we have to use it whether its cost is high or low.This neighvoring is the left - cell.Lowest cost for new cell is sum Lowest cost of ‘immidiate left - neighbour’ + the the price of current cell stored in SrcMatrix[].
-			//Top row
-			sol[r][c] = sol[r][c - 1] + SRC[r][c];
-
-		If the current cell is in Left - Column, then there is only one choice, and that is ‘immidiate top - neighbour’.
-			//Left column
-			sol[r][c] = sol[r - 1][c] + SRC[r][c];
-
-		If the new cell is an internal cell, then that cell has two neighbors(top and Left).We pick the neighbor that has lowest value, and add the value of  new cell that is stored in SrcMatric[].Result gets stored in Solution matrix.
-			sol[r][c] = min(sol[r - 1][c], sol[r][c - 1]) + SRC[r][c]);
-			In this fashion, DP goes on expanding the Sol Matrix till it reaches the dimension of Source Matrix.
-				Runtime is O(M*N) that is equal to the time spent constructing Solution Matrix.
-
-				Takes O(M * N) time
-
 	Steps to compute lowest cost to traverse Matrix using DP_20170701012
-				a) Parameters are SrcMatrix[], RowCount, ColCount
-				b) Allocate and also initialize the Solution Matrix who's size is same as SrcMatrix   
-				c) Start two nested ForLoops to fill Solution Matrix.Indexes are P and Q.
-				d) ForLoop will have IF conditions to check where the CELL is located and appropriately computes solution.
-				if ((p == 0) && (q == 0)) //Cursor is at root, there is no past cell to refer, so select the value from SrcMatr[0,0]
-					set sol[p, q] = src[p][q];;
-				else if (p == 0)
-				{
-					//Cursor is going along TopRow. History has only LEFT-cell, and we must select it. 
-					//DP computes Solution cell value based only on the value stored in is Left - Cell.
-					Sol[p][q] = Sol[p][q - 1] + src[p][q];
-				}
-				else if (q == 0)  //Cursor is going along LeftCol. 
-				{
-					//Cursor is going along LeftMostColumn. History has only TOP-cell, and we must select it. 
-					//DP computes the Solution cell value based only on the value stored in  TOP cell.
-					Sol[p][q] = Sol[p - 1][q] + src[p][q];
-				}
-				else
-				{//Cursor is at internal cell. History has Top-cell and Left-cell. Select the minimum among the Left & Top
-					Sol[p][q] = min(Sol[p - 1][q], Sol[p][q - 1]) + src[p][q];
-				}
-			e) Once the Solution Matrix is constructed, lowest cost will be at
-			Sol[rows - 1][cols - 1];
+				Cells of solution matrix holds consolidated cost to reach that cell. Cost is computed as follows.
+				Current cell can be enetred through 3 doors(top, left & diagonal). Cost for those 3 doors are in solution matrix
+				and we should select the door with lowest cost, and then add current cell's value to it (value comes from src-matrix).
+				Store the final sum in the solution-matrix for current cell. 
+				Once the solution matrix is filled, right-bottom cell will have lowest cost.
 
-			f) Complexity is time taken to build solution matrix O(M * N)
 
-	Compute the actual path of lowest cost_20170701013
+				When filling the solution matrix follow these rules
+					-if cursor is at root-cell, assign 0 to solution[]
+					-if cursor is at top row, then DP has introduced only row, so there is only door to reach current cell. 
+						 and that is through left-neigbbor.
+					 So add solution-matrix's value for left enighbor to current cell's value( taken from src-matrix), and store the sum in solution-matrix
+					
+					-if cursor is at left-most column, apply the similar logic as before.
+						-if the cursor is at internal cell, there will be 3-doors, select the lowest one.SrcMatr[]
+
+				DP will fill out this Solution matrix as follows.
+				DP starts by assuming that there is only one cell in matrix, and cost for the cell is srcMatrix[0, 0].
+				//Root cell
+				sol[0][0] = SRC[0][0]
+
+				Then DP introduces more cells in to matrix, and computes lowest - cost for them, based on the lowest - cost of the neighboring cells who’s value is already present in solution matrix.
+
+				If the new cell is in Top - Row, then that cell has only one neighbor, and we have to use it whether its cost is high or low.This neighvoring is the left - cell.Lowest cost for new cell is sum Lowest cost of ‘immidiate left - neighbour’ + the the price of current cell stored in SrcMatrix[].
+				//Top row
+				sol[r][c] = sol[r][c - 1] + SRC[r][c];
+
+			If the current cell is in Left - Column, then there is only one choice, and that is ‘immidiate top - neighbour’.
+				//Left column
+				sol[r][c] = sol[r - 1][c] + SRC[r][c];
+
+			If the new cell is an internal cell, then that cell has two neighbors(top and Left).We pick the neighbor that has lowest value, and add the value of  new cell that is stored in SrcMatric[].Result gets stored in Solution matrix.
+				sol[r][c] = min(sol[r - 1][c], sol[r][c - 1]) + SRC[r][c]);
+				In this fashion, DP goes on expanding the Sol Matrix till it reaches the dimension of Source Matrix.
+					Runtime is O(M*N) that is equal to the time spent constructing Solution Matrix.
+
+					Takes O(M * N) time
+
+
+
+
+	Compute the actual path of lowest cost_20170701013 (DEL)
 			Solution Matrix has the cost but not actual cell values, and cell values are stored in SrcMatrix[].
 			To compute the actual path of lowest cost, we need to link both the matrices.
 			Navigate the Solution Matrix from Bottom - Right corner.Cursor starts from corner cell, record the SrcMatrix - value that corresponds to corner cell.
@@ -96,12 +82,23 @@ namespace PathOfLowestCostNM //@RED20170701010
 		e) By the time while - loop ends, we will have actual path of lowest cost
 
 	Compute lowest cost to traverse Matrix using Recursion method_20170701015
-			As we navigate from Root to Bottom corner, we only tread the cells that have lowest value.When cursor is at FORK, and is offered to select either RIGHT cell or BOTTOM cell, it will select the cell that has lowest value, and makes a recursion call to it.Callee knows that caller entered our cell because our cell has lower value, so fuction records the current cell’s value in variables called as lowestCost and lowestPath.These variables are carried along as recursion parameter, and they keep track of lowest valued cells.When the recursion reaches the CORNER cell, LowestValue and LowestPath variables will have the lowest cost and also Lowest path.Function will return the Lowest Cost to the caller, and prints the lowestPath.Caller at higher will receive the return value, and passes it to next higher level.
+			Code template is same as counting path with following differences
+	
+			-recursion parameter has a parameter to hold lowestCost along with colIndex and rowIndex.
+			 in every round, add current cell's value should be added to lowestCost, and passed as parameter when makinf recursion calls.
+			 Assume that caller chose to enter OUR cell because he thought it had lowest cost, so we simply add current cell's value to lowestCost.
+			 But when making rec-calls we do take in to account cheapest cell value.
 
-			This recursion is different from Counting Path problem in two ways :
-			-Counting path entered every road at the FORK, so it called all the 3 neighbours(Right / Bottom / Diagonal).So every path hits the Bottom - corner - cell.In case of Lowest cost problem, we call either Right - cell or Bottom - cell, so in the end only one thread reaches the Bottom - Corner - cell.Basically function makes only one recursion call, irrespective of number of avialable options.
+			-When the cursor is at internal cell, next cell that we are going should have lowest value. So compare the values of bottom, right & diag cell, and select one that is lowest.
+			 This means, make ONLY one recursion call and collect the return value and return it. 
 
-	Steps to compute lowest cost to traverse Matrix using Recursion_20170701016
+			-when cursor is at bottom-row or right-column, there is only one row ahead and enter that cell, by making appropriate recursion call.
+			collect the return value and return it.
+			
+			 -break the recursion when cursor is at bottom-right cell.
+			 Return thr value held at lowestCost varaible.
+	 
+	Steps to compute lowest cost to traverse Matrix using Recursion_20170701016 (DEL)
 			Here we want to compute lowest cost and also the path.
 			Note that we do not have any Solution matrix here.
 

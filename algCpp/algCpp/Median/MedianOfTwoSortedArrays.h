@@ -22,22 +22,17 @@ namespace MedianOfTwoSortedArraysNM
 	Median for two sorted arrays_20170627011
 		Median can be found out by applying DAC. 
 		In case of BinSearch, the mid-index is used as Partition, but here Median-value is used as partition bounday.
-		We start by computing Median for two of the source arrays, and use the median-values are bounary for creating partitions.
-		We will have 4 partitions; two will be retained and 2 will be rejected. 
-		Select the two the partition that forms a sequence of increasing numbers; and 
-		sequence should start with LOWER median value and END with HIGHER median value.
-		Note that we do not literallyy JOIN the two partitions.
-		Now the 1st round of DAC reduced the combined length of the array by 50%
-		Second round of DAC  will again reduce the combined length of the array by 50%.
-		We apply the DAC logic until combned size of both the arrays reduces to 2 or less.
-		Then we can compute the Median as if they are just two numbers.
+		
+		Since the input arrays are sorted, they can be joined also. Before joining find thier median seperately, and this creates 4 segments.
+		There are two medians. Place the two arrays right next to each other. Array with  smaller median should be placed first, and then should come the second array.
+		Logic behind this is that arrays with smaller median should have lower values, so this array comes first.
 
-		How do we know partition to reject?
-		Median will divide 2 arrays in to 4 parts; and we have to select the two parts 
-		in such a way that they form a sequence of increasing numbers. 
-        We will use the Median for detecting which array should come first and which should come second.
-		Array with smaller values will have lower median, so it should come first in line; and Array with bigger values 
-		will have larger median, so that array should come second in line.
+		After placing the arrays next to each oher, pick one segment from each, and the choosen segments should form a "continous sequence". Discard the other two segments. 
+		Thd choosen segments will not be joined. They are choosen segments.
+		This helped reduce the problem size by half. You can see we are applying DAC logic.
+
+		Go repeating is cycle until the total element count reduces to 2. Once that happens, average them and that is the median.
+
 		
 		Ex:(S1 median < S2 median) 
 			So the order is <---S1 S2-->
