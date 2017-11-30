@@ -7,31 +7,21 @@ using namespace std;
 
 /*
 	Selection algorithms_20170627001
-	Given an unsorted array, Kth order statistics is used to know the value located at Kth index without actually sorting the array.
-	Ex: If K = 5, we have to tell what value will at 5th index, without sorting the src[].
-	Kth order problem can be generalized as follows.
-	If K=0, then return [0] element;
-	If K=N/2, then return mid element;
-	If K=N, then return [MAX-1] element;
+		In general, KthOrderStatistics algorithm is used to know the value that would sit at Kth index if we were to sort the UNSORTED array. KthOrderStatistics algorithm will produce the result without sorting whole array. KthOrderStatistics Algorithm randomly picks a value from unsorted array, and uses the random value as boundary-value for createing 3-way partition. Partitioning process will place the boundary-value at proper position; inother words sorts just one element. If the index happens to be K then we discovered what value sits at Kth position, and return it to caller. If the index is not equal to K, then apply the KthOrderStatistics algorithm more time. Choose an another random value and sort iy by means of partitioning process. Repeat this process until one of the partition-value lands at Kth index.Once that happens exit. 
 
-	We can know the Value located at Kth index by sorting the wholw array using Merge sort. This is inefficient because it sorts whole array where as our 
-	requirement is to sort only one element. This takes O(NlogN) tine
+		KthOrderStatistics can be used for computing MIN, MAX and Median values. MIN means value stored at K = 0, MAX means value stored at K = N, and Median means value stored at K = N/2.
+		MedianOfMedian algorithm can be used for selecting random element.
 
-	Kth order statistics technique will discover the Kth value by just sorting few random element. This take Log(K) time.
-	Randomly pick an element from unsorted src-array, and sort that one element, and get its index(say sortedIndex). 
-	If the sortedIndex is equal K, then we have solved the problem. Otherwise, randomly select an anoher element and sort that one element,
-	abd check what index it gets. And check that index against K. Repeat these steps until sortedIndex becomes equal to K.
-	Kth order statistics 
+		Instead of KthOrderStatistics,  merge sort can be used. But  Merge sort will sort the whole array and then returns the Value located at Kth index. This technique is inefficient because it sorts whole array, and even the best sorting algorithm takes O(nLogn) time. Where as KthOrderStatistics took O(N) time.
 
-	Random number can be generated usng Median Of Median techinque also.
-	First round uses the whole array for picking the random index. Ex: If array len is 10, we pick an random index between 0-9.
-	In the second round uses only the part of the array for selecting random number. In the 3rd round array length reduces further down.
-	Sorted index returned by 1st round will tell the 2nd round whether to explore right-partition or left-partition. 
-	Ex: User has given K = 7 and array length is 10.
-	1st round will select 5 as random index, and sorts that one value; and it takes index-4. We are looking for K=7 and it comes in 
-	right-partition so we 2nd round picks the random number inside 2nd half.
+		Example: Caller provide the index(K) and wants to know the VALUE stored at that position. When K = 8, we will be finding 8th item, when K =0 we will be finding MIN item. When K = N we will be fining MAX item. When K = N/2 we will be finding MEDIAN. To find the Kth item we can either fully sort the array using MergeSort or partially sort the array
 
+		Kth order problem can be generalized as follows.
+		If K=0, then return [0] element;
+		If K=N/2, then return mid element;
+		If K=N, then return [MAX-1] element;
 
+	
 		KthOrder(src, K, srcLen)
 		-Src, K = 8
 		-RandomIndex = 5 //Before sorting
@@ -63,11 +53,11 @@ using namespace std;
 			sortedIndex gives Position and src[sortedIndex] gives value
 			d) compare K and sortedIndex.
 			If(K == SortedIndex)   //SOLVED
-			Return S[SortedIndex];
+				Return S[SortedIndex];
 			If(K < SortedIndex)
-			Return PartitionInTo3wayMethod(1stPart, K, Length of 1stPartOnly);
+				Return PartitionInTo3wayMethod(1stPart, K, Length of 1stPartOnly);
 			If(K > SortedIndex)
-			Return PartitionInTo3wayMethod(3rd, K – (len of 1st and 2ndpart), SrcLen - (len of 1st and 2ndpart));
+				Return PartitionInTo3wayMethod(3rd, K – (len of 1st and 2ndpart), SrcLen - (len of 1st and 2ndpart));
 
 	
 */

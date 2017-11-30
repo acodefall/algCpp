@@ -38,19 +38,23 @@ namespace PartitionArrayNM
 				}
 
 			Partition Logic _ 20170627009
-					Logic is to iterate from L-R, and replace the high-value found at [2] with the low-value found after it, say at [5]. Do this until we reach the end. By the time we reach the end, all high-values found on left-side(the wrong side) will get transferred to right side. We can generalize this as "swap the low-value with the high-value, if we have previously-found-high-value, on the left-side of low-value". Ex: Say we are at [5] and value is low-value, and if had passed a high-value at say index [4], then swap [5] & [4]. By doing this we make sure that there is high-value between indeed-0 and index-5. 
- 
-					To implement this logic, we have to memorize the index of ‘previous-high-value” so that cursor can swap the low-value with previous-high-value. Going by our example we have to memorize that [4] has high-value so that we can swap it with [5], when the cursor arraives at [5].  
-			
-					So we use two indexes (currIndex and prevHighIndex), both going from L-R. currIndex continueosly grows and prevHighIndex stops growing if the (value is > anchor).
-					At every step, if currIndex has low-value, swap the low-value with the 'previous high value' that is stored in prevHighIndex. Once the iteration starts, both currIndex and prevHighIndex will be growing at same pace until an high-value is encountered. 
-						-When currvalue is high-value, we increment currIndex but not prevHighIndex.
-						 -prevHighIndex will get swapped if the currIndex finds any low-value, otherwise prevHighIndex stays at same point. 
-					In any case, prevHighIndex points to the begining of sequence of high-values.
+				Assume partition value is 5. partitioning should place the lower-value first, followed by higher values. 
+				Basically iterate the array, and swap the low-value (sitting on right-side) with the higher-value (sitting on left-side).
+				For this logic to work program should maintain an index to the left-most high-value.
+				As a result of swapping, high-value will get replaced by low-value, and appropriately we have to increment the index that was pointing to high value;
+				because that location is taken up by low-value.
 
-					Before starting partition work, we would have moved the partition-value to [end]. 
-					At the end partition work, swap [end] with [prevHighIndex]
+				Coming to implementation: At the beginning initialize the high-Index to 0. Then scan the array from L-R, and compare curr-value with part-value (that is 5). 
+				If the curr-value is lower than part-value (that is 5), and high-Index is less than curr-index, then swap the two values and increment the high-index. 
+				Ex: Array has "10 2" and partition-value is 5; Say the cursor is at 2 and 2 is lower than 5. We know there is higher-value(10) sitting on the left-side.
+				We exchange 10 and 2. so array becomes "2 10"  
 
+				Above logic applies to both 2-way and 3-way partitions.
+				3-way partitioning needs one more change. Before iterating the array, take out the partition value out of of equation,
+				by swapping partition-value with the value stored at max-index. Then partition logic should only span until (SrcLen -1).
+				After partitioning, place the partition-value abefore the start of right-side. 
+				This can be done by swapping 1st element of high-segment with src{max]
+	
 					for (int curr = 0; curr <= (end - 1); curr++)
 					{
 						//If the src[curr] is less than anchor then increase prevHighIndex and curr.
