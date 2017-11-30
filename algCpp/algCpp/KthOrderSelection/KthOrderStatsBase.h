@@ -33,6 +33,16 @@ using namespace std;
 		If(K > SortedIndex)
 			Return PartitionInTo3wayMethod(3rd, K – (len of 1st and 2ndpart), SrcLen - (len of 1st and 2ndpart));
 
+		KthOrderStats with DAC
+			3-way partitioning sorts one element and gives the index for that one element. 
+			If this index matches the K-index, program can return the value to caller and exit.
+			If the index is not same as K-index, KthOrderStats should be run once more.
+			index helps apply DAC. 
+			If the index is < than the K-index then KthOrderStats will explore only the right-partition
+			If the index is > than the K-index then KthOrderStats will explore only the left-partition
+			This is how  KthOrderStats applies DAC.
+
+
 
 		Steps for finding Kth Item in unsorted data using KthOrderStats _20170627004
 			Input to the recursion function is src[], srcLen, K.

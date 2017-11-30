@@ -71,6 +71,15 @@ namespace PartitionArrayNM
 					}
 					Swap(src[prevHighIndex], src[endIndex]);
 
+			DAC in KthOrderSTats
+				3-way partitioning sorts one element and gives the index for that one element. 
+				If this index matches the K-index, program can return the value to caller and exit.
+				If the index is not same as K-index, KthOrderStats should be run once more.
+				index helps apply DAC. 
+				If the index is < than the K-index then KthOrderStats will explore only the right-partition
+				If the index is > than the K-index then KthOrderStats will explore only the left-partition
+				This is how  KthOrderStats applies DAC.
+
 			Steps for 3-way partition logic_ 20170627010
 					a) parameters are startIndex and endIndex
 					b) compute the random index using default_random_engine and uniform_int_distribution<int>
