@@ -28,6 +28,41 @@ using namespace std;
 		 If the SoughtVALUE is LOW, then make Left Turn or make Right Turn.
 		
 		
+		======
+			Traditional Binary search logic expects Low-value at 00-index, and highest-value 
+			at Max-index, but rotated array will not meet that condition.
+			Rotated array will have max and min values somewhere in the middle of the array. 
+			We can also say Rotated array has been partitioned.
+			So we can say there are two partitions:
+			-partitions created by Binary search, during searching
+			-physical partition of rotated array.
+			
+			Rotated string can be thought of as two strings placed right next to each other.
+			So the BST code should select one of two strings (left string or right string).
+			This decision is made based on the alignment of Bst-partition and Physical-partition.
+				This is done by comparing src[start], src[end], src[mid].
+				
+			After choosing a string, BST code should do the usual thing like 
+				-comparing the sought-value with src[mid]
+				-adjust the start and end indexes for making left or right turn.
+			
+			To understand better, place the two partitions one above the other and observe the partition line;
+			We may see one of the following two situations
+				-Left-partition of BST fits well within left-physical-partition. In this case BST code should 
+				 work on left-string given by "src[start] & src[Mid]".
+				 In this case 
+						(src[start] < src[Mid])
+					OR
+					
+				-Right-partition of BST fits well within Right-physical-partition. In this BST code should work on 
+				right-string given by "src[mid] & src[end]".
+					In this case
+						(src[mid] < src[end])
+
+			Once within the partition 
+				-comparing the sought-value with src[mid]
+				-adjust the start and end indexes for making left or right turn.
+		=======
 
  
          Steps for Binary search inside rotated sorted Array_GN814
