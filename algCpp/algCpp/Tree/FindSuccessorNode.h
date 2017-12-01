@@ -14,23 +14,18 @@ namespace FindSuccessorNodeNM //20170709003
 {
 	/*
 		Successor node a node who's value is just above the value of current node.
-		We know that Right-child hive and ancestor nodes may have high-valued node, so we should explore that region.
-		We are not interested in any higher value, but the the value that is just above the current node so we should 
-		explore in following order.
-
-		-Left-most child under right-child will have immidiately higher-value. So first search there.
-		-Then move on to Right-child itself. 
-		-Then move on to ancestor of current node
+		Successor node is a node who's value is higher than current node. Given a node we have to find the node with immidiate higher value.
+		Given a node, left-most child of right-child's will have immidiate higher value; so we first check the value of left-most child of right-child.
+		If it is present, return that value to caller. This can be implemented using while-loop.
+		If that value is not present, then look at the Next candidate; that will be right-child itself. 
+		If teh right-child has a value return it to caller. This can be implemented using while-loop.
 		
-		Use a while loop for probing the left-most child of Right-hive. 
-		If the value is not there, then search under ancestor using Binary search, starting from Root.
-		Bbinary search will in fact search for the TargetNode itself who's value we already know. 
-		We expect to see the successor node somewhere between Root and current node.
-		Binary search will be making L and R turn by comparing currNode with TargetNode's value.
-		And Stops the binary at TargetNode.
-		All along the way record the value of currNode if it's value is more than that of TargetNode.
-		By the time the cursor reaches the Target node, we should have successor node.
-
+		If the right-child has no value; then we have to look for the successor node above the current node. 
+		To do this we navigate the tree, from the root. Our goal is to go past the hostNode(host node is the node who's successor we want to find). 
+		When navigating if (currentNode is < soughtValue), make left turn, otherwise makde right turn.
+		All along way, record the node-value if the value is higher than the soughtValue (this is because we are interested in the node value that is higher than host node). 
+		At some point cursor will hit host node, then break rhe navigation and return the 'recorded node value' to caller.
+		
 		-Start while-Loop.
 		-if(currData > TargData)
 			succNode = CurrNode //Record the node for tracking purpose.

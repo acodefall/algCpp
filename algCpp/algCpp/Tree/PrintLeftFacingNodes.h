@@ -18,6 +18,14 @@ namespace PrintLeftFacingNodesNM //20170711004
 					Left facing nodes sit on the Left-side of the triangle, and we have to print node value when cursor is at those nodes. 
 					When cursor is going along the left-traingle, the LEVEL goes from LOW to HIGH, and that is how we can detect that cursor is 
 					on left-side triangle.
+					
+					
+					During the navigation, cursor goes to high level and returns to lower level and then goes to higher level again.
+					Basically cursor goes up and down like a sine-wave. We have to detect this variation and 
+					print the Left-node only when level increases for the 1st time. 
+					In order to support this, we have to track the MAX level and current-level. 
+					If the current-level is more than MAX level, it means cursor is crossing the height boundary
+					for the first time and at that time ONLY we should print LEFT Node. And update the MAXLevel at the same time.
 
 					Start with In-order-Traversal code.
 					As we navigate track MaxLevel( just like tracking the max Node value), and also current level.

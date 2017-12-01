@@ -15,17 +15,28 @@ using namespace BuildTreeNM;
 		Print every level of Tree in a seperate line_20170731001
 		Compute the height of Tree_20170731009
 			Solve this using BFS navigation of Tree. 
-			BFS navigation uses Q and a while loop. In BFS navigation, 1st level will introduce 2nd-level in to Q.
-			Similarly 2nd level will introduce 3rd-level in to Q. This is achieved by applying following 3 rules:
-			a) When the while loop begins, all the nodes stored in Q must belong to same level in tree;
-			b) While loop will deque ONLY the nodes of current level; and will also Enque the children of current-lveel (which are at next level) in to Q. So by the time current round of While loop ends, nodes of current level will be out of Q, and only the only the nodes of next level will be in Q. So while loop enters next round, we can be sure that Q content belongs to just one level.
-
-			c) While loop is able to Deque ONLY the nodes of current level because it caches the Q count at the very beginning of While loop, before Enquing any children in to Q. Since this is a Q, all the Enqued the items (belong to next level) will go to bottom of Q. Note that this logic would not work if we use STACK. 
-
-			For printing the nodes in seperate line, use the above code; and print CRLF at the end of every while loop. 
-
+			IN BFS navigation, 1st level adds the elements of 2nd-level in to Q.
+			Similarly 2nd level adds the elements of 3rd-level in to Q.
+			We modify this code for printing nodes in a seperate line.
+			1st-level will print the Q content , along with CRLF, and empties the Q, and then 
+			adds the children in to Q. Now Q will have only the elements of level-2. 
 			
-			This code can be used for counting the levels also. 
+			When the control goes to next loop, level-2 will print and empty the Q.
+			Then adds its children to Q. Now Q will have only the elements of level-3. 
+			
+			Coming to implementation.
+			-Start with BFS code
+			-Then enter the while loop. Say we are at level-2.
+			-We know all the elements of Q belong to level-1 and want to print them.
+			-Read the q-count, and start an inner while loop to extract the X elements from Q and print them.
+			 Add the children of Deques nodes in to Q. These elements will be added to bottom of the Q,
+			 While loop will not deque the newly added nodes.
+			 While loop will print all the elements of 1-st level. 
+			 And also Enquis the elements of 2-nd level.
+			 
+			 Once out of the inner-while loop, print crlf.
+			 
+			 
 
 			
 						100							

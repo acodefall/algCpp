@@ -14,11 +14,20 @@ namespace FindNodeDistanceKFromLeafNM
 {
 	/*
 		Find the nodes that are at distance K from Leaf 20170709001
-		   This is about printing the Nodes that are at a distance K from LEAF, not from root. Since there are many Leaf, there will be many paths also, running between root to leaf.  In these paths, we have to print the node that is at a distace K from Leaf. 
-			For building the path, use Pre-order-traversal code. As we are traversing, store the nodes in a list object that is passed as recursion parameter. By the time we reach the LEAF node (leaf is the node who's children are NULL), list object would have recorded every node found along path from Root to leaf.
-			The node stored at the index (Size Of List - K) will give the Node node that is at the distance K from Leaf.
-			Since there are many paths, there we will be many paths.
-
+		   Tree has many paths running running from Root to LEAf. Assume all these paths are stored in a seperate list. Number of lists will be equal to number of paths.
+		   There will be many node that will be at distance X from LEAF.  These are Xth element from LEAF.
+		   To solve this problem, we have to navigate until the LEAF, and add the nodes fond along the path in to a list. 
+		   Once at the LEAF, print the Kelement in the List.
+		   Many paths will reach LEAF, and they will all be printing Kth element.
+		   
+			Start with pre-order recursion code. Pass list objct as rec param.
+			Inside the recursion function, right at the top, add the current node to List object.
+			After that check if the current node's children are NULL, if so we have reached the LEAF.
+			Print the Kth element from bottom of the List that was passed as rec param.
+			Then break the recursion.
+			
+			If we have not reached the LEAF level, make tecursion call to left and right.
+			
 
 			Example
 				           100
@@ -67,7 +76,8 @@ namespace FindNodeDistanceKFromLeafNM
 					Node at K distance is 120
 				*/
 			}
-
+			
+			
 		private:
 			void FindNodeDistanceKFromLeafX(NodeTree* root, vector<NodeTree*> Nodelist, int K)
 			{

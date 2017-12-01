@@ -13,15 +13,18 @@ namespace FindNodeDistanceFromRootNM // 20170709002
 {
 	/*
 		Find the distance of a Node from Root_20170709002
-			Start with pre-order recursion code and make few modifictons.
-			Pass the level as one of the recursion parameter, and incremenet it for every recursion call.
-			Inside the function, before making any recursion calls, check if currData is equal to the Value
-			being sought, if the values are equal, do not make any further recursion calls, and
-			retrun the Level and exit from function.
-			Similarly if the Left-recursion retuns TRUE, it means sought value has been found in left-hive,
-			so do not make right-rec call. We do not do similar check after r-rec call because that is the last the
-			thing in the function.
-
+			Given node-value we should compute the height of that node. 
+			Start with pre-order recursion code that computes level. Means recursion will have a level parameter.
+			Caller will increment the level variable before making recursion call.
+			In every round, compare the sought-value against the node-value, if they are equal return the level parameter to caller, and do not make any recursion call.
+			If the return value is non-zero, then return value refers to level where sought value is located.
+			Keep this in mind. After the left-recursion check the return code, if it is non-zero, then we have found the sought value so no need to make right-recursion call.
+			So do not make right recursion call.
+			Similarly retrun the return value of Right-recursion also.
+			
+			As you see only pre-recursion code does some real work and generates actual return code, where as post recursion code, simply broadcasts the return code as it is.
+			
+			
 
 			Pre-recusion-code is generates the return code because that compares sought-value against cell-value.
 			Post-recusion-code simply bubbles the return code got from recursion calls.
