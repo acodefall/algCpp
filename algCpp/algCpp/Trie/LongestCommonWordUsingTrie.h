@@ -140,24 +140,32 @@ namespace LongestCommonWordUsingTrieNM //@RED20170805004
 	
 
 	Computing LCW_20170805004           
-		Broadly speaking filter out the simple words and keep only the compound words.  Further splice the compound word in to 1stWord and ‘Rest of the word’. We know 1stword, which is also the left-most word has only word, and check whether that itself is a Simple word(by trying to Search for it under ROOT). If the 1st word is a simple word, this compound word is still in the game, so splice ‘Rest of the word’. This will produce one more set of 1stWord and ‘Rest of the word’, and make sure 1stWord is a Simple word(by trying to Search for it under ROOT); if so compound word is still the game. In the next round splice the ‘Rest of the word’ again. Do this until there is nothing to be spliced. After every split resulting 1st word must pass the test for Simple word(means Search for it under ROOT). Then the original word is a good compound word and save it in a separate list. 
+		LCW means longest among the among compound words. Word has to be compound word and also Longest word.
+		We should ignore the words that are long but not compound word. Ex: Elephant. When compared to CatRat, Elephant is longer but it is not a 
+		compound word, so ignore it
 
-		Apply the Splice logic on every compound word that user has entered. The compound words that pass the splice test should be added to a separate list. 
+		This is how we check for LCW
+		-Go through the word list given by User, and load them in to TRIE.
+		-Next step is to filter out the words that are not Compound words.
+		 Do this as follows. Iterate the Wordlist once more, and try to locate the word inside TRIE.
+		 The word should have more than one EOW, then it is a Compound word and keep it, else reject it.
+		 
+		 
+		-Next st is make sure every subword is a simple word. EXtract the subwords one by one and make sure they are directly under the root.
+		-There should not be any subword that is not a simple word.  
+		 If the word meets all these pre-requisites, then record its length.
+		 Several words may pass this qualification round, record all their length.
+		 Finally select the word who's length is max.
 
-		In the end we will have a list of qualified compound words. These words are totally made up of Simple worlds; they do not contain foreign letter. Select longest compound word for that. 
+		This is how we can verify subwords are simple words.
+		Think of every compound word to be having "firstword" and "rest of the word".
+		Ex: "CatRatDog". Here Cat is first word and 'RatDog' is rest-word.
 
-		Splicing logic uses MAP of  “CompoundWordThatUserEntered” V/s ‘CompoundWordToBeSpliced’. In the first round KEY and VALUE will be same; and as we splice the Compound Word, we change the VALUE. In the end VALUE will recude to “” string. That is when we stop the splicing operation. 
-
-
-		Example for Splicing of compound word ‘CatDogRat’:
-			In the 1st loop, extract left-most subword(Cat), and that leaves second part(DogRat).
-			If the extracted 1st word is a simple word, go to 2nd loop. 
-
-			In the 2nd loop extract left-most subword(Dog) from 'DogRat'. If 'Dog' is the extracted 1st word and rest is 'Rat'. If 1t word is a simple word, go to 3rd loop.
-
-			In the 3rd loop extract left-most subword(Rat) from 'Rat'. If the 1t word RAT is a simple word, go to 4th round.
-		In 4th round we have nothing to splice. By now every subword ‘Cat’ ‘Rat’ Dog has proven to be Simple word, so we can say that the CompoundWord 'CarDogRat' is indeed Valid compound word
- 
+		In a loop, starting from left, extract "firstword" and "rest of the word".
+		Then check if the "firstword" is simple word. If it is not a simple word, then reject the whole word.
+		If it is a simple word, then explore "rest of the word". Explore in the sense,
+		split the "rest of the word", as "firstword" and "rest of the word".
+		Continue to do this until the length of the "rest of the word" becomes 0.
 	*/
 	
 	//Node with EOW flag will have the last lettter of the WORD

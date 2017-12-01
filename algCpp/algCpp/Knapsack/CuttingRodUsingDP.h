@@ -6,19 +6,16 @@ namespace CuttingRodNM
 {
 	/*
 
-	CuttingRod Problem_20170609008
-		//hxxps://medium.com/@pratikone/dynamic-programming-for-the-confused-rod-cutting-problem-588892796840
+	General_0951_CuttingRod Problem_20170609008
 		Probem: A rod needs to be cut in to pieces so that total profit is maximum. 
-		Price varies from length to length. We should compute the subset of pieces that generates maximum profit and 
-		also the Max profit itself. Price[] will give the price, where the index stands for length of the rod
+		Ex: 4ft rod can be sold as 2 + 2 or 3 + 1. We should compute which combo yields most money.
 		
-		This is a 0-1 Knapsack problem that does not allow duplicates.
-			This problem can be solved using 3 methods
+		This problem can be solved using 3 methods
 			a) PERMUTATIONS method
 			b) Recursion method
 			c) DP method
 
-		Cutting Rod using Recursion_20170610001
+	Cutting Rod using Recursion_20170610001
 			Recursion method constructs various combinations using  Combinator technique, and computes the price for each one of them
 			and picks up the one with MAX profit.
 			Combinator technique generates combination for 4 using 1,2,3.
@@ -38,89 +35,44 @@ namespace CuttingRodNM
 			4 =          1            +          3
 			'provided by caller'  + 'provided by recursion'
 
-	Cutting Rod Solution using DP_20170609010
-		A Rod of length 4ft can be cut in to 4 different sizes(1ft, 2ft, 3ft and 4ft), and DP tries to find the combination that generates max revenue. 
-		Problem input is Price[] of length 4, where index is the length of the piece.
-		DP constructs a solution array of length 5, and expects the max revenue to be at the 5th index.
-		DP introduces introduce 1ft rod in to pool. Price for 1ft will be in Price[0]. 
-		DP computes max-revenue for it and stores the solution in Sol[1].
-		Then DP introduces 1ft and 2ft pieces in to pool. Price for 1ft will be in Price[0], Price[1]. 
-		Then DP computes max-revenue for this using Price[0], Price[1] and their corresponding solution namely Solution[0]and Solution[1]. 
-		Max revenue for pool of “1ft and 2ft” pieces will be stored in Solution[2].
-
-		Complexity is O(n ^ 2).  16 for 4 feet rod.
-
-		Cutting Rod Solution using DP Details_ 20170609011
-		DP starts with pool with 0 rods and solution for it is stored in Solution[0].
- 
-		Then DP introduces 1ft piece in to pool, and also assumes that total length of rod is 1ft. Since there is only one rod in pool, the best revenue is in src[0], and it will be stored in Solution [1].
- 
-				int price1[1] = { 1};
-				int lengths1[1] = { 1};
-				Solution[0] = 0.
-				Solution[1] = 1;
-
-		Then DP introduce 2ft rod in to pool, and assumes total rod length to be 2ft. src[0], src[1] provides the price for 1ft and 2ft rods. 2ft rod can be sold as "one 2ft rod" OR "two 1ft rods". DP computes the price for these as follows.
-		Price of "one 2ft rod" comes from "src[1]"
-		Price of "two 1ft rods" is computed by adding the "price of 1ft rod stored in src[0]" + solution[1];
-		Then store the Best price in Solution[2]. Now Solution[2] contains the best price when pool has one 1ft rod and 2ft rod.
-				int price1[2] = { 1, 5};
-				int lengths1[2] = { 1, 2};
-				Solution[2] = 5;
-				Solution[1] = 1;
-				Solution[0] = 0.
-							
-		Then DP Introduce the 3ft rod in to pool, and assumes total length is 3. Then src[0], src[1] and src[2] provides the price for 1ft, 2ft and 3ft rods. 3ft rod can be sold as "one 3ft rod" OR "three 1ft rods" OR “one 1ft and one 2ft rod” OR “two 1ft and one 2ft rod”. DP computes the price for these as follows. Note that we do not have “three 1ft rods”; I think that is because Cutting rod is a 1-0 Knapsack Problem where we can not have more items of same type.
-
-
-		Then compute the maximum price for each of the combination as follows.
-		Now src[] will have 3 elements: price-for-1ft, price-for-2ft and price-for-3ft
-		-Add src[0](the price of 1ft rod) to Sol[2](the price of 2ft rod), and this gives the price for "1ft + 2ft" combo
-		src[0] + sol[2] = "1ft + 2ft" 
-		-Add src[1](the price of 2ft rod) to Sol[1](the price of 1ft rod), and this gives the price for "2ft + 1ft" combo
-		-src[2] has the price for 3ft rod and use it as it is. 
-		Compare the three values and chose the highest value, and store it in Solution[3].
-				int price1[3] = { 1, 5, 8};
-				int lengths1[3] = { 1, 2, 3};
-                        
-				Solution[3] = 8; //Max ("src[1] + sol[2]", "src[1] + sol[1] + sol[1]", src[3]); 
-		
-				//These we already KNOW
-		Solution[2] = 5; //Max ("src[1] + sol[1]", "src[2]"); 
-				Solution[1] = 1; //Max ("src[0]", "src[2]"); 
-				Solution[0] = 0.
-				
-		Repeat the above steps 10 times, if the rod length is 10.
-		Finally, maximum value will be stored in last element of Solution[last-element].
-
-		Steps for Cutting Rod using DP
-			DP starts with just price for 1ft rod.
-			And DP computes the Max price for 1ft of rod and stores in Sol[0].
-			Then DP inceases the length to 2ft, and now we have price for 1feet rod and 2feet rod.
-			DP has to decide will selling which yeilds more profit: "selling 2ft as it is" or "selling two 1ft rods (1ft + 1ft)".
-			Price for selling "selling 2ft as it is" comes from src[1];
-			Price for selling "selling two 1ft rods (1ft + 1ft)"; we already know the best price for 1ft rod and that is in solu[];
-			Price for other 1ft comes from src[1].
-				"selling two 1ft rods (1ft + 1ft)" = src[0] + solu[0];
+	General_0953_Cutting Rod Solution using DP_20170609010
+		DP introduces one feet at a time, computes the best price for that length and stores the price in solution array. 
+		For example: 
+			DP introduces 1st feet. There is NO combo for 1ft so the price comes from Price[0] directly.
+			sol[1] will have the best price for 1ft rod. 
 			
-
-			1) Parameters are price-array and its length
-			2) Initialize the Solution[0] to 0.
-			3) Then start a Forloop that iterates src-array from 0 to srcLen,  and this loop introduces one-piece at time in to Pool.
-			4) Then start an inner ForLoop for computing the price each of the combinations for the Pool set up by outer ForLoop.
-			When outer loop’s index is 1, then innerLoop computes price for one combinations and stores the output in Sol[1]
-			When outer loop’s index is 3, then innerLoop computes price for 4 combinations, using 4 loops, and picks the combination with highest revenue as winner and stores it in Sol[3]
-
-			5) Innerloop has most interesting implementation. It uses to mirror-indexes for iterating Solution[] and Src[]. It iterates src-Forward index iterates Src[] from 0 to IndexOfOuterLoop, and ReverseIndex iterates Solution[] from IndexOfOuterLoop to 0. Reason is we want to add mirroring elements.
-			For example: If the pool has 1ft, 2ft, 3ft rods.
-			Price for “one 1ft and one 2ft combo” can be generated by adding Src[0] and Sol[2]
-			Price for “2ft and one 1ft combo” can be generated by adding Src[1] and Sol[1] 
-			Price for “one 3ft combo” can be generated by adding Src[2] and Sol[0] 
-			Loop maintains the Max Revenue in gblMax, and loads it in to Solution[] after exiting from forLoop. 
-
-			5) Once out of both the loops, Solution[srcLen] gives the best price.
-
-			Complexity is O(n ^ 2).  16 for 4 feet rod.
+			DP introduces 2nd feet. 2ft can be generated using either '1ft + 1ft' OR using '2ft' directly. Among the two prices, DP picks up the best value and stores it in sol[1].
+			sol[2] has best price for 2ft rod. 2ft can be generated using 1ft + 1ft and also using directly 2ft. 
+			
+			DP introduces 2nd feet. 2ft can be generated using either '1ft + 1ft' OR using '2ft' directly. Among the two prices, DP picks up the best value and stores it in sol[1].
+			sol[3] = BestOf('3' '2+1'  '1+2')
+			sol[4] = BestOf('4'  '3+1'  '2+2' '1+3')
+			
+		
+		DP computes prices for various combo using both Price[] and Solution[] as follows.
+			For example when Rod length 4ft, compute the price for various combos of 4ft combo by taking the 'full-length price for 4ft', 'full-length price for 3ft' from Price[].
+			Remaining price comes from Solu[]. 
+			
+				Take the price for 4ft full length rod from price[].
+				Take the price for 3ft full length rod from price[] and price for 1ft from sol[] //we are adding best price for 1ft taken from history
+				Take the price for 2ft full length rod from price[] and price for 2ft from sol[] 
+		This can be coded using a single for-Loop with two indexes: SolIndex(0-3) and PriceIndex(3-0).
+			Start the ForLoop that starts from Rod length and goes down to 0. 
+			-this loop will add [0] & [3]  --combo1
+								[1] & [2]  --combo2
+								[2] & [1]  --combo3
+								[3] & [0]  --combo4
+								
+			-sol[4] = Best of ( combo1 combo2 combo3 combo4)
+							
+		int bestPrice = MAX;
+		for(srcIdx=3, solIndex=0; srcIdx >= 0; srcIdx++, solIndex++)
+		{
+			bestPrice = MAX(bestPrice, price[srcIdx] + sol[solIndex];
+		}
+		sol[4] = bestPrice;
+		
+		Complexity is O(n ^ 2).  16 for 4 feet rod.
 	*/
 	class CuttingRod
 	{
@@ -220,17 +172,23 @@ namespace CuttingRodNM
 					for (int i = 0; i < srcLen; i++)
 					{
 						//starting from 
-						int maxSum = INT32_MIN;
+						int bestPrice = INT32_MIN;
 						
 						//This loop
-						int solIndex = i;
+						/*int solIndex = i;
 						for(int srcIndex = 0; srcIndex <= i; srcIndex++)
 						{
-							maxSum = max(maxSum, solution[solIndex] + srcPrice[srcIndex]);
+							bestPrice = max(bestPrice, solution[solIndex] + srcPrice[srcIndex]);
 							solIndex--;
+						}*/
+						
+						int solIndex = 0;
+						for(int srcIndex = i, solIndex = 0; srcIndex >= 0; srcIndex--, solIndex++)
+						{
+							bestPrice = max(bestPrice, solution[solIndex] + srcPrice[srcIndex]);
 						}
 						
-						solution[i+1] = maxSum;
+						solution[i+1] = bestPrice;
 					}
 
 					cout << "\r\n";
