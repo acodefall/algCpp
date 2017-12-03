@@ -21,23 +21,20 @@ namespace OccurenceCountInSortedArrayNM //@RED20170909019
 		//@GN826 General_844_Find Occurence COunt Inside Array using DAC_GN826
 			Find Occurence COunt Inside Array using DAC
 				We are given a SORTED array and a NUMBER, we should find how times that number repeats.
-				Linear can solution takes O(N) and DAC method takes LogN time.
-				Ex: In {1,2,7,7,7,25}, number '7' repeats thrice.
-				We need to find the boundaries of 7. So we make two binary searches: 
-				one for finding LEFT boundary of 7 and other for finding Right boundary.
+				Strategy is, use two binary searches: once for finding the left border and again for finding the right border.
+				Usually Binary search breaks once src[M] == Value. In this case we have do one more step.
 				
-				Left BinSearch STOPS if 
-					(src[M] == K) && src[M-1] != K)
+				When seeking to know left-border look for 
+					(src[M] == K) && src[M-1] != K) //K = 7
 					
-				Right BinSearch STOPS if  
-					(src[M] == K) && src[M+1] != K)
+				Similarly to know the right-border look for 
+					(src[M] == K) && src[M+1] != K) //K = 7
 					
-				Now the number of repetations is difference between these mid values.
-				
-				So we need two customized versions of Binary search code. We need to make two important changes to base-version of BinarySearch code
-				 -first IF condition should be looking for matching-value.
-				 -Default ELSE should probe Left-side for LeftBoundaryBinarySearchCode().
-							   should probe Right-side for RightBoundaryBinarySearchCode().
+				After completing both the calls, subtract the one index from other. 
+				This gives the number of occurence of M (7)
+
+				Binary search method takes logN time.
+				We could have solved using Linear scan and that would have taken O(N)
          */
 	public:
 		void callOccurenceCountInSortedArray()
