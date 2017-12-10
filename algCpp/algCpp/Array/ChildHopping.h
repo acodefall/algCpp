@@ -167,5 +167,25 @@ namespace ChildHoppingNM //@RED20170722008
 
 			return  hopCount1 + hopCount2 + hopCount3 + 1;
 		}
+
+
+		//
+		int ChildHoppingX2(int stairsCountRemaining)
+		{
+			//base condition returns 1 for all these because 
+			if (stairsCountRemaining == 1)
+				return 1;	//when 1 steps is remaining, it can be covered using single hop so return 1-hop
+			if (stairsCountRemaining == 2)
+				return 1;	//when 2 steps are remaining, it can be covered using single hop so return 1-hop
+			if (stairsCountRemaining == 3)
+				return 1;	//when 3 steps are remaining, it can be covered using single hop so return 1-hop
+
+			//when you have more than 3 steps remaining
+			return  ChildHoppingX2(stairsCountRemaining - 1) +	//compute how many hops of one-step require to cover remaining
+					ChildHoppingX2(stairsCountRemaining - 2) +	//compute how many hops of two-steps require to cover remaining
+					ChildHoppingX2(stairsCountRemaining - 3)    //compute how many hops of three-steps require to cover remaining
+					+ 1;			//Add one for current hop
+			
+		}
 	};
 };

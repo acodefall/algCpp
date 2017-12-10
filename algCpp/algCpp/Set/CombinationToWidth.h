@@ -55,22 +55,7 @@ using namespace std;
 
 
 			Generate combinations using Recursion_20170729007
-				Imagine price counter that you see in Petrol bunk, we can use that to understand combination generation using recursion. Assume there are 3 counters, right next to each other; and each has 100 rows. This means SrcLen = 100, combLen = 3.
-
-				Keep the 1st counter as constant, and go on rolling only the 2nd counter; and this gives us few combinations. 
-				Then keep both 1st and 2nd counters constant, and go on rolling only the 3rd column; and this gives us few more combinations. If you relate to recursion function, ROLLING is equivalent to FOR-loop. Rolling of 1st counter is same as For-Loop in 1st level of recursion; Rolling of 2nd counter is same as For-Loop in 2nd  level of recursion. Recurion breaks in the 4-level.
-				Now we understand that recursion function will have ForLoop and that in turn makes recursion calls, and recurson breaks once we reach the combLen. 
-
-				Since combinations can not have duplicate elements like {Coffee, Coffee}; counters can NOT be at SAME index; and also the index should go on increasing(left->right). Basically before rolling a counter, position it, at an higher-index than the prev-counter.
-				For example: if 1st counter is at index-4, then before rolling the 2nd counter, keep it inxdex-5. Say 2nd counter rolls down to index-8, and it is time to roll 3rd counter, and before rolling, place the 3rd counter at index-9. 
-
-				If you relation this to Recursion code, startIndex of  2nd level of recursoion should be higher than the starIndex of 1st level of recursion. So startIndex is passed as rec-param; and gets incremented once for every level of recursion. 
-
-				Make the recursion calls from inside FOR-Loop. Start index of ForLoop goes on increasing. If 1st level Recursion starts at 1, then 2nd level of Recursion should start at 2. 1st , 2nd , 3rd level of recursion maps to 1st 2nd 3rd counters. Deapth of recursion is same combLen. 
-
-				ForLoop has to stop before whatever isn the “remaining-slots-to-be-filled”.  As the recursion goes deeper, the “remaining-slots-to-be-filled” reduces so every ForLoop should go until (TotalSrcLen - “remaining-slots-to-be-filled”). So recurion params are 
-				Rec(“remaining-slots-to-be-filled”, startIndex)
-
+			
 
 
 			Code:

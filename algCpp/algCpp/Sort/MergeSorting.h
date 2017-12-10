@@ -110,7 +110,7 @@ namespace MergeSortingNM //@RED20170623010
 						
 						mid = start + (end - start) / 2;
 						cout << "Start: " << start << " end: " << end << " mid: " << mid << "\r\n";
-						MergeSortX(src, start, mid); //includes the 
+						MergeSortX(src, start, mid); //includes the prtition element M
 						MergeSortX(src, mid + 1, end);
 
 						//control comes here only after the dividing the src array in to 1-element partition.

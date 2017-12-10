@@ -230,5 +230,29 @@ namespace ConstructSingleThreadedTreeNM
 					}
 				}
 			}
+			
+			/*
+				converts existing Bst in to Right-threaded tree
+				convertTreeToThreadedTree(N, NPrev)
+				{
+					if(N)
+					{
+						//reverse inorder
+						
+						convertTreeToThreadedTree(N.rc, N);
+						if(N.rc == NULL && Nprev != NULL)
+						{
+							N.rc = Nprev;
+							N.rightThreded = true;
+						}
+						convertTreeToThreadedTree(N.lc, N);
+						
+					}
+				
+				}
+			
+			
+			
+			*/
 	};
 };

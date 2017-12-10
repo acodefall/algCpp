@@ -15,12 +15,13 @@ namespace  GeneratePrimeNumbersNM //@RED20170722012
 {
 	/*
 	Finding prime numbers_20170722012
-		Prime number are divisible only by 1 or iteself.This mean multiples of 2(like 4, 6, 8) are not prime; similarly multiple of 3 (like like 6, 9, 12) are not prime.We do not bother to find the multiples for 4 because it is already divisible by 2.
-		Using this method, we scratch out the all multiples because they are divisible(say 6 is divisble by 2), so 6 is not a prime.Since 6 is divisible by 2, we do not even to find multiples for 6.
-		In the end, few numbers will not get scratched at all, and they are the primes.
-		We will probe only until product reaches the SQUARE of max - prime.
-		Ex: When finding 7 prime numbers, we will not go any further if the product is above 49. When trying the multiples of 5, we will stop before 5 * 10.
-
+		Prime number list is created by using -ve logic; that is by "scratching out" the numbers that are NOT prime.
+		-Prime number is divisible only by 1 or iteself. That means multiple of any number can not be a prime, so scratch them out.
+		 Using this logic, scratch out all multiple of 2, multiple of 3, etc....
+		 Scratching will happen until the required number of prime numbers. If the user has asked for 5 prme number.
+		 we scratch out 2*2 to 2*5; out 3*2 to 3*5.
+		 Base for multiplication goes until square of N.
+		 
 
 	0   1   2   3   4   5   6   7   8   9   10   11   12   13   14   15   16   17   18   19   20
 

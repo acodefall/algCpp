@@ -14,11 +14,21 @@ namespace SuggestWordsUsingTrieNM //@RED20170819001
 
 	/*								
 		
-		Suggest word to user_RED20170819001
-			If the user types 'new' then show {news, newspaper}. {news, newspaper} will be in a dictionary. 
-			Load the dictionary in to TRIE. Then starting from Root, trace the pah of the word NEW. 
-			After reaching the node for W, explore the every child of node-W, until the leaf. 
-			All along the way record every word. 
+		Find the suffixes of a word_RED20170819001
+			If the user types 'new' then program should show the suffixes {news, newspaper}. 
+			Assume that every word has been put in to TRIE.
+			Use ForLoop to iterate the given word NEW. After reaching W, it invokes an recursive function. 
+			This recursive function goes through every branch under the word NEW.
+			Parameters are Node and prevWord. For the first call, Node should point to N.
+			Pre-recursion code does two things
+			-checks if the letter is EOW, if so prints the WORD. Do not do this if this is first loop
+			-iterates the child list. Make rec call for every letter. Append the letter to prevWord before calling.
+			 if the all the children are null, then exit the loop.
+			
+			This function can be used for iterating the whole TREE. Difference between the two implementations is that, 
+			suffix implementation kicks off the Recursion from W-node.
+			Where as tree-iteration implementation kicks off the Recursion from root-node.
+			
 			
 			TRIE
 				w o r l d 
