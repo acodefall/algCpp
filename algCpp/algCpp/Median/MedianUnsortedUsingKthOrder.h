@@ -10,6 +10,7 @@ using namespace std;
 
 namespace MedianUnsortedUsingKthOrderNM
 {
+	//If you recall Median of Unsorted array is nothing but K/2
 	using namespace KthOrderStatsBaseNM;
 	class MedianUnsortedUsingKthOrder
 	{

@@ -9,9 +9,17 @@ namespace MergeAlternateNodesLLNM //@RED20170731003
 {
 	
 	/*
-		TBD-READ
+	
 		Merge Alternative Nodes of LL_20170731003
-
+		//Merge the alterante nodes from two LL. 
+		//Merge the ODD elements from LL1 with the EVEN elements of LL2.
+		//LL1[1], LL2[2], LL1[3], LL2[4]
+		//Use two cursors, and hop by two nodes at a time. And in every loop take one element from each LL1 and one element from LL2. 
+		//Join the two nodes and attach it to Merged-LL.
+		//Then advance the cursor by two positions.
+		//Key thing is, before beginning the iteration, cursors should be placed one place apart.
+		//Means 1st cursor = 1st position of LL1
+		//      2nd cursor = 2nd position of LL2
 	*/
 	class MergeAlternateNodesLL
 	{
@@ -47,9 +55,19 @@ namespace MergeAlternateNodesLLNM //@RED20170731003
 					Alternatively Merged LL is
 							20 35 30 45 40 55 50 65 60 75 70 85 80 95 90 105 100 115
 					
+					
+					
+					LL to be merged
+							20 25 30 35 40 45 50 55 60 65 70 75 80 85
+							aa bb cc dd ee ff gg hh ii jj kk ll mm nn 
+					Alternatively Merged LL is
+							20 bb 30 dd 40 ff 50 hh 60 jj 70 ll 80 nn
+							
 					*/
 			}
 
+			
+			
 			NodeSLL* MergeAlternateNodesLLX(NodeSLL* l1, NodeSLL* l2)
 			{
 			
@@ -57,51 +75,40 @@ namespace MergeAlternateNodesLLNM //@RED20170731003
 					NodeSLL* mergedHead = NULL; //This will be returned to caller 
 					NodeSLL* mergedTail = NULL;//TAIL is needed because new nodes are attached to TAIL.
 
+					//IMPORTANT: Cursors should start by POSITION APART
 					NodeSLL* currL1 = l1;
-					NodeSLL* currL2 = l2;
+					NodeSLL* currL2 = l2->next;
 
-					//We do not use the existing Node object provided by L1 and L2.
-					//Instead we create a Brand new Node and barrow only the value from L1 and L2.
-					//For brand new Node
-					//	-We have to assign value
-					//  -Connect it to prev-Node (we do this with the help of TAIL node. TAIL node gives us the PREV node.	
-					//							 whenever we create a brand new node, we attach the new node to Tail->Next
-					//							 This will make sure that the LINKS are good
-					int id = 1;
 					while ((currL1 != NULL) && (currL2 != NULL))
 					{
-						//allocate new Node
-						NodeSLL* newNode = new NodeSLL();
-
-						//Set the value to NewNode. Use LL1 as source
-						if(id == 1)
-						{
-							newNode->d = currL1->d; //Assign the value to New node
+						//allocate TWO new Nodes
+						//allocate ONE Node
+						NodeSLL* newNode1 = new NodeSLL();
+						newNode1->d = currL1->d; //Assign the value to New node
+						
+						//allocate SECOND Node
+						NodeSLL* newNode2 = new NodeSLL();
+						newNode2->d = currL2->d;
 							
-							id = 2;
-						}
-						else
-						{
-							newNode->d = currL2->d;
-							id = 1;
-						}
+						//attach both the NEW nodes
+						newNode1->next = newNode2;
 
 						//If 'newNode' is the First one to be built, then set as HEAD and also TAIL.
 						//In subsequent rounds, 'newNode' will be attached to TAIL only.
 						if (mergedHead == NULL)
 						{
-							mergedHead = newNode;
-							mergedTail = newNode;
+							mergedHead = newNode1;
+							mergedTail = newNode2;
 						}
 						else
 						{
-							mergedTail->next = newNode;
-							mergedTail = newNode;
+							mergedTail->next = newNode1;
+							mergedTail = newNode2;
 						}
 
-						//advance both the nodes.
-						currL2 = currL2->next;
-						currL1 = currL1->next; //Advance the LL who's value we use
+						//advance both the cursors by TWO positions
+						currL1 = currL1->next->next;
+						currL2 = currL2->next->next;
 					}
 
 					
