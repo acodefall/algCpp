@@ -14,7 +14,18 @@ namespace ReverseEveryKNodesNM
 {
 	
 	/*
+		Reverse Every K Nodes  abd Reverse K altarnative Nodes
+		Reverse K Nodes means: If K =5. Revese first 5items within themself.
+								Revese next 5items within themself.
+								Divide the LL as small-LL of size 5, and reverse each LL
+								within itself, as if each LL is seperate. 
 		
+								In case of reversing altarnative K elements,
+								we do the same thing but we reverse altarnative segments.
+								
+		Reverse K altarnative Nodes means: Here also we divide the LL in to chunks of
+								5 but reverse only the alternative chunks, 
+								
 		ip:	10 15 20	25 30 35	40 45 50	55 60 65	70 75 80		85 90 95
 		op:	20 15 10	35 30 25	50 45 40	65 60 55	80 75 70		95 90 85
 	
