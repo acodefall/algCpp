@@ -52,9 +52,9 @@ namespace ReverseEveryKNodesNM
 
 			}
 
-			//1 2 3    4 5 6     7 8 9 
-			//k = 3
-			//3 2 1    6 5 4     9 8 7         
+			//1 2 3 9    4 5 6 3     7 8 9 1
+			//k = 4
+			//9 3 2 1    3 6 5 4     1 9 8 7         
 			NodeSLL* ReverseEveryKNodesX(NodeSLL* rt, int K)
 			{
 				NodeSLL* cur = rt;
@@ -62,22 +62,24 @@ namespace ReverseEveryKNodesNM
 				int Ki = K;
 				if (rt)
 				{
-					//skip K
-					while ((Ki > 1) && (cur))
+					//k
+					//a  b  c 	1 2 3 	x y z
+					//process/reverse K nodes
+					while ((Ki > 0) && (cur))
 					{
+						//Reverse logic modifies only the current node.
+						//Backup the elements that are going to get modified. Like Curr.Next
+						NodeSLL* tmp = cur->next;
 						prev = cur;
-						cur = cur->next;
+						cur = tmp;
 						Ki--;
 					}
 
-					//Reverse
-					prev->next = rt;
-					NodeSLL* nextK = cur->next;
-					cur->next = rt->next;
-
-					rt->next = ReverseEveryKNodesX(nextK, K);
 				
-					return cur; //head
+					//Reverse next K elements
+					rt->next = ReverseEveryKNodesX(cur, K);
+				
+					return prev; //post-reverse Head
 				}
 				return 0;
 			}

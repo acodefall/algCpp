@@ -52,6 +52,7 @@ namespace GraphSearch //RED20170908008
 									if(newdist  < DistanceMap[adjList[]] )	
 										DistanceMap[adjList[]] = newdist;
 										PathMap['Name of adjList[]']	= 'Name of V'		
+							Remove from remainingVextexList
 						DistanceMAP is filled. 
 						Distance MAP will be shortest distance between NY to any city.
 						Actual Path will be in PathMap[]. Walk the PathMap[] in reverse direction from PathMap[Dubai] till VAUE is ""
