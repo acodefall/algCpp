@@ -17,13 +17,19 @@ namespace  StackUsingLinkedListNM
 {
     /* 
         Implement the Stack using Singly-LinkedList_LL06
-			Both STACK and LL grow from L->R. So LL data structure is good for implementing PUSH().
-			TAIL points to latest node, and POP() should return the value stored in TAIL, and retrieve towards HEAD.
-			TAIL can be made to retrieve by setting 'assigning prev-node of TAIL to TAIL itself'
+			STACK returns latest data first; similarly LL stores the latest data at the TAIL.
+			If we want STACK like output, we have to read the LL from TAIL to HEAD.
+			So we have to build LL that is going from R-L, means Every newly built node should
+			point to previous node that on the left-side. 
+			In a way this looks like a reverse-LL, where Arrow goes R->L
+			At any time TAIL node will be pointing to latest value. 
+			When Push() constructs a band new node, it new node's NEXT-point will be
+			pointed to TAIL node. Right after make NEW node TAIL node. 
+			
+			Coming POP(), it should return the value held inside TAIL because that is latest.
+			We also have to expel the TAIL and do that by making TAIL point to left-node.
 					TAIL = TAIL->PrevNode
-			This means each node should have pointer to previous-node, and PUSH() function should take care of this.
-			When PUSH() function creates a node, it should assign TAIL to prev-node of NEW-NODE.
-
+			
 			Key: 
 			-TAIL will have the latest item.
             -PUSH will make NEW-NODE point to TAIL. This is why this is called as Reverse-Growing LL.  

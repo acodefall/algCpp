@@ -11,32 +11,20 @@
 	  70	 90	  110  300	      
 	  Takes O(N) time because we make only one pass.
 	  Construct Doubly LL out of BST (sorted)_20170528031
-		  We have to construct the LL from left to right, in ascending order, so we have to traverse the Tree in in-order fashion.
-		  In order to build a Doubly linked list, current node should have prev node, for hooking up. So when doing In-order traversal, pass the prev-LL-Node as one of the recursion parameter.
-		  In every round, function should create brand new current-LL-Node, connect it to the prev-LL-Node(coming-in as in put parameter). Before returning, current-LL-Node should be made Prev-Node by assigning it toprev-LL-Node.
+		DLL should be built from L to R in Ascending order.
+		BST will produce asceding data in in-order traversal.
+		So iterate the BST using in-order-traversal and construct the LL-nodes.
+		Every loop creates a New LL-Node. This needs to be connected to pre-LL_node,
+		so pass previous-LL-node as rec param.
 
-		  Say nodes to be created are 10, 20, 30.
-		  In the first round prev-LL-Node will be NULL, so function creates the current-LL-Node and it will become the Root Node of LL(this is 10 node). Then assign current-LL-node to prev-LL-Node. In the next round, prev-LL-Node will have value of 10. function will create a node for 20, and hook up 10 & 20, and assignes 20-node as prev-LL-Node.
+		Cominng to impl. Write In-order traversal code. 
+		Create the LL-node right at the top, assign current-BST node's value to new-LL-node.
+		Do this when the controld is in between the two recursion calls.
+		And also connect the new-LL-node to pre-LL-node(passed as rec param)
+
+		Then When making right-rec call pass new-LL-node as parameter. 
 
 		  Since we are modifying the prev-LL-Node, pass ** prev-LL-Node.
-
-	  Steps for Construct Doubly LL out of BST (sorted)¬_20170528032
-
-		  1) Start by writing In-order-traversal code
-		  2) Recursion parameters be TreeNode, **PrevLLNode, *HeadLL, * TailLL
-		  *HeadLL, * TailLL are out parameter and they contain HeadNode and TailNode.
-		  *PrevLLNode in IN/OUT parameter.
-
-		  3) in the body create currentLLNode using TreeNode's data
-		  4) check if (PrevLLNode == NULL), if so assign 'currentLLNode' to 'PrevLLNode'
-		  currentLLNode is root of LL, so assign it to HeadLL.
-		  if (PrevLLNode != NULL), connect 'currentLLNode' to 'PrevLLNode', to establish double link.
-		  Then assign 'currentLLNode' to 'PrevLLNode'
-		  5) Assign every 'currentLLNode' to TailLL. We keep on overwriting the existing value.
-		  In the end, value of the last node will remain, and that is the tailNode.
-
-	   
-
 
 */
 using namespace std;
