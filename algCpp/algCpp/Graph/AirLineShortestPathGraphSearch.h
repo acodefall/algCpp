@@ -15,6 +15,10 @@ namespace GraphSearch //RED20170908008
 
 /*
 	Matrix_459_Shortest Path between NY and Dubai_RED20170908008
+		Shortest Path logic is as follows. Assume that you can reach destination city after 4 hops.
+		Find out the shortest 1st hop from source; then findout the shortest hop from 1sthop.
+		Similarly find four shortest hops. Then add all of them togather, you will get final shortest path.
+		
 		Strategy is to maintain a MAP of distance between NY and every other city in Graph.
 		Call this MAP as Distance Map, where KEY is CITY and VALUE is 'distance from NY'
 		For Example: If KEY is LONDON, then VALUE willll be the distance bwteen NY to LD.
@@ -106,8 +110,90 @@ namespace GraphSearch //RED20170908008
 				PathMap[Dubai] = PARIS.
 
 
+		
+		//Shortest path code in C#
+		//Shortest path needs distMap, remainMap, and RevPath.
+		//Use OrderedDictionary for distMap and remainMap and Dictionary for RevPath. 
+		//We use OrderedDictionary because it supports SORT by VALUE 
+		//Both distMap and remainMap must be updated simultaneously and must be in sync. 
+		//distMap and remainMap differ in following way. 
+		//Entry in distMap never gets deleted because its purpose is to record the distance, and distance should be available all the time.
+		//where as the vertex gets deleted from remainMap after processing that vertex.
+		//Program runs as long as there are entries in remainMap.
+		//This is how loop goes.
+		//	In the beginning remainMap will have all the nodes.
+		//	Sort remainMap by Value, and pick the top entry and explore its AdjList. And compute the distance for Vertexe. 
+		//  Store the computed distances in distMap, provided the newly computed value is LOWER than existing value. Simultaneously update remanMap also.
+		//	Remove the vertex that we just processed from remainMap.
+		//  Continue this loop until remainMap becomes empty.
+		
+		Graph
+		{
+			Dictionary<string, Vt>  		vtList;
+			OrderedDictionary<string, int>	distMap;		//distMap and remainMap both have "City v/s 'Distance between City and NY'"
+															//Both get updated at the same time with same values.
+															//Difference between them is that remainMap deletes the entry after processing, where as distMap
+			OrderedDictionary<string, int>	remainMap;
+			Dictionary<string, string>		pathmap;
+			
+			CTOR()
+			{
+					Foreach(KeyValuePair kvp in vtList)
+					{
+							distMap.Add(kvp.Name, -1);
+							remainMap.Add(kvp.Name, -1);
+							pathmap.Add(kvp.Name, "");
+					}
+				
+			}
+			
+			ShortestPath()
+			{
+				//If the remainMap has any node left, let us explore it
+				While(remainMap.Count() > 0)
+				{
+					//Explore the Vertex that is closest(to NY). Chose the closest Vertex by sorting it remainMap
+					remainMap.OrderBy( v => v.value);
+				
+					//remainMap[0] gives the nearest Vertex, explore it and remove it from remainMap
+					ExploreVertex(remainMap[0]);
+					
+					remainMap.Remove(0);
+				}
+				
+				//we have explored every vertex in Graph, and captured the distance between NY and evry other city.
+				//distMap[Dubai] will give the shortest distance.
+				//pathmap[Dubai] should give the full path
+				city = pathmap[Dubai]
+				while(city != "")
+				{
+					fullPath  += city;
+					city = pathmap[city];
+				}
+			}
+			
+			//Explore the adjList of vtName. Then compute the distance up to TargetNodeused in that Edge.
+			//Update the computed distance to both distMap & remainMap, provided the value is newer value is 
+			//lower than what is present in distMap.
+			ExploreVertex(string vtName)
+			{
+				Vt v1 = vtList[vtName];
+				for(Edge e in v1.adjList)
+				{
+					int shortestDist =  max( distMap[e.TargetVt.Name],
+													e.Weight + distMap[v1.Name];
+					distMap[e.TargetVt.Name] = shortestDist;
+					
+					pathmap[e.TargetVt.Name] = v1.Name;
+					
+					if(remainMap.Contains(e.TargetVt.Name))								
+						remainMap[e.TargetVt.Name] = shortestDist;	
 
-	
+					
+				}
+			}
+			
+		}
 
 	*/
 
