@@ -14,12 +14,35 @@ namespace LongestIncreasingSubSequenceNM //@RED20170712001
 {
 	/*
 		Compute the length of 'Longest Increasing SubSequence'_RED20170712001 
-		Given an un sorted array, 'Increasing SubSequence' stores only those numbers that are in increasing order, 
-		and those numbers does not have to be neighbours. Longest Increasing SubSequence is the length of such subset.
-		Longest Increasing SubSequence can be generalized as length of the sub-array who's elements are increasing
+		In an unsorted array numbers can go up or down. 
+		There could be islands of consecutive numbers where the numbers are only increasing.
+		LIS wants to find the length of such longest sequence.
 		
-		Longest Increasing SubSequence can be computed using DP, where the Solution array will hold the maximum length of 
-		'Longest Increasing SubSequence' as of now. 
+		This can be solved using DP. Build a Solution array who's value is the length of LIS.
+		If the current number is more than previous number, then increase the LIS by one, store it in Solu[].
+		Otherwise sol[] for current element is same as sol[] for prev element.
+		Ex: src[5] > src[4]
+				Sol[5] = Sol[4] + 1;
+			else
+				Sol[5] = Sol[4]
+		
+		DP solves this by introducing one element at a time.
+		When there is just one element, LIS is 1, so sol[0] = 1.
+		Then add 2nd element ro src[] and compute LIS. 
+			If the (2nd > 1st)
+				Sol[1] = 1 + Sol[0] //then add 1 to sol[0].
+			Else 
+				Sol[1] = Sol[0]. 
+		
+		Then add 3rd element to src[] and compute LIS. 
+			If the (3rd > 2nd > 1st)
+				Sol[2] = 1 + Sol[1] //then add 1 to sol[2].
+			Else 
+				Sol[2] = Sol[1]. 
+		Basically sol[] tracks the longest LIS
+		Sol[Max] will give the LIS
+		
+		
 		
 		To begin with Sol[0] will have 1, for building subseuent solution elements, add 1 to  pre-sol-element, if "curr-value > prev-value"; 
 				if (src[cur] > src[prev])   //other wise, pre-sol-array will be replicated as current-sol-element even though the "curr-value < prev-value"; 

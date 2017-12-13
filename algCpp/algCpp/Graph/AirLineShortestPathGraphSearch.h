@@ -122,7 +122,8 @@ namespace GraphSearch //RED20170908008
 		//Program runs as long as there are entries in remainMap.
 		//This is how loop goes.
 		//	In the beginning remainMap will have all the nodes.
-		//	Sort remainMap by Value, and pick the top entry and explore its AdjList. And compute the distance for Vertexe. 
+		//	Sort remainMap by Value, and pick the top entry and explore its AdjList. 
+		//  And compute the distance for Vertexe. 
 		//  Store the computed distances in distMap, provided the newly computed value is LOWER than existing value. Simultaneously update remanMap also.
 		//	Remove the vertex that we just processed from remainMap.
 		//  Continue this loop until remainMap becomes empty.

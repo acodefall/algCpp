@@ -14,20 +14,20 @@ namespace FindPeakElementNM
 {
 	/*
 		Find the Peak elemnt in Sorted Array using DAC_20170714006 
-			Arrat will be in sorted order except around the peak element.
+			
 			Peak Element is an element who’s left and right neighbours are lower than middle element. Eg “4 10 6”
-			Code looks like binary search code. Compute the mid value.
-			If src[m] is higher than [m-1] and [m+1], then we have found the peak value, return.
-			Other possibilities are [m-1] is NOT less than [m]; [m+1] is NOT less than [m].
-
-			If [m-1] is not less [m], then probbaly [m] is too high to be peak value, so we need to 
-			explore the side where still lower values are further lower, so we explore left-half.
-
-			If [m+1] is not less [m], then explore right-half.
-
-			If conditions should be aware of boundary conditiom.
-			If cursor is at [0], then there is no scope for [m-1], in that case just compare [m] and [m+1]
-			If cursor is at [MAX], then there is no scope for [m+1], in that case just compare [m] and [m-1]
+			Peak element has left-crest and right-crest.
+			We can find Peak element using binary search code. As usual start by computing the mid value.
+			
+			If src[m] is higher than both [m-1] and [m+1], then both left-crest and right-crest are present,
+			and we have found the peak value, return.
+			
+			If [m-1] is less [m],  we have found only left-crest, and should look for right-crest, explore the right-half.
+			If [m+1] is less [m],  we have found only right-crest, and should look for left-crest, explore the left-half.
+			
+			Check for boundary condition all the time. If (m = 0) check for only right-crest
+			If (m = MAX) check for only left-crest
+			
 	*/
 	const int SIZEX = 7;
 	class FindPeakElement
@@ -58,11 +58,11 @@ namespace FindPeakElementNM
 				cout << "found peak value { src[" << m-1 << "] src[" << m << "] src [" << m+1 << "]} = " << src[m - 1] << " " << src[m] << " " << src[m + 1] << endl;
 				return m;
 			}
-			else if ((m > 0) && (src[m] < src[m - 1])) //Left-crest is broken, and look for good left-crest on left-half of array
+			else if ((m > 0) && (src[m-1] < src[m])) //Left-crest is good(means peak), check the right side peak is present or not
 			{
 				return FindPeakElementX(src, L, m-1);
 			}
-			else if ((m + 1 < SIZE) && (src[m] < src[m + 1])) //Right-crest is broken, and look for good Right-crest on right-half  of array
+			else if ((m + 1 < SIZE) && (src[m+1] < src[m])) //Right-crest is good(means peak), check the left side for oother creast.
 			{
 				return FindPeakElementX(src, m + 1, H);
 			}
