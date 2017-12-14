@@ -6,7 +6,7 @@
 using namespace std;
 using namespace BuildLLNM;
 
-namespace AddTwoLLNM //@RED20170820010
+namespace AddTwoLLUsingRecursionNM //@RED20170820010
 {
 	/*	TBD
 		TBD
@@ -39,7 +39,7 @@ namespace AddTwoLLNM //@RED20170820010
 			   When the stack-unwinds, control goes to outer layer, the outer-caller should get the value. 
 			   In order to achieve this, pass the parameter using BY-REFERENCE.
 	*/
-	class AddTwoLL
+	class AddTwoLLUsingRecursion
 	{
 		public:
 			void CallAddTwoLL()
@@ -56,11 +56,11 @@ namespace AddTwoLLNM //@RED20170820010
 				cout << "\r\n";
 				BuildLL::printLL(objLL2.root);
 
-				NodeSLL* resultLL = AddLL(objLL1.root, objLL2.root);
-				if (resultLL != NULL)
+				//NodeSLL* resultLL = AddUsingRecurion(objLL1.root, objLL2.root);
+				//if (resultLL != NULL)
 				{
 					cout << "Print the SUM-LL" << endl;
-					BuildLL::printLL(resultLL);
+					//BuildLL::printLL(resultLL);
 				}
 				/*
 					LL to be added

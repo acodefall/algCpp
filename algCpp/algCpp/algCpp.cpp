@@ -58,6 +58,7 @@
 #include "RecursiveAdditionExceptCurrentItem.h"
 #include "KnapsackUsingDP.h"
 #include "CuttingRodUsingDP.h"
+#include "CuttingRodUsingRecursion.h"
 #include "3SUMProblem.h"
 #include "WaysOfMakingN.h"
 #include "PlaceLettersApart.h"
@@ -189,14 +190,20 @@
 #include "KthItemInSortedAryUsingIntersection.h"
 #include "FindOutOfOrderChar.h"
 #include "FindKthItemInBST.h"
-#include "AddTwoLL.h"
+#include "AddTwoLLUsingRecursion.h"
 #include "EncodeReplaceMultipleWithNumber.h"
 #include "DivisibilityRule.h"
 #include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
-	GeneratePrimeNumbersNM::GeneratePrimeNumbers objGeneratePrimeNumbers;
-	objGeneratePrimeNumbers.callGeneratePrimeNumbers();
+	CuttingRodUsingRecursionNM::CuttingRodUsingRecursion objCuttingRodUsingRecursion;
+	objCuttingRodUsingRecursion.CallCuttingRodUsingRecursion();
+
+	CombinationsOfWidthXNM::CombinationsOfWidthX objCombinationUsingBitGen;
+	objCombinationUsingBitGen.useCombination();
+
+	BreakLongWordToSubwordsNM::BreakLongWordToSubwords objBreakLongWordToSubwords;
+	objBreakLongWordToSubwords.callBreakLongWordToSubwords();
 
 	WaysOfMakingNNM::WaysOfMakingN objWaysOfMakingN;
 	objWaysOfMakingN.callWaysOfMakingN();
@@ -224,7 +231,7 @@ int main()
 	EncodeReplaceMultipleWithNumberNM::EncodeReplaceMultipleWithNumber objEncodeReplaceMultipleWithNumber;
 	objEncodeReplaceMultipleWithNumber.callEncodeReplaceMultipleWithNumber();
 
-	AddTwoLLNM::AddTwoLL objAddTwoLL;
+	AddTwoLLUsingRecursionNM::AddTwoLLUsingRecursion objAddTwoLL;
 	objAddTwoLL.CallAddTwoLL();
 
 	ValueOfMidNodeNM::ValueOfMidNode objValueOfMidNode;
@@ -251,8 +258,7 @@ int main()
 	CombinationToTargetSumNM::CombinationToTargetSum objCombinationToTargetSum;
 	objCombinationToTargetSum.useCombination();
 
-	BreakLongWordToSubwordsNM::BreakLongWordToSubwords objBreakLongWordToSubwords;
-	objBreakLongWordToSubwords.callBreakLongWordToSubwords();
+
 
 	FindAnagramsUsingTrieNM::UseFindAnagramsUsingTrie objUseFindAnagramsUsingTrie;
 	objUseFindAnagramsUsingTrie.CallUseFindAnagramsUsingTrie();
@@ -297,8 +303,6 @@ int main()
 
 	
 
-	CombinationsOfWidthXNM::CombinationsOfWidthX objCombinationUsingBitGen;
-	objCombinationUsingBitGen.useCombination();
 
 	PowerSetNM::CallPowerSet objCallPowerSet;
 	objCallPowerSet.callPowerSetX();
@@ -345,7 +349,8 @@ int main()
 	objCountEnabledBits.callCountEnabledBits();
 
 
-	
+	GeneratePrimeNumbersNM::GeneratePrimeNumbers objGeneratePrimeNumbers;
+	objGeneratePrimeNumbers.callGeneratePrimeNumbers();
 
 
 	RabinKarpRollingHashNM::RabinKarpRollingHash objRabinKarpRollingHash;
