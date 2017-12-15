@@ -200,10 +200,11 @@ namespace CuttingRodNM
 			
 
 				/*
-					Initialize the solut[0] to 0. This is because when computing the price for 4feet rod,
-					we should be able to add solut[0] to prc[3].
-					By doing this we can use same index to access both Solu[] and Prc[]
-					
+					Initialize the solut[0] to 0 so when adding sol[] and prc[], we can use same index variable.
+					For example when computing price for for 4ft rod. 
+					Price of 4th full length rod is one of the combo. To compute price for it, we will be adding 
+					"price for 4ft full length rod" to solu[0].
+
 					Ex: Compute best price for 4ft rod
 								  prc[]		sol[]
 						     		3			0   //4ft full + 0     
@@ -227,12 +228,12 @@ namespace CuttingRodNM
 						int maxSum = INT32_MIN;
 						
 						//This loop
-						int solIndex = i;
+						
 						for(int srcIndex = 0; srcIndex <= i; srcIndex++)
 						{
-							cout << solIndex << " + " << srcIndex << endl;
-							maxSum = max(maxSum, solution[solIndex] + srcPrice[srcIndex]);
-							solIndex--;
+							cout << srcIndex << " + " << i - srcIndex << endl;
+							maxSum = max(maxSum, solution[srcIndex] + srcPrice[i-srcIndex]);
+							
 						}
 						cout << " i ....." << i << endl << endl;
 						solution[i+1] = maxSum;
