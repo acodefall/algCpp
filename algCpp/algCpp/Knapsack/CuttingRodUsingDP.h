@@ -7,7 +7,6 @@ namespace CuttingRodNM
 	/*
 
 	CuttingRod Problem_20170609008
-		//hxxps://medium.com/@pratikone/dynamic-programming-for-the-confused-rod-cutting-problem-588892796840
 		Probem: A rod needs to be cut in to pieces so that total profit is maximum. 
 		Price varies from length to length. We should compute the subset of pieces that generates maximum profit and 
 		also the Max profit itself. Price[] will give the price, where the index stands for length of the rod
@@ -130,17 +129,15 @@ namespace CuttingRodNM
 				{
 					                
 					int price1[4] = { 1, 5, 8, 9};
-					int lengths1[4] = { 1, 2, 3 ,4};
 					int max = 0;
 					
 
-					cuttingRodUsingDPX(price1, lengths1, 4); //10
+					cuttingRodUsingDPX(price1, 4); //10
 					int mx = CuttingRodUsingRecursion(price1,4);
 					profitDP(price1, 4);
 					
 					int price2[8] = { 1, 5, 8, 9, 10, 17, 17, 20};
-					int lengths2[8] = { 1, 2, 3 ,4, 5, 6, 7, 8};
-					cuttingRodUsingDPX(price2, lengths2, 8); //22
+					mx = cuttingRodUsingDPX(price2, 8); //22
 					int mx1 = CuttingRodUsingRecursion(price2, 8);
 					profitDP(price2, 8);
 
@@ -202,20 +199,27 @@ namespace CuttingRodNM
 				}
 			
 
-
-
-				int cuttingRodUsingDPX(int* srcPrice, int* srcLens, int srcLen)
+				/*
+					Initialize the solut[0] to 0. This is because when computing the price for 4feet rod,
+					we should be able to add solut[0] to prc[3].
+					By doing this we can use same index to access both Solu[] and Prc[]
+					
+					Ex: Compute best price for 4ft rod
+								  prc[]		sol[]
+						     		3			0   //4ft full + 0     
+									2           1   //3ft ful  + 1ft
+									1           2   //2ft ful  + 2ft
+									0			3	//1ft ful  + 3ft			
+				*/
+				int cuttingRodUsingDPX(int* srcPrice, int srcLen)
 				{
 					int solution[50] = { 0 };
 
-					//DP requires that solution-array have one element even at the beginning
 					solution[0] = 0; 
-
-					
 					
 					//this Loop introduces the new elements in src-array. 
 					//when i = 0, src-array has one element, and we compute solution[1]
-					//when i = 1, src-array has two elements, and we compute solution[1]
+					//when i = 1, src-array has two elements, and we compute solution[2]
 					//solutionIndex = i + 1
 					for (int i = 0; i < srcLen; i++)
 					{
@@ -226,10 +230,11 @@ namespace CuttingRodNM
 						int solIndex = i;
 						for(int srcIndex = 0; srcIndex <= i; srcIndex++)
 						{
+							cout << solIndex << " + " << srcIndex << endl;
 							maxSum = max(maxSum, solution[solIndex] + srcPrice[srcIndex]);
 							solIndex--;
 						}
-						
+						cout << " i ....." << i << endl << endl;
 						solution[i+1] = maxSum;
 					}
 
