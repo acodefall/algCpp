@@ -58,7 +58,6 @@
 #include "RecursiveAdditionExceptCurrentItem.h"
 #include "KnapsackUsingDP.h"
 #include "CuttingRodUsingDP.h"
-#include "CuttingRodUsingRecursion.h"
 #include "3SUMProblem.h"
 #include "WaysOfMakingN.h"
 #include "PlaceLettersApart.h"
@@ -194,10 +193,11 @@
 #include "EncodeReplaceMultipleWithNumber.h"
 #include "DivisibilityRule.h"
 #include "OccurenceCountUsingAsciiAry.h"
+
 int main()
 {
-	CombinationsOfWidthXNM::CombinationsOfWidthX objCombinationUsingBitGen;
-	objCombinationUsingBitGen.useCombination();
+
+	
 
 	BitGenNM::BitGen objBitGen;
 	objBitGen.useBitGen();
@@ -205,10 +205,17 @@ int main()
 	CombinationToTargetSumNM::CombinationToTargetSum objCombinationToTargetSum;
 	objCombinationToTargetSum.useCombination();
 
-	CuttingRodUsingRecursionNM::CuttingRodUsingRecursion objCuttingRodUsingRecursion;
-	objCuttingRodUsingRecursion.CallCuttingRodUsingRecursion();
+
 
 	
+
+	CuttingRodNM::CuttingRod	objCuttingRod;
+	objCuttingRod.CallCuttingRod();
+
+	
+	CombinationsOfWidthXNM::CombinationsOfWidthX objCombinationUsingBitGen;
+	objCombinationUsingBitGen.useCombination();
+
 
 	BreakLongWordToSubwordsNM::BreakLongWordToSubwords objBreakLongWordToSubwords;
 	objBreakLongWordToSubwords.callBreakLongWordToSubwords();
@@ -661,8 +668,7 @@ int main()
 	objThreeSumProblem.Call3SumProblem();
 	
 	
-	CuttingRodNM::CuttingRod objCuttingRod;
-	objCuttingRod.CallCuttingRod();
+	
 
 
 	AddAlternateNumbersDPNM::AddAlternateNumbersDP objAddAlternateNumbersDP;
