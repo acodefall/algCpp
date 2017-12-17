@@ -241,7 +241,6 @@
     <ClInclude Include="Knapsack\ColoringHomeUsingCombination.h" />
     <ClInclude Include="Knapsack\ColoringHomeWithMinimumCost.h" />
     <ClInclude Include="Knapsack\CuttingRodUsingDP.h" />
-    <ClInclude Include="Knapsack\CuttingRodUsingRecursion.h" />
     <ClInclude Include="Knapsack\KnapsackUsingDP.h" />
     <ClInclude Include="KthOrderSelection\KthItemUnsortedArray.h" />
     <ClInclude Include="KthOrderSelection\KthLargestItemUsingMergeSort.h" />
