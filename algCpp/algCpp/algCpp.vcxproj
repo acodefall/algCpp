@@ -279,8 +279,8 @@
     <ClInclude Include="RotateArray\RotateArray.h" />
     <ClInclude Include="RotateArray\RotateArrayUsingReverse.h" />
     <ClInclude Include="BinSearch\BinarySearchForLoop.h" />
+    <ClInclude Include="Set\BitGen.h" />
     <ClInclude Include="Set\CoinChangeMakingUsingPerm.h" />
-    <ClInclude Include="Set\CombinationsAll.h" />
     <ClInclude Include="Set\CombinationToTargetSum.h" />
     <ClInclude Include="Set\CombinationToWidth.h" />
     <ClInclude Include="Set\Permutation.h" />

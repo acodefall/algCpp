@@ -13,7 +13,8 @@ namespace LowestCommonDescendentNM //@RED20170725066
 {
 		/*
 			Find Lowest Common Ancestor (LCA)
-				LCA is a node that is ancestor to two target nodes. Value of LCA will be between the values of two target nodes, and also closest to it.
+				LCA is a node that is ancestor to two target nodes. Value of LCA will be between the values of two target nodes, 
+				and also closest to it.
 				It is possible that LCA could be one of the Target node itself.
 				Since the LCA is a ancestor start drilling down from root. At every step compare the current against the values of both Target nodes.
 					if('Target values' < current)

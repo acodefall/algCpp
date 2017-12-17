@@ -173,7 +173,7 @@
 #include "SortUsingStack.h"
 #include "RemoveDuplicates.h"
 #include "CombinationToTargetSum.h"
-#include "CombinationsAll.h"
+#include "BitGen.h"
 #include "ReverseWithoutTemp.h"
 #include "Memcpy.h"
 #include "MergeUnsortedWordList.h"
@@ -196,11 +196,19 @@
 #include "OccurenceCountUsingAsciiAry.h"
 int main()
 {
+	CombinationsOfWidthXNM::CombinationsOfWidthX objCombinationUsingBitGen;
+	objCombinationUsingBitGen.useCombination();
+
+	BitGenNM::BitGen objBitGen;
+	objBitGen.useBitGen();
+
+	CombinationToTargetSumNM::CombinationToTargetSum objCombinationToTargetSum;
+	objCombinationToTargetSum.useCombination();
+
 	CuttingRodUsingRecursionNM::CuttingRodUsingRecursion objCuttingRodUsingRecursion;
 	objCuttingRodUsingRecursion.CallCuttingRodUsingRecursion();
 
-	CombinationsOfWidthXNM::CombinationsOfWidthX objCombinationUsingBitGen;
-	objCombinationUsingBitGen.useCombination();
+	
 
 	BreakLongWordToSubwordsNM::BreakLongWordToSubwords objBreakLongWordToSubwords;
 	objBreakLongWordToSubwords.callBreakLongWordToSubwords();
@@ -255,8 +263,6 @@ int main()
 	CoinChangeMakingUsingPermNM::CoinChangeMakingUsingPerm objCoinChangeMaking;
 	objCoinChangeMaking.useCoinChangeMaking();
 
-	CombinationToTargetSumNM::CombinationToTargetSum objCombinationToTargetSum;
-	objCombinationToTargetSum.useCombination();
 
 
 
@@ -298,8 +304,7 @@ int main()
 	objPerm.usePermutation();
 
 
-	CombinationsAllNM::CombinationsAll objCombinationsAll;
-	objCombinationsAll.useCombination();
+	
 
 	
 
