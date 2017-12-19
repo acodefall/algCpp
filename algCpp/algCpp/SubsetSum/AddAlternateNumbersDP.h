@@ -45,95 +45,32 @@ namespace AddAlternateNumbersDPNM //@RED20170726006
 				int saved[50] = { -1 };
 				int iterations = 1;
 
-				for (int i = 0; i < 50; i++)
-					saved[i] = -1;
-				iterations = 1;
-				AlternateSumWithoutDP(data1, 4, 0, saved, &iterations);
-
-				for (int i = 0; i < 50; i++)
-					saved[i] = -1;
-				iterations = 1;
-				AlternateSumUsingDP(data1, 4, 0, saved, &iterations);
-
-				for (int i = 0; i < 50; i++)
-					saved[i] = -1;
-				iterations = 1;
-				AlternateSumWithoutDP(data2, 5, 0, saved, &iterations);
-
-				for (int i = 0; i < 50; i++)
-					saved[i] = -1;
-				iterations = 1;
-				AlternateSumUsingDP(data2, 5, 0, saved, &iterations);
-
-				int x = AddAlternateNumbersDPX(data1, 4); //13 (correct)
-				int y = AddAlternateNumbersDPX(data2, 5); //15 (wrong - 14. should have been 15)
+				AlternateSumWithoutDPY(data1, 4);
+				AlternateSumWithoutDPY(data2, 5);
 			}
 
-			int AlternateSumWithoutDP(int* src,int Len, int s, int* saved, int* iterations)
+			void AlternateSumWithoutDPY(int* src,int Len)
 			{
-				int retvalue = 0;
-				if (s < Len)
+				const int MAX = 50;
+				int sol[MAX] = {0};
+				
+				sol[0] = src[0];
+				sol[1] = max(sol[0], sol[1]);
+				int i = 0;
+				for(i = 2; i < Len; i++)
 				{
-					(*iterations)++;
-					int baseValue = src[s];
-					int m = 0;
-					int i = s + 1;
-					while (i < Len)
-					{
-						int x = AlternateSumWithoutDP(src, Len, i, saved, iterations);
-						if((i - s) > 1)
-							m = max(m, x);
-						i++;
-					}
-					retvalue = saved[s] = baseValue + m;
+					int x = src[i] + sol[i-2];
+					
+					//computing the value for Sol[i].
+					//Decide whether we should take the value from past or just use the current value
+					if( x > src[i])
+						sol[i] = x;
+					else
+						sol[i] = src[i];
 				}
-				return retvalue;
+				
+				cout << "max value " << sol[i-1] << endl;
+				
 			}
-
-			int AlternateSumUsingDP(int* src, int Len, int s, int* saved, int* iterations)
-			{
-				int retvalue = 0;
-				if (s < Len)
-				{
-					(*iterations)++;
-					int baseValue = src[s];
-					int m = 0;
-					int i = s + 1;
-					while (i < Len)
-					{
-						int x = 0;
-						if (saved[i] == -1)
-							x = AlternateSumUsingDP(src, Len, i, saved, iterations);
-						else
-							x = saved[i];
-
-						if ((i - s) > 1)
-							m = max(m, x);
-						i++;
-					}
-					retvalue = saved[s] = baseValue + m;
-				}
-				return retvalue;
-			}
-
-			/*
-				So 3 2 7 10 should return 13 (sum of 3 and 10) or 3 2 5 10 7 should return 15 (sum of 3, 5 and 7)
-			*/
-			int AddAlternateNumbersDPX(int* data, int len)
-			{
-				int back = data[0]; //holds cum sum at 0th
-				int backback = data[1]; //holds cum sum at 1sth
-				for (int i = 2; i < len; i++)
-				{
-					int maxSum = max(backback, back);
-					int tmp = backback;
-					backback = maxSum;
-					back = tmp + data[i];
-				}
-
-				return max(back, backback);
-			}
-
-
 	};
 };
