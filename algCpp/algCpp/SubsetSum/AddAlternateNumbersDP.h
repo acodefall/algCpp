@@ -22,19 +22,32 @@ namespace AddAlternateNumbersDPNM //@RED20170726006
 		  4			= 7             s[4]  
  
 	
-	*/
-	//Q
-	//Given an array all of whose elements are positive numbers, find the maximum sum of a sub - sequence with the constraint 
-	//that no 2 numbers in the sequence should be adjacent in the array.
-	//So 3 2 7 10 should return 13 (sum of 3 and 10) or 3 2 5 10 7 should return 15 (sum of 3, 5 and 7)
+	
+	Q
+	Implement the max sub array problem with the condition that adjacent numbers should not be added.
+	Means 4th element can be added 1st and 2nd elements but not 3rd.
+		ex: So 3 2 7 10 should return 13 (sum of 3 and 10) or 3 2 5 10 7 should return 15 (sum of 3, 5 and 7)
 
-	//WRONG
-	//Answer does not match amzaon question. Flaw is this solution simply adds alterantive numbers.
-	//We are supposed to add alternative elements. We maintain the even-sum in 'backback' amd odd sum in 'back'
-	//In the beginning backback = d[0] and back = d[1].
-	//When we go to ANY index, the value at current index will be added to backback and output will be placed at back.
-	//And we also know backback and back has two types of sum, and going forward we want only one of them, so select the max of it and store in backback.
-	//So backback is oldest and could have come from even-sum or odd-sum. This is the flaw.
+	Solution is similar to subsetsum problem. In case of subsetsum problem, we add src[i] to sol[i-1]. 
+	This is because we assume sol[i-1] has the best value 
+	until that point so we do not check the values earlier to [i-1]
+	
+	Similarly in this problem, add src[i] to sol[i-2], assume [i-2] has the best value.
+	To understand the solution array creation, imagibe an array of 4 elements.
+	Introduce first element and also add it to solution[0]
+	Introduce 2nd element, and src[1] can not be added to src[0] because they are neighbors,
+	but we take the max among them and store at sol[1].
+	src[1] directly comes to sol[2].
+		sol[0] = src[0]
+		sol[1] = max(src[0], src[1]);
+		
+	Introduce the 3rd element, and this can be added to 1st element only. 
+		sol[2] = max(sol[0] + src[2], src[2]);
+	
+	Introduce the 4th element, and this can be added to either 1st or 2nd element. 
+	But we know sol[2] has the best value so we simply add to 
+		sol[3] = max(sol[1] + src[3], src[3]);
+	*/
 	class AddAlternateNumbersDP
 	{
 		public:
@@ -45,7 +58,7 @@ namespace AddAlternateNumbersDPNM //@RED20170726006
 				int saved[50] = { -1 };
 				int iterations = 1;
 
-				AlternateSumWithoutDPY(data1, 4);
+				AlternateSumWithoutDPY(data1, 4); 
 				AlternateSumWithoutDPY(data2, 5);
 			}
 
@@ -68,9 +81,7 @@ namespace AddAlternateNumbersDPNM //@RED20170726006
 					else
 						sol[i] = src[i];
 				}
-				
 				cout << "max value " << sol[i-1] << endl;
-				
 			}
 	};
 };
