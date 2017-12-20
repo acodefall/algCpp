@@ -12,60 +12,25 @@ using namespace std;
 
 /*
 	General_1212_Binary search inside rotated sorted Array_RED20170907005
-		Rotated array is created by breaking one big sorted array in to two pieces, so that max-value and Min-Value come to the center of the array. 
-		Traditional BST logic assume higher-index will give higher number and lower index will give lower number,
-         and this will not be true after rotation. To compensate for this BST logic needs to alted, as follows.
-		-Compute MID index as usual, and this gives two partitions
-		-Go in to the partition that has continuous numbers. Continuous numbers means 'numbers in that partition should be all be INCREASING or DECREASING'; 
-		 It should not "REDUCE and then INCREASE" means {5, 6, 7, 1, 2}
-			Left-partition  {"4 5 6"}    //Continuous so go here
-			Right-partition {"8, 10, 1, 2, 3"}  //Not Continuous,  so do not go here
-			
+		Rotated will have min and max elements at the middle of the array.
+		This does not suite the BIN searh logic, because trad bin-search expect lowest and highest values to be at src[0] and src[max].
+		We can view Rototated array as having two segments.
+		As usual Bin search will use real physical index as max index, and computes the Midindex,
+		creates left and right parts. 
+		Now there are 3 possibilities.
+		Left part may match width of left-rorated array; and right part may match width of right-rorated array.
+		Other possibility is one of the part is within one of the rotated array; go in to that part.
+		If left-part is within left-rorated array, then go inside that.
+		If src[L] < src[M] then, left-part is within left-rorated array.
+		Once inside left segment.
+		If src[m] == V, we found teh value exit.
+		If V  is between L & M, make a rec call to L & M-1
+		Else make a rec call to M+1 & H.
 			If src[L] < src[M]. then left-side is continuous so go to left-half
 			If src[H]  > src[H]. then Right-side is continuous so go to right-half.
 						
-		-Once inside the correct section, apply the DAC logic. Check whether SoughtVALUE = MidVALUE is equal, if so exit.
-		 If the SoughtVALUE is LOW, then make Left Turn or make Right Turn.
 		
-		
-		======
-			Traditional Binary search logic expects Low-value at 00-index, and highest-value 
-			at Max-index, but rotated array will not meet that condition.
-			Rotated array will have max and min values somewhere in the middle of the array. 
-			We can also say Rotated array has been partitioned.
-			So we can say there are two partitions:
-			-partitions created by Binary search, during searching
-			-physical partition of rotated array.
-			
-			Rotated string can be thought of as two strings placed right next to each other.
-			So the BST code should select one of two strings (left string or right string).
-			This decision is made based on the alignment of Bst-partition and Physical-partition.
-				This is done by comparing src[start], src[end], src[mid].
-				
-			After choosing a string, BST code should do the usual thing like 
-				-comparing the sought-value with src[mid]
-				-adjust the start and end indexes for making left or right turn.
-			
-			To understand better, place the two partitions one above the other and observe the partition line;
-			We may see one of the following two situations
-				-Left-partition of BST fits well within left-physical-partition. In this case BST code should 
-				 work on left-string given by "src[start] & src[Mid]".
-				 In this case 
-						(src[start] < src[Mid])
-					OR
-					
-				-Right-partition of BST fits well within Right-physical-partition. In this BST code should work on 
-				right-string given by "src[mid] & src[end]".
-					In this case
-						(src[mid] < src[end])
-
-			Once within the partition 
-				-comparing the sought-value with src[mid]
-				-adjust the start and end indexes for making left or right turn.
-		=======
-
- 
-         Steps for Binary search inside rotated sorted Array_GN814
+	     Steps for Binary search inside rotated sorted Array_GN814
 		        1) Recursion parameters are Src[] and V
 		        2) Declare L and H.
 		        3) Start a While-loop to go as long as ( L <= H)
