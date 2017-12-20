@@ -265,97 +265,7 @@ namespace ColorHomeWithMinimumCostUsingDPNM //@RED20170527001
 					*/
 				}
 
-				/*void callColorHomeWithMinimumCostUsingDP()
-				{
-					const int MaxColors = 3;
-					const int MaxHomes = 3;
-					 
-					int costOfRed[MaxHomes] = { 1,4,6 };	//cost of painting in R for 1st,2nd and 3rd home
-					int costOfBlue[MaxHomes] = { 2,100,2 }; //cost of painting in B for 1st,2nd and 3rd home
-					int costOfGreen[MaxHomes] = { 3,100,4 }; //cost of painting in G for 1st,2nd and 3rd home
-					
-					int R[MaxHomes+1] = { 0 };	//cost of painting in R for 1st,2nd and 3rd home
-					int B[MaxHomes+1] = { 0 }; //cost of painting in B for 1st,2nd and 3rd home
-					int G[MaxHomes+1] = { 0 }; //cost of painting in G for 1st,2nd and 3rd home
-
-
 				
-					int hIndex = 1;
-
-					cout << "Cost of Matrix Solution Matrix \r\n";
-					print(costOfRed, MaxHomes);
-					print(costOfBlue, MaxHomes);
-					print(costOfGreen, MaxHomes);
-					cout << "\r\n";
-
-					cout << "Solution Matrix \r\n";
-					print(R, MaxHomes + 1);
-					print(B, MaxHomes + 1);
-					print(G, MaxHomes + 1);
-					cout << "\r\n";
-					
-					cout << "\r\n building solution Matrix \r\n";
-					while (hIndex < MaxHomes + 1)
-					{
-						R[hIndex] = costOfRed[hIndex - 1] + min(B[hIndex - 1], G[hIndex - 1]);
-						//hIndex = 1
-						//R[1] is Total cost when there is one house in pool. 
-						//1st-row of 1st-column will give the cost of painting using Red.
-						//When selecting the 1st color, go with Red.
-						// R[1] = costofR[0] + B[0],R[0]
-						// 1    =     1      +  0
-
-
-						//Home that is using Red as second choice, should have selected either Blue or Greeb as 1st choice. So the total cost for this home is 
-						//"price of 1st green" OR "price of 1st blue" + "price of 2nd Red"
-
-						
-						
-						//hIndex = 2 is Total cost when there are two homes in pool.
-						// R[2] = costofR[1] + minimum(B[1],R[1])
-						//   6  = 4          + min(2, 3) 
-						//   6  = 4          + 2
-						
-
-						//hIndex = 3 is Total cost when there are thre homes in pool.
-						// R[3] = costofR[2] + minimum(B[2],R[2])
-						//   107 = 6         + min(101, 101) 
-						
-
-						//Home does not have any 1st home using 1st ever color should not have to think about other colors.
-						//so it Takes the "cost red for 1st home". 
-
-						//R[2] is Total cost of colors for the 2nd home. We take "cost red for 1st home".  is cost of painting 2nd home. This uses Red, so cost is "cost red for 1st home"
-						
-						B[hIndex] = costOfBlue[hIndex - 1] + min(R[hIndex - 1], G[hIndex - 1]);
-						G[hIndex] = costOfGreen[hIndex - 1] + min(B[hIndex - 1], R[hIndex - 1]);
-						
-						//for debug only
-							cout << hIndex << "\r\n";
-							print(R,MaxHomes+1);
-							print(B, MaxHomes + 1);
-							print(G, MaxHomes + 1);
-							cout << "\r\n";
-							cout << "\r\n";
-						/////
-						hIndex++;
-					}
-					
-					cout << "Final solution matrix "<< "\r\n";
-					print(R, MaxHomes + 1);
-					print(B, MaxHomes + 1);
-					print(G, MaxHomes + 1);
-					cout << "\r\n";
-					cout << "\r\n";
-
-					cout << "Lowest cost for painting " << "\r\n";
-					int Lowest = 0;
-					Lowest = min(Lowest,R[MaxHomes -1]);
-					Lowest = min(Lowest, G[MaxHomes - 1]);
-					Lowest = min(Lowest, B[MaxHomes - 1]);
-					cout << Lowest << "\r\n";
-				}*/
-			
 				void print(int* data, int len)
 				{
 					for (int i = 0; i < len; i++)
@@ -364,11 +274,6 @@ namespace ColorHomeWithMinimumCostUsingDPNM //@RED20170527001
 					}
 					cout <<"\r\n";
 				}
-				void ColorHomeWithDP()
-				{
-					const int MaxColors = 3;
-					const int MaxHomes = 3;
-
-				}
+			
 	};
 };
