@@ -193,11 +193,19 @@
 #include "EncodeReplaceMultipleWithNumber.h"
 #include "DivisibilityRule.h"
 #include "OccurenceCountUsingAsciiAry.h"
-
+#include "BubbleSort.h"
+#include "SelectionSort.h"
 int main()
 {
 
-	
+	SelectionNM::SelectionSort objSelectionSort;
+	objSelectionSort.CallSelectionSort();
+
+	BubbleSortNM::BubbleSort objBubbleSort;
+	objBubbleSort.CallBubbleSort();
+
+	AddAlternateNumbersDPNM::AddAlternateNumbersDP objAddAlternateNumbersDP;
+	objAddAlternateNumbersDP.callAddAlternateNumbersDP();
 
 	BitGenNM::BitGen objBitGen;
 	objBitGen.useBitGen();
@@ -671,8 +679,6 @@ int main()
 	
 
 
-	AddAlternateNumbersDPNM::AddAlternateNumbersDP objAddAlternateNumbersDP;
-	objAddAlternateNumbersDP.callAddAlternateNumbersDP();
 
 
 	RecursiveAdditionExceptCurrentItemNM::RecursiveAdditionExceptCurrentItem objRecursiveAdditionExceptCurrentItem;
