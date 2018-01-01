@@ -42,8 +42,22 @@ using namespace std;
 
 							Declare a Driver/Caller class that calls Graph class. 
 									Driver class  creates Movie and Vertex instances, hands them over to Graph class.
-												
-
+		
+	Wheen asked?
+		Assume you are ONLY one Vertex instance as input. Assume Vertex class represents a movie and also has the 
+		RATING as one of the member.
+		Since we do not know all the vertecies in the Graph, we have to do BFS. As we get the Vertex,
+		load the Name and Rating in to Dictionary object. Where NAME is RATING and VALUE is LIST of Movie names.
+		As the BFS goes, if the movie has same rating, then add the name to List object stored as VALUE.
+		Dictionary gets sorted automatically. 
+		Once the Dictionary object is ready, use it for ansering user query. If user asks for movies with rating 4.
+		Go through the dictionary looking for the NAME=4. That will give movie list.
+		Note: 4th rated movie may not be at 4th position. 
+		
+		coming to impl:
+			No need to implement whole Graph. Implement two funcs: One to iterate graph and other for answering 
+			user query based the Dict object created by iteration function.
+		
 */
 
 namespace GraphMovie
