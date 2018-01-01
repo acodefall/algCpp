@@ -6,7 +6,7 @@
 using namespace std;
 
 /*
-	Singleton impl needs 3 things
+	Singleton impl_RED20171231001
 		Say we want to have ONLY one instance of Resource R.
 		Want to expose R through an another Singleton class called Sing. 
 		Sing class will expose R to user. Use can not call new on Sing because it is singleton.
