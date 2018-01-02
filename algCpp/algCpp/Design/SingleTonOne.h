@@ -5,6 +5,26 @@
 #include<memory>
 using namespace std;
 
+/*
+	Singleton impl_RED20171231001
+		Say we want to have ONLY one instance of Resource R.
+		Want to expose R through an another Singleton class called Sing. 
+		Sing class will expose R to user. Use can not call new on Sing because it is singleton.
+		Once the user gets R, he will not call Sing class for anything.
+		R should be thread safe because multiple threads will be calling.
+		Where as Sing does not have to be thread safe. Because Sing function will
+        declare R as static and expose it to user through the getIns() function.
+        Sing class will not expose any methods of R, other than creating it. 
+		By declaring the R as STATIC, C++11 will asssure thread-safe creation of R.
+		This is why Sing class does not need mutex or lock. 
+		
+		Sing class should have following
+		a) Make the CTOR of Sing private so that user can no call NEW.
+		b) Declare STATIC-PUBLIC function called getInst() to return the static instance of the R
+		c) Declare the R as STATIC either as class member or declare inside the function GetInstance() function.
+		 
+
+*/
 //unresolved external symbol "private: static class
 //extern SingleTonOneX::getInstance inst;
 class SingleTonOneX

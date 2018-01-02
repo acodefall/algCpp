@@ -7,6 +7,12 @@
 #include <sstream>
 using namespace std;
 
+/*
+	Top10PercentImpl_RED20171231002
+		compute the occurence count of words and push them in to PririortQ
+		Then sort the Q in Desc order. This will put top rated items at the TOP of the Q.
+		Then read the top 10% items. QLen * 10 will top-10 count to be read.
+*/
 //NotRead
 namespace FindTopTenPercentNM
 {
