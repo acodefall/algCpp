@@ -30,22 +30,16 @@ namespace ConstructSingleThreadedTreeNM
 			 
 
 			 INSERTING a number in to Threaded-Tree_20170707006 20170707009
-				Insert code looks for the correct slot for inserting the newValue.
-				Navigation code start at root, goes on making left-turns until cursor goes PAST the correct position;
-				In the subsequent round, the ELSE block will CREATE and INSERTS the new node, and function will exit.
-				Only IF block is responsible for making Left-turn so it checks for (newValue < currValue).
-				The ELSE block will simply create & insert the node and then exits.
-
-				But there are two special cases where value could be MIN and MAX. 
-				MIN value must be detected by Left-Turn code. If the newValue is lower than currValue;
-				and currValue's left-child is NULL, it means that newValue is MIN value. At that time, 
-				Left-Turn code will create and insert the new node.
-
-				MAX value has to be detected by ELSE block. If the Rchild-flag of currNode is false, then newValue is MAX value;
-				Create and insert the new node.
-
-				In general, INSERT code should INSERT the new-node as if it is a NODE in to SINGLE-LL, and it should 
-				also set the Rchild flag on NEWLY created node.
+				User calls the insert function() once for inserting every number in the tree.
+				Since the tree is single threaded, Code navigates the tree from root until it goes past the node that is 
+				HIGHER than the value being inserted. Then insert the code.
+				If the node being inserted is 5, then cursor should reach 6, then insert 5, in front of 6.
+				While navigating the tree code makes left and right turn depending on the value.
+				Enable RightTreaded = true on the newly inserted node.
+				Newly created node be assigned to current node's Rc.
+				
+				If we did not find any node, then the we are inserting first node in to tree.
+				
 
 				 Insert 50
 					50 < 100 make left turn
