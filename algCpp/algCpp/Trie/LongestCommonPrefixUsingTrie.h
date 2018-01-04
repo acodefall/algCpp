@@ -1,4 +1,6 @@
-#pragma once
+
+			
+			#pragma once
 #include <iostream>
 #include <map>
 #include <string>
@@ -13,14 +15,15 @@ namespace LongestCommonPrefixUsingTrieNM //@RED20170819002
 {
 	/*								
 		Find longest common prefix_@RED20170819002
-			LCP is the common prefix among several words. "New", "News", "Newspaper", "NewsArticle"
+			
+			LCP is the common prefix among several words. "New", "News", "Newspaper", "NewsArticle"			
 			Longest common prefix is the First word of the longest thread found in Trie.
-			Logic for computing LCP is.
-			Traverse the whole TRIE. Record the firstPrefix, "longest word" and "Lcp" in 3 variable.
-			Update these variables when ever we come across EOW.
-			Whenever EOW is encountered, compare the length of currenWord against existing "longest word", if the currenWord is longer, then assign 
-			currenWord to "longest word", and assign  firstPrefix to Lcp.
-			Once we complete the traversal we will have the LCP.
+			Ex: "Rockstar" and "Newspaper" are two threads of words each consisting of two words.
+			Newpaper is longer than Rockstar so take the first word as first word of Newspaper as LCP. 
+			
+			Traverse the whole TRIE and record the firstPrefix whenever we begin at the beginning of of the word-thread.
+			We will come to know about the length of that word-thread only when the cursor reaches leaf.
+			When cursor hits the LEAF, record the length of the word. If that happens to be longest, then 1st word of that is the LCP.
 				
 				if(EOW)
 					if( LEN(currentWord) > LEN(longestWord))
