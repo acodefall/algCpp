@@ -12,59 +12,10 @@ using namespace BuildTreeNM;
 
 
 /*
-		Using NULL as marker when computing Height using Iteration_20170711001
-		Also check @RED20170731009
-			Start with BFS code. EnQ every node that sits on a line in to Q, and end the line by inserting a place-holder (say NULL). 
-			If you look at the Q,  newest item (NULL) will be at the top, and oldest item will be at the bottom of Q.
-				NULL //End of line marker for root node
-				N
-	
-			Dq operation will always read from bottom most slot only. After every Dequing, the top item(NULL) will fall by one level.
-			After every Dequing, we will Enq the children of the Dqued item on to Q. These children will sit on the top of NULL.
-			NULL will hit the bottom slot once all the items belonging to a LINE have been read. By this time we would Enqued every the children of every node belonging to current level. 
+		Use same code as PrintEveryLevelOfTreeInALine
 
-			Now Dq the NULL, and in response Enq a NULL. And the Enqued NULL will sit on the top, and acts as END of the LINE marker for NEXT line. This is how we can use NULL to marker. When ever the Dequed Item is NULL, increment the HEIGHT counter by 1
-	
-				NL
-				NR
-				NULL	//End of line marker for root node has come to Bottom
-	
-				NULL //End of line marker for 2nd LEVEL
-				NL
-				NR
 
 		
-		Q buildup
-		----------
-			NULL													100
-			100 (pop 100 push 80/120)							  /    \
-				80												 /      \
-				120												80       120
-				NULL (pop NULL push NULL)					   /  \      / \
-						NULL								 50    90   110  300
-						80									 /\    /\
-						120 (pop 120 push 110/300)    		/  \  /  \
-							  110						   10 60  85 95
-							  300
-							  NULL
-							  80  (pop 80 push 50/90)
-									50
-									90
-									110
-									300
-									NULL  (pop NULL push NULL)
-											NULL
-											50
-											90
-											110
-											300 (pop 300 )
-													NULL
-													50
-													90
-													110	(pop 110 )
-															NULL
-															50
-															90
 
 
 */
@@ -75,7 +26,7 @@ namespace TreeHeightUsingNonRecursionNM //@RED20170711001 20170711002
 	public:
 		void callTreeHeightUsingNonRecursion()
 		{
-			BuildTree objTrrr;
+			/*BuildTree objTrrr;
 			objTrrr.AddValues();
 
 			cout << "\r\n";
@@ -83,11 +34,11 @@ namespace TreeHeightUsingNonRecursionNM //@RED20170711001 20170711002
 			objTrrr.printTreeInOrder(objTrrr.root);
 			cout << "\r\n";
 
-			TreeHeightUsingNonRecursionX(objTrrr.root);
+			TreeHeightUsingNonRecursionX(objTrrr.root);*/
 		}
 
 	private:
-		void TreeHeightUsingNonRecursionX(NodeTree* root)
+		/*void TreeHeightUsingNonRecursionX(NodeTree* root)
 		{
 			int height = 0;
 			queue<NodeTree*> q;
@@ -120,6 +71,7 @@ namespace TreeHeightUsingNonRecursionNM //@RED20170711001 20170711002
 				//q = printAllQ(q);
 			}
 
+	
 		}
 
 		//only way to itearete Q is POP.
@@ -151,7 +103,7 @@ namespace TreeHeightUsingNonRecursionNM //@RED20170711001 20170711002
 			else
 				unFriendlySTL = q;
 			return unFriendlySTL;
-		}
+		}*/
 	};
 };
 
