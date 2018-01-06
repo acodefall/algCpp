@@ -13,6 +13,7 @@ namespace PostOrderUsingStackNM
 {
 		/*
 			Post order traversal 20170710005
+				In Post order the sequence is Lc-Rc-P; and Pre order is P-Lc-Rc 
 				Post order traversal is can be acieved by modifiying DFS 
 				Write the DFS code. When you pop the item from the stack, instead of printing it, push in to second stack.
 				Once the DFS is done, print the content of second stack.

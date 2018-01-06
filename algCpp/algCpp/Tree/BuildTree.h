@@ -170,6 +170,21 @@ namespace BuildTreeNM
 
 				root->L->L->L->L = new NodeTree(5);
 			}
+
+
+			void AddValues1()
+			{
+				root = new NodeTree(1);
+				root->L = new NodeTree(2);
+				root->R = new NodeTree(3);
+
+				root->L->L = new NodeTree(4);
+				root->L->R = new NodeTree(5);
+
+				root->R->L = new NodeTree(6);
+				root->R->R = new NodeTree(7);
+
+			}
 			~BuildTree()
 			{
 				cout << "\r\n";

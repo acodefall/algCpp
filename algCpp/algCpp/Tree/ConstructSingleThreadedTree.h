@@ -31,16 +31,18 @@ namespace ConstructSingleThreadedTreeNM
 
 			 INSERTING a number in to Threaded-Tree_20170707006 20170707009
 				User calls the insert function() once for inserting every number in the tree.
-				Since the tree is single threaded, Code navigates the tree from root until it goes past the node that is 
-				HIGHER than the value being inserted. Then insert the code.
-				If the node being inserted is 5, then cursor should reach 6, then insert 5, in front of 6.
-				While navigating the tree code makes left and right turn depending on the value.
-				Enable RightTreaded = true on the newly inserted node.
-				Newly created node be assigned to current node's Rc.
+				New node should be made R-child of CURRENT Node, taking in to account whether Rc have any value and whether currNode is already singled-threaded.
+				If the current node is already singled-threaded, then new node should be sandwitched/INSERTed between
+				existing-Rc and Parent node(current node).
+				If the current node is NOT singled-threaded, simply assign the NewNode to Rc, provided the Rc is NULL. 
+				If Rc has some value do not overwrite it.
 				
-				If we did not find any node, then the we are inserting first node in to tree.
+				It is also possible that new-node has lowest value, then new node should be made the 1st element.
+				This code will go under ( V < c.D).
 				
-
+				Coming to impl, make left trun as usual but never make right right at all. When (V > c.d) create the node node and break
+				
+				
 				 Insert 50
 					50 < 100 make left turn
 					50 insert at MIN
@@ -83,13 +85,15 @@ namespace ConstructSingleThreadedTreeNM
 					100
 
 		Navigating Threaded Tree 20170707008
-				Navigation should start from lowest of the values so drill down to deepest-left-node. Then start printing using while loop.
-				Note that Threaded tree is setup for 'in order traversal' so take the help of RightTreaded flag for navigation.
-
+				Code Navigating the SingleThreadedTree does not use STACK. This is because Rc is supposed to have next higher value,
+				so cursor should jump from Rc to Rc. 
+				But Some of the nodes may not be right-threaded and we have to account for it also. 
 				If CURR-Node has RightTreaded  == TRUE, then successor is stored in CURR->Right, so to go that node.
 				If CURR-Node has RightTreaded  == FALSE, then successor is the Deepest-Left-node of CURR->Right. Use while-loop for reaching to Deepest-Left-node. So cursor should be set to Curr-.Right itself OR Deepest-Left-node of Curr-.Right.
-
- 
+				Navigation should start from beginning so first drill down to lef-most node.
+				Then start a while loop to navigate.
+				
+				
 	*/
 	class NodeTreeThreaded
 	{

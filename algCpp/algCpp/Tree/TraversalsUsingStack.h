@@ -17,7 +17,7 @@ namespace TreeTraversalsUsingStackNM
 		void callTreeTraversalsUsingStack()
 		{
 			BuildTree objTrrr;
-			objTrrr.AddValues();
+			objTrrr.AddValues1();
 
 			cout << "\r\n";
 			cout << "Tree content\r\n";
@@ -27,6 +27,26 @@ namespace TreeTraversalsUsingStackNM
 			//Order refers to the position of Parent node
 			StackInorder(objTrrr.root);  //L P R
 			StackPreorder(objTrrr.root);  //P L R
+
+			/*
+				Stack based In order traversal
+				  10   50   60   80   85   90   95  100  110  120  300
+				Stack based Pre order traversal
+				 100   80   50   10   60   90   85   95  120  110  300
+			*/
+
+			/*
+
+							1
+						2		3
+					4     5   6   7
+
+
+					Stack based In order traversal
+					4    2    5    1    6    3    7
+					Stack based Pre order traversal
+					1    2    4    5    3    6    7
+			*/
 		}
 
 	private:

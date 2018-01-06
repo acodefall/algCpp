@@ -195,8 +195,12 @@
 #include "OccurenceCountUsingAsciiAry.h"
 #include "BubbleSort.h"
 #include "SelectionSort.h"
+#include "TraversalsUsingStack.h"
 int main()
 {
+
+	TreeTraversalsUsingStackNM::TreeTraversalsUsingStack objTreeTraversalsUsingStack;
+	objTreeTraversalsUsingStack.callTreeTraversalsUsingStack();
 
 	SelectionNM::SelectionSort objSelectionSort;
 	objSelectionSort.CallSelectionSort();
@@ -513,9 +517,7 @@ int main()
 	TraversalUsingRecursionNM::TraversalUsingRecursion objTraversalUsingRecursion;
 	objTraversalUsingRecursion.callTraversalUsingRecursion();
 
-	TreeTraversalsUsingStackNM::TreeTraversalsUsingStack objTreeTraversalsUsingStack;
-	objTreeTraversalsUsingStack.callTreeTraversalsUsingStack();
-
+	
 	PostOrderUsingStackNM::PostOrderUsingStack objPostOrderUsingStack;
 	objPostOrderUsingStack.callTreeTraversalsUsingStack();
 
