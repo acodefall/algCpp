@@ -13,28 +13,20 @@ namespace FindKthUniqueItemNM //@RED20170724004
 		  Find the Kth non-repeating Character in a String_GN820
 		  Find the Kth non-repeating Character in a String_20170724004
 				Sentence will have some characters that repeats and some that does not.
-				Assume that somehow we remove all the repeating characters and shrink the array.
-				Remaining characters are non-repeating characters.
 				Among the non-repeating characters which should tell which comes 1st and which comes 3rd etc.
-				Ex: "Carrot". Here remove the repeating character RR so we will be left with "caot". 
-				Here c is 1st non-repeating character; and t is 4th non-repeating character.
+				Ex: "Carrot". 
+				C = 1, a = 2, o = 3, t = 4 non-repeat characters.
 
 
-				Answeing this this question needs
-				-occurence count and also index of the characters.
-				Then create two maps: "character-occurencecount" //occurenceMap
-									  "character-indexOfCharacter"//IndexMap
-				"IndexMap" stores real index of character if it is non-repeating;
-				stores -1, if the character is repeating.
-				Once this map is ready, Sort the IndexMap based on VALUE. Now all the repeating characters come to bottom 
-				of the map because their index is -1. Non repeating character will sit at the top of the map.
-				"IndexMap" will help us fetch "2nd non-repating number". This will be in 2nd position of map.
-
-
-				"occurenceMap" helps only in constructing IndexMap, nothing else.
-				Coming to implementation. We use same while loop for constructin both the maps.
-				First build occurenceMap and then build IndexMap. If the occurenceMap indicates that a character 
-				appears multiple times; then the index for that character will be changed to -1 in IndexMap.
+				Find the kth non-repeating character. We have to make a list of non-repeating letters and 
+				place them in the order as they appear in original word. Then retun kth non-repaeting letter.
+				Build an occurence count using Ordered dictionary where letter is key and count is vaue. 
+				Order will match the order in the word.
+				Then go throgh the list, if the occurence count is 1, then replace it with real-index, 
+				if the occurence count is non-zero, replace it with -1.
+				Then sort the Ordered Dictionary based on VALUE, in ascending order. 
+				All the non-repeating values will come to top and repeating letters will go to bottom.
+				To know the 4th non-repeating letter, read the 4th entry from OrderedDictionary.
 
 				===============================================
 

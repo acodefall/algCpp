@@ -7,14 +7,21 @@ namespace LongestCommonPalidroneNM //@RED20170531002
 {
 	/*
 	Finding the Longest Palidrone in a string_20170531002
-			Note that palidrone results in a mirror image, and the index where mirror meets to could be any where. 
-			As we move away from the meeting-index, the letters on eiither side will be same. Our logic goes to every index,         and compares the characters around that index. If the characters are same then we found a palidrone. Keep track of length of palidrone, and also the index of its occurence.
-			Say we are at index 5, compare 4 & 6; if they match, then compare 3 & 7.
-			We do this until there is NO match; OR we hit the boundary of the array.
-
-			Repeat the above procedure for every index of the array, 0 to Len.
-			When we find a palidrone, if it is longer than other palidrones, then note down.
-
+			Palidrone results in a mirror image so starting from index=1 check the whether the characters are same on either side '        
+			of the cursor. Continue as long as characters are matching. For every matching aphabet, increment the paln count by 2.
+			Break the comparison once the match stops. Do this check for index=1, 2, etc... Then select the palidrone who's length is max.
+			
+			At the beginning wrap each alphabet. Sentence should start with # and also end with #.
+			
+			Coming to implementation. Wrap the characters with #. Then start a ForLoop to start at index = 1.
+			Then create two more indecies i-1 & i+1. Start a while loop for checking for mirror image around index-i.
+			Inside while loop, compare i-1 and i+1. If they match and character is NOT #, then 
+			increment the palincount by 2. Break the while loop  if alphabets faisl to match.
+			
+			Palin count uses # as marker. If the cursor is at non-hash then we are already past the marker so initialize the palincount = 1
+			Otherwise palincount = 0.
+			
+			
 			 We insert anchors because we want to a partition besides whom we can grow.
 				 Ex: "abba" there is nothing to grow around but by inserting # between then, by making 
 				 "ab#ba" we can grow on either side.
@@ -53,7 +60,9 @@ namespace LongestCommonPalidroneNM //@RED20170531002
 				f) Once the While loop breaks we are out of palidone-sequence
 				   And we have check how long it was, and it were the longer than compared to previous one, then update the MAXCounter.
 
-		   
+		 
+			
+			
 	*/
 	class CallLongestCommonPalidrone
 	{

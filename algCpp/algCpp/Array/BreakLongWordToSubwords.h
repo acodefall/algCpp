@@ -16,12 +16,15 @@ namespace BreakLongWordToSubwordsNM
 		Long word break problem_@RED20170816001
 			Check whether the word "newspaper" has the subwords "spa, ape, new" in it. 
 			We have to break the longword in to subwords using combinator technique, and check whether the subwords are present in the dictionary provided by caller.
-			We can generate many subwords, this is because the subwords can have as low as single letter. But all subwords are not valid words. Only the words given in dictionary are valid words.
+			
+	        Say the in coming word is "news".
+			Generate the combinations words out of it. Construct the 1st word out of 1st letter "n"; then construct second word out of two letters "ne"; 
+			construct 3rd word out of three letters "new". And add these words in to a list. When we splice the word in to two part, there will be a 2nd part, and 
+			we want to splice the 2nd part in to subwords, so we make a recursion call by passing second part as input. Recursion call will generate combinations and adds them to the list. 
+			Recursion will break when the incoming word length is 1.
 
-			Combinator technique used for generating subwords can be generatlized as follows. 
-			Combinator will not make a combination by dropping a middle character.
-			Ex: "Rat" There won't be combination called "Rt". But there will be "r a t  ra at rat"
-		
+			Note: subword should be continuous. For "news", "ne", "ws" are valid but not "nw" "ns".
+
 
 			Say word is ‘iLike’. 
 			Combinations[iLike] = “I” + Combinations[Like]
