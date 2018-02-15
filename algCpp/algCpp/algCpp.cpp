@@ -196,9 +196,34 @@
 #include "BubbleSort.h"
 #include "SelectionSort.h"
 #include "TraversalsUsingStack.h"
+
+#include "FindDistinctIsland.h"
+#include "SearchWordInMatrix.h"
+
+#include "SmartPointerArc.h"
+#include "ObjectPoolArc.h"
+#include "ReaderWriter.h"
+#include "FactoryCreate.h"
+#include "SyncQ.h"
+#include "RotateMatrix90.h"
+
 int main()
 {
+	SmartPointerArcNM::useSmartPointerArcC objuseSmartPointerArcC;
+	objuseSmartPointerArcC.create();
 
+	FactoryCreateNM::useMailServer  objuseMailServer;
+	objuseMailServer.createMailServers();
+
+	SearchWordInMatrixNM::SearchWordInMatrix objSearchWordInMatrix;
+	objSearchWordInMatrix.SearchWordInMatrixX();
+
+	FindDistinctIslandNM::FindDistinctIsland objFindDistinctIsland;
+	objFindDistinctIsland.callFindDistinctIsland();
+	
+	RotateMatrix90NM::RotateMatrix objRotateMatrix90;
+	objRotateMatrix90.rotate();
+	
 	TreeTraversalsUsingStackNM::TreeTraversalsUsingStack objTreeTraversalsUsingStack;
 	objTreeTraversalsUsingStack.callTreeTraversalsUsingStack();
 

@@ -229,8 +229,12 @@
     <ClInclude Include="Design\Library.h" />
     <ClInclude Include="Design\Memcpy.h" />
     <ClInclude Include="Design\MemoryMngrBuddy.h" />
+    <ClInclude Include="Design\ObjectPoolArc.h" />
     <ClInclude Include="Design\ProdConsumer.h" />
+    <ClInclude Include="Design\ReaderWriter.h" />
     <ClInclude Include="Design\SingleTonOne.h" />
+    <ClInclude Include="Design\SmartPointerArc.h" />
+    <ClInclude Include="Design\SyncQ.h" />
     <ClInclude Include="Design\SyncQx.h" />
     <ClInclude Include="Graph\Graphbuild.h" />
     <ClInclude Include="Graph\AirLineShortestPathGraphSearch.h" />
@@ -266,9 +270,12 @@
     <ClInclude Include="MatrixPath\CountPathsInMatrix.h" />
     <ClInclude Include="MatrixPath\PathOfLowestCost.h" />
     <ClInclude Include="MatrixPath\PrintPathsOfMatrix.h" />
+    <ClInclude Include="Matrix\FindDistinctIsland.h" />
     <ClInclude Include="Matrix\MatrixRotatePrint.h" />
     <ClInclude Include="Matrix\PrintDiagonalValues.h" />
+    <ClInclude Include="Matrix\RotateMatrix90.h" />
     <ClInclude Include="Matrix\SearchForNumberInSortedMatrix.h" />
+    <ClInclude Include="Matrix\SearchWordInMatrix.h" />
     <ClInclude Include="Median\MedianOfBST.h" />
     <ClInclude Include="Median\MedianOfTwoSortedArrays.h" />
     <ClInclude Include="Median\MedianUnsortedUsingKthOrder.h" />

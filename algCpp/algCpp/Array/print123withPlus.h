@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <memory>
+#include <sstream>
 using namespace std;
 
 //NotRead
@@ -21,6 +22,7 @@ FB question
 class print123withPlusX
 {
 public:
+    const int max = 3;
 	void callprint123withPlusX()
 	{
 		string src;
@@ -32,6 +34,36 @@ public:
 		generateCombs(bits.get(), src.length() - 1, src, src.length(), '+');
 	}
 
+	/*void callprint123withPlusY()
+	{
+		int[max] data={1,2,3};
+		int sum = 0;
+		string sumS;
+
+		addCombs(0, data, sum, sumS);
+	}
+	
+	void addCombs(int idx, int src[max], int& sum, string nums)
+	{
+		if(idx == 3)
+		{
+			cout << nums << " = " << sum << endl;
+			return;
+		}
+		
+		for(int i = idx; i < max; i++)
+		{
+			stringstream tmp;
+			tmp <<  " + " << src[i];
+			string numsT = nums + tmp.str();
+			addCombs(idx+1, sum + src[i], numsT);
+
+			stringstream tmp1;
+			tmp1 <<  " - " << src[i];
+			numsT = nums + tmp1.str();
+			addCombs(idx+1, sum - src[i], numsT);
+		}
+	}*/
 
 	void generateCombs(int* bits, int idx, string& src, int width, char symbol)
 	{

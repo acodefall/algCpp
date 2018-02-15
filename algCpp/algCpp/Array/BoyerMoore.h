@@ -68,26 +68,53 @@ namespace BoyerMooreNM //@RED20170724012
 			N = string Length
 			M = pattern Length
 
+	Bad character rule
+			Boyer-moore alg uses ‘bad-character rule’ and ‘good-suffix rule’ for computing the shift count for “i”.
+			Bad-char is the character that fails in match. Note  that bad-char is present at current-index but it may be at an other index in pattern. These possibilities affects how much “i” is going to be moved.
+
+			–-If the bad-char is not found anywhere inside pattern, then 1st letter of pattern should move to RIGHT-OF bad-char index.
+			(see step2)
+
+			–-If the bad-char is present somewhere in pattern, then found-index of pattern should move to RIGHT-OF bad-char index.
+			(see step1)
+	BadChar Table or string.Find()
+			Ideal implementation of Boyer-Moore uses BadIndex Table for computing the amount-shift in case of bad-char.
+			In my implementation I do not use the Badchar table, instead I use string.find() for searching bad-char in pattern,
+			and appropritely manually compute the shift.
+			If I were to use BadIndex-table, table would have taken care of the both these operations.
+
    */
    
 	
-
+	const int MAXBAD = 256;
 	class BoyerMoore
 	{
 		public:
+			
 			void callBoyerMoore()
 			{
 			
 				//string src("Xwothrtwo");
 				//string pat("two");
-				string src("pteNtwothree");
-				string pat("oNetwo");
+				//string src("pteNtwothree");
+				//string pat("Ntwo");
+
+				string src("WHICH FINALLY HALTS  AT THAT");
+				string pat("AT THAT");
+
 				cout << "S: " << src << endl;
 				cout << "P: " << pat << endl;
 				BoyerMooreX(src, pat);
 
 			}
 
+			/* 
+			BadChar Table or string.Find()
+				Ideal implementation of Boyer-Moore uses BadIndex Table for computing the amount-shift in case of bad-char.
+				In my implementation I do not use the Badchar table, instead I use string.find() for searching bad-char in pattern,
+				and appropritely manually compute the shift. 
+				If I were to use BadIndex-table, table would have taken care of the both these operations. 
+			*/
 			void BoyerMooreX(string src, string pat)
 			{
 				int i = pat.length() - 1; //index for source
@@ -96,6 +123,7 @@ namespace BoyerMooreNM //@RED20170724012
 
 				const char *s = src.c_str();
 				const char *p = pat.c_str();
+				int matchedChar = 0;
 				while (i < src.length())
 				{
 					cout << endl << "s[" << i << "] = '" << s[i] << "'  p[" << j << "] = '" << p[j] << "'" << endl;
@@ -113,36 +141,30 @@ namespace BoyerMooreNM //@RED20170724012
 						}
 						j--;
 						i--;
+						matchedChar++;
 					}
 					else
 					{
-						//cout << "   " << "s[" << i << "] = '" << s[i] << "' is not matching" << endl;
+
+						/*
+						Computing i;
+							"No bad char" = i + pLen;
+							"bad char" = i + pLen - matchCharsCnt;
+							"bad char, found in Patrn" = i + pLen - matchCharsCnt - FndInx;
+						*/
 						int k = pat.find(s[i]);
 						if (k == -1)
 						{
-							//Here N is not at all existing in pattern, so move the pattern part N
-								//teNtwothree
-								//onetwo      //i = 2
-								//   onetwo   //i = 8
-
-							
-							cout << "   " << "s[" << i << "] = '" << s[i] << "' is totally missing. Move patter beyond  '" << s[i] << "' to i = " << i + pat.length() << endl;
-							i += pat.length();
-							//cout << "   " << "src string used for comparison " << src.substr(0,i) << endl;
+							i += (pat.length() - matchedChar);
+							if (matchedChar) //we have go past the matched index
+								i = i + 1;
 						}
 						else
 						{
-
-							cout << "   " << "s[" << i << "] = '" << s[i] << "' is somewhere in pattern. i = '" << i << "'" << endl;
-
-							 i = i + pat.length() - min(j, (int)src.length() - k +1);   //To shift the full length of TRG to right side(beyond [i]).
-							                       //(j - x)
-							 cout << " i '" << i << "'" << endl;
+							i += (pat.length() - matchedChar - k) - 1;
 						}
-						
-						//when ever a character is missing
-						//pattern index always starts from last psoition
 						j = pat.length() - 1;
+						matchedChar = 0;
 					}
 				}
 
