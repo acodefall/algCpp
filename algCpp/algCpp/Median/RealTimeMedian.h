@@ -7,38 +7,38 @@ namespace RealTimeMedianNM
 {
 	/*
 		Fetch Median from data stream_20170622001
-			Following description will help visualize the solution.
-			An ascending sequence of numbers can be partinioned at the middle in to two halves. Values in left-half will be decresing as we move away from partition,
-			so we can use MaxHeap for representing left-half. Similarly, the values in the right-half will be increasing as we move away from partition, so we can represent the right partition using MinHeap.
-			Heaps will maintain order when the items are added and removed.
+			In order to compute the median of real-time data, we have to arrange the data in following way.
+			Imagine a sorted array as split in to two parts at the middle of the array.
+			Values in left-half will be decresing as we move away from partition, so we can use MaxHeap for representing left-half. 
+			Similarly, the values in the right-half will be increasing as we move away from partition, so we can represent the right partition using MinHeap.
+			After this computing median is easy. If the size of both the heaps are same, then the median is average of top elements of 
+			Min and Max Heap. If the size difference is 1, then the MEDIAN is top element of the HEAP whith higher count.
+			Key thing is as new items comes in, it should be added to in such a way that, size difference at the max is 1.
+			To achieve this equivibruim we may have to shift the element from one heap to other heap.
+			Say the size difference is 1, and we want to add insert in to the higher-count side. Now pop the TOP element 
+			from that higher-count side and push in to lower side, and the insert the NEW item to higher-count side.
+			After addition the size difference stays at 1.
 
-			We want to compute the median for whole sequence, Right and Left.
-			We have already divided the sequence in to halves and maintained them in MinHeap and MaxHeap.
-			If the whole sequence length is ODD, then see which part (L or R) is odd. Say L part is odd, then Top of MaxHeap will give median.
-			If R part is odd, then Top of MinHeap will give Median.
-			If the whole sequence is EVEN, then average value of 'Top of MaxHeap' and 'Top of MinHeap'.
+			Implementation
+			-Need MinHeap, MaxHeap data members
+			-Insert() and Median() function.
+			-Insert function inserts new item. it should decide whether item goes in to Min & Max Heap.
+			 This is how we could decide where to add. NewItem <= LeftTop, then add to left-heap. 
+			 If NewItem >= RightTop, then add to Right-heap. 
+			 Now before adding check the size, if the size is same, simply add. Otherwise shift the top element and then insert.
+							if(L.count > R.Count) 
+								L.pop(); //This will balance the counts on both sides.
+								R.push(); 
+								L.push(); //Once the balance is achieved, add the new element
+							else //both the sides have same number, no need to balance.
+								L.push();
 
-			When computing the Median, combine both halves in to one big array and compute Median. If any one of the Heap has ODD number of elements, then root of that Heap will be the Median. If both the Heaps are same in size, then the Median is Average of the root values.
 
-			When a new data comes-in, we need a basis for deciding whether it should go to L-side or R-side,
-			Compare the incoming element against the ROOT of either MinHeap or MaxHeap(but not the both).
-			Say if we are comparing with MaxHeap (that is on left side)
-				-If the data is less than root-of-MaxHeap, add to Left-side.
-				-If the data is higher than root-of-MaxHeap, add to Right-side.
-				We should make sure that Addition of new item will NOT make the count-difference MORE THAN 1. 
-				To mainatain this rule, we may have to shift the element from one side to another side, BEFORE adding the item.
-				Test the count before adding the item. 
-				If the side to which we are adding is having more elements, then POP one one item and push to the side with 
-				lower-count. This will make the element count equal, now add the new element to intended side.
+			How do we find the median?
+			Median computaion depends on size of Max and Min heap.
+			If the size is same, median is average of top element of Min and Max Heap.
+			Otherwise MEDIAN is top element of the HEAP whith higher count.
 
-				//Say we decided to add the new-item to Left-side, but left-side has more items. Adding to it make difference MORE THAN 1
-				//So Pop() one item
-				if(L.count > R.Count) 
-					L.pop(); //This will balance the counts on both sides.
-					R.push(); 
-					L.push(); //Once the balance is achieved, add the new element
-				else //both the sides have same number, no need to balance.
-					L.push();
 
 				
 

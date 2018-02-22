@@ -15,17 +15,12 @@ namespace FindOutOfOrderCharNM //@RED20170820001
 {
 	/*
 		Find the first letter that is out of order_RED20170820001
-			We will be given a word, who's letter are supposed to be alphabetical order and also they should be in either upper case or lower. The First letter of the word decides the upper-case and lower-case for whole word. Assume that 1st letter is in lower case then, rest of the letters must be in lower case, otherwise they will be breaking the rule.
-			Our job is to find the index where rules get broken.  
-			Ex: "ART", all the letters are in ORDER
-					"BART", letters are not in ORDER.
-
-			Logic:
-				Iterate the src-array from [1] to SrcLen
-				-compare [i-1]  & [i] //1st of the rule is verified
-				-Check if the character is less than 'z' or 'Z'. //2nd of the rule is verified
-
-				If any one of this condition is not met, then break the loop. We have found the answer.
+			Sentence may have both upper-case and lower-case letters.
+				If the current letter is a lower-case letter, then compare it against previously seen lower-case letter.
+				If the current letter is a higher-case letter, then compare it against previously seen higher-case letter.
+				For this to work, we have to be tracking lower-case and upper-case letters.
+				And then compare current letter against one of them.
+				If they fail to meet the condition then return FALSE.
 
 
    */
@@ -33,6 +28,7 @@ namespace FindOutOfOrderCharNM //@RED20170820001
 	class FindOutOfOrderChar
 	{
 		public:
+
 			void callFindOutOfOrderChar()
 			{
 				//string src1("ACIPGQVZ"); //print G
@@ -42,11 +38,8 @@ namespace FindOutOfOrderCharNM //@RED20170820001
 				int start = (int)src[0];
 				int end = 0;
 				
-				//get the END point
-				if (src[0] >= 'a' && src[0] <= 'z')
-					end = 'z';
-				else
-					end = 'Z';
+				int a = 0; //previous lower case letter
+				int A = 0; //previous upper case letter
 
 				cout << endl << "Src '" << src1.c_str() << "'" << endl;
 
@@ -57,14 +50,35 @@ namespace FindOutOfOrderCharNM //@RED20170820001
 				//[i]  < end
 				for (int i = 1; i < src1.length()-1; i++)
 				{
-					if ((src[i - 1] < src[i]) && (src[i] <= end))
+					if ( (src[i] >= 'a') && (src[i] <= 'z'))
 					{
-						;
+						if (a == 0)
+							a = src[i];
+						else
+						{
+							if (a > (int)src[i])
+							{
+								cout << "out of order character " << src[i] << endl;
+								break;
+							}
+							else
+								a = (int)src[i];
+						}
 					}
-					else
+					else if ((src[i] >= 'A') && (src[i] <= 'Z'))
 					{
-						cout << "out of order character " << src[i] << endl;
-						break;
+						if (A == 0)
+							A = src[i];
+						else
+						{
+							if (A > (int)src[i])
+							{
+								cout << "out of order character " << src[i] << endl;
+								break;
+							}
+							else
+								A = (int)src[i];
+						}
 					}
 				}
 			}

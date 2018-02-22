@@ -206,9 +206,44 @@
 #include "FactoryCreate.h"
 #include "SyncQ.h"
 #include "RotateMatrix90.h"
-
+#include "Isomorphic.h"
+#include "WordLadder.h"
+#include "WildcardSearch.h"
+#include "ShortestSubArrayThatAddsToX.h"
+#include "LongestValidBracket.h"
+#include "LongestUniqueSubSequence.h"
+#include "FindMinValueInRotatedArray.h"
+#include "AddBinaryNumberStrings.h"
+#include "PrintLastWord.h"
 int main()
 {
+	PrintLastWordNM::PrintLastWordX objPrintLastWord;
+	objPrintLastWord.callPrintLastWord();
+
+	AddBinaryNumberStringsNM::AddBinaryNumberStringsX objAddBinaryNumberStringsX;
+	objAddBinaryNumberStringsX.callAddBinaryNumberStrings();
+
+	FindMinValueInRotatedArrayNM::FindMinValueInRotatedArrayX objFindMinValueInRotatedArray;
+	objFindMinValueInRotatedArray.callFindMinValueInRotatedArray();
+
+	LongestUniqueSubSequenceNM::LongestUniqueSubSequenceX objLongestUniqueSubSequence;
+	objLongestUniqueSubSequence.callLongestUniqueSubSequence();
+
+	LongestValidBracketNM::LongestValidBracketX objLongestValidBracketX;
+	objLongestValidBracketX.callLongestValidBracket();
+
+	ShortestSubArrayThatAddsToXNM::ShortestSubArrayThatAddsToX objShortestSubArrayThatAddsToX;
+	objShortestSubArrayThatAddsToX.callShortestSubArrayThatAddsToX();
+	
+	WildCardSearchNM::WildCardSearchX objWildCardSearchX;
+	objWildCardSearchX.callWildCardSearch();
+
+	WordLadderNM::WordLadderX	objWordLadder;
+	objWordLadder.callWordLadder();
+
+	IsomorphicNM::IsomorphicX objIsomorphicX;
+	objIsomorphicX.callIsomorphic();
+
 	SmartPointerArcNM::useSmartPointerArcC objuseSmartPointerArcC;
 	objuseSmartPointerArcC.create();
 

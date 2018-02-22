@@ -7,14 +7,16 @@ namespace SelectionNM
 	/*
 		Selection sort
 			Go from L -> R looking for lowest number. 
-			Initially 4 could be the lowest number so make it the lowest number( as of now).
-			Then proceed to right-side, and compare every element against 4. Assume you find 2.
+			We want to look for lowest number to be placed at 0th position.
+			Say 0th element is 4; so 4 will be the lowest number at the beginning.
+			Then proceed to right-side, and compare every element against 4(without ANY swapping). Assume we found 2.
 			Since the 2 is less than 4, make 2 as the lowest number.
-			Then proceed to right-side, and compare every element against 2. 
+			Then proceed further to right-side, and compare every element against 2. 
 			Assume you reached the end of the array. 
-			Now you have found the LOWEST number in array, store it at [0] by swapping.
+			Now you have found the LOWEST number in array, store it at [0] by swapping. Note that we swapped only once.
 
-			Our next effort should be to find the 2nd lowest number and place it is at [1].
+
+			Our next effort is to find the 2nd lowest number and place it is at [1].
 			Assume the number that is currently at [1] as lowest number.
 
 			So second round begins from [1] and goes on finding the lowest number.

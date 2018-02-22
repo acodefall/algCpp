@@ -13,6 +13,26 @@ namespace CircularLLCheckNM  //@RED20170725054
 		Input:
 			10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95
 		Meet at:
+			There can be two types of loops: zero-shaped loop and 6-shaped loop.
+			In case of zero-shaped loop last-node meets 0th-node; 
+			in case of 6-shaped loop last-node meets 3rd-node.
+			
+			
+			To detect zero-shaped loop, iterate whole LL. After every loop, 
+			compare whether the currNode is equal to head-node.
+			If they are equal then we found loop. This takes O(N).
+			If there is no loop, at some point NEXT pointer will become NULL.
+			Then end the looping.
+			
+			This stategy will NOT work for  6-shaped loop as it is. 
+			Slow-runner and fast-runner logic will work for both types loops. 
+			This is also called as Flyod's algorithm.
+			
+			So start with slow and fast runner logic and detect the loop.
+			Once we know where the loop begins, now apply slow-runner technique 
+			for detecting loop. This will give the loop length.
+			Basically we need Slow-runner and fast-runner just because it works for 6-type of loop also.
+			
 			10   10
 			LL is circular. Meet at 10
 			Look for loop length. Start.Data 10

@@ -82,9 +82,6 @@ namespace RevLLNM //@RED20170725035
 					//Now modify the content of cur by making it point BACKWARDS
 					cur->next = prev;
 
-					//Backup the cur itself
-					prev = cur;
-
 					//adjust the cur to point to NEXT node
 					cur = tmp;
 

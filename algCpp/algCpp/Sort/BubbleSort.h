@@ -7,10 +7,12 @@ namespace BubbleSortNM
 	//BubbleSort_20171227001
 	//TBD-READ
 	/* 	Bubble sort
-			In case of bubble sort, higher values bubble up(means higher value move up). Place the highest value at [Max], and place the next highest element at [Max-1].
+			In case of bubble sort, higher values bubble up(means higher value move up). 
+			Place the highest value at [Max], and place the next highest element at [Max-1].
 
 			How do you find the highest element?
-			Compare [0] & [1]; if [0] is higher then swap. Next compare [1] & [2]; if [1] is higher then swap. Repeat this until the end of the array is reached. This will bubble up highest value to [Max].
+			Compare [0] & [1]; if [0] is higher then swap. Next compare [1] & [2]; if [1] is higher then swap. 
+			Repeat this until the end of the array is reached. This will bubble up highest value to [Max].
 			In the 2nd iteration, do the same set comparisons. This will bubble up 2nd highest value to [Max-1].
 			
 		Bubble sort and Selection sort

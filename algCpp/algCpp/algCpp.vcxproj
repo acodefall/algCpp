@@ -146,11 +146,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array\3SUMProblem.h" />
+    <ClInclude Include="Array\AddBinaryNumberStrings.h" />
     <ClInclude Include="Array\CheckTwoStringsArePermutationh.h" />
+    <ClInclude Include="Array\FindMinValueInRotatedArray.h" />
     <ClInclude Include="Array\GroupAnagrams.h" />
     <ClInclude Include="Array\AreStringRotated.h" />
     <ClInclude Include="Array\ArrayHasConsqNumbers.h" />
     <ClInclude Include="Array\FindSecondLargestItem.h" />
+    <ClInclude Include="Array\Isomorphic.h" />
+    <ClInclude Include="Array\LongestUniqueSubSequence.h" />
+    <ClInclude Include="Array\LongestValidBracket.h" />
     <ClInclude Include="Array\OccurenceCountUsingAsciiAry.h" />
     <ClInclude Include="Array\AsciiToInt.h" />
     <ClInclude Include="Array\BinarySearchInRotatedArray.h" />
@@ -203,17 +208,21 @@
     <ClInclude Include="Array\PatternReplace.h" />
     <ClInclude Include="Array\PlaceLettersApart.h" />
     <ClInclude Include="Array\print123withPlus.h" />
+    <ClInclude Include="Array\PrintLastWord.h" />
     <ClInclude Include="Array\RabinKarpRollingHash.h" />
     <ClInclude Include="Array\REcursions.h" />
     <ClInclude Include="Array\RecursiveAdditionExceptCurrentItem.h" />
     <ClInclude Include="Array\RemoveComma.h" />
     <ClInclude Include="Array\RemoveDuplicates.h" />
+    <ClInclude Include="Array\ShortestSubArrayThatAddsToX.h" />
     <ClInclude Include="Array\SquareRootUsingTable.h" />
     <ClInclude Include="Array\ReverseWithoutTemp.h" />
     <ClInclude Include="Array\SubsetProblemKnapSack.h" />
     <ClInclude Include="Array\UniqueChars.h" />
     <ClInclude Include="Array\WaysOfMakingN.h" />
     <ClInclude Include="Array\BreakLongWordToSubwords.h" />
+    <ClInclude Include="Array\WildcardSearch.h" />
+    <ClInclude Include="Array\WordLadder.h" />
     <ClInclude Include="Array\XToPowerN.h" />
     <ClInclude Include="BinSearch\BinarySearchSizeUnknown.h" />
     <ClInclude Include="BinSearch\BinSearchBase.h" />

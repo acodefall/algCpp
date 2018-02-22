@@ -24,11 +24,14 @@ namespace KnapsackUsingDPNM
  
  
 	 0-1 Knapsack problem using Brute force_20170608003
-		Brute force method will generate all possible combinations(probably using bit generator), and chooses
-		the one that translates to maximum profit. Bit width is equal to Item-count. Bit generator does allow
-		duplocates and that suites 01 Knapsack problem style. 
-		Ex: It the available items are  Pen, Pencil.
-		We can have 3 combs. {Pen}, {Pencil}, {Pen, Pencil}
+		Represent the items as array of characters,
+		Say {A, B, C} where A, B and C stands for a an item.
+		Generate all the possible combinations for ABC, bit width is 3.
+		No duplicates allowed. Some combination may have just one letter,
+		Then filter out the combinations who's weight is higher than knapsack weight.
+		Compute the price for surviving combinations and pick the one with max price.
+		
+		
 
  
 	 0-1 Knapsack problem using DP_20170609001
@@ -104,39 +107,21 @@ namespace KnapsackUsingDPNM
 
 
 //Finding the items that are in Knapsack
-	0-1 Knapsack problem Interpreting the Solution Matrix_20170609005
-		Bottom-right cell of Solution matrix gives the maximum value that can be carried by knapsack but to find the subset of items that makes up the bag, we have to walk back the matrix. 
+	Cell value stands for price. Each row stands for an item.
+	Bottom-right cell of Solution matrix gives the maximum value that can be carried by 
+	knapsack.
+	Start by Walking UP from Bottom-right cell. If current cell's price is higher than 
+	upper row, then item represented by current row has been added to bag, so record the item 
+	represented by current row.
+	After this go UP by one unit and also tun LEFT by units that is equal to excess capacity of the 
+	column. Say item weight is 4, and column capacity is 7, then go lEFT by 3 celss. 
 
-		Start by Walking UP from Bottom-right cell. At every step, compare the current-cell with the cell right above it, located in upper row. If the values are same, then current-row’s value has been imported from upper-cell. In otherwords, item-type for current-row did not make it to bag, so we do not include the item in SUBSET, and instead go up by one more row, by decrementing row-index.
+	If the current cell's price is same as uppper row, then item represented by current row has NOT been 
+	added to bag, so do not consider the item. Go UP by one unit, do not turn to LEFT.
 
-		If current cell-value were to be higher than upper cell’s value, then the item-type represented by current row (that is lower-row) has been added to bag, so we include it in Subset.  Then we go to UPPER row and make a LEFT turn. Turn quantity is “column-weight - itemTypeWeight”. Left Turn will land us in some cell. From that point, we continue to compare the current cell with upper-cell. We do this untill we reach 0th row.  
-
-		Note length of subset should be less than equal to row count(number of item types) 
-
-
-	Steps for finding items that are in Kanpsack_20170609007
-		a) Iterate the Matrix from Bottom-Right corner.
-			Note that same variables are used to access both SolutionMatrix and ItemArrays.
-			They are initialized to itemTypeCount, and KnapsackWeight.
-			So variables are Index to SolutionMatrix(means do not use -1), and count to ItemArrays(means use -1)
-	
-			rIdex = itemTypeCount; 
-			cIdx = KnapsackWeight; 
-	
-		b) Start a while() to from MaxRow to until ( > 0) 
-		c)  In every loop always decreease RIdx, and decrease cIndex only when we record the cell.
-		d)  Inside the loop compare current-cell with the upper-cell of the same column
-			If the cell values are same then do not do anything, just decrement the ROWIndex, and go to next round.
-				(Solution[rIdx][cIdx] == Solution[rIdx -1][cIdx])
-		
-			If the Cell values are different then current Item is in Bag so add it to subset
-			 Add ItemWeight[rIndex -1] to string object
-		
-			Then we need to make a LEFT turn by the amount "cIdx - ItemWeight[rIdx - 1]", so adjust the cIndex by "cIdx - ItemWeight[rIdx - 1]"
-
-			Note that we used the ItemWeight for upper row.
-			Then go to next round.
-		d) In the end string object will have the content of bag
+	Key points: Always decrment row. Consider the current item only when 
+	current row is higher than previous row; and Go left only when current item is considered.
+	Amount of Left turn is equal to excess weight.
 
 
 		

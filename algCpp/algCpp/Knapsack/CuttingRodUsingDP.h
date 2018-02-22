@@ -120,6 +120,19 @@ namespace CuttingRodNM
 			5) Once out of both the loops, Solution[srcLen] gives the best price.
 
 			Complexity is O(n ^ 2).  16 for 4 feet rod.
+
+			Cutting rod problem using Combinations method.
+			Say we want to know the combination that adds to 4ft and also has max price tag.
+			Generate the combinations of all kinds. Only ENABLED bit add to the length of the rod,
+			so combinations will be equal to 4ft, and some will be more than 4ft and some will be less.
+			Only select the combinations that add extactly 4ft. Say there are 8 such combinations,
+			take the that yeilds max price.
+			Coming to implementation. Recursion should continue until the bit width is reahed,
+			and on reaching the bit width, go through the ENABLED bits, and compute the length and also price,
+			if the length is 4ft, then only compute the price. If the length is not 4ft, then ignore the 
+			combination.
+
+
 	*/
 	class CuttingRod
 	{
