@@ -85,6 +85,9 @@ namespace LongestIncreasingSubSequenceNM //@RED20170712001
 		
 			solution[] 1 2 2 3 3 4 4 5 6
 	
+	
+            	10, 22, 9, 33, 21, 50, 41, 60 (src)
+				1    2  2   3   3   4   4   5 (sol)
 	*/
 	const int SIZEX = 9;
 	class LongestIncreasingSubSequence

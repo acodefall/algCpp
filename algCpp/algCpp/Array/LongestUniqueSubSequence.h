@@ -14,10 +14,11 @@ using namespace std;
 namespace LongestUniqueSubSequenceNM
 {
 	/*
-	*
+	
 		FindLongestUniqueSubArray_RED20180129001
 			Find the substring (that is contious sequence) that has unique characters in it, and sequence has to be longest.
-			Use "index based occurence count' strategy. Go on sliding a window across the string.  As window moves to right, it keeps on aqcuiring a new letter.
+			Use "index based occurence count' strategy. Go on sliding a window across the string.  As window moves to right, 
+			it keeps on aqcuiring a new letter.
 			If the new letter is already present inside the window, then shrink the window and exclude the existing letter.
 
 			- - - - - D - - - - D(new letter)

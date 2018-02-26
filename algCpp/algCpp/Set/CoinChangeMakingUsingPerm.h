@@ -79,22 +79,25 @@ namespace CoinChangeMakingUsingPermNM //@RED20170818001
 			
 			void AddCoinsToReachTargetSum(int* src, int srcLen,int* output, int outIndex, int TargetSum, int Sum )
 			{
-				//Print the existing combination, and break the recursion. Do not build this combination any more
-				if (Sum == TargetSum)
+				//Break the recursion if overall length of permutation is equal to srcLen. 
+				//Then check the TargetSum, if the Target Sum has been reached then use the 
+				//permutation else throw it. 
+				if(srcLen == outIndex)
 				{
-					cout << "following adds to " << TargetSum << endl;
-					for (int i = 0; i < outIndex; i++)
+					if (Sum == TargetSum)
 					{
-						cout << output[i] << " ";
+						cout << "following adds to " << TargetSum << endl;
+						for (int i = 0; i < outIndex; i++)
+						{
+							cout << output[i] << " ";
+						}
+						cout << endl;
+						cout << endl;
+						
 					}
-					cout << endl;
-					cout << endl;
 					return;
 				}
-
-				//break the recursion.Do not build this combination any more
-				if (Sum > TargetSum)
-					return;
+				
 
 				//Sum is UNDER TargetSUM so try to add one more SLOT to combination, and see if the SUM becomes equal to TargetSum.
 				for (int i = 0; i < srcLen; i++) //'count - count' is same as index so use "<="

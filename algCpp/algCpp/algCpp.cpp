@@ -217,6 +217,10 @@
 #include "PrintLastWord.h"
 int main()
 {
+
+	PatternReplaceNM::PatternReplace	objPatternReplace;
+	objPatternReplace.callPatternReplace();
+
 	PrintLastWordNM::PrintLastWordX objPrintLastWord;
 	objPrintLastWord.callPrintLastWord();
 
@@ -367,8 +371,6 @@ int main()
 	PrintEveryLevelOfTreeInALineNM::PrintEveryLevelOfTreeInALine objPrintLevelsOfTreeInALine;
 	objPrintLevelsOfTreeInALine.callPrintEveryLevelOfTreeInALine();
 
-	PatternReplaceNM::PatternReplace	objPatternReplace;
-	objPatternReplace.callPatternReplace();
 
 	MergeUnsortedWordListNM::MergeUnsortedWordList objMergeUnsortedWordList;
 	objMergeUnsortedWordList.callMergeUnsortedWordList();

@@ -39,7 +39,66 @@ namespace PatternReplaceNM //@RED20170730006
 			string replace("##");
 			replaceX(src,pattern,replace);
 		}
+		
+		void replaceX(string srcIn, string patterntIn, string replaceIn)
+		{
+			char* src = (char*)srcIn.c_str();
+			char* ptn = (char*)patterntIn.c_str();
+			char* rpc = (char*)replaceIn.c_str();
+			int i = 0;
+			
+			
+			int Skip = 0;
+			cout << endl << "source : " << src << endl;
+			cout << "pattern : " << ptn << endl;
+			cout << "replace : " << rpc << endl;
+			
+			while (i < srcIn.length())
+			{
+				//check for whole pattern
+				int j = 0;
+				
+				while ((j < patterntIn.length()) &&  ((i + j) < srcIn.length()))
+				{
+					if (src[i+j] != patterntIn[j])
+					{
+						break;
+					}
+					j++;
+				}
 
+				if (patterntIn.length() == j)
+				{
+					//copy the replacement
+					int t = i;
+					for (int k = 0; k < replaceIn.length(); k++, t++)
+					{
+						src[t - Skip] = replaceIn[k];
+					}
+					
+					//Park i beyond pattern
+					i = i + patterntIn.length();
+
+					//update the skip count
+					Skip = Skip + patterntIn.length() - replaceIn.length();
+				}
+				else
+				{
+					src[i - Skip] = src[i];
+					i++;
+				}
+			}
+
+			//Resize the src
+			if (Skip > 0)
+				srcIn.resize(srcIn.length() - Skip);
+
+			cout << endl << "source : " << src << endl;
+			
+			
+		}
+
+		/*
 		void replaceX(string srcIn, string patterntIn, string replaceIn)
 		{
 			char* src = (char*)srcIn.c_str();
@@ -106,6 +165,6 @@ namespace PatternReplaceNM //@RED20170730006
 			cout << endl << "source : " << src << endl;
 			
 			
-		}
+		}*/
 	};
 };

@@ -91,50 +91,36 @@ namespace WildCardSearchNM
 					{
 						//If the Q ends with "*". Then end the search with TRUE
 						//If the Q has a character AFTER "*" 
-						//then position both Q-index and S-index to that character.
+						//then position both Q-index to point to that letter, and then advance S-index until we get that character.
+						//If the character is not found, then 
 						//Ex: "yu*k"
 
-						//Test whether there is a character after "*". I so record the letter.
-						qi++;
-						char letterAfterAsterix  = -1;
-						while (qi < q.length())
-						{
-							if (qc[qi] != '*')
-							{
-								letterAfterAsterix = qc[qi];
-								break;
-							}
-							qi++;
-						}
-
 						//Q ends with *, so no need to check. Simply exit
-						if (letterAfterAsterix == -1)
+						if (q.length() == qi+1)
 						{
 							retval = true;
 							break;
 						}
-						else 
+						
+						//Test whether there is a character after "*". I so record the letter.
+						while (qi < q.length() && qc[qi] == '*')
 						{
-							//Q has letter after *, so move the index S so it points to 'letterAfterAsterix'
-							//if letterAfterAsterix is not present, then search FAILED.
-							//exit withe FALSE
-							bool found = false;
-							while (si+1 < s.length())
-							{
-								if (s[si+1] == letterAfterAsterix)
-								{
-									si++;
-									found = true;
-									break;
-								}
-								si++;
-							}
-
-							if (found == false)
-							{
-								retval = true;
-								break;
-							}
+							qi++;
+						}
+						//Now q[qi] points character after "*"
+						//Now advance the s[si] until it matches q[qi]
+						//If we fail to find, then whole seach is failure.
+						
+						while (si < s.length() && s[si] != qc[qi])
+						{
+							si++;
+						}
+						
+						//Q ends with *, so no need to check. Simply exit
+						if ((s[si] != qc[qi]) || si < s.length())
+						{
+							retval = false;
+							break;
 						}
 					}
 					else if (qc[qi] == '?')

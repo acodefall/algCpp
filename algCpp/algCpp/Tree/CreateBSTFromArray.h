@@ -13,7 +13,19 @@ namespace CreateBSTFromArrayNM //@RED20170825001
 {
 	/*
 
-		When building BST from an Array we should use “<=” because we want to build the node even when the range has only one element. For example: When L = 3, and H = 3, the range has one element that should be built so we need L<=H
+		Construct BST from array.
+			We go to middle of the array and build root node.
+			Next we go to middle of left-side and build left-child for root node
+			Next we go to middle of right-side and build right-child for root node
+			Order node construction is Parent, Lc and Rc. This is Pre-order fashion. 
+			So we use pre-order code for construction. At the top of the function,
+			compute M-index using L & H, and construct a parent-node using M-index-data.
+			Then adjust L & H to point to left half, and make L-rec call for building left-child.
+			Then adjust L & H to point to right half, and make R-rec call for building right-child.
+			Attach child nodes to parent-node and return it to caller.
+			Not that we do not advance INDEX in to src-array, instead use M-index.
+			M-index gets computed again and again.
+			Additionally recursion breaks if L is not < H
 
 		if(L <= H)
 					L   H     m         [L] [H]   [M]
