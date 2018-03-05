@@ -232,6 +232,7 @@
     <ClInclude Include="Bits\BitSwapping.h" />
     <ClInclude Include="Bits\BitVector.h" />
     <ClInclude Include="Bits\CountEnabledBits.h" />
+    <ClInclude Include="Set\CoinChangeMakingMinimumWays.h" />
     <ClInclude Include="Design\BoyerMooreVoting.h" />
     <ClInclude Include="Design\EditablePriorityQueue.h" />
     <ClInclude Include="Design\FindTopTenPercent.h" />
@@ -295,7 +296,7 @@
     <ClInclude Include="RotateArray\RotateArrayUsingReverse.h" />
     <ClInclude Include="BinSearch\BinarySearchForLoop.h" />
     <ClInclude Include="Set\BitGen.h" />
-    <ClInclude Include="Set\CoinChangeMakingUsingPerm.h" />
+    <ClInclude Include="Set\CoinChangeMakingWays.h" />
     <ClInclude Include="Set\CombinationToTargetSum.h" />
     <ClInclude Include="Set\CombinationToWidth.h" />
     <ClInclude Include="Set\Permutation.h" />

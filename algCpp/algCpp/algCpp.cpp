@@ -183,7 +183,8 @@
 #include "LongestCommonWordUsingTrie.h"
 #include "FindAnagramsUsingTrie.h"
 #include "BreakLongWordToSubwords.h"
-#include "CoinChangeMakingUsingPerm.h"
+#include "CoinChangeMakingMinimumWays.h"
+#include "CoinChangeMakingWays.h"
 #include "LongestCommonPrefixUsingTrie.h"
 #include "SuggestWordsUsingTrie.h"
 #include "KthItemInSortedAryUsingIntersection.h"
@@ -217,6 +218,12 @@
 #include "PrintLastWord.h"
 int main()
 {
+	CoinChangeMakingMinimumWaysNM::CoinChangeMakingMinimumWays objCoinChangeMakingMinimumWays;
+	objCoinChangeMakingMinimumWays.useCoinChangeMaking();
+
+	CoinChangeMakingUsingPermNM::CoinChangeMakingUsingPerm objCoinChangeMaking;
+	objCoinChangeMaking.useCoinChangeMaking();
+
 
 	PatternReplaceNM::PatternReplace	objPatternReplace;
 	objPatternReplace.callPatternReplace();
@@ -343,9 +350,7 @@ int main()
 	LongestCommonPrefixUsingTrieNM::UseLongestCommonPrefixUsingTrie objUseLongestCommonPrefixUsingTrie;
 	objUseLongestCommonPrefixUsingTrie.CallLongestCommonPrefixUsingTrie();
 
-	CoinChangeMakingUsingPermNM::CoinChangeMakingUsingPerm objCoinChangeMaking;
-	objCoinChangeMaking.useCoinChangeMaking();
-
+	
 
 
 
