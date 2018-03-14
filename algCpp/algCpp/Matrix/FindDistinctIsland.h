@@ -151,7 +151,7 @@ namespace FindDistinctIslandNM
 					)
 				{
 					visited.insert({ r,c });
-					shape.insert({ r - startX, c - startY });
+					shape.insert({ r - startX, c - startY }); //This computes the ACTUAL 
 					findIsland(d, (r + 1), c, startX, startY, visited, shape);
 					findIsland(d, r, (c + 1), startX, startY, visited, shape);
 					findIsland(d, (r - 1), c, startX, startY, visited, shape);

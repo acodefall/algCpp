@@ -14,7 +14,9 @@ namespace FindMinValueInRotatedArrayNM
 {
 	/*
 		Find MIN element in Rotated array_RED20180129009
-			Rotated array must have junction where low-value and high-value meet.
+			In case of Rotated array MIN will be at the junction where low-value and high-value meet.
+			This is like opposite of PEAK ELEMENT.
+			
 			Say un-rotated array had 1 as min-value and 10 as max-value. When this array
 			is rotated, 10 and 1 will sit next to each other.
 			Our logic should look for junction where 10 & 1 meets, and then take the lowest value among them.

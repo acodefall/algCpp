@@ -98,7 +98,7 @@ namespace LongestCommonPalidroneNM //@RED20170531002
 				int peakPalinIndex = 0;
 				int peakPalinWidth = 0;
 				//i is the index of the achor. and we want one letter to be on either side, so set i = 1
-				for (int i = 1; i < Len; i++)
+				for (int i = 2; i < Len; i++)
 				{
 					//reset the palidrone count to 0.
 					int palinCount = 0;

@@ -60,6 +60,7 @@ namespace ObjectPoolArcNM
 
 	class ObjectPoolArc
 	{
+		//Static because we do not want more than one objectPool instance inside 'current process'
 		static mutex lck;
 		static list<Arc*> inList;
 		static list<Arc*> outList;
@@ -102,6 +103,8 @@ namespace ObjectPoolArcNM
 			}
 		}
 	};
+	
+	
 	list<Arc*>	ObjectPoolArc::inList;
 	list<Arc*>	ObjectPoolArc::outList;
 	mutex		ObjectPoolArc::lck;

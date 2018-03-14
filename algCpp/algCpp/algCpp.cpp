@@ -216,8 +216,22 @@
 #include "FindMinValueInRotatedArray.h"
 #include "AddBinaryNumberStrings.h"
 #include "PrintLastWord.h"
+#include "FindMaxSubArryOfSizeK.h"
+#include "DecodeBracketsh.h"
 int main()
 {
+	DecodeBracketsNM::DecodeBracketsX objDecodeBracketsX;
+	objDecodeBracketsX.callDecodeBrackets();
+
+	FindMaxSubArryOfSizeKNM::FindMaxSubArryOfSizeK objFindMaxSubArryOfSizeK;
+	objFindMaxSubArryOfSizeK.callFindMaxSubArryOfSizeK();
+
+	FindPeakElementNM::FindPeakElement objFindPeakElement;
+	objFindPeakElement.callFindPeakElement();
+
+	FindMinValueInRotatedArrayNM::FindMinValueInRotatedArrayX objFindMinValueInRotatedArray;
+	objFindMinValueInRotatedArray.callFindMinValueInRotatedArray();
+
 	CoinChangeMakingMinimumWaysNM::CoinChangeMakingMinimumWays objCoinChangeMakingMinimumWays;
 	objCoinChangeMakingMinimumWays.useCoinChangeMaking();
 
@@ -234,8 +248,7 @@ int main()
 	AddBinaryNumberStringsNM::AddBinaryNumberStringsX objAddBinaryNumberStringsX;
 	objAddBinaryNumberStringsX.callAddBinaryNumberStrings();
 
-	FindMinValueInRotatedArrayNM::FindMinValueInRotatedArrayX objFindMinValueInRotatedArray;
-	objFindMinValueInRotatedArray.callFindMinValueInRotatedArray();
+	
 
 	LongestUniqueSubSequenceNM::LongestUniqueSubSequenceX objLongestUniqueSubSequence;
 	objLongestUniqueSubSequence.callLongestUniqueSubSequence();
@@ -527,8 +540,7 @@ int main()
 	Find2DPeakNM::Find2DPeak objFind2DPeak;
 	objFind2DPeak.callFindPeakElement();
 
-	FindPeakElementNM::FindPeakElement objFindPeakElement;
-	objFindPeakElement.callFindPeakElement();
+
 
 	IntersectionOfSortedArrayNM::IntersectionOfSortedArray objIntersectionOfSortedArray;
 	objIntersectionOfSortedArray.callIntersectionOfSortedArray();

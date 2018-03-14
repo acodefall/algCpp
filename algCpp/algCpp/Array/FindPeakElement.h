@@ -58,13 +58,14 @@ namespace FindPeakElementNM
 				cout << "found peak value { src[" << m-1 << "] src[" << m << "] src [" << m+1 << "]} = " << src[m - 1] << " " << src[m] << " " << src[m + 1] << endl;
 				return m;
 			}
-			else if ((m > 0) && (src[m-1] < src[m])) //Left-crest is good(means peak), check the right side peak is present or not
+			else if ((m > 0) && (src[m] < src[m-1]))  //m & m-1 are not good, try m & m+1 by going to right 
 			{
-				return FindPeakElementX(src, L, m-1);
-			}
-			else if ((m + 1 < SIZE) && (src[m+1] < src[m])) //Right-crest is good(means peak), check the left side for oother creast.
-			{
+				//return FindPeakElementX(src, L, m-1);
 				return FindPeakElementX(src, m + 1, H);
+			}
+			else if ((m + 1 < SIZE) && (src[m] < src[m+1])) //m & m+1 are not good, try m & m-1 by going to left
+			{
+				return FindPeakElementX(src, L, m - 1);
 			}
 			else //This does not have proper right-crest OR left-crest OR both
 				return -1;

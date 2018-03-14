@@ -52,26 +52,30 @@ namespace BreakLongWordToSubwordsNM
 		hxxps://en.wikipedia.org/wiki/Composition_%28combinatorics%29
 
 		This is how combination creation works.
+			ilook
+				i
+				il
+				iloo
+				ilook
 
-		"ilike" can be split in 5 ways as shown below 
-				a) i + like (extract i and subdivide the rest 'like')
-						 l i k e ke ik e ike li k e ke lik e like
-					i l i k e ke ik e ike li k e ke lik e like
-		
-				b) il + ike (extract il and subdivide the rest 'ike')
-						 i k e ke ik e ike
-					i l i k e ke ik e ike li k e ke lik e like il i k e ke ik e ike
-		
-				c)	ili + ke (extract ili and subdivide the rest 'ke')
-						  k e ke
-					i l i k e ke ik e ike li k e ke lik e like il i k e ke ik e ike ili k e ke
+			look
+				l
+				lo
+				loo
+				look
 
-				d)	ilik + e (extract ilik and subdivide the rest 'e')
-							e
-					i l i k e ke ik e ike li k e ke lik e like il i k e ke ik e ike ili k e ke ilike
+			ook
+				o
+				oo
+				ook
 
-				e) ilike + "" (nothing sudivide)
+			ok
+				o
+				ok
 
+			k	
+			
+			
 		What is Overlapping problem?
 			This is combinator problem. Combinations of 3 is =  Combinations of 2 +  Combinations of 1.
 			Overlapping problem is the problem 

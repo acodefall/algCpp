@@ -9,33 +9,16 @@ namespace WaysOfMakingNNM //@RED20170616005
 	
 	Composition of an Integer_20170616005
 		hxxps://en.wikipedia.org/wiki/Composition_%28combinatorics%29
-		
-		Compostion is about expressing a number in terms od lower deniminations.
+			
+		Compostion is about expressing a number in terms of lower deniminations.
 		Means expressing 4 as combinations of 1, 2, 3.
-		
-		To know the compositions of a number, go on subtracting 1,2,3 from original number.
-		This creates various combinations of 2 part each. Then go in to each combination.
-		Combination will have 2 parts, and divide one of the part in to still smaller pieces
-		using same subtraction-technique. This will reduce the partition in to still smaller size.
-		Keep subdividing the parts as long as the partition size is more than 1.
-		Aply this logic to 4. Apply the subtraction-technique by subtracting 1, 2, 3; and 
-		this will create following partitions. 
-			“1 + 3”,		   =  1 + 3	
-					1 + (1, 3-1) 
-						(1, 2) =  1 + 1 + 2  
-					1 +	(2, 3-2) 
-						(2, 1) =  1 + 2 + 1
-			“2 + 2”, 
-			“3 + 1”, 
-		Take the combination "1 & 3" and subdivide "3" by subtracting 1 & 2 from 3.
-		Go on doing this as long as partition width is > 1.
-		We can say, number of ways of making 4 = "ways of making 3" + "ways of making 2" + "ways of making 1"
-		Number of compositions is 2 ^ (n-1). For N = 4, the compositions are 2 ^ 3, that is 8.  
 	
-		Coming to the implementation, use a recursion function that accepts number N (say N = 4) as input.
-		Functions starts a for that goes fron 1-3 and that for applying substraction-technique.
-		Subtraction creates parts, if the part size is more than 1, then make a recursion call.
-		
+		Let us take the example 3.
+		3 = 2 + 1.
+		"Number of ways expressing 3" = "Number of ways expressing 2" + "Number of ways expressing 1"
+		This can be solved using recursion.
+
+	    
 		Rec(N)
 		{
 			int compositionCounter = 0;

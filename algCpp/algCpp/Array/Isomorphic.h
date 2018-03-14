@@ -44,6 +44,8 @@ namespace IsomorphicNM
 					bool isomorphic = true;
 					while (i < s1.length())
 					{
+						sh1[(char)(*(itr1 + i))]++;
+						sh2[(char)(*(itr2 + i))]++;
 						if (sh1[(char)(*(itr1 + i))] != sh2[(char)(*(itr2 + i))])
 						{
 							//not isomorphic

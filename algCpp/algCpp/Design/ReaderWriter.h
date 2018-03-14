@@ -45,7 +45,8 @@ namespace ReaderWriterNM
 	class ReaderWriterC
 	{
 
-		mutex mtx;
+		mutex 				mtx;
+		condition_variable 	cv;
 		int   rdCountA;
 		int   rdCountR;
 		bool  writerFlag;
@@ -70,33 +71,41 @@ namespace ReaderWriterNM
 			void BeginRead()
 			{
 				lock_guard<mutex> lck(mtx);
-				//reader should 
-				if (rdCountA)
+				//Wait until every WRITER STOPS (if any write is alive wait)
+				while(writerFlag)
 				{
-
+					cv.wait(mtx);
 				}
+				rdCountA++;
 			}
-			void ReadActualData()
-			{
-				std::this_thread::sleep_for(chrono::seconds(2));
-			}
-
+			
 			void EndRead()
 			{
-				lock_guard<mutex> lck(rdrCountMtx);
+				lock_guard<mutex> lck(mtx);
 				rddCount--;
 				if (rddCount == 0)
 				{
 					wrtMtx.unlock();
+					cv.notify_all();
 				}
 			}
 
-			void Writer()
+			void BeginWriter()
 			{
-				lock_guard<mutex> lck(wrtMtx);
-				//write data
-				std::this_thread::sleep_for(chrono::seconds(5));
-			}*/
+				lock_guard<mutex> lck(mtx);
+				//Wait until every READER STOPS (if any READER is alive, then wait)
+				while(rddCount > 0)
+					cv.wait(mtx); 
+				writerFlag = true;
+			}
+			
+			void EndWriter()
+			{
+				lock_guard<mutex> lck(mtx);
+				writerFlag = false; //This indicates NO writer is active, so that READER can go ahead, if any READER is waiting.
+				cv.notify_all();    //WAKES up any READER that had called Wait().
+			}
+			*/
 	};
 
 	class RdWr

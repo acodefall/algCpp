@@ -47,7 +47,8 @@ using namespace std;
 					        L = M + 1;
 			        else
 				        Right-segment is within right-sorted array. 
-				        if(V is within src[M] & src[H])
+				        if(V is within src[M] & src[H]) //NOTE: we check whether the value is in between M & H, instead of checking it is greate than M. We go in to the side that is continuous and check if the 
+																value is in between two contunuous points.
 					        L = M + 1;
 				        else 
 					        H = M - 1;

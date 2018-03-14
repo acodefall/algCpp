@@ -148,8 +148,6 @@
     <ClInclude Include="Array\3SUMProblem.h" />
     <ClInclude Include="Array\AddBinaryNumberStrings.h" />
     <ClInclude Include="Array\CheckTwoStringsArePermutationh.h" />
-    <ClInclude Include="Array\DecodeBracketsh.h" />
-    <ClInclude Include="Array\FindMaxSubArryOfSizeK.h" />
     <ClInclude Include="Array\FindMinValueInRotatedArray.h" />
     <ClInclude Include="Array\FindNonAngramicString.h" />
     <ClInclude Include="Array\GroupAnagrams.h" />

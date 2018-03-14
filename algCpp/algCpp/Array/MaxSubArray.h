@@ -39,6 +39,11 @@ namespace MaxSubArrayNM //@RED20170714012
 		public:
 			void callMaxSubArray()
 			{
+			
+				/*
+					{−2, 1, −3, 4, −1, 2, 1, −5, 4};
+ 					 -2  1  -2  4, 3,  5, 6,  1  5  //and 6
+				*/
 				int src[SIZEX] = { -2, -3, 4, -1, -2,1,5, -3 }; //{ 1, 2, -3, -4, 2, 7, -2, 3 };
 				
 				cout << "Kadane's method" << endl;

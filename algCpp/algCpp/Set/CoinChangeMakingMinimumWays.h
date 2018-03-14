@@ -16,7 +16,7 @@ using namespace std;
 			Problem should return the length of 2+2 that is 2.
 			
 			Solution matrix is bulit using array. 
-			Cell value gives the  Number of coins for creating that particular SUM; make sure this CELL value is SMALL.
+			Every Cell value gives the  Number of coins for creating that particular SUM; make sure this CELL value is SMALL.
 			For example: Say if we use current-row's coin we need 4 coins, and upper-row's coin needs just 2 coins, then 
 			import the value from upper row.
 
