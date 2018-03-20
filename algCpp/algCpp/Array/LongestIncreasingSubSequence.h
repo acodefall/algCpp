@@ -17,6 +17,7 @@ namespace LongestIncreasingSubSequenceNM //@RED20170712001
 		In an unsorted array numbers can go up or down. 
 		There could be islands of consecutive numbers where the numbers are only increasing.
 		LIS wants to find the length of such longest sequence.
+		LIS gives the length of the subarray where the elements are increasing, and the elements included in subarray does not have to be consecutive.
 		
 		This can be solved using DP. Build a Solution array who's value is the length of LIS.
 		If the current number is more than previous number, then increase the LIS by one, store it in Solu[].

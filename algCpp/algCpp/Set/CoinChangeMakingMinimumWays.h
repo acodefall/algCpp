@@ -74,8 +74,7 @@ namespace CoinChangeMakingMinimumWaysNM //@RED20170818001
 					5         1 2 3 4 1 2 3 4 5 2   3   ------> Cell value shows number of COINS(not combs).
 					6         1 2 3 4 1 1 2 3 4 2   2
 					9         1 2 3 4 1 1 2 3 1 2   2
-					          
-					Sol[] 0x003bede0 {0, 1, 2, 3, 4, 1, 1, 2, 3, 1, 2, 2}
+					Sol[] {1, 1, 2, 3, 4, 1, 1, 2, 3, 1, 2, 2}
 					    
 				*/
 			}
@@ -96,7 +95,7 @@ namespace CoinChangeMakingMinimumWaysNM //@RED20170818001
 				//introduce one coin at a time
 				for (int r = 0; r < LEN; r++)
 				{
-					for (int c = 0; c <= TRGSUM; c++)
+					for (int c = 1; c <= TRGSUM; c++)
 					{	
 						//Always import combinations that can be created using lower coin, and this will be in top row, import it.
 						//if the COIN is BIGGER than SOUGHT-VALUE(column value), 

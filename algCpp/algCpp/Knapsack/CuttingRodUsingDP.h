@@ -240,8 +240,7 @@ namespace CuttingRodNM
 						//starting from 
 						int maxSum = INT32_MIN;
 						
-						//This loop
-						
+						//Iterate the sol[]
 						for(int srcIndex = 0; srcIndex <= i; srcIndex++)
 						{
 							cout << srcIndex << " + " << i - srcIndex << endl;

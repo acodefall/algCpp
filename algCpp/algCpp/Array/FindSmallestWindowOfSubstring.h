@@ -9,21 +9,31 @@ namespace FindSmallestWindowOfSubstringNM
 		Find smallest substring/Pattern_20170617005
 			hxxp://www.geeksforgeeks.org/find-the-smallest-window-in-a-string-containing-all-characters-of-another-string/
 			Problem:
-			Given Pattern and Src array, find the smallest range (inside Src array) within which all of the characters of the Pattern appear. Say pattern is CG, and it is found as part of COORG and CAGE and we want the 2nd one.
-							pat= CG
-							src= CoorgCage
-				
-			We always start by finding the 1st of pattern-window using "ocurence count method". Then onwards we try to find still smaller pattern-window, by cutting the HEAD and growing TAIL. We do this comparing character at currentIndex with character that is at beginning of pattern-window, if they are same then we can cut the HEAD and grow the TAIL. Once we cut the real HEAD, we will find more characters that should not have been inside pattern-window at all. Till now they were there because they were in MIDDLE of the window. Since we chopped the HEAD itself we can move HEAD towards past these unnecessary elements: 
-			Unecessary elements are
-			-characters that are in pattern-window but not in pattern at all. Ex: OOR unnecessary in COORG 
-			-characater that are in pattern-window but their count is in excess of what is required by PatternOccurCount. Ex: In CGG, 2nd G is excess and we can remove it.
-			Eliminate the unnecessary elements by advancing the stardIndex and also reducing the count for that character in srcOccuranceCount []
+			Given Pattern and Src array, find the smallest range (inside Src array) within which all of the characters of the Pattern appear. 
+			
+			 	ptr: "yc"
+				src: "xyycefgh"
+						 ^  
+			 Expand window across src[] until every charcter of the pattern is found.
+			 Once that is achieved, try to eliminate the characters on left-end. 
+			 Criterion for removal is 
+				-Character should be not be pattern (say left-most character is X and it is not present in Pattern, then remove it).
+				-Character appears more number of times (say left-most character is Y and it appers twice in TEXT but appers only once in PATTERN, then mremove it).
+				 Apply this to rule to left most character. if it meet the rules then remove it
+					-shorten the window by 1
+					-reduce the occurence count by 1, because that character is NO more in the window.
+					Then appy the same rule to newest left-most character.
+					Do this in a loop, and remove as many characters as possible from left-end.
 
-			Now we have 2nd pattern-window, and we compute its width by doing CurrentIndex – StartIndex. If 2nd pattern-window is samller than 1st pattern-window, we overwrite both gblPatternStartIndx and gblMinWindowLen.
+				Now go back to processing next character in src[], by advancing currIndex.
+				When we advance the currIdex, we stretch the window by 1 character.
+				And this changes the occurence count for one of the character.
+				Try to strip down the the window on left-end as we did before. 
+				Repeat this process until the curIndex reaches the END.
 
-			Then ForLoop enters next round by incrementing curIndex, and does all these operations again. 
-			Note: Pattern window-reduction is attempted for every character of Src-array, after we find out the first pattern, that is when 
-					  matchingCharsCount == PatLen
+			(matchingCharsCount == PatLen) 
+				This means every character found in PATTRN has been encountered in TEXT also.
+				Window-reduction should be attempt only after this condition is met
 
 		Steps for Finding smallest substring/Pattern_20170617006
 			Build this code using the code used for finding pattern using occurrence count. Parameters are src and patter arrays

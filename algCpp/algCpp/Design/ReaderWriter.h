@@ -85,7 +85,6 @@ namespace ReaderWriterNM
 				rddCount--;
 				if (rddCount == 0)
 				{
-					wrtMtx.unlock();
 					cv.notify_all();
 				}
 			}

@@ -170,7 +170,7 @@ namespace CoinChangeMakingUsingPermNM //@RED20170818001
 						if (coin[r] > c)
 							sol[c] = sol[c];
 						else if (c >= coin[r])
-							sol[c] = sol[c] + sol[c - coin[r]];
+							sol[c] = 1 + sol[c - coin[r]];
 						//if the COIN is SMALLER, we have create multiple of same coins.
 						//If coin 5 and capacity is 10, then we have to use 2 coins. 
 						//Here is good example (say coin is 5 and column is 7). 

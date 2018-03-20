@@ -17,14 +17,12 @@ namespace FindPeakElementNM
 			
 			Peak Element is an element who’s left and right neighbours are lower than middle element. Eg “4 10 6”
 			Peak element has left-crest and right-crest.
-			We can find Peak element using binary search code. As usual start by computing the mid value.
-			
-			If src[m] is higher than both [m-1] and [m+1], then both left-crest and right-crest are present,
-			and we have found the peak value, return.
-			
-			If [m-1] is less [m],  we have found only left-crest, and should look for right-crest, explore the right-half.
-			If [m+1] is less [m],  we have found only right-crest, and should look for left-crest, explore the left-half.
-			
+			There are three conidtions:
+			-M could be at peak, or left-slope or right-slope
+			-left-slope means m-1 < M, in that case go right
+			-right-slope means m-1 > M, in that case go left
+		
+
 			Check for boundary condition all the time. If (m = 0) check for only right-crest
 			If (m = MAX) check for only left-crest
 			
@@ -36,10 +34,10 @@ namespace FindPeakElementNM
 	public:
 		void callFindPeakElement()
 		{
-
+					
 			int src[SIZEX] = { 1,      5,      17,       9,       13,          56,       67 };
 
-			int pk = FindPeakElementX(src,0, SIZEX -1); //5 17 9
+			int pk = FindPeakElementX(src,0, SIZEX -1); //5 17 9  //array : 2 , 4, 2, 1, 5
 		}
 
 		// In findpeak peak. check have we found lower-crest 
@@ -58,14 +56,14 @@ namespace FindPeakElementNM
 				cout << "found peak value { src[" << m-1 << "] src[" << m << "] src [" << m+1 << "]} = " << src[m - 1] << " " << src[m] << " " << src[m + 1] << endl;
 				return m;
 			}
-			else if ((m > 0) && (src[m] < src[m-1]))  //m & m-1 are not good, try m & m+1 by going to right 
+			else if ((m > 0) && (src[m-1] < src[m]))  //left-slope so go right
 			{
-				//return FindPeakElementX(src, L, m-1);
-				return FindPeakElementX(src, m + 1, H);
+				
+				return FindPeakElementX(src, m, H);
 			}
-			else if ((m + 1 < SIZE) && (src[m] < src[m+1])) //m & m+1 are not good, try m & m-1 by going to left
+			else if ((m + 1 < SIZE) && (src[m-1] > src[m]))  //right-slope so go left
 			{
-				return FindPeakElementX(src, L, m - 1);
+				return FindPeakElementX(src, L, m);
 			}
 			else //This does not have proper right-crest OR left-crest OR both
 				return -1;

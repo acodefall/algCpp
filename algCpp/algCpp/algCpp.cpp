@@ -218,8 +218,21 @@
 #include "PrintLastWord.h"
 #include "FindMaxSubArryOfSizeK.h"
 #include "DecodeBracketsh.h"
+#include "CustomExceptioh.h"
 int main()
 {
+	CustomExceptionNM::Cex objCex;
+	objCex.testCex();
+
+	CoinChangeMakingMinimumWaysNM::CoinChangeMakingMinimumWays objCoinChangeMakingMinimumWays;
+	objCoinChangeMakingMinimumWays.useCoinChangeMaking();
+
+	FindMinValueInRotatedArrayNM::FindMinValueInRotatedArrayX objFindMinValueInRotatedArray;
+	objFindMinValueInRotatedArray.callFindMinValueInRotatedArray();
+
+	TwoColorSortEvenOddNM::TwoColorSortEvenOdd objTwoColorSortEvenOddNM;
+	objTwoColorSortEvenOddNM.callTwoColorSortEvenOdd();
+
 	DecodeBracketsNM::DecodeBracketsX objDecodeBracketsX;
 	objDecodeBracketsX.callDecodeBrackets();
 
@@ -229,12 +242,8 @@ int main()
 	FindPeakElementNM::FindPeakElement objFindPeakElement;
 	objFindPeakElement.callFindPeakElement();
 
-	FindMinValueInRotatedArrayNM::FindMinValueInRotatedArrayX objFindMinValueInRotatedArray;
-	objFindMinValueInRotatedArray.callFindMinValueInRotatedArray();
-
-	CoinChangeMakingMinimumWaysNM::CoinChangeMakingMinimumWays objCoinChangeMakingMinimumWays;
-	objCoinChangeMakingMinimumWays.useCoinChangeMaking();
-
+	
+	
 	CoinChangeMakingUsingPermNM::CoinChangeMakingUsingPerm objCoinChangeMaking;
 	objCoinChangeMaking.useCoinChangeMaking();
 
@@ -702,8 +711,7 @@ int main()
 	ThreewaysortingNM::ThreewaySorting objThreewaysorting;
 	objThreewaysorting.CallThreewaySorting();
 
-	TwoColorSortEvenOddNM::TwoColorSortEvenOdd objTwoColorSortEvenOddNM;
-	objTwoColorSortEvenOddNM.callTwoColorSortEvenOdd();
+
 
 	QuickSortNM::QuickSort objQuickSort;
 	objQuickSort.CallQuickSort();

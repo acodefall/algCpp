@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
-
+#include <algorithm>
+using namespace std;
 namespace TwoColorSortEvenOddNM
 {
 	/*
@@ -42,8 +43,9 @@ Steps for TwoColorSortWithEvenOdd_20170528008
 				{
 					std::cout << data[i] << " ";
 				}
-				TwoColorSortEvenOddX(data, len);
+				//TwoColorSortEvenOddX(data, len);
 
+				TwoColorSortEvenOddX1(data, len);
 				std::cout << "\r\nAfter swap" << "\r\n";
 				for (int i = 0; i < len; i++)
 				{
@@ -93,6 +95,49 @@ Steps for TwoColorSortWithEvenOdd_20170528008
 						int t = data[i];
 						data[i] = data[j];
 						data[j] = t;
+					}
+				}
+			}
+			
+			void TwoColorSortEvenOddX1(int* data, int Len)
+			{
+
+				int prevEven = -1; //index of "EVEN number located at Odd-Index" avialable for swap
+				int prevOdd = -1; //index of "ODD number located at Even-Index" avialable for swap
+
+				for (int i = 0; i < Len; i++)
+				{
+					if (i % 2 == 0)
+					{
+						if (data[i] % 2 == 0) //Value is Even, look for Even value for exchange
+						{
+							if ((prevEven != -1) && (prevEven < i))
+							{
+								swap((data[i]), (data[prevEven]));
+								prevEven = -1;
+							}
+						}
+						else
+						{	//Odd-Value at Even-Index. This is candidate for Exchange at future time, so preserve the index in prevEven
+							if (prevEven == -1)
+								prevEven = i;
+						}
+					}
+					else
+					{
+						if (data[i] % 2 > 0)
+						{
+							if ((prevOdd != -1) && (prevOdd < i))
+							{
+								swap(data[i], data[prevOdd]);
+								prevOdd = -1;
+							}
+						}
+						else
+						{	//Even-Value at Odd-Index. This is candidate for Exchange at future time, so preserve the index in prevOdd
+							if (prevOdd == -1)
+								prevOdd = i;
+						}
 					}
 				}
 			}
