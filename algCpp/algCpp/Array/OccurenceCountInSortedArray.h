@@ -20,10 +20,18 @@ namespace OccurenceCountInSortedArrayNM //@RED20170909019
         /*
 		//@GN826 General_844_Find Occurence COunt Inside Array using DAC_GN826
 			Find Occurence COunt Inside Array using DAC
-				We are given a SORTED array and a NUMBER, we should find how times that number repeats.
-				Strategy is, use two binary searches: once for finding the left border and again for finding the right border.
-				Usually Binary search breaks once src[M] == Value. In this case we have do one more step.
-				
+			Finding occurence count using DAC
+			Imagine a sorted array where 7 repeats several times, and we have to two versions of
+			DAC code to know the occurence count.
+			Let us study the DAC code in general.
+			DAC code needs an exit condition, and condition for left and right turns.
+			One version of DAC looks for left end of 7, and this breaks if (M=7 && M-1 != 7)
+			If the M==7, then it makes left-turn; and if M < 7, it makes right turn.
+
+			Similarly the another version of DAC looks for right of 7.
+			It breaks if (M=7 && M+1 != 7), then it makes right-turn if M=7,
+			makes left-turn if M > 7.
+
 				When seeking to know left-border look for 
 					(src[M] == K) && src[M-1] != K) //K = 7
 					

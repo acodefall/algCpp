@@ -221,9 +221,6 @@
 #include "CustomExceptioh.h"
 int main()
 {
-	MaxDifferenceNM::MaxDifference objMaxDifference;
-	objMaxDifference.callMaxDifference();
-
 	CustomExceptionNM::Cex objCex;
 	objCex.testCex();
 
@@ -557,7 +554,8 @@ int main()
 	IntersectionOfSortedArrayNM::IntersectionOfSortedArray objIntersectionOfSortedArray;
 	objIntersectionOfSortedArray.callIntersectionOfSortedArray();
 
-
+	MaxDifferenceNM::MaxDifference objMaxDifference;
+	objMaxDifference.callMaxDifference();
 
 	FindNumberHigherThanKSortedNM::FindNumberHigherThanKSorted objFindNumberHigherThanKSorted;
 	objFindNumberHigherThanKSorted.callFindNumberHigherThanK();

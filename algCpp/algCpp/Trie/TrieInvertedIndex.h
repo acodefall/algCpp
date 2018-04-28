@@ -24,6 +24,9 @@ namespace TrieInvertedIndexNM //@RED20170527013
 				2) Load them in to TRIE
 				3) EOW nodes of TRIE should store name of the book
 				4) Expose the method to retrieve the book-name, when searched using WORD
+				
+		Why use TRIE for building inverted index?
+			TRIE is efficient in storing words. Ex: "Rock" and "Rocket" could share many of the letters.
 	*/
 
 	//LAST Node(eow node) will store the WORD and also list of Files where that word appears
